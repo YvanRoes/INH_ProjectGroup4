@@ -63,7 +63,7 @@ namespace DAL
                 _adapter.Fill(dataSet);
                 table = dataSet.Tables[0];
             }
-            catch (Exception) { throw; }
+            catch (Exception e) { return null; throw e; }
             finally { CloseConnection(); }
             return table;
         }
