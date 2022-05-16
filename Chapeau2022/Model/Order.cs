@@ -5,7 +5,7 @@ namespace Model
 {
     public class Order
     {
-        List<MenuItem> _items;
+        List<MenuItem> _items = new List<MenuItem>();
 
         void AddItem(MenuItem item) => _items.Add(item);
 

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum MenuItemType { Appetizer, Main, Dessert}
-
-    public enum MenuItemCourse { Lunch, Dinner}
+    public class DrinkItem : MenuItem
+    {
+        public bool _isAlcoholic { get; set; }
+    }
 }

@@ -10,8 +10,7 @@ namespace Model
     {
         public int _itemId { get; set; }
         public string _itemName { get; set; }
-        public MenuItemType _itemType { get; set; }
         public decimal _ItemPrice { get; set; }
-        public MenuItemCourse _itemCourse { get; set;}
+        public int _ItemQty { get; set; }
     }
 }

@@ -9,27 +9,28 @@ using Model;
 
 namespace DAL
 {
-    public class OrderDao : BaseDao
+    public class DrinkDao : BaseDao
     {
-        public List<MenuItem> GetAllItems()
+        public List<DrinkItem> GetAllItems()
         {
-            string query = "SELECT * FROM STOCK";
+            string query = "SELECT ItemID, ItemName, ItemPrice,ItemQuantity, ItemAlcohol FROM DRINKSTOCK";
             SqlParameter[] parameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, parameters));
         }
 
-        private List<MenuItem> ReadTables(DataTable table)
+        private List<DrinkItem> ReadTables(DataTable table)
         {
-            List<MenuItem> list = new List<MenuItem>(); 
+            List<DrinkItem> list = new List<DrinkItem>();
 
-            foreach(DataRow dr in table.Rows)
+            foreach (DataRow dr in table.Rows)
             {
-                MenuItem item = new MenuItem()
+                DrinkItem item = new DrinkItem()
                 {
                     _itemId = (int)dr["ItemID"],
                     _itemName = (string)dr["ItemName"],
-                    _itemType = (MenuItemType)dr["ItemType"],
-                    _ItemPrice = (decimal)dr["ItemPrice"],   
+                    _ItemPrice = (decimal)dr["ItemPrice"],
+                    _ItemQty = (int)dr["ItemQuantity"],
+                    _isAlcoholic = (bool)dr["ItemAlcohol"]
                 };
                 list.Add(item);
             }
