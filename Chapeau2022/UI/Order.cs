@@ -20,6 +20,7 @@ namespace UI
             InitializeComponent();
             this.Size = new System.Drawing.Size(600, 520);
             Start();
+            this.Show();
         }
 
         void Start()
