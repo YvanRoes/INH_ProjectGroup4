@@ -19,11 +19,8 @@ namespace DAL
 
         protected SqlConnection OpenConnection()
         {
-            try
-            {
                 if (_connection.State == ConnectionState.Closed || _connection.State == ConnectionState.Broken)
                     _connection.Open();
-            } catch (Exception) { throw; }
             return _connection;
         }
 
