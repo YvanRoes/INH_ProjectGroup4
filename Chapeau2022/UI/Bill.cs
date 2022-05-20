@@ -15,6 +15,7 @@ namespace UI
         public Bill()
         {
             InitializeComponent();
+            Show();
         }
 
         

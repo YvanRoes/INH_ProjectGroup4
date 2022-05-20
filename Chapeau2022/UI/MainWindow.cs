@@ -22,5 +22,10 @@ namespace UI
         {
             new Order();
         }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            new Bill();
+        }
     }
 }
