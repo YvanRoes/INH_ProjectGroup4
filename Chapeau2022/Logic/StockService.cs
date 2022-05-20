@@ -11,7 +11,7 @@ namespace DAL
     {
         StockDao _stockDao;
 
-        public StockService() => new StockDao();
+        public StockService() => _stockDao = new StockDao();
 
         public List<DrinkItem> GetAllDrinks() => _stockDao.GetAllDrinkItems();
 
