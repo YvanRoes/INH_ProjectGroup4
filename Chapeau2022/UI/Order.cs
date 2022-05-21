@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic;
 using Model;
+using DAL;
 
 namespace UI
 {
     public partial class Order : Form
     {
-        private FoodService _foodService;
+        private StockService _stockService;
         public Order()
         {
             InitializeComponent();
@@ -25,8 +26,8 @@ namespace UI
 
         void Start()
         {
-            _foodService = new FoodService();
-            List<FoodItem> items = _foodService.GetAllItems();
+            _stockService = new StockService();
+            List<FoodItem> items = _stockService.GetAllFoodItems();
 
             listView1.Clear();
             listView1.View = View.Details;

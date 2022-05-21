@@ -31,12 +31,13 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.orderIdHeader = new System.Windows.Forms.ColumnHeader();
             this.tableIdHeader = new System.Windows.Forms.ColumnHeader();
-            this.drinkOrderHeader = new System.Windows.Forms.ColumnHeader();
             this.placedHeader = new System.Windows.Forms.ColumnHeader();
+            this.drinkOrderHeader = new System.Windows.Forms.ColumnHeader();
+            this.statusHeader = new System.Windows.Forms.ColumnHeader();
             this.rdbtnRunningOrders = new System.Windows.Forms.RadioButton();
             this.rdbtnFinishedOrders = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.statusHeader = new System.Windows.Forms.ColumnHeader();
+            this.btnReady = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -65,15 +66,19 @@
             this.tableIdHeader.Text = "Table No.";
             this.tableIdHeader.Width = 64;
             // 
+            // placedHeader
+            // 
+            this.placedHeader.Text = "Placed";
+            this.placedHeader.Width = 50;
+            // 
             // drinkOrderHeader
             // 
             this.drinkOrderHeader.Text = "Drink order";
             this.drinkOrderHeader.Width = 130;
             // 
-            // placedHeader
+            // statusHeader
             // 
-            this.placedHeader.Text = "Placed";
-            this.placedHeader.Width = 50;
+            this.statusHeader.Text = "Status";
             // 
             // rdbtnRunningOrders
             // 
@@ -107,15 +112,21 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Bar View";
             // 
-            // statusHeader
+            // btnReady
             // 
-            this.statusHeader.Text = "Status";
+            this.btnReady.Location = new System.Drawing.Point(545, 378);
+            this.btnReady.Name = "btnReady";
+            this.btnReady.Size = new System.Drawing.Size(75, 23);
+            this.btnReady.TabIndex = 4;
+            this.btnReady.Text = "ready";
+            this.btnReady.UseVisualStyleBackColor = true;
             // 
             // BarView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReady);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rdbtnFinishedOrders);
             this.Controls.Add(this.rdbtnRunningOrders);
@@ -138,5 +149,6 @@
         private System.Windows.Forms.RadioButton rdbtnRunningOrders;
         private System.Windows.Forms.RadioButton rdbtnFinishedOrders;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnReady;
     }
 }
