@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class BarView : Form
+    public partial class KitchenAndBar : Form
     {
-        public BarView()
+        public KitchenAndBar()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
