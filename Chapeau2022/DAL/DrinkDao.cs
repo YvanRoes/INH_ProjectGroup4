@@ -26,7 +26,7 @@ namespace DAL
             {
                 Drink drink = new Drink()
                 {
-                    item_Id = (int)dr["itemId"],
+                    itemId = (int)dr["itemId"],
                     drinkType = (DrinkType)dr["drinkType"]
                 };
                 drinks.Add(drink);

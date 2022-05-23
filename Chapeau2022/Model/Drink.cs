@@ -13,7 +13,7 @@ namespace Model
 
     public class Drink
     {
-        public int item_Id { get; set; }
+        public int itemId { get; set; }
         public DrinkType drinkType { get; set; }
     }
 }
