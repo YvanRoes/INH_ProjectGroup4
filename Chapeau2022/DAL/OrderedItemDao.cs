@@ -13,7 +13,7 @@ namespace DAL
     {
         public List<OrderedItem> GetAllOrders()
         {
-            string query = "";
+            string query = "SELECT O.quantity FROM ORDERED_ITEM AS O JOIN DRINK as D ON D.item_Id = O.item_Id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
