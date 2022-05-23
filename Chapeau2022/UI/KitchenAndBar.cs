@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Logic;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +21,13 @@ namespace UI
 
         private void DisplayOrders()
         {
+            OrderedItemService ordredItem = new OrderedItemService();
+            List<OrderedItem> orderedItems = new List<OrderedItem>();
 
+            foreach (OrderedItem orderedItem in orderedItems)
+            {
+                ListViewItem li = new ListViewItem();
+            }
         }
     }
 }
