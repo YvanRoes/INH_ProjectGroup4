@@ -14,20 +14,20 @@ namespace DAL
 
 
         //Drinks
-        public List<DrinkItem> GetAllDrinkItems()
+        public List<Drink> GetAllDrinkItems()
         {
             string query = "SELECT ItemID, ItemName, ItemPrice,ItemQuantity, ItemAlcohol FROM DRINKSTOCK";
             SqlParameter[] parameters = new SqlParameter[0];
             return ReadTablesDrinks(ExecuteSelectQuery(query, parameters));
         }
 
-        private List<DrinkItem> ReadTablesDrinks(DataTable table)
+        private List<Drink> ReadTablesDrinks(DataTable table)
         {
-            List<DrinkItem> list = new List<DrinkItem>();
+            List<Drink> list = new List<Drink>();
 
             foreach (DataRow dr in table.Rows)
             {
-                DrinkItem item = new DrinkItem()
+                Drink item = new Drink()
                 {
                     _itemId = (int)dr["ItemID"],
                     _itemName = (string)dr["ItemName"],
@@ -42,20 +42,20 @@ namespace DAL
 
 
         //Food
-        public List<FoodItem> GetAllFoodItems()
+        public List<Food> GetAllFoodItems()
         {
             string query = "SELECT ItemID, ItemName, ItemType, ItemPrice, ItemCourse, ItemQuantity FROM FOODSTOCK";
             SqlParameter[] parameters = new SqlParameter[0];
             return ReadTablesFood(ExecuteSelectQuery(query, parameters));
         }
 
-        private List<FoodItem> ReadTablesFood(DataTable table)
+        private List<Food> ReadTablesFood(DataTable table)
         {
-            List<FoodItem> list = new List<FoodItem>();
+            List<Food> list = new List<Food>();
 
             foreach (DataRow dr in table.Rows)
             {
-                FoodItem item = new FoodItem()
+                Food item = new Food()
                 {
                     _itemId = (int)dr["ItemID"],
                     _itemName = (string)dr["ItemName"],

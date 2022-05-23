@@ -13,8 +13,8 @@ namespace DAL
 
         public StockService() => _stockDao = new StockDao();
 
-        public List<DrinkItem> GetAllDrinks() => _stockDao.GetAllDrinkItems();
+        public List<Drink> GetAllDrinks() => _stockDao.GetAllDrinkItems();
 
-        public List<FoodItem> GetAllFoodItems() => _stockDao.GetAllFoodItems();
+        public List<Food> GetAllFoodItems() => _stockDao.GetAllFoodItems();
     }
 }

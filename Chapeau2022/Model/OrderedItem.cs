@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class DrinkItem : MenuItem
+    public class OrderedItem
     {
-        public bool _isAlcoholic { get; set; }
+        public int itemId { get; set; }
+        public int quantity { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace Model
 {
     public class MenuItem
     {
-        public int _itemId { get; set; }
-        public string _itemName { get; set; }
-        public decimal _ItemPrice { get; set; }
-        public int _ItemQty { get; set; }
+        public int menuId { get; set; }
+        public string itemName { get; set; }
+        public decimal ItemPrice { get; set; }
+        public int stock { get; set; }
     }
 }

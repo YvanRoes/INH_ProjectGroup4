@@ -27,7 +27,7 @@ namespace UI
         void Start()
         {
             _stockService = new StockService();
-            List<FoodItem> items = _stockService.GetAllFoodItems();
+            List<Food> items = _stockService.GetAllFoodItems();
 
             listView1.Clear();
             listView1.View = View.Details;
