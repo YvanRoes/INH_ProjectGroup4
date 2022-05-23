@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace DAL
 {
-    public enum MenuItemType { Appetizer, Main, Dessert}
-
-    public enum MenuItemCourse { Lunch, Dinner}
+    public  class OrderedItemDao
+    {
+    }
 }
