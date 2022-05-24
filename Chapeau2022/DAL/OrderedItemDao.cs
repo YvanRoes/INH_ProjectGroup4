@@ -11,9 +11,16 @@ namespace DAL
 {
     public  class OrderedItemDao : BaseDao
     {
-        public List<OrderedItem> GetAllOrders()
+        public List<OrderedItem> GetAllRunningOrdersQuantityAndStatus()
         {
-            string query = "SELECT O.quantity FROM ORDERED_ITEM AS O JOIN DRINK as D ON D.item_Id = O.item_Id";
+            string query = "SELECT O.quantity, O.status FROM ORDERED_ITEM AS O JOIN DRINK as D ON D.item_Id = O.item_Id WHERE status = 1; ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderedItem> GetAllFinishedOrdersQuantityAndStatus()
+        {
+            string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -27,7 +34,9 @@ namespace DAL
                 OrderedItem orderedItem = new OrderedItem()
                 {
                     itemId = (int)dr["item_Id"],
-                    quantity = (int)dr["quantity"]
+                    quantity = (int)dr["quantity"],
+                    menuId = (int)dr["menu_Id"],
+                    status = (Status)dr["status"]
                 };
                 orderedItems.Add(orderedItem);
             }
