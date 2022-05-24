@@ -15,12 +15,13 @@ namespace UI
     public partial class KitchenAndBar : Form
     {
         OrderedItemService ordredItemService = new OrderedItemService();
+        
         public KitchenAndBar()
         {
             InitializeComponent();
         }
 
-        private void DisplayOrders()
+        private void DisplayRunningOrderedItem()
         {
             lvOrders.Items.Clear();
             ListViewItem li = new ListViewItem();
@@ -30,6 +31,10 @@ namespace UI
             {
                 li.SubItems.Add(orderedItem.quantity.ToString());
             }
+
+            foreach ()
+
+
         }
 
         private void DisplayRunningOrders()
