@@ -25,10 +25,10 @@ namespace DAL
             {
                 MenuItem menuItem = new MenuItem()
                 {
-                    menuId = (int)dr["menu_Id"],
+                    /*menuId = (int)dr["menu_Id"],
                     itemName = (string)dr["itemName"],
                     ItemPrice = (decimal)dr["itemPrice"],
-                    stock = (int)dr["stock"]
+                    stock = (int)dr["stock"]*/
                 };
                 menuItems.Add(menuItem);
             }

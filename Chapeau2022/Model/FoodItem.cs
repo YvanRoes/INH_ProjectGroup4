@@ -4,8 +4,8 @@
     {
         appetizer, main, dessert
     }
-    public class Food
+    public class FoodItem : MenuItem
     {
-        public CourseType courseType { get; set; }
+        public CourseType Item_CourseType { get; set; }
     }
 }

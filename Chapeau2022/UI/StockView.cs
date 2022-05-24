@@ -15,10 +15,10 @@ namespace UI
 {
     public partial class StockView : Form
     {
-        private StockService stockService;
+        private FoodService _foodService;
         public StockView()
         {
-            stockService = new StockService();
+            _foodService = new FoodService();
             InitializeComponent();
             Start();
         }
@@ -28,7 +28,7 @@ namespace UI
         }
         public void FoodStock() 
         {
-            List<Food> items = stockService.GetAllFoodItems();
+            List<FoodItem> items = _foodService.GetAllFoodItems();
 
             listView1.Clear();
             listView1.View = View.Details;
@@ -40,9 +40,9 @@ namespace UI
             listView1.Columns.Add("Item Course", 124);
             listView1.Columns.Add("Qty.", 124);
 
-            foreach (Food item in items)
+            foreach (FoodItem item in items)
             {
-                string[] tempItem = { item._itemId.ToString(), item._itemName, item._ItemPrice.ToString(),item._ItemType.ToString(),item._ItemCourse.ToString(), item._ItemQty.ToString() };
+                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(),item.Item_CourseType.ToString(), item.Item_Stock.ToString() };
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
             }
@@ -71,8 +71,8 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form EditItem = new EditFoodItem(stockService.GetFoodItemById(int.Parse(listView1.SelectedItems[0].Text)));
-            EditItem.ShowDialog(); 
+            /*Form EditItem = new EditFoodItem(stockService.GetFoodItemById(int.Parse(listView1.SelectedItems[0].Text)));*/
+            /*EditItem.ShowDialog(); */
         }
     }
 }

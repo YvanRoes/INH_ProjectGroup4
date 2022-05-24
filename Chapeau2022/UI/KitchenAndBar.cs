@@ -29,10 +29,8 @@ namespace UI
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                li.SubItems.Add(orderedItem.quantity.ToString());
+                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
             }
-
-            foreach ()
 
 
         }

@@ -15,7 +15,7 @@ namespace UI
 {
     public partial class Order : Form
     {
-        private StockService _stockService;
+        private DrinkService _drinkService;
         public Order()
         {
             InitializeComponent();
@@ -26,8 +26,8 @@ namespace UI
 
         void Start()
         {
-            _stockService = new StockService();
-            List<Food> items = _stockService.GetAllFoodItems();
+            _drinkService = new DrinkService();
+            List<DrinkItem> items = _drinkService.GetAllDrinkItems();
 
             listView1.Clear();
             listView1.View = View.Details;
@@ -39,7 +39,7 @@ namespace UI
 
             foreach(MenuItem item in items)
             {
-                string[] tempItem = {item._itemId.ToString(), item._itemName, item._ItemPrice.ToString(), item._ItemQty.ToString()};
+                string[] tempItem = {item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_Stock.ToString()};
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
             }

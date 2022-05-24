@@ -10,11 +10,12 @@ namespace Model
     {
         ready, notReady
     }
-    public class OrderedItem
+    public class OrderedItem : MenuItem
     {
-        public int itemId { get; set; }
-        public int quantity { get; set; }
-        public int menuId { get; set; }
-        public Status status { get; set; }
+        public int ItemOrdered_Id { get; set; }
+
+        public int ItemOrdered_Quantity { get; set; }
+
+        public Status ItemOrdered_status { get; set; }
     }
 }

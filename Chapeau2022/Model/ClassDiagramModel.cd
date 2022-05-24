@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.MenuItem">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAIACA=</HashCode>
+      <FileName>MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.FoodItem">
+    <Position X="4" Y="5" Width="1.5" />
+    <InheritanceLine Type="Model.MenuItem" FixedFromPoint="true">
+      <Path>
+        <Point X="3" Y="4.18" />
+        <Point X="3" Y="4.625" />
+        <Point X="4.75" Y="4.625" />
+        <Point X="4.75" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FoodItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.DrinkItem">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <InheritanceLine Type="Model.MenuItem" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="3" Y="4.18" />
+        <Point X="3" Y="4.625" />
+        <Point X="6.562" Y="4.625" />
+        <Point X="6.562" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DrinkItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.OrderedItem">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>OrderedItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Model.CourseType" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQ=</HashCode>
+      <FileName>FoodItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Model.DrinkType" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>DrinkItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Model.Status" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderedItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

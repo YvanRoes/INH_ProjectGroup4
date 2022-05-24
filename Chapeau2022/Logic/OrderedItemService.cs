@@ -19,7 +19,7 @@ namespace Logic
 
         public List<OrderedItem> GetAllOrders()
         {
-            List<OrderedItem> orderedItems = orderedItemDao.GetAllOrders();
+            List<OrderedItem> orderedItems = orderedItemDao.GetAllFinishedOrdersQuantityAndStatus();
             return orderedItems;
         }
 

@@ -11,23 +11,25 @@ namespace DAL
 {
     public class DrinkDao : BaseDao
     {
-        public List<Drink> GetAllDrinks()
+        public List<DrinkItem> GetAllDrinks()
         {
-            string query = "";
+            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock D.item_DrinkType FROM MENU_ITEM AS M, DRINK as D WHERE M.item_ID = D.item_Id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<Drink> ReadTables(DataTable dataTable)
+        private List<DrinkItem> ReadTables(DataTable dataTable)
         {
-            List<Drink> drinks = new List<Drink>();
+            List<DrinkItem> drinks = new List<DrinkItem>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Drink drink = new Drink()
+                DrinkItem drink = new DrinkItem()
                 {
-                    itemId = (int)dr["itemId"],
-                    drinkType = (DrinkType)dr["drinkType"]
+                    Item_Id = (int)dr["item_Id"],
+                    Item_Name = (string)dr["item_Name"],
+                    Item_Price = (decimal)dr["item_Price"],
+                    Item_DrinkType = (DrinkType)dr["item_DrinkType"]
                 };
                 drinks.Add(drink);
             }

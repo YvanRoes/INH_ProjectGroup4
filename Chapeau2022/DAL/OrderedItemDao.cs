@@ -33,10 +33,10 @@ namespace DAL
             {
                 OrderedItem orderedItem = new OrderedItem()
                 {
-                    itemId = (int)dr["item_Id"],
-                    quantity = (int)dr["quantity"],
-                    menuId = (int)dr["menu_Id"],
-                    status = (Status)dr["status"]
+                    /*itemOrderedId = (int)dr["item_Id"],
+                    itemQuantity = (int)dr["quantity"],
+                    itemId = (int)dr["menu_Id"],
+                    status = (Status)dr["status"]*/
                 };
                 orderedItems.Add(orderedItem);
             }
