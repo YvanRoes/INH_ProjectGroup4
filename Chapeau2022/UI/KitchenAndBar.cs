@@ -14,6 +14,7 @@ namespace UI
 {
     public partial class KitchenAndBar : Form
     {
+        OrderedItemService ordredItemService = new OrderedItemService();
         public KitchenAndBar()
         {
             InitializeComponent();
@@ -21,13 +22,24 @@ namespace UI
 
         private void DisplayOrders()
         {
-            OrderedItemService ordredItem = new OrderedItemService();
-            List<OrderedItem> orderedItems = new List<OrderedItem>();
+            lvOrders.Items.Clear();
+            ListViewItem li = new ListViewItem();
+            List<OrderedItem> orderedItems = ordredItemService.GetAllOrders();
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem();
+                li.SubItems.Add(orderedItem.quantity.ToString());
             }
+        }
+
+        private void DisplayRunningOrders()
+        {
+
+        }
+
+        private void DisplayFinishedOrders()
+        {
+
         }
     }
 }
