@@ -27,5 +27,11 @@ namespace UI
         {
             new Bill();
         }
+
+        private void btnStockView_Click(object sender, EventArgs e)
+        {
+            StockView stock = new StockView();
+            stock.Show();
+        }
     }
 }
