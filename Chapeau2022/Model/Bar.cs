@@ -12,12 +12,12 @@ namespace Model
         public DateTime Placed { get; set; }
         public int Quantity { get; set; }
         public string DrinkOrder { get; set; }
-        public Bar(int tableNr, DateTime placed, int quantity, string drinkOrder)
-        {
-            TableNr = tableNr;
-            Placed = placed;
-            Quantity = quantity;
-            DrinkOrder = drinkOrder;
-        }
+        //public Bar(int tableNr, DateTime placed, int quantity, string drinkOrder)
+        //{
+        //    TableNr = tableNr;
+        //    Placed = placed;
+        //    Quantity = quantity;
+        //    DrinkOrder = drinkOrder;
+        //}
     }
 }

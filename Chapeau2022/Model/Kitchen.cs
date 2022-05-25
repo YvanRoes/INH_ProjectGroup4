@@ -12,14 +12,15 @@ namespace Model
         public DateTime Placed { get; set; }
         public int Quantity { get; set; }
         public CourseType CourseType { get; set; }
-        public string DrinkOrder { get; set; }
-        public Kitchen(int tableNr, DateTime placed, int quantity, CourseType coursetype, string drinkOrder)
-        {
-            TableNr = tableNr;
-            Placed = placed;
-            Quantity = quantity;
-            CourseType = coursetype;
-            DrinkOrder = drinkOrder;
-        }
+        public string FoodOrder { get; set; }
+
+        //public Kitchen(int tableNr, DateTime placed, int quantity, CourseType coursetype, string drinkOrder)
+        //{
+        //    TableNr = tableNr;
+        //    Placed = placed;
+        //    Quantity = quantity;
+        //    CourseType = coursetype;
+        //    DrinkOrder = drinkOrder;
+        //}
     }
 }
