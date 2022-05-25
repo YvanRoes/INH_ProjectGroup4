@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    class BillService
+    public class BillService
     {
         private BillDao billdao = new BillDao();
 
         public void BillRecord(Bill bill)
         {
             billdao.BillRecord(bill);
+        }
+        public List<OrderedItem> GetAllOrderedItems()
+        {
+            return billdao.GetAllOrderedItems();
         }
     }
 }
