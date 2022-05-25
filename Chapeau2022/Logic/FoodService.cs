@@ -15,5 +15,6 @@ namespace Logic
         public FoodService() => _foodDao = new FoodDao();
 
         public List<FoodItem> GetAllFoodItems() => _foodDao.GetAllFoodItems();
+        public FoodItem GetFoodItemById(int id) => _foodDao.GetFoodItemById(id);
     }
 }
