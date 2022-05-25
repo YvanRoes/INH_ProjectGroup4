@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum MenuItemType { Appetizer, Main, Dessert, Drink}
+    public enum BillMethod
+    {
+        Pin, CreditCard, Cash
 
-    public enum MenuItemCourse { Lunch, Dinner}
+    }
 }

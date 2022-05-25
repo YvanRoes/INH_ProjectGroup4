@@ -19,11 +19,8 @@ namespace DAL
 
         protected SqlConnection OpenConnection()
         {
-            try
-            {
                 if (_connection.State == ConnectionState.Closed || _connection.State == ConnectionState.Broken)
                     _connection.Open();
-            } catch (Exception) { throw; }
             return _connection;
         }
 
@@ -63,7 +60,6 @@ namespace DAL
                 _adapter.Fill(dataSet);
                 table = dataSet.Tables[0];
             }
-            catch (Exception e) { return null; throw e; }
             finally { CloseConnection(); }
             return table;
         }

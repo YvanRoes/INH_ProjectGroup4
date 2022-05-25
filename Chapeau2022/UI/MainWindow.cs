@@ -15,7 +15,17 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
+            this.Size = new Size(200, 235);
         }
 
+        private void btnOrderView_Click(object sender, EventArgs e)
+        {
+            new Order();
+        }
+
+        private void btnPayment_Click(object sender, EventArgs e)
+        {
+            new Bill();
+        }
     }
 }
