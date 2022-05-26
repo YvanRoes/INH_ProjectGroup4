@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,18 @@ namespace Logic
         public KitchenService()
         {
             kitchenDao = new KitchenDao();
+        }
+
+        public List<KitchenItem> GetAllRunningOrders()
+        {
+            List<KitchenItem> kitchenItems = kitchenDao.GetAllRunningOrders();
+            return kitchenItems;
+        }
+
+        public List<KitchenItem> GetAllFinishedOrders()
+        {
+            List<KitchenItem> kitchenItems = kitchenDao.GetAllFinishedOrders();
+            return kitchenItems;
         }
     }
 }

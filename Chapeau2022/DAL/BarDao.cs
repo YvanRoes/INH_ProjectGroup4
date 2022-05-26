@@ -13,14 +13,24 @@ namespace DAL
     {
         public List<Bar> GetAllRunningOrders()
         {
-            string query = "";
+            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
+                "FROM[ORDER] JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
+                "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_I " +
+                "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
+                "WHERE itemOrdered_Status = 1; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<Bar> GetAllFinishedOrders()
         {
-            string query = "";
+            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
+                "FROM[ORDER] JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
+                "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_I " +
+                "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
+                "WHERE itemOrdered_Status = 0; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -33,13 +43,12 @@ namespace DAL
             {
                 Bar bar = new Bar()
                 {
-                    TableNr = (int)dr[""],
-                    Placed = (DateTime)dr[""],
-                    Quantity = (int)dr[""],
-                    DrinkType = (DrinkType)dr[""],
-                    DrinkName = (string)dr[""],
-                    DrinkDescription = (string)dr[""],
-                    DrinkStatus = (Status)dr[""]
+                    Placed = (DateTime)dr["order_TimeTaken"],
+                    DrinkQuantity = (int)dr["itemOrdered_Quantity"],
+                    DrinkType = (DrinkType)dr["item_DrinkType"],
+                    DrinkName = (string)dr["item_Name"],
+                    DrinkDescription = (string)dr["item_Description"],
+                    DrinkStatus = (Status)dr["itemOrdered_Status"]
                 };
                 bars.Add(bar);
             }

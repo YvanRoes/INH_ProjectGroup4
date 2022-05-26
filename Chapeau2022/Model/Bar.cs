@@ -10,7 +10,7 @@ namespace Model
     {
         public int TableNr { get; set; }
         public DateTime Placed { get; set; }
-        public int Quantity { get; set; }
+        public int DrinkQuantity { get; set; }
         public DrinkType DrinkType { get; set; } 
         public string DrinkName { get; set; }
         public string DrinkDescription { get; set; }
