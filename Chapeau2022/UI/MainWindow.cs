@@ -36,7 +36,8 @@ namespace UI
 
         private void btnKitchenView_Click(object sender, EventArgs e)
         {
-            new KitchenAndBar();
+            KitchenAndBar kitchenAndBar = new KitchenAndBar();
+            kitchenAndBar.Show();
         }
     }
 }
