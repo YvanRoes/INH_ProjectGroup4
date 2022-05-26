@@ -21,7 +21,7 @@ namespace DAL
                 "JOIN FOOD AS F ON F.item_Id = M.item_Id " +
                 "WHERE itemOrdered_Status = 1;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadFoodTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<OrderedItem> GetAllFinishedFoodOrders()
@@ -34,7 +34,7 @@ namespace DAL
                 "JOIN FOOD AS F ON F.item_Id = M.item_Id " +
                 "WHERE itemOrdered_Status = 0;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadFoodTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<OrderedItem> GetAllRunningDrinkOrders()
@@ -46,7 +46,7 @@ namespace DAL
                 "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
                 "WHERE itemOrdered_Status = 1; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadDrinkTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<OrderedItem> GetAllFinishedDrinkOrders()
@@ -58,10 +58,30 @@ namespace DAL
                 "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
                 "WHERE itemOrdered_Status = 0; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadDrinkTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<OrderedItem> ReadTables(DataTable dataTable)
+        private List<OrderedItem> ReadFoodTables(DataTable dataTable)
+        {
+            List<OrderedItem> orderedItems = new List<OrderedItem>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                OrderedItem orderedItem = new OrderedItem()
+                {
+                    Placed = (DateTime)dr["order_TimeTaken"],
+                    ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
+                    Item_CourseType = (CourseType)dr["item_CourseType"],
+                    Item_Name = (string)dr["item_Name"],
+                    ItemOrderedDescription = (string)dr["item_Description"],
+                    ItemOrdered_status = (ItemOrderedStatus)dr["itemOrdered_Status"]
+                };
+                orderedItems.Add(orderedItem);
+            }
+            return orderedItems;
+        }
+
+        private List<OrderedItem> ReadDrinkTables(DataTable dataTable)
         {
             List<OrderedItem> orderedItems = new List<OrderedItem>();
 
