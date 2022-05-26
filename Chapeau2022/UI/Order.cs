@@ -37,12 +37,12 @@ namespace UI
             listView1.Columns.Add("Price", 124);
             listView1.Columns.Add("Qty.", 124);
 
-            foreach(MenuItem item in items)
-            {
-                string[] tempItem = {item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_Stock.ToString()};
-                ListViewItem item2 = new ListViewItem(tempItem);
-                listView1.Items.Add(item2);
-            }
+            //foreach(MenuItem item in items)
+            //{
+            //    string[] tempItem = {item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_Stock.ToString()};
+            //    ListViewItem item2 = new ListViewItem(tempItem);
+            //    listView1.Items.Add(item2);
+            //}
         }
     }
 }

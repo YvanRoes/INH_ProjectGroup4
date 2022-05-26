@@ -66,6 +66,7 @@
             this.btnKitchenView.TabIndex = 2;
             this.btnKitchenView.Text = "Kitchen view";
             this.btnKitchenView.UseVisualStyleBackColor = true;
+            this.btnKitchenView.Click += new System.EventHandler(this.btnKitchenView_Click);
             // 
             // btnBarView
             // 

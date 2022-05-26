@@ -19,17 +19,23 @@ namespace UI
         public KitchenAndBar()
         {
             InitializeComponent();
+            DisplayRunningOrderedItem();
         }
 
         private void DisplayRunningOrderedItem()
         {
             lvOrders.Items.Clear();
-            ListViewItem li = new ListViewItem();
-            List<OrderedItem> orderedItems = ordredItemService.GetAllOrders();
+            List<OrderedItem> orderedItems = ordredItemService.GetAllRunningDrinkOrders();
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
+                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
                 li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
+                li.SubItems.Add(orderedItem.Item_Name);
+                li.SubItems.Add(orderedItem.ItemOrderedDescription);
+                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                lvOrders.Items.Add(li);
             }
 
 

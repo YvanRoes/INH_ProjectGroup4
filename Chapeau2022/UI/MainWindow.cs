@@ -33,5 +33,10 @@ namespace UI
             StockView stock = new StockView();
             stock.Show();
         }
+
+        private void btnKitchenView_Click(object sender, EventArgs e)
+        {
+            new KitchenAndBar();
+        }
     }
 }
