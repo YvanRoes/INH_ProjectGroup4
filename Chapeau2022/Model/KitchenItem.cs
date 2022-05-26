@@ -14,7 +14,7 @@ namespace Model
         public CourseType CourseType { get; set; }
         public string FoodName { get; set; }
         public string FoodDescription { get; set; }
-        public Status FoodStatus { get; set; }
+        public ItemOrderedStatus FoodStatus { get; set; }
 
 
         //public Kitchen(int tableNr, DateTime placed, int quantity, CourseType coursetype, string drinkOrder)

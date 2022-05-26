@@ -11,7 +11,7 @@ namespace Model
         alcoholic, nonAlcoholic
     }
 
-    public class DrinkItem : MenuItem
+    public class DrinkItem : IDrinkItem
     {
         public DrinkType Item_DrinkType { get; set; }
     }

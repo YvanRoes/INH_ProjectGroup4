@@ -4,7 +4,7 @@
     {
         appetizer, main, dessert
     }
-    public class FoodItem : MenuItem
+    public class FoodItem : IFoodItem
     {
         public CourseType Item_CourseType { get; set; }
     }
