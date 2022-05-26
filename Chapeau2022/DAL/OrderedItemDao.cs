@@ -42,7 +42,7 @@ namespace DAL
             string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
                 "FROM[ORDER] JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
                 "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
-                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_I " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
                 "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
                 "WHERE itemOrdered_Status = 1; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -54,7 +54,7 @@ namespace DAL
             string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
                 "FROM[ORDER] JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
                 "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
-                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_I " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
                 "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
                 "WHERE itemOrdered_Status = 0; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
