@@ -105,9 +105,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(22, 250);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 20);
+            this.label5.Size = new System.Drawing.Size(121, 20);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Quantity";
+            this.label5.Text = "Quantity in Stock";
             // 
             // textBoxQuantity
             // 
