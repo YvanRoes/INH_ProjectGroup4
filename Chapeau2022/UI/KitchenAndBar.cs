@@ -19,10 +19,10 @@ namespace UI
         public KitchenAndBar()
         {
             InitializeComponent();
-            DisplayRunningOrderedItem();
+            DisplayRunningOrderedDrinkItem();
         }
 
-        private void DisplayRunningOrderedItem()
+        private void DisplayRunningOrderedDrinkItem()
         {
             lvOrders.Items.Clear();
             List<OrderedItem> orderedItems = ordredItemService.GetAllRunningDrinkOrders();
@@ -37,18 +37,57 @@ namespace UI
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
                 lvOrders.Items.Add(li);
             }
-
-
         }
 
-        private void DisplayRunningOrders()
+        private void DisplayFinishedOrderedDrinkItem()
         {
+            lvOrders.Items.Clear();
+            List<OrderedItem> orderedItems = ordredItemService.GetAllFinishedDrinkOrders();
 
+            foreach (OrderedItem orderedItem in orderedItems)
+            {
+                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
+                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
+                li.SubItems.Add(orderedItem.Item_Name);
+                li.SubItems.Add(orderedItem.ItemOrderedDescription);
+                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                lvOrders.Items.Add(li);
+            }
         }
 
-        private void DisplayFinishedOrders()
+        private void DisplayRunningOrderedFoodItem()
         {
+            lvOrders.Items.Clear();
+            List<OrderedItem> orderedItems = ordredItemService.GetAllRunningFoodOrders();
 
+            foreach (OrderedItem orderedItem in orderedItems)
+            {
+                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
+                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                li.SubItems.Add(orderedItem.Item_CourseType.ToString());
+                li.SubItems.Add(orderedItem.Item_Name);
+                li.SubItems.Add(orderedItem.ItemOrderedDescription);
+                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                lvOrders.Items.Add(li);
+            }
+        }
+
+        private void DisplayFinishedOrderedFoodItem()
+        {
+            lvOrders.Items.Clear();
+            List<OrderedItem> orderedItems = ordredItemService.GetAllFinishedFoodOrders();
+
+            foreach (OrderedItem orderedItem in orderedItems)
+            {
+                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
+                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                li.SubItems.Add(orderedItem.Item_CourseType.ToString());
+                li.SubItems.Add(orderedItem.Item_Name);
+                li.SubItems.Add(orderedItem.ItemOrderedDescription);
+                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                lvOrders.Items.Add(li);
+            }
         }
     }
 }
