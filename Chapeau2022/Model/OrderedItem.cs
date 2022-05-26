@@ -16,6 +16,9 @@ namespace Model
 
         public int ItemOrdered_Quantity { get; set; }
 
-        public Status ItemOrdered_status { get; set; }
+        public Status ItemOrdered_Status { get; set; }
+
+        public string ItemOrdered_Description { get; set; }
+
     }
 }
