@@ -11,7 +11,10 @@ namespace Model
         public int TableNr { get; set; }
         public DateTime Placed { get; set; }
         public int Quantity { get; set; }
-        public string DrinkOrder { get; set; }
+        public DrinkType DrinkType { get; set; } 
+        public string DrinkName { get; set; }
+        public string DrinkDescription { get; set; }
+        public Status DrinkStatus { get; set; }
         //public Bar(int tableNr, DateTime placed, int quantity, string drinkOrder)
         //{
         //    TableNr = tableNr;

@@ -36,7 +36,10 @@ namespace DAL
                     TableNr = (int)dr[""],
                     Placed = (DateTime)dr[""],
                     Quantity = (int)dr[""],
-                    DrinkOrder = (string)dr[""]
+                    DrinkType = (DrinkType)dr[""],
+                    DrinkName = (string)dr[""],
+                    DrinkDescription = (string)dr[""],
+                    DrinkStatus = (Status)dr[""]
                 };
                 bars.Add(bar);
             }

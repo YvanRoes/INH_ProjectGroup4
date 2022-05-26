@@ -11,33 +11,35 @@ namespace DAL
 {
     public class KitchenDao : BaseDao
     {
-        public List<Kitchen> GetAllRunningOrders()
+        public List<KitchenItem> GetAllRunningOrders()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Kitchen> GetAllFinishedOrders()
+        public List<KitchenItem> GetAllFinishedOrders()
         {
             string query = "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<Kitchen> ReadTables(DataTable dataTable)
+        private List<KitchenItem> ReadTables(DataTable dataTable)
         {
-            List<Kitchen> kitchens = new List<Kitchen>();
+            List<KitchenItem> kitchens = new List<KitchenItem>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Kitchen kitchen = new Kitchen()
+                KitchenItem kitchen = new KitchenItem()
                 {
                     TableNr = (int)dr[""],
                     Placed = (DateTime)dr[""],
                     Quantity = (int)dr[""],
                     CourseType = (CourseType)dr[""],
-                    FoodOrder = (string)dr[""]
+                    itemName = (string)dr[""],
+                    description = (string)dr[""],
+                    status = (Status)dr[""],
                 };
                 kitchens.Add(kitchen);
             }

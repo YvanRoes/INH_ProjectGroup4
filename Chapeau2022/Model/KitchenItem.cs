@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Kitchen
+    public class KitchenItem
     {
         public int TableNr { get; set; }
         public DateTime Placed { get; set; }
         public int Quantity { get; set; }
         public CourseType CourseType { get; set; }
-        public string FoodOrder { get; set; }
+        public string FoodName { get; set; }
+        public string FoodDescription { get; set; }
+        public Status FoodStatus { get; set; }
+
 
         //public Kitchen(int tableNr, DateTime placed, int quantity, CourseType coursetype, string drinkOrder)
         //{
