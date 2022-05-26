@@ -50,7 +50,7 @@ namespace DAL
                     CourseType = (CourseType)dr["item_CourseType"],
                     FoodName = (string)dr["item_Name"],
                     FoodDescription = (string)dr["item_Description"],
-                    FoodStatus = (Status)dr["itemOrdered_Status"],
+                    FoodStatus = (ItemOrderedStatus)dr["itemOrdered_Status"],
                 };
                 kitchens.Add(kitchen);
             }

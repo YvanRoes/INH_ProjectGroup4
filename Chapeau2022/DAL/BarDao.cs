@@ -48,7 +48,7 @@ namespace DAL
                     DrinkType = (DrinkType)dr["item_DrinkType"],
                     DrinkName = (string)dr["item_Name"],
                     DrinkDescription = (string)dr["item_Description"],
-                    DrinkStatus = (Status)dr["itemOrdered_Status"]
+                    DrinkStatus = (ItemOrderedStatus)dr["itemOrdered_Status"]
                 };
                 bars.Add(bar);
             }

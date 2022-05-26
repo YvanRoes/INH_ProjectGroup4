@@ -11,16 +11,52 @@ namespace DAL
 {
     public  class OrderedItemDao : BaseDao
     {
-        public List<OrderedItem> GetAllRunningOrdersQuantityAndStatus()
+        public List<OrderedItem> GetAllRunningFoodOrders()
         {
-            string query = "SELECT O.quantity, O.status FROM ORDERED_ITEM AS O JOIN DRINK as D ON D.item_Id = O.item_Id WHERE status = 1; ";
+            string query = "SELECT [ORDER].order_TimeTaken, F.[item_CourseType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
+                "FROM[ORDER] " +
+                "JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
+                "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
+                "JOIN FOOD AS F ON F.item_Id = M.item_Id " +
+                "WHERE itemOrdered_Status = 1;";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<OrderedItem> GetAllFinishedOrdersQuantityAndStatus()
+        public List<OrderedItem> GetAllFinishedFoodOrders()
         {
-            string query = "";
+            string query = "SELECT [ORDER].order_TimeTaken, F.[item_CourseType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
+                "FROM[ORDER] " +
+                "JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
+                "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
+                "JOIN FOOD AS F ON F.item_Id = M.item_Id " +
+                "WHERE itemOrdered_Status = 0;";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderedItem> GetAllRunningDrinkOrders()
+        {
+            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
+                "FROM[ORDER] JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
+                "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_I " +
+                "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
+                "WHERE itemOrdered_Status = 1; ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<OrderedItem> GetAllFinishedDrinkOrders()
+        {
+            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status] " +
+                "FROM[ORDER] JOIN IS_MADE_OF AS I ON I.order_Id = [ORDER].order_Id " +
+                "JOIN ORDERED_ITEM AS O ON O.itemOrdered_Id = I.itemOrdered_Id " +
+                "JOIN MENU_ITEM AS M ON M.item_Id = O.item_I " +
+                "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
+                "WHERE itemOrdered_Status = 0; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -33,10 +69,12 @@ namespace DAL
             {
                 OrderedItem orderedItem = new OrderedItem()
                 {
-                    /*itemOrderedId = (int)dr["item_Id"],
-                    itemQuantity = (int)dr["quantity"],
-                    itemId = (int)dr["menu_Id"],
-                    status = (Status)dr["status"]*/
+                    Placed = (DateTime)dr["order_TimeTaken"],
+                    ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
+                    Item_DrinkType = (DrinkType)dr["item_DrinkType"],
+                    Item_Name = (string)dr["item_Name"],
+                    ItemOrderedDescription = (string)dr["item_Description"],
+                    ItemOrdered_status = (ItemOrderedStatus)dr["itemOrdered_Status"]
                 };
                 orderedItems.Add(orderedItem);
             }

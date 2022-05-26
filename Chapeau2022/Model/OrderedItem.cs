@@ -18,11 +18,12 @@ namespace Model
 
         public ItemOrderedStatus ItemOrdered_status { get; set; }
         public int Item_Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Item_Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Item_Name { get; set; }
         public decimal Item_Price { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Item_Stock { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public CourseType Item_CourseType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DrinkType Item_DrinkType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime Placed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public CourseType Item_CourseType { get; set; }
+        public DrinkType Item_DrinkType { get; set; }
+        public DateTime Placed { get; set; }
+        public string ItemOrderedDescription { get; set; }
     }
 }

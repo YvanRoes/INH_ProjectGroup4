@@ -13,5 +13,7 @@ namespace Model
         int ItemOrdered_Quantity { get; set; }
 
         ItemOrderedStatus ItemOrdered_status { get; set; }
+
+        public string ItemOrderedDescription { get; set; }
     }
 }
