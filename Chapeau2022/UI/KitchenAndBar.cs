@@ -29,7 +29,7 @@ namespace UI
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
+                ListViewItem li = new ListViewItem(orderTimePlaced(orderedItem.Placed).ToString());
                 li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
                 li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
                 li.SubItems.Add(orderedItem.Item_Name);
@@ -88,6 +88,27 @@ namespace UI
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
                 lvOrders.Items.Add(li);
             }
+        }
+
+        private void btnRunning_Click(object sender, EventArgs e)
+        {
+            DisplayRunningOrderedDrinkItem();
+        }
+
+        private void btnFinished_Click(object sender, EventArgs e)
+        {
+            DisplayFinishedOrderedDrinkItem();
+        }
+
+        TimeSpan orderTimePlaced(DateTime placed)
+        {
+            TimeSpan orderTime = DateTime.Now - placed;
+            return orderTime;
+        }
+
+        private void btnChangeView_Click(object sender, EventArgs e)
+        {
+            lblKitchenAndBar.Text = "Kitchen View";
         }
     }
 }
