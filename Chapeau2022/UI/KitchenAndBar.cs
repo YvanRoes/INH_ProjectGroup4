@@ -15,10 +15,13 @@ namespace UI
     public partial class KitchenAndBar : Form
     {
         OrderedItemService ordredItemService = new OrderedItemService();
+        Employee employee;
         
         public KitchenAndBar()
         {
             InitializeComponent();
+
+            ShowDialog();
 
             DisplayRunningOrderedDrinkItem();
 
@@ -96,11 +99,29 @@ namespace UI
 
         private void btnRunning_Click(object sender, EventArgs e)
         {
+            //if (employee.EmployeeRole == EmployeeRole.bartender)
+            //{
+            //    DisplayRunningOrderedDrinkItem();
+            //}
+            //else
+            //{
+            //    DisplayRunningOrderedDrinkItem();
+            //}
+
             DisplayRunningOrderedDrinkItem();
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
         {
+            //if (employee.EmployeeRole == EmployeeRole.chef)
+            //{
+            //    DisplayRunningOrderedFoodItem();
+            //}
+            //else
+            //{
+            //    DisplayFinishedOrderedFoodItem();
+            //}
+
             DisplayFinishedOrderedDrinkItem();
         }
 
@@ -108,6 +129,18 @@ namespace UI
         {
             TimeSpan orderTime = DateTime.Now - placed;
             return orderTime;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.ShowDialog();
+        }
+
+        private void lvOrders_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

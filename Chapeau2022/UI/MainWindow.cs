@@ -40,18 +40,17 @@ namespace UI
         private void btnKitchenView_Click(object sender, EventArgs e)
         {
             //employee.EmployeeRole = EmployeeRole.chef;
-
+            this.Hide();
             KitchenAndBar kitchenAndBar = new KitchenAndBar();
-            kitchenAndBar.Show();
-
+            kitchenAndBar.ShowDialog();
         }
 
         private void btnBarView_Click(object sender, EventArgs e)
         {
             //employee.EmployeeRole = EmployeeRole.bartender;
-
+            this.Hide();
             KitchenAndBar kitchenAndBar = new KitchenAndBar();
-            kitchenAndBar.Show();
+            kitchenAndBar.ShowDialog();
         }
     }
 }
