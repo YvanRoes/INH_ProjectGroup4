@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
 
 namespace UI
 {
     public partial class MainWindow : Form
     {
+        Employee employee;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +39,17 @@ namespace UI
 
         private void btnKitchenView_Click(object sender, EventArgs e)
         {
+            //employee.EmployeeRole = EmployeeRole.chef;
+
+            KitchenAndBar kitchenAndBar = new KitchenAndBar();
+            kitchenAndBar.Show();
+
+        }
+
+        private void btnBarView_Click(object sender, EventArgs e)
+        {
+            //employee.EmployeeRole = EmployeeRole.bartender;
+
             KitchenAndBar kitchenAndBar = new KitchenAndBar();
             kitchenAndBar.Show();
         }

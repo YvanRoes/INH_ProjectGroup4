@@ -17,30 +17,16 @@ namespace Logic
             orderedItemDao = new OrderedItemDao();
         }
 
-        public List<OrderedItem> GetAllRunningFoodOrders()
+        public List<OrderedItem> GetAllFoodOrders(ItemOrderedStatus itemOrderedStatus)
         {
-            List<OrderedItem> orderedItems = orderedItemDao.GetAllRunningFoodOrders();
+            List<OrderedItem> orderedItems = orderedItemDao.GetAllFoodOrders(itemOrderedStatus);
             return orderedItems;
         }
 
-        public List<OrderedItem> GetAllFinishedFoodOrders()
+        public List<OrderedItem> GetAllDrinkOrders(ItemOrderedStatus itemOrderedStatus)
         {
-            List<OrderedItem> orderedItems = orderedItemDao.GetAllFinishedFoodOrders();
+            List<OrderedItem> orderedItems = orderedItemDao.GetAllDrinkOrders(itemOrderedStatus);
             return orderedItems;
         }
-
-        public List<OrderedItem> GetAllRunningDrinkOrders()
-        {
-            List<OrderedItem> orderedItems = orderedItemDao.GetAllRunningDrinkOrders();
-            return orderedItems;
-        }
-
-        public List<OrderedItem> GetAllFinishedDrinkOrders()
-        {
-            List<OrderedItem> orderedItems = orderedItemDao.GetAllFinishedDrinkOrders();
-            return orderedItems;
-        }
-
-
     }
 }

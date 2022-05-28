@@ -40,7 +40,6 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnFinished = new System.Windows.Forms.Button();
             this.btnRunning = new System.Windows.Forms.Button();
-            this.btnChangeView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvOrders
@@ -141,22 +140,11 @@
             this.btnRunning.UseVisualStyleBackColor = true;
             this.btnRunning.Click += new System.EventHandler(this.btnRunning_Click);
             // 
-            // btnChangeView
-            // 
-            this.btnChangeView.Location = new System.Drawing.Point(670, 89);
-            this.btnChangeView.Name = "btnChangeView";
-            this.btnChangeView.Size = new System.Drawing.Size(84, 23);
-            this.btnChangeView.TabIndex = 13;
-            this.btnChangeView.Text = "change view";
-            this.btnChangeView.UseVisualStyleBackColor = true;
-            this.btnChangeView.Click += new System.EventHandler(this.btnChangeView_Click);
-            // 
             // KitchenAndBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 441);
-            this.Controls.Add(this.btnChangeView);
             this.Controls.Add(this.btnRunning);
             this.Controls.Add(this.btnFinished);
             this.Controls.Add(this.btnLogout);
@@ -185,6 +173,5 @@
         private System.Windows.Forms.ColumnHeader descriptionHeader;
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.Button btnRunning;
-        private System.Windows.Forms.Button btnChangeView;
     }
 }

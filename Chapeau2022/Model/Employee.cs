@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum employeeStaf
+    public enum EmployeeRole
     {
         waiter, bartender, chef, manager
     }
 
     public class Employee
     {
+        public EmployeeRole EmployeeRole { get; set; }
+
+        public Employee(EmployeeRole employeeRole)
+        {
+
+        }
     }
 }
