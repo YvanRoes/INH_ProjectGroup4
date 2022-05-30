@@ -17,10 +17,12 @@ namespace UI
     {
         private FoodService _foodService;
         private DrinkService _drinkService;
+        public bool IsDisplayingFood;
         public StockView()
         {
             _foodService = new FoodService();
             _drinkService = new DrinkService();
+            IsDisplayingFood = false;
             InitializeComponent();
             Start();
         }
@@ -82,12 +84,24 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try
+            if (IsDisplayingFood)
             {
-                Form EditItem = new EditFoodItem(_foodService.GetFoodItemById(int.Parse(listView1.SelectedItems[0].Text)));
-                EditItem.ShowDialog();
+                try
+                {
+                    Form EditItem = new EditFoodItem(_foodService.GetFoodItemById(int.Parse(listView1.SelectedItems[0].Text)));
+                    EditItem.ShowDialog();
+                }
+                catch { MessageBox.Show("Please select an item before editing."); }
             }
-            catch { MessageBox.Show("Please select an item before editing."); }
+            else 
+            {
+                try
+                {
+                    Form EditItem = new EditDrinkItem(_drinkService.GetDrinkItemById(int.Parse(listView1.SelectedItems[0].Text)));
+                    EditItem.ShowDialog();
+                }
+                catch { MessageBox.Show("Please select an item before editing."); }
+            }
         }
     }
 }

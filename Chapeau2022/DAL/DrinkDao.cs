@@ -17,7 +17,14 @@ namespace DAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-
+        //returns an item of the id that is passed to the method
+        public DrinkItem GetDrinkItemById(int drinkId)
+        {
+            string query = "WITH ITEMS AS(SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, D.item_DrinkType FROM MENU_ITEM AS M, DRINK as D WHERE D.item_Id = M.item_Id)SELECT *FROM ITEMS WHERE item_Id = @DrinkItemId";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DrinkItemId", drinkId);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
         private List<DrinkItem> ReadTables(DataTable dataTable)
         {
             List<DrinkItem> drinks = new List<DrinkItem>();

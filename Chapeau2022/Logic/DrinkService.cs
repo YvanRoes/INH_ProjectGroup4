@@ -14,5 +14,7 @@ namespace Logic
         public DrinkService() => drinkDao = new DrinkDao();
 
         public List<DrinkItem> GetAllDrinkItems() => drinkDao.GetAllDrinks();
+
+        public DrinkItem GetDrinkItemById(int Id) => drinkDao.GetDrinkItemById(Id);
     }
 }
