@@ -13,11 +13,7 @@ namespace Model
 
     public class Employee
     {
-        public EmployeeRole EmployeeRole { get; set; }
-
-        public Employee(EmployeeRole employeeRole)
-        {
-
-        }
+        private EmployeeRole employeeRole;
+        public EmployeeRole EmployeeRole { get { return employeeRole; } set { employeeRole = value; } }
     }
 }

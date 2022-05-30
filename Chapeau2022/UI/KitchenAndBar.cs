@@ -16,14 +16,24 @@ namespace UI
     {
         OrderedItemService ordredItemService = new OrderedItemService();
         Employee employee;
+        OrderDisplay orderDisplay;
         
-        public KitchenAndBar()
+        public KitchenAndBar(Employee employee)
         {
+            this.employee = employee;
+
             InitializeComponent();
 
-            ShowDialog();
+            if (employee.EmployeeRole == EmployeeRole.bartender)
+            {
+                lblKitchenAndBar.Text = "Bar";
+            }
+            else
+            {
+                lblKitchenAndBar.Text = "Kitchen";
+            }
 
-            DisplayRunningOrderedDrinkItem();
+            //DisplayRunningOrderedDrinkItem();
 
             //DisplayRunningOrderedFoodItem();
 
@@ -83,7 +93,7 @@ namespace UI
         private void DisplayFinishedOrderedFoodItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = ordredItemService.GetAllFoodOrders(ItemOrderedStatus.notReady);
+            List<OrderedItem> orderedItems = ordredItemService.GetAllFoodOrders(ItemOrderedStatus.ready);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
@@ -99,30 +109,33 @@ namespace UI
 
         private void btnRunning_Click(object sender, EventArgs e)
         {
-            //if (employee.EmployeeRole == EmployeeRole.bartender)
-            //{
-            //    DisplayRunningOrderedDrinkItem();
-            //}
-            //else
-            //{
-            //    DisplayRunningOrderedDrinkItem();
-            //}
+            orderDisplay = OrderDisplay.Running;
 
-            DisplayRunningOrderedDrinkItem();
+            if (employee.EmployeeRole == EmployeeRole.bartender)
+            {
+                DisplayRunningOrderedDrinkItem();
+            }
+            else
+            {
+                DisplayRunningOrderedFoodItem();
+            }
+            //DisplayRunningOrderedDrinkItem();
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
         {
-            //if (employee.EmployeeRole == EmployeeRole.chef)
-            //{
-            //    DisplayRunningOrderedFoodItem();
-            //}
-            //else
-            //{
-            //    DisplayFinishedOrderedFoodItem();
-            //}
+            orderDisplay = OrderDisplay.Finished;
 
-            DisplayFinishedOrderedDrinkItem();
+            if (employee.EmployeeRole == EmployeeRole.bartender)
+            {
+                DisplayFinishedOrderedDrinkItem();
+            }
+            else
+            {
+                DisplayFinishedOrderedFoodItem();
+            }
+
+            //DisplayFinishedOrderedDrinkItem();
         }
 
         TimeSpan orderTimePlaced(DateTime placed)
@@ -141,6 +154,33 @@ namespace UI
         private void lvOrders_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            if (orderDisplay == OrderDisplay.Running)
+            {
+                if (employee.EmployeeRole == EmployeeRole.bartender)
+                {
+                    DisplayRunningOrderedDrinkItem();
+                }
+                else
+                {
+                    DisplayRunningOrderedFoodItem();
+                }
+            }
+
+            else if (orderDisplay == OrderDisplay.Finished)
+            {
+                if (employee.EmployeeRole == EmployeeRole.bartender)
+                {
+                    DisplayFinishedOrderedDrinkItem();
+                }
+                else
+                {
+                    DisplayFinishedOrderedFoodItem();
+                }
+            }
         }
     }
 }

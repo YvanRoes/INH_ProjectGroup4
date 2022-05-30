@@ -13,7 +13,7 @@ namespace UI
 {
     public partial class MainWindow : Form
     {
-        Employee employee;
+        Employee employee = new Employee();
 
         public MainWindow()
         {
@@ -39,17 +39,19 @@ namespace UI
 
         private void btnKitchenView_Click(object sender, EventArgs e)
         {
-            //employee.EmployeeRole = EmployeeRole.chef;
+            employee.EmployeeRole = EmployeeRole.chef;
+
             this.Hide();
-            KitchenAndBar kitchenAndBar = new KitchenAndBar();
+            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
             kitchenAndBar.ShowDialog();
         }
 
         private void btnBarView_Click(object sender, EventArgs e)
         {
-            //employee.EmployeeRole = EmployeeRole.bartender;
+            employee.EmployeeRole = EmployeeRole.bartender;
+
             this.Hide();
-            KitchenAndBar kitchenAndBar = new KitchenAndBar();
+            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
             kitchenAndBar.ShowDialog();
         }
     }
