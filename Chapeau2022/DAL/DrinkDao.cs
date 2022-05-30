@@ -50,7 +50,7 @@ namespace DAL
         }
         public void AddDrink(DrinkItem drink)
         {
-            string query = "INSERT INTO MENU_ITEM (item_Id, item_Name, Item_Price, Item_Stock) VALUES (@DrinkId, @NameOfDrink, @DrinkPrice, @Stock); INSERT INTO DRINK (item_DrinkType) VALUES (@DrinkType)";
+            string query = "INSERT INTO MENU_ITEM (item_Id, item_Name, Item_Price, Item_Stock) VALUES (@DrinkId, @NameOfDrink, @DrinkPrice, @Stock); INSERT INTO DRINK (item_Id, item_DrinkType) VALUES (@DrinkId, @DrinkType)";
 
             SqlParameter[] sqlParameters = new SqlParameter[5];
             sqlParameters[0] = new SqlParameter("@NameOfDrink", drink.Item_Name);

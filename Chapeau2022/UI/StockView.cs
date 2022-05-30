@@ -124,18 +124,15 @@ namespace UI
             }
             else
             {
-                try
-                {
-                    _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
-                }
-                catch { MessageBox.Show("Please select the item you would like to delete."); }
+                _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
+                
                 DrinkStock();
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Form addItem = new AddItem();
+            Form addItem = new AddItem(this);
             addItem.ShowDialog();
         }
     }
