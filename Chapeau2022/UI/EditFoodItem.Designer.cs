@@ -171,7 +171,7 @@
             this.groupBox2.Size = new System.Drawing.Size(172, 95);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Course";
+            this.groupBox2.Text = "Menu";
             // 
             // radioButton5
             // 

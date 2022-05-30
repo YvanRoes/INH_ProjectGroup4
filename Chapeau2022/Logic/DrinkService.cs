@@ -18,5 +18,9 @@ namespace Logic
         public DrinkItem GetDrinkItemById(int Id) => drinkDao.GetDrinkItemById(Id);
 
         public  void UpdateDrink(DrinkItem drink) => drinkDao.UpdateDrink(drink);
+
+        public void DeleteDrink(int Id) => drinkDao.DeleteDrink(Id);
+
+        public void AddDrink(DrinkItem drink) => drinkDao.AddDrink(drink);
     }
 }

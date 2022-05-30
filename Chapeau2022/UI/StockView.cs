@@ -29,6 +29,8 @@ namespace UI
         public void Start() 
         {
             DrinkStock();
+            button4.Visible = true;
+            button5.Visible = true;
         }
         public void FoodStock() 
         {
@@ -106,6 +108,35 @@ namespace UI
                 }
                 catch { MessageBox.Show("Please select an item before editing."); }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (IsDisplayingFood)
+            {
+                try
+                {
+                    //_foodService._foodService.GetFoodItemById(int.Parse(listView1.SelectedItems[0].Text));
+                    FoodStock();
+                    
+                }
+                catch { MessageBox.Show("Please select the item you would like to delete."); }
+            }
+            else
+            {
+                try
+                {
+                    _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
+                }
+                catch { MessageBox.Show("Please select the item you would like to delete."); }
+                DrinkStock();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form addItem = new AddItem();
+            addItem.ShowDialog();
         }
     }
 }

@@ -11,6 +11,7 @@ namespace DAL
 {
     public class DrinkDao : BaseDao
     {
+        //returns a list of all drink items stored in the database
         public List<DrinkItem> GetAllDrinks()
         {
             string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, D.item_DrinkType FROM MENU_ITEM AS M, DRINK as D WHERE M.item_ID = D.item_Id";
@@ -25,9 +26,31 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@DrinkItemId", drinkId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
+        //Update Drink Item information in the database
         public void UpdateDrink(DrinkItem drink)
         {
             string query = "UPDATE MENU_ITEM SET item_Name = @NameOfDrink, item_Price = @DrinkPrice, item_Stock = @Stock WHERE item_Id = @DrinkId; UPDATE DRINK SET item_DrinkType = @DrinkType WHERE item_Id = @DrinkId ";
+
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+            sqlParameters[0] = new SqlParameter("@NameOfDrink", drink.Item_Name);
+            sqlParameters[1] = new SqlParameter("@DrinkType", (int)drink.Item_DrinkType);
+            sqlParameters[2] = new SqlParameter("@DrinkPrice", drink.Item_Price);
+            sqlParameters[3] = new SqlParameter("@Stock", drink.Item_Stock);
+            sqlParameters[4] = new SqlParameter("@DrinkId", drink.Item_Id);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        //Delete an item of specified ID
+        public void DeleteDrink(int Id)
+        {
+            string query = "DELETE FROM MENU_ITEM WHERE item_Id = @DrinkId; DELETE FROM DRINK WHERE item_Id = @DrinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DrinkId", Id);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        public void AddDrink(DrinkItem drink)
+        {
+            string query = "INSERT INTO MENU_ITEM (item_Id, item_Name, Item_Price, Item_Stock) VALUES (@DrinkId, @NameOfDrink, @DrinkPrice, @Stock); INSERT INTO DRINK (item_DrinkType) VALUES (@DrinkType)";
 
             SqlParameter[] sqlParameters = new SqlParameter[5];
             sqlParameters[0] = new SqlParameter("@NameOfDrink", drink.Item_Name);
