@@ -9,5 +9,7 @@ namespace Model
     public interface IFoodItem
     {
         public CourseType Item_CourseType { get; set; }
+
+        public MenuType Item_MenuType { get; set; }
     }
 }

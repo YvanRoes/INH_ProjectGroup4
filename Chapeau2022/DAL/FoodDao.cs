@@ -14,14 +14,14 @@ namespace DAL
     {
         public List<FoodItem> GetAllFoodItems()
         {
-            string query = "SELECT item_id, ItemName, ItemType, ItemPrice, ItemCourse, ItemQuantity FROM FOODSTOCK;";
+            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, F.item_CourseType,F.item_MenuType FROM MENU_ITEM AS M, FOOD as F WHERE F.item_Id = M.item_Id";
             SqlParameter[] parameters = new SqlParameter[0];
             return ReadTablesFood(ExecuteSelectQuery(query, parameters));
         }
         //returns an item of the id that is passed to the method
         public FoodItem GetFoodItemById(int foodId) 
         {
-            string query = "SELECT * FROM [FOODSTOCK] WHERE item_id = @FoodItemId";
+            string query = "WITH ITEMS AS(SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, F.item_CourseType,F.item_MenuType FROM MENU_ITEM AS M, FOOD as F WHERE F.item_Id = M.item_Id)SELECT *FROM ITEMS WHERE item_Id = @FoodItemId"; ;
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@FoodItemId", foodId);
             return ReadTablesFood(ExecuteSelectQuery(query, sqlParameters))[0];
@@ -34,10 +34,12 @@ namespace DAL
             {
                 FoodItem item = new FoodItem()
                 {
-                    Item_Id = (int)dr["ItemID"],
-                    Item_Name = (string)dr["ItemName"],
-                    Item_Price = (decimal)dr["ItemPrice"],
-                    Item_Stock = (int)dr["ItemQuantity"],
+                    Item_Id = (int)dr["item_Id"],
+                    Item_Name = (string)dr["item_Name"],
+                    Item_Price = (decimal)dr["item_Price"],
+                    Item_Stock = (int)dr["item_Stock"],
+                    Item_CourseType = (CourseType)dr["item_CourseType"],
+                    Item_MenuType = (MenuType)dr["item_MenuType"]
                 };
                 list.Add(item);
             }

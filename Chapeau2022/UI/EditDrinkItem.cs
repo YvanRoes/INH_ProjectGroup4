@@ -28,6 +28,13 @@ namespace UI
             textBoxItemName.Text=item.Item_Name.ToString();
             textBoxPrice.Text=item.Item_Price.ToString();
             textBoxQuantity.Text=item.Item_Stock.ToString();
+
+            int typeId = (int)Enum.Parse(typeof(DrinkType), item.Item_DrinkType.ToString());
+
+            if (typeId == 0)
+                radioButton4.Select();
+            else if (typeId == 1)
+                radioButton5.Select();
         }
     }
 }
