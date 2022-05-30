@@ -16,10 +16,14 @@ namespace UI
     public partial class EditFoodItem : Form
     {
         private FoodItem item;
-        public EditFoodItem(FoodItem item)
+        private StockView stockView;
+        private FoodService foodService;
+        public EditFoodItem(FoodItem item, StockView stockView)
         {
             InitializeComponent();
+            this.stockView = stockView;
             this.item = item;
+            foodService = new FoodService();
             Start();
         }
 
@@ -54,7 +58,42 @@ namespace UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            int CourseType;
+            int MenuType;
 
+            if (radioButton1.Checked)
+            {
+                CourseType = 0;
+            }
+            else if (radioButton2.Checked)
+            {
+                CourseType = 1;
+            }
+            else 
+            {
+                CourseType = 2;
+            }
+
+            if (radioButton4.Checked)
+            {
+                MenuType = 0;
+            }
+            else
+            {
+                MenuType = 1;
+            }
+            FoodItem food = new FoodItem()
+            {
+                Item_Id = item.Item_Id,
+                Item_Name = textBoxItemName.Text,
+                Item_Price = decimal.Parse(textBoxPrice.Text),
+                Item_Stock = int.Parse(textBoxQuantity.Text),
+                Item_MenuType = (MenuType)MenuType,
+                Item_CourseType = (CourseType)CourseType
+            };
+            foodService.UpdateFoodItem(food);
+            stockView.FoodStock();
+            Close();
         }
     }
 }

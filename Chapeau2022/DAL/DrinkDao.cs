@@ -38,15 +38,6 @@ namespace DAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
-        private void UpdateAlcohol(int alcContent, int id) 
-        {
-            string query = "UPDATE DRINK SET item_DrinkType = @DrinkType WHERE item_Id = @DrinkId";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@DrinkType", alcContent);
-            sqlParameters[1] = new SqlParameter("@DrinkId", id);
-
-            ExecuteEditQuery(query, sqlParameters);
-        }
         private List<DrinkItem> ReadTables(DataTable dataTable)
         {
             List<DrinkItem> drinks = new List<DrinkItem>();
