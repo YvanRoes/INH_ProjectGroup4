@@ -26,6 +26,25 @@ namespace UI
         public void Start() 
         { 
             label2.Text = item.Item_Name.ToString();
+            textBoxItemName.Text = item.Item_Name.ToString();
+            textBoxPrice.Text = item.Item_Price.ToString();
+            textBoxQuantity.Text = item.Item_Stock.ToString();
+
+            int CourseId = (int)Enum.Parse(typeof(CourseType), item.Item_CourseType.ToString());
+
+            if (CourseId == 0)
+                radioButton1.Select();
+            else if (CourseId == 1)
+                radioButton2.Select();
+            else if (CourseId == 2)
+                radioButton3.Select();
+
+            int MenuTypeId = (int)Enum.Parse(typeof(MenuType), item.Item_MenuType.ToString());
+
+            if (MenuTypeId == 0)
+                radioButton4.Select();
+            else if (MenuTypeId == 1)
+                radioButton5.Select();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -37,21 +56,5 @@ namespace UI
         {
 
         }
-
-        /*private void EditFoodItem_Load(object sender, EventArgs e)
-        {
-            textBoxItemName.Text = item.Item_Name.ToString();
-            textBoxPrice.Text = item.Item_Price.ToString();
-            textBoxQuantity.Text = item.Item_Stock.ToString();
-
-            int typeId = (int)Enum.Parse(typeof(), item._ItemType.ToString());
-
-            if (typeId == 0)
-                radioButton1.Select();
-            else if(typeId == 1)
-                radioButton2.Select();
-            else if(typeId == 2)
-                radioButton3.Select();
-        }*/
     }
 }

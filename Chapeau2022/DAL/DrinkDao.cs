@@ -25,6 +25,28 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@DrinkItemId", drinkId);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
+        public void UpdateDrink(DrinkItem drink)
+        {
+            string query = "UPDATE MENU_ITEM SET item_Name = @NameOfDrink, item_Price = @DrinkPrice, item_Stock = @Stock WHERE item_Id = @DrinkId; UPDATE DRINK SET item_DrinkType = @DrinkType WHERE item_Id = @DrinkId ";
+
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+            sqlParameters[0] = new SqlParameter("@NameOfDrink", drink.Item_Name);
+            sqlParameters[1] = new SqlParameter("@DrinkType", (int)drink.Item_DrinkType);
+            sqlParameters[2] = new SqlParameter("@DrinkPrice", drink.Item_Price);
+            sqlParameters[3] = new SqlParameter("@Stock", drink.Item_Stock);
+            sqlParameters[4] = new SqlParameter("@DrinkId", drink.Item_Id);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        private void UpdateAlcohol(int alcContent, int id) 
+        {
+            string query = "UPDATE DRINK SET item_DrinkType = @DrinkType WHERE item_Id = @DrinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@DrinkType", alcContent);
+            sqlParameters[1] = new SqlParameter("@DrinkId", id);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
         private List<DrinkItem> ReadTables(DataTable dataTable)
         {
             List<DrinkItem> drinks = new List<DrinkItem>();
@@ -36,7 +58,8 @@ namespace DAL
                     Item_Id = (int)dr["item_Id"],
                     Item_Name = (string)dr["item_Name"],
                     Item_Price = (decimal)dr["item_Price"],
-                    Item_DrinkType = (DrinkType)dr["item_DrinkType"]
+                    Item_DrinkType = (DrinkType)dr["item_DrinkType"],
+                    Item_Stock = (int)dr["item_Stock"]
                 };
                 drinks.Add(drink);
             }

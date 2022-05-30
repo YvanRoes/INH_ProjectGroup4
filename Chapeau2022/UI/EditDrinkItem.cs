@@ -16,9 +16,13 @@ namespace UI
     public partial class EditDrinkItem : Form
     {
         private DrinkItem item;
-        public EditDrinkItem(DrinkItem item)
+        private DrinkService drinkService;
+        private StockView stockView;
+        public EditDrinkItem(DrinkItem item, StockView stockView)
         {
             this.item = item;
+            this.stockView = stockView;
+            drinkService = new DrinkService();
             InitializeComponent();
             Start();
         }
@@ -35,6 +39,31 @@ namespace UI
                 radioButton4.Select();
             else if (typeId == 1)
                 radioButton5.Select();
+        }
+
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            int drinkType;
+
+            if (radioButton4.Checked)
+            {
+                drinkType = 0;
+            }
+            else
+            { 
+                drinkType=1;
+            }
+            DrinkItem drink = new DrinkItem()
+            {
+                Item_Id = item.Item_Id,
+                Item_Name = textBoxItemName.Text,
+                Item_Price = decimal.Parse(textBoxPrice.Text),
+                Item_Stock = int.Parse(textBoxQuantity.Text),
+                Item_DrinkType = (DrinkType)drinkType
+            };
+            drinkService.UpdateDrink(drink);
+            stockView.DrinkStock();
+            Close();
         }
     }
 }

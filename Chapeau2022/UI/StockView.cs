@@ -101,7 +101,7 @@ namespace UI
             {
                 try
                 {
-                    Form EditItem = new EditDrinkItem(_drinkService.GetDrinkItemById(int.Parse(listView1.SelectedItems[0].Text)));
+                    Form EditItem = new EditDrinkItem(_drinkService.GetDrinkItemById(int.Parse(listView1.SelectedItems[0].Text)),this);
                     EditItem.ShowDialog();
                 }
                 catch { MessageBox.Show("Please select an item before editing."); }
