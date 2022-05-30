@@ -16,19 +16,21 @@ namespace UI
     public partial class StockView : Form
     {
         private FoodService _foodService;
+        private DrinkService _drinkService;
         public StockView()
         {
             _foodService = new FoodService();
+            _drinkService = new DrinkService();
             InitializeComponent();
             Start();
         }
         public void Start() 
         {
-            FoodStock();
+            DrinkStock();
         }
         public void FoodStock() 
         {
-            //List<FoodItem> items = _foodService.GetAllFoodItems();
+            List<FoodItem> items = _foodService.GetAllFoodItems();
 
             listView1.Clear();
             listView1.View = View.Details;
@@ -40,12 +42,12 @@ namespace UI
             listView1.Columns.Add("Item Course", 124);
             listView1.Columns.Add("Qty.", 124);
 
-           /* foreach (FoodItem item in items)
+            foreach (FoodItem item in items)
             {
                 string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(),item.Item_CourseType.ToString(), item.Item_Stock.ToString() };
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
-            }*/
+            }
         }
         public void DrinkStock()
         {
@@ -57,6 +59,15 @@ namespace UI
             listView1.Columns.Add("Price", 124);
             listView1.Columns.Add("Alcohol", 124);
             listView1.Columns.Add("Qty.", 124);
+
+            List<DrinkItem> items = _drinkService.GetAllDrinkItems();
+
+            foreach (DrinkItem item in items)
+            {
+                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(),item.Item_DrinkType.ToString(), item.Item_Stock.ToString() };
+                ListViewItem item2 = new ListViewItem(tempItem);
+                listView1.Items.Add(item2);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

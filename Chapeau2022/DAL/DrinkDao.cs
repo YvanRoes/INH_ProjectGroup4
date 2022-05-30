@@ -13,7 +13,7 @@ namespace DAL
     {
         public List<DrinkItem> GetAllDrinks()
         {
-            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock D.item_DrinkType FROM MENU_ITEM AS M, DRINK as D WHERE M.item_ID = D.item_Id";
+            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, D.item_DrinkType FROM MENU_ITEM AS M, DRINK as D WHERE M.item_ID = D.item_Id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
