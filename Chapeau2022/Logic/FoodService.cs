@@ -21,5 +21,9 @@ namespace Logic
         public void UpdateFoodItem(FoodItem item) => _foodDao.UpdateFoodItem(item);
 
         public void AddItem(FoodItem item) => _foodDao.AddFood(item);
+
+        public void DeleteItem(int id) => _foodDao.DeleteFood(id);
+
+        public int GetLastId() => _foodDao.GetLastId();
     }
 }

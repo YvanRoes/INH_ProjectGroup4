@@ -10,15 +10,17 @@ using System.Data;
 
 namespace DAL
 {
+    //comments refer to methods above which they're written
     public class FoodDao : BaseDao
     {
+        //returns all food items in a list format
         public List<FoodItem> GetAllFoodItems()
         {
             string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, F.item_CourseType,F.item_MenuType FROM MENU_ITEM AS M, FOOD as F WHERE F.item_Id = M.item_Id";
             SqlParameter[] parameters = new SqlParameter[0];
             return ReadTablesFood(ExecuteSelectQuery(query, parameters));
         }
-        //returns an item of the id that is passed to the method
+        //returns an item of the specified id
         public FoodItem GetFoodItemById(int foodId) 
         {
             string query = "WITH ITEMS AS(SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, F.item_CourseType,F.item_MenuType FROM MENU_ITEM AS M, FOOD as F WHERE F.item_Id = M.item_Id)SELECT *FROM ITEMS WHERE item_Id = @FoodItemId"; ;
@@ -26,6 +28,7 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@FoodItemId", foodId);
             return ReadTablesFood(ExecuteSelectQuery(query, sqlParameters))[0];
         }
+        //updates information about the item that's passed to the method
         public void UpdateFoodItem(FoodItem food)
         {
             string query = "UPDATE MENU_ITEM SET item_Name = @FoodName, item_Price = @FoodPrice, item_Stock = @FoodStock WHERE item_Id = @FoodId; UPDATE FOOD SET item_CourseType = @FoodCourse, item_MenuType = @FoodMenuType WHERE item_Id = @FoodId";
@@ -40,6 +43,7 @@ namespace DAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+        //inserts the item that's passed to the method into the database
         public void AddFood(FoodItem item)
         {
             string query = "INSERT INTO MENU_ITEM (item_Id, item_Name, Item_Stock, Item_Price) VALUES (@ItemId, @ItemName, @ItemStock, @ItemPrice); INSERT INTO FOOD (item_Id, item_CourseType, item_MenuType) VALUES (@ItemId, @ItemCourse, @ItemMenu)";
@@ -53,6 +57,20 @@ namespace DAL
             sqlParameters[5] = new SqlParameter("@ItemCourse", (int)item.Item_CourseType);
 
             ExecuteEditQuery(query, sqlParameters);
+        }
+        //delets the item of the specified id
+        public void DeleteFood(int Id)
+        {
+            string query = "DELETE FROM MENU_ITEM WHERE item_Id = @ItemId; DELETE FROM FOOD WHERE item_Id = @ItemId";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ItemId", Id);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+        public int GetLastId()
+        {
+            string query = "select MAX(item_Id) as item_Id from MENU_ITEM";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReturnInt(ExecuteSelectQuery(query, sqlParameters));
         }
         private List<FoodItem> ReadTablesFood(DataTable table)
         {
@@ -72,6 +90,12 @@ namespace DAL
                 list.Add(item);
             }
             return list;
+        }
+        private int ReturnInt(DataTable dataTable)
+        {
+            int i = (int)dataTable.Rows[0]["item_Id"];
+
+            return i;
         }
     }
 }

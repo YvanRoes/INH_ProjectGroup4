@@ -116,7 +116,7 @@ namespace UI
             {
                 try
                 {
-                    //_foodService._foodService.GetFoodItemById(int.Parse(listView1.SelectedItems[0].Text));
+                    _foodService.DeleteItem(int.Parse(listView1.SelectedItems[0].Text));
                     FoodStock();
                     
                 }

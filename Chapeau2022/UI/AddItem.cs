@@ -76,8 +76,7 @@ namespace UI
         {
             int CourseType;
             int MenuType;
-            List<FoodItem> list = foodService.GetAllFoodItems();
-            int Id = list[list.Count-1].Item_Id + 1;
+            int Id = foodService.GetLastId()+1;
             if (radioButton1.Checked)
             {
                 CourseType = 0;
@@ -90,7 +89,6 @@ namespace UI
             {
                 CourseType = 2;
             }
-
             if (radioButton4.Checked)
             {
                 MenuType = 0;
@@ -103,7 +101,7 @@ namespace UI
             {
                 Item_Id = Id,
                 Item_Name = textBoxItemName.Text,
-                Item_Price = int.Parse(textBoxPrice.Text),
+                Item_Price = decimal.Parse(textBoxPrice.Text),
                 Item_Stock = int.Parse(textBoxQuantity.Text),
                 Item_CourseType = (CourseType)CourseType,
                 Item_MenuType = (MenuType)MenuType
@@ -113,8 +111,7 @@ namespace UI
         private void CreateDrinkItem() 
         {
             int drinkType;
-            List<DrinkItem> list = drinkService.GetAllDrinkItems();
-            int Id = list[list.Count-1].Item_Id+1;
+            int Id = foodService.GetLastId() + 1;
 
             if (radioButton4.Checked)
             {
