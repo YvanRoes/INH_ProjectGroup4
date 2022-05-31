@@ -62,6 +62,8 @@ namespace UI
             if (isFood)
             {
                 CreateFoodItem();
+                stockView.FoodStock();
+                Close();
             }
             else 
             {
@@ -75,7 +77,7 @@ namespace UI
             int CourseType;
             int MenuType;
             List<FoodItem> list = foodService.GetAllFoodItems();
-            int Id = list[list.Count].Item_Id + 1;
+            int Id = list[list.Count-1].Item_Id + 1;
             if (radioButton1.Checked)
             {
                 CourseType = 0;
@@ -106,6 +108,7 @@ namespace UI
                 Item_CourseType = (CourseType)CourseType,
                 Item_MenuType = (MenuType)MenuType
             };
+            foodService.AddItem(item);
         }
         private void CreateDrinkItem() 
         {

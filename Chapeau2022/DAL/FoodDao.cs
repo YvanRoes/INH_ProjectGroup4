@@ -40,6 +40,20 @@ namespace DAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+        public void AddFood(FoodItem item)
+        {
+            string query = "INSERT INTO MENU_ITEM (item_Id, item_Name, Item_Stock, Item_Price) VALUES (@ItemId, @ItemName, @ItemStock, @ItemPrice); INSERT INTO FOOD (item_Id, item_CourseType, item_MenuType) VALUES (@ItemId, @ItemCourse, @ItemMenu)";
+
+            SqlParameter[] sqlParameters = new SqlParameter[6];
+            sqlParameters[0] = new SqlParameter("@ItemName", item.Item_Name);
+            sqlParameters[1] = new SqlParameter("@ItemMenu", (int)item.Item_MenuType);
+            sqlParameters[2] = new SqlParameter("@ItemPrice", item.Item_Price);
+            sqlParameters[3] = new SqlParameter("@ItemStock", item.Item_Stock);
+            sqlParameters[4] = new SqlParameter("@ItemId", item.Item_Id);
+            sqlParameters[5] = new SqlParameter("@ItemCourse", (int)item.Item_CourseType);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
         private List<FoodItem> ReadTablesFood(DataTable table)
         {
             List<FoodItem> list = new List<FoodItem>();
