@@ -38,6 +38,19 @@ namespace DAL
             return ReadDrinkTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //public void UpdateActivity(OrderedItem orderedItem)
+        //{
+
+        //    string query = "Update activity set activityname=@activityname,activitytype=@activitytype,startDate=@startDate,endDate=@endDate where activityID=@activityID";
+        //    SqlParameter[] sqlParameters = new SqlParameter[5];
+        //    sqlParameters[0] = new SqlParameter("@activityID", activity.ID.ToString());
+        //    sqlParameters[1] = new SqlParameter("@activityname", activity.Name);
+        //    sqlParameters[2] = new SqlParameter("@startDate", activity.startDate);
+        //    sqlParameters[3] = new SqlParameter("@endDate", activity.endDate);
+        //    sqlParameters[4] = new SqlParameter("@activitytype", activity.Type);
+        //    ExecuteEditQuery(query, sqlParameters);
+        //}
+
         private List<OrderedItem> ReadFoodTables(DataTable dataTable)
         {
             List<OrderedItem> orderedItems = new List<OrderedItem>();
