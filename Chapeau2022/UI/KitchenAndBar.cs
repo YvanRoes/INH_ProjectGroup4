@@ -8,12 +8,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace UI
 {
     public partial class KitchenAndBar : Form
     {
+        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
         Employee employee;
         OrderDisplay orderDisplay;
@@ -34,6 +36,20 @@ namespace UI
                 lblKitchenAndBar.Text = "Kitchen";
                 DisplayRunningOrderedFoodItem();
             }
+
+            Timer();
+        }
+
+        void Timer()
+        {
+            t.Interval = 10000; // specify interval time as you want
+            t.Tick += new EventHandler(timer_Tick);
+            t.Start();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         private void DisplayRunningOrderedDrinkItem()
@@ -160,6 +176,11 @@ namespace UI
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            Refresh();
+        }
+
+        void Refresh()
+        {
             if (orderDisplay == OrderDisplay.Running)
             {
                 if (employee.EmployeeRole == EmployeeRole.bartender)
@@ -183,6 +204,7 @@ namespace UI
                     DisplayFinishedOrderedFoodItem();
                 }
             }
+
         }
 
         //private void btnReady_Click(object sender, EventArgs e)
