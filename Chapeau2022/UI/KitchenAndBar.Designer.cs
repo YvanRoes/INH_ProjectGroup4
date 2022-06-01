@@ -53,10 +53,9 @@
             this.descriptionHeader,
             this.statusHeader});
             this.lvOrders.HideSelection = false;
-            this.lvOrders.Location = new System.Drawing.Point(49, 187);
-            this.lvOrders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvOrders.Location = new System.Drawing.Point(43, 140);
             this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(821, 267);
+            this.lvOrders.Size = new System.Drawing.Size(719, 201);
             this.lvOrders.TabIndex = 5;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
             this.lvOrders.View = System.Windows.Forms.View.Details;
@@ -94,21 +93,21 @@
             // 
             // btnReady
             // 
-            this.btnReady.Location = new System.Drawing.Point(784, 497);
-            this.btnReady.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnReady.Location = new System.Drawing.Point(686, 373);
             this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(86, 31);
+            this.btnReady.Size = new System.Drawing.Size(75, 23);
             this.btnReady.TabIndex = 9;
             this.btnReady.Text = "ready";
-            this.btnReady.UseVisualStyleBackColor = true;
+            this.btnReady.UseVisualStyleBackColor = false;
             // 
             // lblKitchenAndBar
             // 
             this.lblKitchenAndBar.AutoSize = true;
             this.lblKitchenAndBar.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblKitchenAndBar.Location = new System.Drawing.Point(49, 33);
+            this.lblKitchenAndBar.Location = new System.Drawing.Point(43, 25);
             this.lblKitchenAndBar.Name = "lblKitchenAndBar";
-            this.lblKitchenAndBar.Size = new System.Drawing.Size(354, 60);
+            this.lblKitchenAndBar.Size = new System.Drawing.Size(281, 47);
             this.lblKitchenAndBar.TabIndex = 8;
             this.lblKitchenAndBar.Text = "Kitchen/Bar View";
             // 
@@ -116,9 +115,10 @@
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Red;
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(776, 61);
+            this.btnLogout.Location = new System.Drawing.Point(679, 46);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 35);
+            this.btnLogout.Size = new System.Drawing.Size(82, 26);
             this.btnLogout.TabIndex = 10;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -126,41 +126,43 @@
             // 
             // btnFinished
             // 
-            this.btnFinished.Location = new System.Drawing.Point(166, 131);
-            this.btnFinished.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnFinished.Location = new System.Drawing.Point(145, 98);
             this.btnFinished.Name = "btnFinished";
-            this.btnFinished.Size = new System.Drawing.Size(86, 31);
+            this.btnFinished.Size = new System.Drawing.Size(75, 23);
             this.btnFinished.TabIndex = 11;
             this.btnFinished.Text = "finished";
-            this.btnFinished.UseVisualStyleBackColor = true;
+            this.btnFinished.UseVisualStyleBackColor = false;
             this.btnFinished.Click += new System.EventHandler(this.btnFinished_Click);
             // 
             // btnRunning
             // 
-            this.btnRunning.Location = new System.Drawing.Point(49, 131);
-            this.btnRunning.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRunning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRunning.Location = new System.Drawing.Point(43, 98);
             this.btnRunning.Name = "btnRunning";
-            this.btnRunning.Size = new System.Drawing.Size(86, 31);
+            this.btnRunning.Size = new System.Drawing.Size(75, 23);
             this.btnRunning.TabIndex = 12;
             this.btnRunning.Text = "running";
-            this.btnRunning.UseVisualStyleBackColor = true;
+            this.btnRunning.UseVisualStyleBackColor = false;
             this.btnRunning.Click += new System.EventHandler(this.btnRunning_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(776, 151);
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRefresh.Location = new System.Drawing.Point(679, 113);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(94, 29);
+            this.btnRefresh.Size = new System.Drawing.Size(82, 22);
             this.btnRefresh.TabIndex = 13;
             this.btnRefresh.Text = "refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // KitchenAndBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 588);
+            this.ClientSize = new System.Drawing.Size(792, 441);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnRunning);
             this.Controls.Add(this.btnFinished);
@@ -168,6 +170,7 @@
             this.Controls.Add(this.lvOrders);
             this.Controls.Add(this.btnReady);
             this.Controls.Add(this.lblKitchenAndBar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "KitchenAndBar";
             this.Text = "KitchenAndBar";
             this.ResumeLayout(false);
