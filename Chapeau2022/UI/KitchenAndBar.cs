@@ -14,15 +14,15 @@ namespace UI
 {
     public partial class KitchenAndBar : Form
     {
-        OrderedItemService ordredItemService = new OrderedItemService();
+        OrderedItemService orderedItemService = new OrderedItemService();
         Employee employee;
         OrderDisplay orderDisplay;
         
         public KitchenAndBar(Employee employee)
         {
-            this.employee = employee;
-
             InitializeComponent();
+
+            this.employee = employee;
 
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
@@ -42,7 +42,7 @@ namespace UI
         private void DisplayRunningOrderedDrinkItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = ordredItemService.GetAllDrinkOrders(ItemOrderedStatus.notReady);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.notReady);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
@@ -59,7 +59,7 @@ namespace UI
         private void DisplayFinishedOrderedDrinkItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = ordredItemService.GetAllDrinkOrders(ItemOrderedStatus.ready);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.ready);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
@@ -76,7 +76,7 @@ namespace UI
         private void DisplayRunningOrderedFoodItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = ordredItemService.GetAllFoodOrders(ItemOrderedStatus.notReady);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(ItemOrderedStatus.notReady);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
@@ -86,6 +86,7 @@ namespace UI
                 li.SubItems.Add(orderedItem.Item_Name);
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                li.Tag = orderedItem;
                 lvOrders.Items.Add(li);
             }
         }
@@ -93,7 +94,7 @@ namespace UI
         private void DisplayFinishedOrderedFoodItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = ordredItemService.GetAllFoodOrders(ItemOrderedStatus.ready);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(ItemOrderedStatus.ready);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
@@ -182,5 +183,13 @@ namespace UI
                 }
             }
         }
+
+        //private void btnReady_Click(object sender, EventArgs e)
+        //{
+        //   foreach (lvOrders.SelectedItems)
+        //    {
+        //        // ... .Tag
+        //    }
+        //}
     }
 }
