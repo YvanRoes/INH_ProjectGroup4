@@ -18,12 +18,14 @@ namespace UI
         private FoodItem item;
         private StockView stockView;
         private FoodService foodService;
+        private Tools tools;
         public EditFoodItem(FoodItem item, StockView stockView)
         {
-            InitializeComponent();
             this.stockView = stockView;
             this.item = item;
             foodService = new FoodService();
+            tools = new Tools();
+            InitializeComponent();
             Start();
         }
 
@@ -58,30 +60,9 @@ namespace UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            int CourseType;
-            int MenuType;
+            int CourseType = tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3);
+            int MenuType = tools.IndexOfRadioButton(radioButton4, radioButton5);
 
-            if (radioButton1.Checked)
-            {
-                CourseType = 0;
-            }
-            else if (radioButton2.Checked)
-            {
-                CourseType = 1;
-            }
-            else 
-            {
-                CourseType = 2;
-            }
-
-            if (radioButton4.Checked)
-            {
-                MenuType = 0;
-            }
-            else
-            {
-                MenuType = 1;
-            }
             FoodItem food = new FoodItem()
             {
                 Item_Id = item.Item_Id,

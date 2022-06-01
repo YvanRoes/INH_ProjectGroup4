@@ -18,11 +18,13 @@ namespace UI
         private DrinkItem item;
         private DrinkService drinkService;
         private StockView stockView;
+        private Tools tools;
         public EditDrinkItem(DrinkItem item, StockView stockView)
         {
             this.item = item;
             this.stockView = stockView;
             drinkService = new DrinkService();
+            tools = new Tools();
             InitializeComponent();
             Start();
         }
@@ -43,16 +45,8 @@ namespace UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            int drinkType;
+            int drinkType = tools.IndexOfRadioButton(radioButton4, radioButton5);
 
-            if (radioButton4.Checked)
-            {
-                drinkType = 0;
-            }
-            else
-            { 
-                drinkType=1;
-            }
             DrinkItem drink = new DrinkItem()
             {
                 Item_Id = item.Item_Id,

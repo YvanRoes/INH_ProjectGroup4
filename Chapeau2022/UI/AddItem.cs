@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Logic;
 using Model;
 using DAL;
+using UI;
 
 namespace UI
 {
@@ -19,11 +20,13 @@ namespace UI
         private DrinkService drinkService;
         private FoodService foodService;
         private StockView stockView;
+        private Tools tools;
         public AddItem(StockView stockView)
         {
             isFood = false;
             drinkService = new DrinkService();
             foodService = new FoodService();
+            tools = new Tools();
             this.stockView = stockView;
             InitializeComponent();
         }
@@ -74,29 +77,10 @@ namespace UI
         }
         private void CreateFoodItem() 
         {
-            int CourseType;
-            int MenuType;
+            int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
+            int MenuType = tools.IndexOfRadioButton(radioButton6,radioButton3);
             int Id = foodService.GetLastId()+1;
-            if (radioButton1.Checked)
-            {
-                CourseType = 0;
-            }
-            else if (radioButton2.Checked)
-            {
-                CourseType = 1;
-            }
-            else
-            {
-                CourseType = 2;
-            }
-            if (radioButton4.Checked)
-            {
-                MenuType = 0;
-            }
-            else
-            {
-                MenuType = 1;
-            }
+            
             FoodItem item = new FoodItem()
             {
                 Item_Id = Id,
@@ -110,17 +94,9 @@ namespace UI
         }
         private void CreateDrinkItem() 
         {
-            int drinkType;
+            int drinkType = tools.IndexOfRadioButton(radioButton4, radioButton5);
             int Id = foodService.GetLastId() + 1;
 
-            if (radioButton4.Checked)
-            {
-                drinkType = 0;
-            }
-            else
-            {
-                drinkType = 1;
-            }
             DrinkItem drink = new DrinkItem()
             {
                 Item_Id = Id,
