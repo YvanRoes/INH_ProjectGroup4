@@ -1,4 +1,4 @@
-﻿namespace ChapeauTest
+﻿namespace UI
 {
     partial class PopupAddToOrder
     {

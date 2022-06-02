@@ -1,4 +1,4 @@
-﻿namespace ChapeauTest
+﻿namespace UI
 {
     partial class OrderOverview
     {
@@ -34,7 +34,6 @@
             this.btnDetails = new System.Windows.Forms.Button();
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnAbort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvOrder
@@ -75,7 +74,7 @@
             // 
             // btnFinish
             // 
-            this.btnFinish.Location = new System.Drawing.Point(423, 123);
+            this.btnFinish.Location = new System.Drawing.Point(423, 182);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(223, 53);
             this.btnFinish.TabIndex = 5;
@@ -85,7 +84,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(423, 182);
+            this.btnClear.Location = new System.Drawing.Point(423, 123);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(223, 53);
             this.btnClear.TabIndex = 6;
@@ -93,21 +92,11 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // btnAbort
-            // 
-            this.btnAbort.Location = new System.Drawing.Point(423, 241);
-            this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(223, 53);
-            this.btnAbort.TabIndex = 7;
-            this.btnAbort.Text = "Abort order";
-            this.btnAbort.UseVisualStyleBackColor = true;
-            // 
             // OrderOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 461);
-            this.Controls.Add(this.btnAbort);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnFinish);
             this.Controls.Add(this.btnDetails);
@@ -128,6 +117,5 @@
         private System.Windows.Forms.Button btnDetails;
         private System.Windows.Forms.Button btnFinish;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnAbort;
     }
 }

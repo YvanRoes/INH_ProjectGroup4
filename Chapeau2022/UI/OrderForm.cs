@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Logic;
 using Model;
 
-namespace ChapeauTest
+namespace UI
 {
     public partial class OrderForm : Form, IObservable
     {
@@ -20,6 +20,7 @@ namespace ChapeauTest
         public OrderForm(int table_Id, int employeeId)
         {
             InitializeComponent();
+            Show();
             Start(employeeId, table_Id);
         }
 

@@ -23,7 +23,7 @@ namespace UI
 
         private void btnOrderView_Click(object sender, EventArgs e)
         {
-            
+            new OrderForm(4, 1);
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
