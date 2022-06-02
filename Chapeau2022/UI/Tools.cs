@@ -71,9 +71,9 @@ namespace UI
 
             listView1.Columns.Add("Id", 50);
             listView1.Columns.Add("Name", 124);
-            listView1.Columns.Add("Price", 124);
+            listView1.Columns.Add("Price", 60);
             listView1.Columns.Add("Alcohol", 124);
-            listView1.Columns.Add("Qty.", 124);
+            listView1.Columns.Add("Qty.", 50);
             listView1.Columns.Add("Status", 124);
 
             foreach (DrinkItem item in DrinkItems)
@@ -83,6 +83,27 @@ namespace UI
                 listView1.Items.Add(item2);
             }
             
+        }
+        public void FillListViewWithFood(ListView listView1, List<FoodItem> FoodItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+            listView1.Columns.Add("ID", 40);
+            listView1.Columns.Add("Name", 124);
+            listView1.Columns.Add("Price", 60);
+            listView1.Columns.Add("Item Type", 124);
+            listView1.Columns.Add("Item Course", 124);
+            listView1.Columns.Add("Qty.", 50);
+            listView1.Columns.Add("Status", 120);
+
+            foreach (FoodItem item in FoodItems)
+            {
+                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString(), item.Status() };
+                ListViewItem item2 = new ListViewItem(tempItem);
+                listView1.Items.Add(item2);
+            }
+
         }
     }
 }

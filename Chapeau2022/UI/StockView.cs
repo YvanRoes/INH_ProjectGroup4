@@ -50,22 +50,16 @@ namespace UI
 
             FoodItems = _foodService.GetAllFoodItems();
 
-            listView1.Clear();
-            listView1.View = View.Details;
-            listView1.FullRowSelect = true;
-            listView1.Columns.Add("ID", 124);
-            listView1.Columns.Add("Name", 124);
-            listView1.Columns.Add("Price", 124);
-            listView1.Columns.Add("Item Type", 124);
-            listView1.Columns.Add("Item Course", 124);
-            listView1.Columns.Add("Qty.", 124);
+            tools.FillListViewWithFood(listView1, FoodItems);
 
-            foreach (FoodItem item in FoodItems)
-            {
-                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() };
-                ListViewItem item2 = new ListViewItem(tempItem);
-                listView1.Items.Add(item2);
-            }
+            if (radioButton1.Checked)
+                SortByStatus();
+            else if (radioButton2.Checked)
+                SortByPrice();
+            else if (radioButton3.Checked)
+                SortByName();
+            else
+                SortById();
         }
         public void DrinkStock()
         {
@@ -115,21 +109,24 @@ namespace UI
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (IsDisplayingFood)
+            if (MessageBox.Show("Are you sure you want to delete the item.","", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                try
+                if (IsDisplayingFood)
                 {
-                    _foodService.DeleteItem(int.Parse(listView1.SelectedItems[0].Text));
-                    FoodStock();
+                    try
+                    {
+                        _foodService.DeleteItem(int.Parse(listView1.SelectedItems[0].Text));
+                        FoodStock();
 
+                    }
+                    catch { MessageBox.Show("Please select the item you would like to delete."); }
                 }
-                catch { MessageBox.Show("Please select the item you would like to delete."); }
-            }
-            else
-            {
-                _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
+                else
+                {
+                    _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
 
-                DrinkStock();
+                    DrinkStock();
+                }
             }
         }
         private void button5_Click(object sender, EventArgs e)
@@ -148,6 +145,11 @@ namespace UI
                 DrinkItems = DrinkItems.OrderBy(i => i.Status()).ToList();
                 tools.FillListViewWithDrinks(listView1, DrinkItems);
             }
+            else if (radioButton1.Checked && IsDisplayingFood)
+            {
+                FoodItems = FoodItems.OrderBy(i => i.Status()).ToList();
+                tools.FillListViewWithFood(listView1, FoodItems);
+            }
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -159,6 +161,11 @@ namespace UI
             {
                 DrinkItems = DrinkItems.OrderBy(i => i.Item_Price).ToList();
                 tools.FillListViewWithDrinks(listView1, DrinkItems);
+            }
+            else if (radioButton2.Checked && IsDisplayingFood)
+            {
+                FoodItems = FoodItems.OrderBy(i => i.Item_Price).ToList();
+                tools.FillListViewWithFood(listView1, FoodItems);
             }
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -172,14 +179,15 @@ namespace UI
                 DrinkItems = DrinkItems.OrderBy(i => i.Item_Name).ToList();
                 tools.FillListViewWithDrinks(listView1, DrinkItems);
             }
+            else if (radioButton3.Checked && IsDisplayingFood)
+            {
+                FoodItems = FoodItems.OrderBy(i => i.Item_Name).ToList();
+                tools.FillListViewWithFood(listView1, FoodItems);
+            }
         }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton4.Checked && !IsDisplayingFood)
-            {
-                DrinkItems = DrinkItems.OrderBy(i => i.Item_Id).ToList();
-                tools.FillListViewWithDrinks(listView1, DrinkItems);
-            }
+            SortById();
         }
         private void SortById() 
         {
@@ -187,6 +195,11 @@ namespace UI
             {
                 DrinkItems = DrinkItems.OrderBy(i => i.Item_Id).ToList();
                 tools.FillListViewWithDrinks(listView1, DrinkItems);
+            }
+            else if (radioButton4.Checked && IsDisplayingFood)
+            {
+                FoodItems = FoodItems.OrderBy(i => i.Item_Id).ToList();
+                tools.FillListViewWithFood(listView1, FoodItems);
             }
         }
     }
