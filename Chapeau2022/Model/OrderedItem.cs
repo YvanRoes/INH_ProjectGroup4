@@ -10,17 +10,16 @@ namespace Model
     {
         ready, notReady
     }
-    public class OrderedItem
+    public class OrderedItem : MenuItem
     {
         public int ItemOrdered_Id { get; set; }
         public int ItemOrdered_Quantity { get; set; }
         public ItemOrderedStatus ItemOrdered_status { get; set; }
-        public string Item_Name { get; set; }
         public CourseType Item_CourseType { get; set; }
         public DrinkType Item_DrinkType { get; set; }
         public DateTime Placed { get; set; }
         public string ItemOrderedDescription { get; set; }
-
         public DrinkItem Item_DrinkItem { get; set; }
+        public int TableNr { get; set; }
     }
 }
