@@ -8,18 +8,27 @@ namespace Model
 {
     public enum ItemOrderedStatus
     {
-        ready, notReady
+        Ready, NotReady
     }
-    public class OrderedItem : MenuItem
+    public class OrderedItem
     {
-        public int ItemOrdered_Id { get; set; }
-        public int ItemOrdered_Quantity { get; set; }
-        public ItemOrderedStatus ItemOrdered_status { get; set; }
-        public CourseType Item_CourseType { get; set; }
-        public DrinkType Item_DrinkType { get; set; }
-        public DateTime Placed { get; set; }
-        public string ItemOrderedDescription { get; set; }
-        public DrinkItem Item_DrinkItem { get; set; }
-        public int TableNr { get; set; }
+        public MenuItem menuItem { get; set; }
+
+        public int _itemOrdered_id { get; set; }
+
+        public int _itemOrder_id { get; set; }
+
+        public int _itemOrdered_Qty { get; set; }
+
+        public ItemOrderedStatus _itemOrdered_Status { get; set; }
+
+        public string _itemOrdered_Comment { get; set; }
+
+        //Kitchen and barview
+        public DateTime _itemOrdered_Placed { get; set; }
+
+        public int table_Id { get; set; }
+
+        public OrderedItem(MenuItem item) => menuItem = item;
     }
 }

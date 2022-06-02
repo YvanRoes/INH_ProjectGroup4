@@ -55,55 +55,72 @@ namespace UI
         private void DisplayRunningOrderedDrinkItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.notReady);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
-                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
-                li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
-                li.SubItems.Add(orderedItem.Item_Name);
-                li.SubItems.Add(orderedItem.ItemOrderedDescription);
-                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
-                li.SubItems.Add(orderedItem.TableNr.ToString());
-                lvOrders.Items.Add(li);
+                if (orderedItem.menuItem is DrinkItem)
+                {
+                    DrinkItem item = (DrinkItem)orderedItem.menuItem;
+                    ListViewItem li = new ListViewItem(orderedItem.table_Id.ToString());
+                    li.SubItems.Add(orderTimePlaced(orderedItem._itemOrdered_Placed).TotalMinutes.ToString("00 minutes ago"));
+                    li.SubItems.Add(item.Item_DrinkType.ToString());
+                    li.SubItems.Add(item.Item_Name);
+                    li.SubItems.Add(orderedItem._itemOrdered_Comment);
+                    li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.SubItems.Add(orderedItem.table_Id.ToString());
+                    lvOrders.Items.Add(li);
+                }
+
+
             }
         }
 
         private void DisplayFinishedOrderedDrinkItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.ready);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.Ready);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
-                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
-                li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
-                li.SubItems.Add(orderedItem.Item_Name);
-                li.SubItems.Add(orderedItem.ItemOrderedDescription);
-                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
-                li.SubItems.Add(orderedItem.TableNr.ToString());
-                lvOrders.Items.Add(li);
+                if(orderedItem.menuItem is DrinkItem)
+                {
+                    DrinkItem item = (DrinkItem)orderedItem.menuItem;
+                    ListViewItem li = new ListViewItem(orderedItem.table_Id.ToString());
+                    li.SubItems.Add(orderTimePlaced(orderedItem._itemOrdered_Placed).TotalMinutes.ToString("00 minutes ago"));
+                    li.SubItems.Add(item.Item_DrinkType.ToString());
+                    li.SubItems.Add(item.Item_Name);
+                    li.SubItems.Add(orderedItem._itemOrdered_Comment);
+                    li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.SubItems.Add(orderedItem.table_Id.ToString());
+                    lvOrders.Items.Add(li);
+                }
+                
+                
             }
         }
 
         private void DisplayRunningOrderedFoodItem()
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(ItemOrderedStatus.notReady);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(ItemOrderedStatus.NotReady);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
-                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
-                li.SubItems.Add(orderedItem.Item_CourseType.ToString());
-                li.SubItems.Add(orderedItem.Item_Name);
-                li.SubItems.Add(orderedItem.ItemOrderedDescription);
-                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
-                li.SubItems.Add(orderedItem.TableNr.ToString());
-                li.Tag = orderedItem;
-                lvOrders.Items.Add(li);
+                if(orderedItem.menuItem is FoodItem)
+                {
+                    FoodItem item = (FoodItem)orderedItem.menuItem;
+                    ListViewItem li = new ListViewItem(orderedItem.table_Id.ToString());
+                    li.SubItems.Add(orderTimePlaced(orderedItem._itemOrdered_Placed).TotalMinutes.ToString("00 minutes ago"));
+                    li.SubItems.Add(item.Item_CourseType.ToString());
+                    li.SubItems.Add(item.Item_Name);
+                    li.SubItems.Add(orderedItem.);
+                    li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                    li.SubItems.Add(orderedItem.TableNr.ToString());
+                    li.Tag = orderedItem;
+                    lvOrders.Items.Add(li);
+                }
+                
             }
         }
 

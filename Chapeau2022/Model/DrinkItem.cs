@@ -8,17 +8,19 @@ namespace Model
 {
     public enum DrinkType
     {
-        alcoholic, nonAlcoholic
+        Alcoholic, NonAlcoholic
     }
     public class DrinkItem : MenuItem
     {
         public DrinkType Item_DrinkType { get; set; }
         //Amount needed by the restaurant per week
         public string Item_Status;
+
         public DrinkItem() 
         {
             Item_Status = Status();
         }
+
         public string Status()
         {
             if (Item_Stock < Item_AmountNeeded)

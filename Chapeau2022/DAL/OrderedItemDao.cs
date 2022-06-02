@@ -21,7 +21,7 @@ namespace DAL
                 $"WHERE itemOrdered_Status = {(int)itemOrderedStatus}; ";
                 //"AND CAST(order_TimeTaken AS DATE) = CAST(GETDATE() AS DATE);";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadFoodTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadFood(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<OrderedItem> GetAllDrinkOrders(ItemOrderedStatus itemOrderedStatus)
@@ -50,7 +50,7 @@ namespace DAL
         //    ExecuteEditQuery(query, sqlParameters);
         //}
 
-        private List<OrderedItem> ReadFoodTables(DataTable dataTable)
+        /*private List<OrderedItem> ReadFoodTables(DataTable dataTable)
         {
             List<OrderedItem> orderedItems = new List<OrderedItem>();
 
@@ -67,22 +67,56 @@ namespace DAL
                     comment = (string)dr["item_Description"];
                 }
 
+
                 OrderedItem orderedItem = new OrderedItem()
                 {
                     Placed = (DateTime)dr["order_TimeTaken"],
-                    ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
-                    Item_CourseType = (CourseType)dr["item_CourseType"],
-                    Item_Name = (string)dr["item_Name"],
-                    ItemOrderedDescription = comment,
+                    _ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"], #
+                    _Item_CourseType = (CourseType)dr["item_CourseType"],#
+                    Item_Name = (string)dr["item_Name"],#
+                    ItemOrderedDescription = comment,#
                     ItemOrdered_status = (ItemOrderedStatus)dr["itemOrdered_Status"],
                     TableNr = (int)dr["table_Nr"]
                 };
                 orderedItems.Add(orderedItem);
             }
             return orderedItems;
+        }*/
+
+
+        private List<OrderedItem> ReadFood(DataTable datatable)
+        {
+            List<OrderedItem> items = new List<OrderedItem>();
+
+            foreach(DataRow dr in datatable.Rows)
+            {
+                FoodItem item = new FoodItem()
+                {
+                    Item_Name = (string)dr["item_Name"],
+                    Item_Id = (int)dr["item_Id"],
+                    Item_CourseType = (CourseType)dr["item_CourseType"],
+                    
+                };
+
+                string comment = "";
+                if (dr["item_Description"] != DBNull.Value)
+                    comment = (string)dr["item_Description"];
+
+                OrderedItem itemOrdered = new OrderedItem(item)
+                {
+                    _itemOrdered_Comment = comment,
+                    _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
+                    _itemOrdered_Placed = (DateTime)dr["order_TimeTaken"],
+                    _itemOrdered_Status = (ItemOrderedStatus)dr["itemOrdered_Status"],
+                    table_Id = (int)dr["table_Nr"]
+                };
+                items.Add(itemOrdered);
+            }
+
+            return items;
         }
 
-        private List<OrderedItem> ReadDrinkTables(DataTable dataTable)
+        /*private List<OrderedItem> ReadDrinkTables(DataTable dataTable)
         {
             List<OrderedItem> orderedItems = new List<OrderedItem>();
 
@@ -112,6 +146,37 @@ namespace DAL
                 orderedItems.Add(orderedItem);
             }
             return orderedItems;
+        }*/
+
+        private List<OrderedItem> ReadDrinks(DataTable datatable)
+        {
+            List<OrderedItem> items = new List<OrderedItem>();
+
+            foreach (DataRow dr in datatable.Rows)
+            {
+                DrinkItem item = new DrinkItem()
+                {
+                    Item_Name = (string)dr["item_Name"],
+                    Item_Id = (int)dr["item_Id"],
+                    Item_DrinkType = (DrinkType)dr["item_DrinkType"]
+                };
+
+                string comment = "";
+                if (dr["item_Description"] != DBNull.Value)
+                    comment = (string)dr["item_Description"];
+
+                OrderedItem itemOrdered = new OrderedItem(item)
+                {
+                    _itemOrdered_Comment = comment,
+                    _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
+                    _itemOrdered_Placed = (DateTime)dr["order_TimeTaken"],
+                    _itemOrdered_Status = (ItemOrderedStatus)dr["itemOrdered_Status"],
+                    table_Id = (int)dr["table_Nr"]
+                };
+                items.Add(itemOrdered);
+            }
+
+            return items;
         }
     }
 }
