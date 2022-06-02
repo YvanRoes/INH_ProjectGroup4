@@ -36,7 +36,7 @@ namespace DAL
                 //"AND CAST(order_TimeTaken AS DATE) = CAST(GETDATE() AS DATE " +
                 "ORDER BY [ORDER].order_TimeTaken DESC; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadDrinkTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadDrinks(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public void UpdateItemOrderedStatus(OrderedItem orderedItem)
@@ -45,7 +45,7 @@ namespace DAL
                 "SET itemOrdered_Status = 0" +
                 "WHERE itemOrdered_Id = @itemOrderedId; ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@itemOrderedId", orderedItem.ItemOrdered_Id.ToString());
+            sqlParameters[0] = new SqlParameter("@itemOrderedId", orderedItem._itemOrdered_id.ToString());
             ExecuteEditQuery(query, sqlParameters);
         }
 
@@ -93,7 +93,6 @@ namespace DAL
                 FoodItem item = new FoodItem()
                 {
                     Item_Name = (string)dr["item_Name"],
-                    Item_Id = (int)dr["item_Id"],
                     Item_CourseType = (CourseType)dr["item_CourseType"],
                     
                 };
@@ -104,6 +103,7 @@ namespace DAL
 
                 OrderedItem itemOrdered = new OrderedItem(item)
                 {
+                    _itemOrdered_id = (int)dr["itemOrdered_Id"],
                     _itemOrdered_Comment = comment,
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
                     _itemOrdered_Placed = (DateTime)dr["order_TimeTaken"],
@@ -158,7 +158,6 @@ namespace DAL
                 DrinkItem item = new DrinkItem()
                 {
                     Item_Name = (string)dr["item_Name"],
-                    Item_Id = (int)dr["item_Id"],
                     Item_DrinkType = (DrinkType)dr["item_DrinkType"]
                 };
 

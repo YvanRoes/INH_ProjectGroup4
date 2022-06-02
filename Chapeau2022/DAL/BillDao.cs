@@ -34,14 +34,14 @@ namespace DAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                OrderedItem orderedItems = new OrderedItem()
+                /*OrderedItem orderedItems = new OrderedItem()
                 {
                     Item_Name= (string)dr["item_Name"],
                     ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
                     Item_Price= (decimal)dr["item_Price"],
                     
                 };
-                orderedItemsList.Add(orderedItems);
+                orderedItemsList.Add(orderedItems);*/
             }
             return orderedItemsList;
         }

@@ -29,12 +29,12 @@ namespace UI
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
-                DisplayOrderedDrinkItem(ItemOrderedStatus.notReady);
+                DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             }
             else
             {
                 lblKitchenAndBar.Text = "Kitchen";
-                DisplayOrderedFoodItem(ItemOrderedStatus.notReady);
+                DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
             }
 
             Timer();
@@ -56,7 +56,6 @@ namespace UI
         {
             lvOrders.Items.Clear();
             List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(itemOrderedStatus);
-            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
@@ -69,7 +68,6 @@ namespace UI
                     li.SubItems.Add(item.Item_Name);
                     li.SubItems.Add(orderedItem._itemOrdered_Comment);
                     li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
-                    li.SubItems.Add(orderedItem.table_Id.ToString());
                     lvOrders.Items.Add(li);
                 }
 
@@ -93,7 +91,6 @@ namespace UI
                     li.SubItems.Add(item.Item_Name);
                     li.SubItems.Add(orderedItem._itemOrdered_Comment);
                     li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
-                    li.SubItems.Add(orderedItem.table_Id.ToString());
                     lvOrders.Items.Add(li);
                 }
                 
@@ -115,9 +112,9 @@ namespace UI
                     li.SubItems.Add(orderTimePlaced(orderedItem._itemOrdered_Placed).TotalMinutes.ToString("00 minutes ago"));
                     li.SubItems.Add(item.Item_CourseType.ToString());
                     li.SubItems.Add(item.Item_Name);
-                    li.SubItems.Add(orderedItem.);
-                    li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
-                    li.SubItems.Add(orderedItem.TableNr.ToString());
+                    li.SubItems.Add(orderedItem._itemOrdered_Comment);
+                    li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.SubItems.Add(orderedItem.table_Id.ToString());
                     li.Tag = orderedItem;
                     lvOrders.Items.Add(li);
                 }
@@ -131,11 +128,11 @@ namespace UI
 
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
-                DisplayOrderedDrinkItem(ItemOrderedStatus.notReady);
+                DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             }
             else
             {
-                DisplayOrderedFoodItem(ItemOrderedStatus.notReady);
+                DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
             }
         }
 
@@ -145,11 +142,11 @@ namespace UI
 
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
-                DisplayOrderedDrinkItem(ItemOrderedStatus.ready);
+                DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
             }
             else
             {
-                DisplayOrderedFoodItem(ItemOrderedStatus.ready);
+                DisplayOrderedFoodItem(ItemOrderedStatus.Ready);
             }
         }
 
@@ -177,11 +174,11 @@ namespace UI
             {
                 if (employee.EmployeeRole == EmployeeRole.bartender)
                 {
-                    DisplayOrderedDrinkItem(ItemOrderedStatus.notReady);
+                    DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
                 }
                 else
                 {
-                    DisplayOrderedFoodItem(ItemOrderedStatus.notReady);
+                    DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
                 }
             }
 
@@ -189,11 +186,11 @@ namespace UI
             {
                 if (employee.EmployeeRole == EmployeeRole.bartender)
                 {
-                    DisplayOrderedDrinkItem(ItemOrderedStatus.ready);
+                    DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
                 }
                 else
                 {
-                    DisplayOrderedFoodItem(ItemOrderedStatus.ready);
+                    DisplayOrderedFoodItem(ItemOrderedStatus.Ready);
                 }
             }
         }

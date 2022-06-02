@@ -30,9 +30,9 @@ namespace UI
 
             foreach (OrderedItem orderItems in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderItems.Item_Name.ToString());
-                li.SubItems.Add(orderItems.ItemOrdered_Quantity.ToString());
-                li.SubItems.Add(orderItems.Item_Price.ToString());
+                ListViewItem li = new ListViewItem(orderItems.menuItem.Item_Name.ToString());
+                li.SubItems.Add(orderItems._itemOrdered_Qty.ToString());
+                li.SubItems.Add(orderItems.menuItem.Item_Price.ToString());
                 lvOrderedItems.Items.Add(li);
 
             }
