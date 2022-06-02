@@ -12,5 +12,6 @@ namespace Model
         void RemoveItem(MenuItem item) => _items.Remove(item);
 
         public DateTime Placed { get; set; }
+        public int TableNr { get; set; }
     }
 }
