@@ -21,5 +21,9 @@ namespace Model
         public string ItemOrderedDescription { get; set; }
         public DrinkItem Item_DrinkItem { get; set; }
         public int TableNr { get; set; }
+        public int Order_Id { get; set; }
+        public MenuType Item_MenuType { get; set; }
+
+
     }
 }

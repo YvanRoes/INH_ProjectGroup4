@@ -6,23 +6,32 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Bill
+    public enum PayStatus
     {
-        public decimal Price { get; set; }
+       notpaid,paid
+    }
+    public class Bill:OrderedItem
+    {
         public decimal Tip { get; set; }
-        public DateTime DateTime { get; set; }
-        public int EmployeeID { get; set; }
-        public int OrderNr { get; set; }
+        public decimal Total{ get; set; }
+        public decimal High_Vat { get; set; }
+        public decimal Low_Vat { get; set; }
+        public decimal Total_Vat { get; set; }
         public BillMethod Method { get; set; }
-
-        public Bill(decimal price, decimal tip, DateTime dateTime, int employeeID, int orderNr, BillMethod method)
+        public string Comment {get;set;}
+        public Bill()
         {
-            Tip = tip;
-            Price = price;
-            DateTime = dateTime;
-            EmployeeID = employeeID;
-            OrderNr = orderNr;
-            Method = method;
+
         }
+        public Bill(decimal total, decimal tip,string comment,BillMethod billMethod)
+        {
+            
+            Total = total;
+            Tip = tip;
+            Comment = comment;
+            Method = billMethod;
+        }
+
+
     }
 }

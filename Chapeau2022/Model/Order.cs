@@ -13,5 +13,8 @@ namespace Model
 
         public DateTime Placed { get; set; }
         public int TableNr { get; set; }
+        public int OrderId { get; set; }
+
+
     }
 }

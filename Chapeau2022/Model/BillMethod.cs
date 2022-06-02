@@ -8,7 +8,7 @@ namespace Model
 {
     public enum BillMethod
     {
-        Pin, CreditCard, Cash
+        CreditCard,Pin, Cash
 
     }
 }
