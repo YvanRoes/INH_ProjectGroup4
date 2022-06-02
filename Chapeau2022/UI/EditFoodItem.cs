@@ -35,6 +35,7 @@ namespace UI
             textBoxItemName.Text = item.Item_Name.ToString();
             textBoxPrice.Text = item.Item_Price.ToString();
             textBoxQuantity.Text = item.Item_Stock.ToString();
+            textBoxAmountNeeded.Text = item.Item_AmountNeeded.ToString();
 
             int CourseId = (int)Enum.Parse(typeof(CourseType), item.Item_CourseType.ToString());
 
@@ -70,7 +71,8 @@ namespace UI
                 Item_Price = decimal.Parse(textBoxPrice.Text),
                 Item_Stock = int.Parse(textBoxQuantity.Text),
                 Item_MenuType = (MenuType)MenuType,
-                Item_CourseType = (CourseType)CourseType
+                Item_CourseType = (CourseType)CourseType,
+                Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             foodService.UpdateFoodItem(food);
             stockView.FoodStock();

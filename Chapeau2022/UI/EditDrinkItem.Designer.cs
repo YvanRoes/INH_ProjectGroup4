@@ -41,12 +41,14 @@
             this.textBoxItemName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxAmountNeeded = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(22, 393);
+            this.buttonCancel.Location = new System.Drawing.Point(263, 391);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(135, 29);
             this.buttonCancel.TabIndex = 26;
@@ -56,7 +58,7 @@
             // buttonSubmit
             // 
             this.buttonSubmit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSubmit.Location = new System.Drawing.Point(22, 336);
+            this.buttonSubmit.Location = new System.Drawing.Point(263, 334);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(135, 29);
             this.buttonSubmit.TabIndex = 25;
@@ -165,11 +167,29 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Edit Drink";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 311);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 20);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Amount Needed";
+            // 
+            // textBoxAmountNeeded
+            // 
+            this.textBoxAmountNeeded.Location = new System.Drawing.Point(22, 334);
+            this.textBoxAmountNeeded.Name = "textBoxAmountNeeded";
+            this.textBoxAmountNeeded.Size = new System.Drawing.Size(135, 27);
+            this.textBoxAmountNeeded.TabIndex = 27;
+            // 
             // EditDrinkItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 450);
+            this.ClientSize = new System.Drawing.Size(422, 457);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxAmountNeeded);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.groupBox2);
@@ -205,5 +225,7 @@
         private System.Windows.Forms.TextBox textBoxItemName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxAmountNeeded;
     }
 }

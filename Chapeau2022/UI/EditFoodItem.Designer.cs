@@ -45,6 +45,8 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxAmountNeeded = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -198,7 +200,7 @@
             // buttonSubmit
             // 
             this.buttonSubmit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSubmit.Location = new System.Drawing.Point(22, 348);
+            this.buttonSubmit.Location = new System.Drawing.Point(22, 393);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(135, 29);
             this.buttonSubmit.TabIndex = 13;
@@ -208,7 +210,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(22, 405);
+            this.buttonCancel.Location = new System.Drawing.Point(22, 446);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(135, 29);
             this.buttonCancel.TabIndex = 14;
@@ -216,11 +218,29 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 316);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Amount Needed";
+            // 
+            // textBoxAmountNeeded
+            // 
+            this.textBoxAmountNeeded.Location = new System.Drawing.Point(22, 339);
+            this.textBoxAmountNeeded.Name = "textBoxAmountNeeded";
+            this.textBoxAmountNeeded.Size = new System.Drawing.Size(135, 27);
+            this.textBoxAmountNeeded.TabIndex = 15;
+            // 
             // EditFoodItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 464);
+            this.ClientSize = new System.Drawing.Size(422, 499);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxAmountNeeded);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.groupBox2);
@@ -263,5 +283,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxAmountNeeded;
     }
 }

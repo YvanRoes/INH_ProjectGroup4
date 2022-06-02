@@ -88,7 +88,8 @@ namespace UI
                 Item_Price = decimal.Parse(textBoxPrice.Text),
                 Item_Stock = int.Parse(textBoxQuantity.Text),
                 Item_CourseType = (CourseType)CourseType,
-                Item_MenuType = (MenuType)MenuType
+                Item_MenuType = (MenuType)MenuType,
+                Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             foodService.AddItem(item);
         }
@@ -103,7 +104,8 @@ namespace UI
                 Item_Name = textBoxItemName.Text,
                 Item_Price = decimal.Parse(textBoxPrice.Text),
                 Item_Stock = int.Parse(textBoxQuantity.Text),
-                Item_DrinkType = (DrinkType)drinkType
+                Item_DrinkType = (DrinkType)drinkType,
+                Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             drinkService.AddDrink(drink);
         }

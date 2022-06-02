@@ -34,6 +34,7 @@ namespace UI
             textBoxItemName.Text=item.Item_Name.ToString();
             textBoxPrice.Text=item.Item_Price.ToString();
             textBoxQuantity.Text=item.Item_Stock.ToString();
+            textBoxAmountNeeded.Text = item.Item_AmountNeeded.ToString();
 
             int typeId = (int)Enum.Parse(typeof(DrinkType), item.Item_DrinkType.ToString());
 
@@ -53,7 +54,8 @@ namespace UI
                 Item_Name = textBoxItemName.Text,
                 Item_Price = decimal.Parse(textBoxPrice.Text),
                 Item_Stock = int.Parse(textBoxQuantity.Text),
-                Item_DrinkType = (DrinkType)drinkType
+                Item_DrinkType = (DrinkType)drinkType,
+                Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             drinkService.UpdateDrink(drink);
             stockView.DrinkStock();

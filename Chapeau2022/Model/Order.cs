@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Model
 {
-    public class Order : IOrder
+    public class Order
     {
         List<MenuItem> _items = new List<MenuItem>();
 

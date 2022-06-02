@@ -51,6 +51,8 @@
             this.lblFoodName = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxAmountNeeded = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxAlcoholContent.SuspendLayout();
             this.groupBoxMenu.SuspendLayout();
@@ -272,9 +274,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(18, 423);
+            this.button1.Location = new System.Drawing.Point(18, 468);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 29);
+            this.button1.Size = new System.Drawing.Size(135, 29);
             this.button1.TabIndex = 35;
             this.button1.Text = "Create Item";
             this.button1.UseVisualStyleBackColor = true;
@@ -282,18 +284,36 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(18, 468);
+            this.button2.Location = new System.Drawing.Point(18, 515);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 29);
+            this.button2.Size = new System.Drawing.Size(135, 29);
             this.button2.TabIndex = 36;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 391);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 20);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "Amount Needed";
+            // 
+            // textBoxAmountNeeded
+            // 
+            this.textBoxAmountNeeded.Location = new System.Drawing.Point(18, 414);
+            this.textBoxAmountNeeded.Name = "textBoxAmountNeeded";
+            this.textBoxAmountNeeded.Size = new System.Drawing.Size(135, 27);
+            this.textBoxAmountNeeded.TabIndex = 37;
             // 
             // AddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 520);
+            this.ClientSize = new System.Drawing.Size(420, 558);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBoxAmountNeeded);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblFoodName);
@@ -349,5 +369,7 @@
         private System.Windows.Forms.Label lblFoodName;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxAmountNeeded;
     }
 }
