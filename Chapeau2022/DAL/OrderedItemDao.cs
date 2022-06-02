@@ -18,8 +18,9 @@ namespace DAL
                 "JOIN ORDERED_ITEM AS O ON O.order_Id = [ORDER].order_Id " +
                 "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
                 "JOIN FOOD AS F ON F.item_Id = M.item_Id " +
-                $"WHERE itemOrdered_Status = {(int)itemOrderedStatus}; ";
-                //"AND CAST(order_TimeTaken AS DATE) = CAST(GETDATE() AS DATE);";
+                $"WHERE itemOrdered_Status = {(int)itemOrderedStatus} " +
+                //"AND CAST(order_TimeTaken AS DATE) = CAST(GETDATE() AS DATE " +
+                "ORDER BY [ORDER].order_TimeTaken DESC; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadFoodTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -31,8 +32,9 @@ namespace DAL
                 "JOIN ORDERED_ITEM AS O ON O.order_Id = [ORDER].order_Id " +
                 "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
                 "JOIN DRINK AS D ON D.item_Id = M.item_Id " +
-                $"WHERE itemOrdered_Status = {(int)itemOrderedStatus}; ";
-                //"AND CAST(order_TimeTaken AS DATE) = CAST(GETDATE() AS DATE);";
+                $"WHERE itemOrdered_Status = {(int)itemOrderedStatus} " +
+                //"AND CAST(order_TimeTaken AS DATE) = CAST(GETDATE() AS DATE " +
+                "ORDER BY [ORDER].order_TimeTaken DESC; ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadDrinkTables(ExecuteSelectQuery(query, sqlParameters));
         }
