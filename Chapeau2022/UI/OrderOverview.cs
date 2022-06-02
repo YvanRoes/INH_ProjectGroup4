@@ -33,6 +33,7 @@ namespace UI
         {
             _order = order;
             UpdateListView();
+            
         }
 
         void InitBaseListAttributes()
@@ -55,13 +56,18 @@ namespace UI
             InitBaseListAttributes();
             foreach(OrderedItem item in _order.menuItems)
             {
-                string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, item.menuItem.Item_Price.ToString(), item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment }; ;
-
+                string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, item.menuItem.Item_Price.ToString(), item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
                 ListViewItem listViewItem = new ListViewItem(it);
                 lvOrder.Items.Add(listViewItem);
-                lvOrder.Refresh();
 
             }
+        }
+
+        void RemoveEmptyItems()
+        {
+            foreach(OrderedItem item in _order.menuItems)
+                if(item._itemOrdered_Qty <= 0)
+                    _order.RemoveItem(item);
         }
 
         private void btnClear_Click(object sender, EventArgs e) { _order.menuItems.Clear(); UpdateListView(); }

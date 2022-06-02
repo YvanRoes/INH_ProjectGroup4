@@ -72,10 +72,15 @@ namespace UI
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
         {
-
-            _order.AddItem(_menuItem, _Qty, tBComments.Text);
-            NotifyObservers();
-            this.Close();
+            if (_Qty > 0)
+            {
+                _order.AddItem(_menuItem, _Qty, tBComments.Text);
+                NotifyObservers();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Quantity specified is not possible");
+            
         }
     }
 }

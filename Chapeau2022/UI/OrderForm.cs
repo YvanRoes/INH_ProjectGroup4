@@ -57,6 +57,7 @@ namespace UI
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
             List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
+            //order
 
             foreach( MenuItem item in _menuItems)
             {
@@ -172,9 +173,23 @@ namespace UI
         public void RemoveObserver(IObserver observer) => _observers.Remove(observer);
 
         //list interaction
-        private void lVItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void lVItems_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewHitTestInfo info = lVItems.HitTest(e.X, e.Y);
+            ListViewItem item = info.Item;
+
+            if (item != null)
+            {
+                MenuItem _item = GetItemFromList();
+                PopupAddToOrder popup = new PopupAddToOrder(_item, _order, _observers);
+                popup.ShowDialog();
+            }
+            else
+            {
+                this.lVItems.SelectedItems.Clear();
+                MessageBox.Show("No Item is selected");
+            }
         }
 
         private MenuItem GetItemFromList()
@@ -182,13 +197,6 @@ namespace UI
             int? id = int.Parse(lVItems.FocusedItem.SubItems[0].Text);
             MenuItemService _service = MenuItemService.GetInstance();
             return (MenuItem)_service.GetAllMenuItems().Find(i => i.Item_Id == id);
-        }
-
-        private void btnAddItem_Click(object sender, EventArgs e)
-        {
-            MenuItem _item = GetItemFromList();
-            PopupAddToOrder popup = new PopupAddToOrder(_item, _order, _observers);
-            popup.ShowDialog();
         }
 
         void InitBaseListAttributes()

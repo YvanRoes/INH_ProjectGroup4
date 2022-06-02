@@ -13,7 +13,7 @@ namespace DAL
     {
         public List<OrderedItem> GetAllFoodOrders(ItemOrderedStatus itemOrderedStatus)
         {
-            string query = "SELECT [ORDER].order_TimeTaken, F.[item_CourseType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status], [ORDER].table_Nr, O.itemOrdered_Id " +
+            string query = "SELECT [ORDER].order_TimeTaken, F.[item_CourseType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Comment], O.[itemOrdered_Status], [ORDER].table_Nr, O.itemOrdered_Id " +
                 "FROM[ORDER] " +
                 "JOIN ORDERED_ITEM AS O ON O.order_Id = [ORDER].order_Id " +
                 "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
@@ -27,7 +27,7 @@ namespace DAL
 
         public List<OrderedItem> GetAllDrinkOrders(ItemOrderedStatus itemOrderedStatus)
         {
-            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status], [ORDER].table_Nr, O.itemOrdered_Id " +
+            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Comment], O.[itemOrdered_Status], [ORDER].table_Nr, O.itemOrdered_Id " +
                 "FROM[ORDER] " +
                 "JOIN ORDERED_ITEM AS O ON O.order_Id = [ORDER].order_Id " +
                 "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
@@ -63,8 +63,8 @@ namespace DAL
                 };
 
                 string comment = "";
-                if (dr["item_Description"] != DBNull.Value)
-                    comment = (string)dr["item_Description"];
+                if (dr["itemOrdered_Comment"] != DBNull.Value)
+                    comment = (string)dr["itemOrdered_Comment"];
 
                 OrderedItem itemOrdered = new OrderedItem(item)
                 {
@@ -94,8 +94,8 @@ namespace DAL
                 };
 
                 string comment = "";
-                if (dr["item_Description"] != DBNull.Value)
-                    comment = (string)dr["item_Description"];
+                if (dr["itemOrdered_Comment"] != DBNull.Value)
+                    comment = (string)dr["itemOrdered_Comment"];
 
                 OrderedItem itemOrdered = new OrderedItem(item)
                 {

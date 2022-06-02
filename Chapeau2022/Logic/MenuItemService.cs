@@ -22,6 +22,6 @@ namespace Logic
             return _instance;
         }
 
-        public List<MenuItem> GetAllMenuItems() => _menuItemDao.GetAllMenuItems();
+        public List<MenuItem> GetAllMenuItems() => _menuItemDao.GetAllMenuItems().OrderBy(i => i.Item_Name).ToList();
     }
 }

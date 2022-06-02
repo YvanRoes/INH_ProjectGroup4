@@ -23,7 +23,7 @@ namespace DAL
         //Get all food
         List<FoodItem> GetAllFoodItems()
         {
-            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, F.item_CourseType, F.item_MenuType from MENU_ITEM as M, FOOD as F WHERE M.item_Id = F.item_Id";
+            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, M.item_AmountNeeded, F.item_CourseType, F.item_MenuType from MENU_ITEM as M, FOOD as F WHERE M.item_Id = F.item_Id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -39,6 +39,7 @@ namespace DAL
                     Item_Name = (string)dr["item_Name"],
                     Item_Price = (decimal)dr["item_Price"],
                     Item_Stock = (int)dr["item_Stock"],
+                    Item_AmountNeeded = (int)dr["item_AmountNeeded"],
                     Item_CourseType = (CourseType)dr["item_CourseType"],
                     Item_MenuType = (MenuType)dr["item_MenuType"]
 
@@ -52,7 +53,7 @@ namespace DAL
 
         List<DrinkItem> GetAllDrinkItems()
         {
-            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, D.item_DrinkType from MENU_ITEM as M, DRINK as D WHERE M.item_Id = D.item_Id";
+            string query = "SELECT M.item_Id, M.item_Name, M.item_Price, M.item_Stock, M.item_AmountNeeded, D.item_DrinkType from MENU_ITEM as M, DRINK as D WHERE M.item_Id = D.item_Id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTablesDrinks(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -69,6 +70,7 @@ namespace DAL
                     Item_Name = (string)dr["item_Name"],
                     Item_Price = (decimal)dr["item_Price"],
                     Item_Stock = (int)dr["item_Stock"],
+                    Item_AmountNeeded = (int)dr["item_AmountNeeded"],
                     Item_DrinkType = (DrinkType)dr["item_DrinkType"]
 
                 };

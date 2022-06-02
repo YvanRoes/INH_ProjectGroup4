@@ -34,7 +34,6 @@
             this.btnMain = new System.Windows.Forms.Button();
             this.btnDessert = new System.Windows.Forms.Button();
             this.btnOverview = new System.Windows.Forms.Button();
-            this.btnAddItem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lVItems
@@ -43,14 +42,14 @@
             this.lVItems.HideSelection = false;
             this.lVItems.Location = new System.Drawing.Point(12, 12);
             this.lVItems.Name = "lVItems";
-            this.lVItems.Size = new System.Drawing.Size(318, 379);
+            this.lVItems.Size = new System.Drawing.Size(318, 351);
             this.lVItems.TabIndex = 0;
             this.lVItems.UseCompatibleStateImageBehavior = false;
-            this.lVItems.SelectedIndexChanged += new System.EventHandler(this.lVItems_SelectedIndexChanged);
+            this.lVItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lVItems_MouseDoubleClick);
             // 
             // btnDrinks
             // 
-            this.btnDrinks.Location = new System.Drawing.Point(12, 397);
+            this.btnDrinks.Location = new System.Drawing.Point(12, 369);
             this.btnDrinks.Name = "btnDrinks";
             this.btnDrinks.Size = new System.Drawing.Size(75, 23);
             this.btnDrinks.TabIndex = 1;
@@ -60,7 +59,7 @@
             // 
             // btnAppetizers
             // 
-            this.btnAppetizers.Location = new System.Drawing.Point(93, 397);
+            this.btnAppetizers.Location = new System.Drawing.Point(93, 369);
             this.btnAppetizers.Name = "btnAppetizers";
             this.btnAppetizers.Size = new System.Drawing.Size(75, 23);
             this.btnAppetizers.TabIndex = 2;
@@ -70,7 +69,7 @@
             // 
             // btnMain
             // 
-            this.btnMain.Location = new System.Drawing.Point(174, 397);
+            this.btnMain.Location = new System.Drawing.Point(174, 369);
             this.btnMain.Name = "btnMain";
             this.btnMain.Size = new System.Drawing.Size(75, 23);
             this.btnMain.TabIndex = 3;
@@ -80,7 +79,7 @@
             // 
             // btnDessert
             // 
-            this.btnDessert.Location = new System.Drawing.Point(255, 397);
+            this.btnDessert.Location = new System.Drawing.Point(255, 369);
             this.btnDessert.Name = "btnDessert";
             this.btnDessert.Size = new System.Drawing.Size(75, 23);
             this.btnDessert.TabIndex = 4;
@@ -90,30 +89,19 @@
             // 
             // btnOverview
             // 
-            this.btnOverview.Location = new System.Drawing.Point(336, 68);
+            this.btnOverview.Location = new System.Drawing.Point(12, 398);
             this.btnOverview.Name = "btnOverview";
-            this.btnOverview.Size = new System.Drawing.Size(185, 51);
+            this.btnOverview.Size = new System.Drawing.Size(318, 51);
             this.btnOverview.TabIndex = 5;
             this.btnOverview.Text = "Order Overview";
             this.btnOverview.UseVisualStyleBackColor = true;
             this.btnOverview.Click += new System.EventHandler(this.btnOverview_Click);
             // 
-            // btnAddItem
-            // 
-            this.btnAddItem.Location = new System.Drawing.Point(336, 12);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(185, 50);
-            this.btnAddItem.TabIndex = 6;
-            this.btnAddItem.Text = "Add to order";
-            this.btnAddItem.UseVisualStyleBackColor = true;
-            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 461);
-            this.Controls.Add(this.btnAddItem);
+            this.ClientSize = new System.Drawing.Size(342, 461);
             this.Controls.Add(this.btnOverview);
             this.Controls.Add(this.btnDessert);
             this.Controls.Add(this.btnMain);
@@ -134,6 +122,5 @@
         private System.Windows.Forms.Button btnMain;
         private System.Windows.Forms.Button btnDessert;
         private System.Windows.Forms.Button btnOverview;
-        private System.Windows.Forms.Button btnAddItem;
     }
 }
