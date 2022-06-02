@@ -27,16 +27,13 @@ namespace UI
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
+                DisplayRunningOrderedDrinkItem();
             }
             else
             {
                 lblKitchenAndBar.Text = "Kitchen";
+                DisplayRunningOrderedFoodItem();
             }
-
-            //DisplayRunningOrderedDrinkItem();
-
-            //DisplayRunningOrderedFoodItem();
-
         }
 
         private void DisplayRunningOrderedDrinkItem()
@@ -46,12 +43,13 @@ namespace UI
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
-                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
+                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
                 li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
                 li.SubItems.Add(orderedItem.Item_Name);
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                li.SubItems.Add(orderedItem.TableNr.ToString());
                 lvOrders.Items.Add(li);
             }
         }
@@ -63,12 +61,13 @@ namespace UI
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
-                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
+                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
                 li.SubItems.Add(orderedItem.Item_DrinkType.ToString());
                 li.SubItems.Add(orderedItem.Item_Name);
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                li.SubItems.Add(orderedItem.TableNr.ToString());
                 lvOrders.Items.Add(li);
             }
         }
@@ -80,12 +79,13 @@ namespace UI
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
-                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
+                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
+                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
                 li.SubItems.Add(orderedItem.Item_CourseType.ToString());
                 li.SubItems.Add(orderedItem.Item_Name);
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                li.SubItems.Add(orderedItem.TableNr.ToString());
                 li.Tag = orderedItem;
                 lvOrders.Items.Add(li);
             }
@@ -98,7 +98,8 @@ namespace UI
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                ListViewItem li = new ListViewItem(orderedItem.Placed.ToString());
+                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
+                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
                 li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
                 li.SubItems.Add(orderedItem.Item_CourseType.ToString());
                 li.SubItems.Add(orderedItem.Item_Name);

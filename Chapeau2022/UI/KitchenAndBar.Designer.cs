@@ -41,11 +41,13 @@
             this.btnFinished = new System.Windows.Forms.Button();
             this.btnRunning = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.tableNrHeader = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // lvOrders
             // 
             this.lvOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.tableNrHeader,
             this.placedHeader,
             this.quantityHeader,
             this.drinkTypeHeader,
@@ -69,7 +71,7 @@
             // quantityHeader
             // 
             this.quantityHeader.Text = "Quantity";
-            this.quantityHeader.Width = 68;
+            this.quantityHeader.Width = 58;
             // 
             // drinkTypeHeader
             // 
@@ -158,6 +160,11 @@
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // tableNrHeader
+            // 
+            this.tableNrHeader.Text = "Table Nr.";
+            this.tableNrHeader.Width = 58;
+            // 
             // KitchenAndBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -193,5 +200,6 @@
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.Button btnRunning;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ColumnHeader tableNrHeader;
     }
 }

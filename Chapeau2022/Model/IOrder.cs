@@ -9,5 +9,7 @@ namespace Model
     public interface IOrder
     {
         DateTime Placed { get; set; }
+
+        int TableNr { get; set; }
     }
 }

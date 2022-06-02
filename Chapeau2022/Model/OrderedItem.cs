@@ -24,5 +24,6 @@ namespace Model
         public DateTime Placed { get; set; }
         public string ItemOrderedDescription { get; set; }
         public MenuType Item_MenuType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int TableNr { get; set; }
     }
 }
