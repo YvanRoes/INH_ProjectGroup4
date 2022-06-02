@@ -28,5 +28,10 @@ namespace Logic
             List<OrderedItem> orderedItems = orderedItemDao.GetAllDrinkOrders(itemOrderedStatus);
             return orderedItems;
         }
+
+        public void UpdateItemOrderedStatus(OrderedItem orderedItem)
+        {
+            orderedItemDao.UpdateItemOrderedStatus(orderedItem);
+        }
     }
 }

@@ -29,12 +29,12 @@ namespace UI
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
-                DisplayRunningOrderedDrinkItem();
+                DisplayOrderedDrinkItem(ItemOrderedStatus.notReady);
             }
             else
             {
                 lblKitchenAndBar.Text = "Kitchen";
-                DisplayRunningOrderedFoodItem();
+                DisplayOrderedFoodItem(ItemOrderedStatus.notReady);
             }
 
             Timer();
@@ -52,9 +52,10 @@ namespace UI
             Refresh();
         }
 
-        private void DisplayRunningOrderedDrinkItem()
+        private void DisplayOrderedDrinkItem(ItemOrderedStatus itemOrderedStatus)
         {
             lvOrders.Items.Clear();
+            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(itemOrderedStatus);
             List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
 
             foreach (OrderedItem orderedItem in orderedItems)
@@ -76,7 +77,7 @@ namespace UI
             }
         }
 
-        private void DisplayFinishedOrderedDrinkItem()
+        private void DisplayOrderedFoodItem(ItemOrderedStatus itemOrderedStatus)
         {
             lvOrders.Items.Clear();
             List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.Ready);
@@ -124,37 +125,18 @@ namespace UI
             }
         }
 
-        private void DisplayFinishedOrderedFoodItem()
-        {
-            lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(ItemOrderedStatus.ready);
-
-            foreach (OrderedItem orderedItem in orderedItems)
-            {
-                ListViewItem li = new ListViewItem(orderedItem.TableNr.ToString());
-                li.SubItems.Add(orderTimePlaced(orderedItem.Placed).TotalMinutes.ToString("00 minutes ago"));
-                li.SubItems.Add(orderedItem.ItemOrdered_Quantity.ToString());
-                li.SubItems.Add(orderedItem.Item_CourseType.ToString());
-                li.SubItems.Add(orderedItem.Item_Name);
-                li.SubItems.Add(orderedItem.ItemOrderedDescription);
-                li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
-                lvOrders.Items.Add(li);
-            }
-        }
-
         private void btnRunning_Click(object sender, EventArgs e)
         {
             orderDisplay = OrderDisplay.Running;
 
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
-                DisplayRunningOrderedDrinkItem();
+                DisplayOrderedDrinkItem(ItemOrderedStatus.notReady);
             }
             else
             {
-                DisplayRunningOrderedFoodItem();
+                DisplayOrderedFoodItem(ItemOrderedStatus.notReady);
             }
-            //DisplayRunningOrderedDrinkItem();
         }
 
         private void btnFinished_Click(object sender, EventArgs e)
@@ -163,14 +145,12 @@ namespace UI
 
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
-                DisplayFinishedOrderedDrinkItem();
+                DisplayOrderedDrinkItem(ItemOrderedStatus.ready);
             }
             else
             {
-                DisplayFinishedOrderedFoodItem();
+                DisplayOrderedFoodItem(ItemOrderedStatus.ready);
             }
-
-            //DisplayFinishedOrderedDrinkItem();
         }
 
         TimeSpan orderTimePlaced(DateTime placed)
@@ -186,11 +166,6 @@ namespace UI
             mainWindow.ShowDialog();
         }
 
-        private void lvOrders_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             Refresh();
@@ -202,11 +177,11 @@ namespace UI
             {
                 if (employee.EmployeeRole == EmployeeRole.bartender)
                 {
-                    DisplayRunningOrderedDrinkItem();
+                    DisplayOrderedDrinkItem(ItemOrderedStatus.notReady);
                 }
                 else
                 {
-                    DisplayRunningOrderedFoodItem();
+                    DisplayOrderedFoodItem(ItemOrderedStatus.notReady);
                 }
             }
 
@@ -214,22 +189,24 @@ namespace UI
             {
                 if (employee.EmployeeRole == EmployeeRole.bartender)
                 {
-                    DisplayFinishedOrderedDrinkItem();
+                    DisplayOrderedDrinkItem(ItemOrderedStatus.ready);
                 }
                 else
                 {
-                    DisplayFinishedOrderedFoodItem();
+                    DisplayOrderedFoodItem(ItemOrderedStatus.ready);
                 }
             }
-
         }
 
-        //private void btnReady_Click(object sender, EventArgs e)
-        //{
-        //   foreach (lvOrders.SelectedItems)
-        //    {
-        //        // ... .Tag
-        //    }
-        //}
+        private void btnReady_Click(object sender, EventArgs e)
+        {
+            if (lvOrders.SelectedIndices.Count > 0)
+            {
+                OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
+                orderedItemService.UpdateItemOrderedStatus(orderedItem);
+                Refresh();
+                // ... .Tag
+            }
+        }
     }
 }
