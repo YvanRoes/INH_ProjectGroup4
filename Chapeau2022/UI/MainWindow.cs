@@ -28,7 +28,7 @@ namespace UI
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            new Bill();
+            new BillUI();
         }
 
         private void btnStockView_Click(object sender, EventArgs e)
