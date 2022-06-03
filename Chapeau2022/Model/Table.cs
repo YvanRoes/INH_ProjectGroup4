@@ -9,6 +9,5 @@ namespace Model
     public class Table
     {
         public int tableId { get; set; }
-
     }
 }

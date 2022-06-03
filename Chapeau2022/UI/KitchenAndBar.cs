@@ -32,6 +32,7 @@ namespace UI
                 lvOrders.Columns[3].Text = "Drink Type";
                 lvOrders.Columns[4].Text = "Drink Name";
                 DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
+                orderDisplay = OrderDisplay.Running;
             }
             else
             {
@@ -39,6 +40,7 @@ namespace UI
                 lvOrders.Columns[3].Text = "Food Type";
                 lvOrders.Columns[4].Text = "Food Name";
                 DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+                orderDisplay = OrderDisplay.Running;
             }
 
             Timer();
@@ -180,13 +182,28 @@ namespace UI
             if (lvOrders.SelectedItems.Count > 0)
             {
                 //OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
+                //orderedItem.table_Id = int.Parse(tbxTableNr.Text);
                 //orderedItemService.UpdateItemOrderedStatus(orderedItem);
+
                 foreach (ListViewItem item in lvOrders.SelectedItems)
                 {
                     orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
                 }
                 Refresh();
             }
+
+            else
+            {
+                MessageBox.Show("Error: No item is selected ");
+            }
+
+            //OrderedItem orderedItem = new OrderedItem();
+            //orderedItem.table_Id = int.Parse(tbxTableNr.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
