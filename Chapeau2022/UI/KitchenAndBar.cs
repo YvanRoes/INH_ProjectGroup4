@@ -66,6 +66,7 @@ namespace UI
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
                 li.SubItems.Add(orderedItem.TableNr.ToString());
+                li.Tag = orderedItem;
                 lvOrders.Items.Add(li);
             }
         }
@@ -84,6 +85,7 @@ namespace UI
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
                 li.SubItems.Add(orderedItem.TableNr.ToString());
+                li.Tag = orderedItem;
                 lvOrders.Items.Add(li);
             }
         }
@@ -121,6 +123,7 @@ namespace UI
                 li.SubItems.Add(orderedItem.Item_Name);
                 li.SubItems.Add(orderedItem.ItemOrderedDescription);
                 li.SubItems.Add(orderedItem.ItemOrdered_status.ToString());
+                li.Tag = orderedItem;
                 lvOrders.Items.Add(li);
             }
         }
@@ -207,12 +210,15 @@ namespace UI
 
         }
 
-        //private void btnReady_Click(object sender, EventArgs e)
-        //{
-        //   foreach (lvOrders.SelectedItems)
-        //    {
-        //        // ... .Tag
-        //    }
-        //}
+        private void btnReady_Click(object sender, EventArgs e)
+        {
+            if (lvOrders.SelectedItems.Count > 0)
+            {
+               ListViewItem lvItem = lvOrders.SelectedItems[0];
+                OrderedItem orderedItem = (OrderedItem)lvItem.Tag;
+                orderedItemService.UpdateItemOrderedStatus(orderedItem);
+                // ... .Tag
+            }
+        }
     }
 }

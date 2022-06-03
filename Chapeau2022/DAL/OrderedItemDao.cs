@@ -13,7 +13,7 @@ namespace DAL
     {
         public List<OrderedItem> GetAllFoodOrders(ItemOrderedStatus itemOrderedStatus)
         {
-            string query = "SELECT [ORDER].order_TimeTaken, F.[item_CourseType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status], [ORDER].table_Nr " +
+            string query = "SELECT [ORDER].order_TimeTaken, F.[item_CourseType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status], [ORDER].table_Nr, O.itemOrdered_Id " +
                 "FROM[ORDER] " +
                 "JOIN ORDERED_ITEM AS O ON O.order_Id = [ORDER].order_Id " +
                 "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
@@ -26,7 +26,7 @@ namespace DAL
 
         public List<OrderedItem> GetAllDrinkOrders(ItemOrderedStatus itemOrderedStatus)
         {
-            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status], [ORDER].table_Nr " +
+            string query = "SELECT [ORDER].order_TimeTaken, D.[item_DrinkType], M.[item_Name], O.[itemOrdered_Quantity], O.[item_Description], O.[itemOrdered_Status], [ORDER].table_Nr, O.itemOrdered_Id " +
                 "FROM[ORDER] " +
                 "JOIN ORDERED_ITEM AS O ON O.order_Id = [ORDER].order_Id " +
                 "JOIN MENU_ITEM AS M ON M.item_Id = O.item_Id " +
@@ -37,18 +37,15 @@ namespace DAL
             return ReadDrinkTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        //public void UpdateActivity(OrderedItem orderedItem)
-        //{
-
-        //    string query = "Update activity set activityname=@activityname,activitytype=@activitytype,startDate=@startDate,endDate=@endDate where activityID=@activityID";
-        //    SqlParameter[] sqlParameters = new SqlParameter[5];
-        //    sqlParameters[0] = new SqlParameter("@activityID", activity.ID.ToString());
-        //    sqlParameters[1] = new SqlParameter("@activityname", activity.Name);
-        //    sqlParameters[2] = new SqlParameter("@startDate", activity.startDate);
-        //    sqlParameters[3] = new SqlParameter("@endDate", activity.endDate);
-        //    sqlParameters[4] = new SqlParameter("@activitytype", activity.Type);
-        //    ExecuteEditQuery(query, sqlParameters);
-        //}
+        public void UpdateItemOrderedStatus(OrderedItem orderedItem)
+        {
+            string query = "UPDATE ORDERED_ITEM" +
+                "SET itemOrdered_Status = 0" +
+                "WHERE itemOrdered_Id = @itemOrderedId; ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@itemOrderedId", orderedItem.ItemOrdered_Id.ToString());
+            ExecuteEditQuery(query, sqlParameters);
+        }
 
         private List<OrderedItem> ReadFoodTables(DataTable dataTable)
         {
@@ -69,6 +66,7 @@ namespace DAL
 
                 OrderedItem orderedItem = new OrderedItem()
                 {
+                    ItemOrdered_Id = (int)dr["itemOrdered_Id"],
                     Placed = (DateTime)dr["order_TimeTaken"],
                     ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
                     Item_CourseType = (CourseType)dr["item_CourseType"],
@@ -101,6 +99,7 @@ namespace DAL
 
                 OrderedItem orderedItem = new OrderedItem()
                 {
+                    ItemOrdered_Id = (int)dr["itemOrdered_Id"],
                     Placed = (DateTime)dr["order_TimeTaken"],
                     ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
                     Item_DrinkType = (DrinkType)dr["item_DrinkType"],
