@@ -10,6 +10,7 @@ namespace Model
         public int table_Id { get; set; }
         public int status = 0;
         public List<OrderedItem> menuItems;
+       
 
 
         public Order(int employee, int table)
