@@ -49,41 +49,6 @@ namespace DAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        /*private List<OrderedItem> ReadFoodTables(DataTable dataTable)
-        {
-            List<OrderedItem> orderedItems = new List<OrderedItem>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                string comment = "";
-
-                if (dr["item_Description"].Equals(DBNull.Value))
-                {
-                    comment = "null";
-                }
-                else
-                {
-                    comment = (string)dr["item_Description"];
-                }
-
-
-                OrderedItem orderedItem = new OrderedItem()
-                {
-                    ItemOrdered_Id = (int)dr["itemOrdered_Id"],
-                    Placed = (DateTime)dr["order_TimeTaken"],
-                    _ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"], #
-                    _Item_CourseType = (CourseType)dr["item_CourseType"],#
-                    Item_Name = (string)dr["item_Name"],#
-                    ItemOrderedDescription = comment,#
-                    ItemOrdered_status = (ItemOrderedStatus)dr["itemOrdered_Status"],
-                    TableNr = (int)dr["table_Nr"]
-                };
-                orderedItems.Add(orderedItem);
-            }
-            return orderedItems;
-        }*/
-
-
         private List<OrderedItem> ReadFood(DataTable datatable)
         {
             List<OrderedItem> items = new List<OrderedItem>();
@@ -115,39 +80,6 @@ namespace DAL
 
             return items;
         }
-
-        /*private List<OrderedItem> ReadDrinkTables(DataTable dataTable)
-        {
-            List<OrderedItem> orderedItems = new List<OrderedItem>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                string comment = "";
-
-                if (dr["item_Description"].Equals(DBNull.Value))
-                {
-                    comment = "null";
-                }
-                else
-                {
-                    comment = (string)dr["item_Description"];
-                }
-
-                OrderedItem orderedItem = new OrderedItem()
-                {
-                    ItemOrdered_Id = (int)dr["itemOrdered_Id"],
-                    Placed = (DateTime)dr["order_TimeTaken"],
-                    ItemOrdered_Quantity = (int)dr["itemOrdered_Quantity"],
-                    Item_DrinkType = (DrinkType)dr["item_DrinkType"],
-                    Item_Name = (string)dr["item_Name"],
-                    ItemOrderedDescription = comment,
-                    ItemOrdered_status = (ItemOrderedStatus)dr["itemOrdered_Status"],
-                    TableNr = (int)dr["table_Nr"]
-                };
-                orderedItems.Add(orderedItem);
-            }
-            return orderedItems;
-        }*/
 
         private List<OrderedItem> ReadDrinks(DataTable datatable)
         {
