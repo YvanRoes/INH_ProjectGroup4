@@ -29,6 +29,7 @@ namespace UI
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
+                //lvOrders.Columns(3).name "Drink Type";
                 DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             }
             else
@@ -69,6 +70,7 @@ namespace UI
                     li.SubItems.Add(item.Item_Name);
                     li.SubItems.Add(orderedItem._itemOrdered_Comment);
                     li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.Tag = orderedItem;
                     lvOrders.Items.Add(li);
                 }
             }
@@ -77,20 +79,21 @@ namespace UI
         private void DisplayOrderedFoodItem(ItemOrderedStatus itemOrderedStatus)
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(itemOrderedStatus);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(itemOrderedStatus);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                if(orderedItem.menuItem is DrinkItem)
+                if(orderedItem.menuItem is FoodItem)
                 {
-                    DrinkItem item = (DrinkItem)orderedItem.menuItem;
+                    FoodItem item = (FoodItem)orderedItem.menuItem;
                     ListViewItem li = new ListViewItem(orderedItem.table_Id.ToString());
                     li.SubItems.Add(orderTimePlaced(orderedItem._itemOrdered_Placed).TotalMinutes.ToString("00 minutes ago"));
                     li.SubItems.Add(orderedItem._itemOrdered_Qty.ToString());
-                    li.SubItems.Add(item.Item_DrinkType.ToString());
+                    li.SubItems.Add(item.Item_CourseType.ToString());
                     li.SubItems.Add(item.Item_Name);
                     li.SubItems.Add(orderedItem._itemOrdered_Comment);
                     li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.Tag = orderedItem;
                     lvOrders.Items.Add(li);
                 }   
             }
@@ -171,7 +174,12 @@ namespace UI
 
         private void btnReady_Click(object sender, EventArgs e)
         {
-            if (lvOrders.SelectedIndices.Count > 0)
+
+        }
+
+        private void btnReady_Click_1(object sender, EventArgs e)
+        {
+            if (lvOrders.SelectedItems.Count > 0)
             {
                 OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
                 orderedItemService.UpdateItemOrderedStatus(orderedItem);

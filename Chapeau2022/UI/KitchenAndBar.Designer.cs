@@ -109,6 +109,7 @@
             this.btnReady.TabIndex = 9;
             this.btnReady.Text = "ready";
             this.btnReady.UseVisualStyleBackColor = false;
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click_1);
             // 
             // lblKitchenAndBar
             // 
