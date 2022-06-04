@@ -57,7 +57,7 @@ namespace UI
             {
                 Employee_Id = employeeService.GetLastId(),
                 Employee_Name = textBoxEmployeeName.Text,
-                Employee_Role = (EmployeeRole)tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3, radioButton4),
+                Employee_Role = (EmployeeRole)(tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3, radioButton4)+1),
                 Employee_Pin = int.Parse(textBoxPIN.Text),
                 Employee_SecretQuestion = textBoxSecretQ.Text,
                 Employee_SecretAnwser = textBoxSecretA.Text
