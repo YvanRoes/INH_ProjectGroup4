@@ -15,7 +15,7 @@ namespace UI
 {
     public partial class KitchenAndBar : Form
     {
-        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
         Employee employee;
         OrderDisplay orderDisplay;
@@ -29,12 +29,18 @@ namespace UI
             if (employee.Employee_Role == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
+                lvOrders.Columns[3].Text = "Drink Type";
+                lvOrders.Columns[4].Text = "Drink Name";
                 DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
+                orderDisplay = OrderDisplay.Running;
             }
             else
             {
                 lblKitchenAndBar.Text = "Kitchen";
+                lvOrders.Columns[3].Text = "Food Type";
+                lvOrders.Columns[4].Text = "Food Name";
                 DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+                orderDisplay = OrderDisplay.Running;
             }
 
             Timer();
@@ -42,9 +48,9 @@ namespace UI
 
         void Timer()
         {
-            t.Interval = 10000; // specify interval time as you want
-            t.Tick += new EventHandler(timer_Tick);
-            t.Start();
+            timer.Interval = 10000; // specify interval time as you want
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -69,6 +75,7 @@ namespace UI
                     li.SubItems.Add(item.Item_Name);
                     li.SubItems.Add(orderedItem._itemOrdered_Comment);
                     li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.Tag = orderedItem;
                     lvOrders.Items.Add(li);
                 }
             }
@@ -77,20 +84,21 @@ namespace UI
         private void DisplayOrderedFoodItem(ItemOrderedStatus itemOrderedStatus)
         {
             lvOrders.Items.Clear();
-            List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(itemOrderedStatus);
+            List<OrderedItem> orderedItems = orderedItemService.GetAllFoodOrders(itemOrderedStatus);
 
             foreach (OrderedItem orderedItem in orderedItems)
             {
-                if(orderedItem.menuItem is DrinkItem)
+                if(orderedItem.menuItem is FoodItem)
                 {
-                    DrinkItem item = (DrinkItem)orderedItem.menuItem;
+                    FoodItem item = (FoodItem)orderedItem.menuItem;
                     ListViewItem li = new ListViewItem(orderedItem.table_Id.ToString());
                     li.SubItems.Add(orderTimePlaced(orderedItem._itemOrdered_Placed).TotalMinutes.ToString("00 minutes ago"));
                     li.SubItems.Add(orderedItem._itemOrdered_Qty.ToString());
-                    li.SubItems.Add(item.Item_DrinkType.ToString());
+                    li.SubItems.Add(item.Item_CourseType.ToString());
                     li.SubItems.Add(item.Item_Name);
                     li.SubItems.Add(orderedItem._itemOrdered_Comment);
                     li.SubItems.Add(orderedItem._itemOrdered_Status.ToString());
+                    li.Tag = orderedItem;
                     lvOrders.Items.Add(li);
                 }   
             }
@@ -142,7 +150,7 @@ namespace UI
             Refresh();
         }
 
-        void Refresh()
+        private void Refresh()
         {
             if (orderDisplay == OrderDisplay.Running)
             {
@@ -169,15 +177,137 @@ namespace UI
             }
         }
 
+        private void ReadyTable()
+        {
+            List<ListViewItem> items = new List<ListViewItem>();
+
+            foreach (ListViewItem item in lvOrders.Items)
+            {
+                if (item.SubItems[0].Text == tbxTableNr.Text)
+                {
+                    items.Add(item);
+                }
+            }
+            
+            if (items.Count > 0)
+            {
+                items = ReadyCoursetype(items);
+            }
+            else
+            {
+                throw new Exception("no table selected");
+            }
+
+            foreach (ListViewItem item in items)
+            {
+                orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+            }
+            Refresh();
+
+            //    List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
+
+            //    List<OrderedItem> orderedItems1 = new List<OrderedItem>();
+
+            //    foreach (OrderedItem orderedItem in orderedItems)
+            //    {
+            //        if (orderedItem.table_Id == int.Parse(tbxTableNr.Text))
+            //        {
+            //            orderedItems1.Add(orderedItem);
+            //        }
+            //    }
+
+            //    foreach (OrderedItem orderedItem in orderedItems1)
+            //    {
+            //        orderedItemService.UpdateItemOrderedStatus(orderedItem);
+            //    }
+            //    Refresh();
+        }
+
+        private void ReadyOrderedItem()
+        {
+            foreach (ListViewItem item in lvOrders.SelectedItems)
+            {
+                orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+            }
+            Refresh();
+        }
+
+        private List<ListViewItem> ReadyCoursetype(List<ListViewItem> lvItems)
+        {
+            List<ListViewItem> items = new List<ListViewItem>();
+
+            foreach (ListViewItem item in lvItems)
+            {
+                if (chbxAppetizer.Checked)
+                {
+                    if (item.SubItems[3].Text == chbxAppetizer.Text)
+                    {
+                        items.Add(item);
+                    }
+                }
+
+                if (chbxMain.Checked)
+                {
+                    if (item.SubItems[3].Text == chbxMain.Text)
+                    {
+                        items.Add(item);
+                    }
+                }
+
+                if (chbxDessert.Checked)
+                {
+                    if (item.SubItems[3].Text == chbxDessert.Text)
+                    {
+                        items.Add(item);
+                    }
+                }
+            }
+
+            return items;
+        }
+
         private void btnReady_Click(object sender, EventArgs e)
         {
-            if (lvOrders.SelectedIndices.Count > 0)
+            try
             {
-                OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
-                orderedItemService.UpdateItemOrderedStatus(orderedItem);
-                Refresh();
-                // ... .Tag
+                if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0) && (!chbxDessert.Checked && !chbxMain.Checked && !chbxAppetizer.Checked))
+                {
+                    throw new Exception("no item selcted");
+                }
+
+                else if (tbxTableNr.Text.Length == 0)
+                {
+                    throw new Exception("no table selected");
+                }
+
+                else
+                {
+                    if ((tbxTableNr.Text.Length > 0) && (lvOrders.SelectedItems.Count > 0))
+                    {
+                        ReadyTable();
+                        ReadyOrderedItem();
+                    }
+
+                    else if (int.Parse(tbxTableNr.Text) > 0)
+                    {
+                        ReadyTable();
+                    }
+
+                    else if (lvOrders.SelectedItems.Count > 0)
+                    {
+                        ReadyOrderedItem();
+                    }
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

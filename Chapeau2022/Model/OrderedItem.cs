@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum ItemOrderedStatus
-    {
-        Ready, NotReady
-    }
-    public class OrderedItem
+    public class OrderedItem 
     {
         public MenuItem menuItem { get; set; }
 
@@ -29,6 +25,9 @@ namespace Model
 
         public int table_Id { get; set; }
 
-        public OrderedItem(MenuItem item) => menuItem = item;
+        public OrderedItem (MenuItem item)
+        {
+            this.menuItem = item;
+        }
     }
 }

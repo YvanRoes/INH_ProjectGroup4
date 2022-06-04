@@ -41,8 +41,8 @@ namespace DAL
 
         public void UpdateItemOrderedStatus(OrderedItem orderedItem)
         {
-            string query = "UPDATE ORDERED_ITEM" +
-                "SET itemOrdered_Status = 0" +
+            string query = "UPDATE ORDERED_ITEM " +
+                "SET itemOrdered_Status = 1 " +
                 "WHERE itemOrdered_Id = @itemOrderedId; ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@itemOrderedId", orderedItem._itemOrdered_id.ToString());
@@ -77,7 +77,7 @@ namespace DAL
                 };
                 items.Add(itemOrdered);
             }
-
+           
             return items;
         }
 
@@ -99,6 +99,7 @@ namespace DAL
 
                 OrderedItem itemOrdered = new OrderedItem(item)
                 {
+                    _itemOrdered_id= (int)dr["itemOrdered_Id"],
                     _itemOrdered_Comment = comment,
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
                     _itemOrdered_Placed = (DateTime)dr["order_TimeTaken"],

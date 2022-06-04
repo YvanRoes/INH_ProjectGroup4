@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Table
+    public enum DrinkType
     {
-        public int tableId { get; set; }
+        Alcoholic, NonAlcoholic
     }
 }

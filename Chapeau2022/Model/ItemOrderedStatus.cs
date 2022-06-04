@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Table
+    public enum ItemOrderedStatus
     {
-        public int tableId { get; set; }
+        NotReady, Ready
     }
 }

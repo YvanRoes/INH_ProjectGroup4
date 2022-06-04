@@ -41,7 +41,13 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnFinished = new System.Windows.Forms.Button();
             this.btnRunning = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnTabelNr = new System.Windows.Forms.Label();
+            this.tbxTableNr = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblReadyCourse = new System.Windows.Forms.Label();
+            this.chbxAppetizer = new System.Windows.Forms.CheckBox();
+            this.chbxMain = new System.Windows.Forms.CheckBox();
+            this.chbxDessert = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lvOrders
@@ -56,7 +62,7 @@
             this.statusHeader});
             this.lvOrders.FullRowSelect = true;
             this.lvOrders.HideSelection = false;
-            this.lvOrders.Location = new System.Drawing.Point(49, 187);
+            this.lvOrders.Location = new System.Drawing.Point(49, 221);
             this.lvOrders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvOrders.Name = "lvOrders";
             this.lvOrders.Size = new System.Drawing.Size(821, 267);
@@ -66,7 +72,7 @@
             // 
             // tableNrHeader
             // 
-            this.tableNrHeader.Text = "Table Nr.";
+            this.tableNrHeader.Text = "Table No.";
             this.tableNrHeader.Width = 58;
             // 
             // placedHeader
@@ -91,7 +97,7 @@
             // 
             // descriptionHeader
             // 
-            this.descriptionHeader.Text = "Description";
+            this.descriptionHeader.Text = "Comment";
             this.descriptionHeader.Width = 200;
             // 
             // statusHeader
@@ -109,6 +115,7 @@
             this.btnReady.TabIndex = 9;
             this.btnReady.Text = "ready";
             this.btnReady.UseVisualStyleBackColor = false;
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
             // 
             // lblKitchenAndBar
             // 
@@ -135,10 +142,10 @@
             // btnFinished
             // 
             this.btnFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnFinished.Location = new System.Drawing.Point(166, 131);
+            this.btnFinished.Location = new System.Drawing.Point(143, 159);
             this.btnFinished.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnFinished.Name = "btnFinished";
-            this.btnFinished.Size = new System.Drawing.Size(86, 31);
+            this.btnFinished.Size = new System.Drawing.Size(77, 31);
             this.btnFinished.TabIndex = 11;
             this.btnFinished.Text = "finished";
             this.btnFinished.UseVisualStyleBackColor = false;
@@ -147,32 +154,96 @@
             // btnRunning
             // 
             this.btnRunning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRunning.Location = new System.Drawing.Point(49, 131);
+            this.btnRunning.Location = new System.Drawing.Point(49, 159);
             this.btnRunning.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRunning.Name = "btnRunning";
-            this.btnRunning.Size = new System.Drawing.Size(86, 31);
+            this.btnRunning.Size = new System.Drawing.Size(77, 31);
             this.btnRunning.TabIndex = 12;
             this.btnRunning.Text = "running";
             this.btnRunning.UseVisualStyleBackColor = false;
             this.btnRunning.Click += new System.EventHandler(this.btnRunning_Click);
             // 
-            // btnRefresh
+            // btnTabelNr
             // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.Location = new System.Drawing.Point(776, 151);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(94, 29);
-            this.btnRefresh.TabIndex = 13;
-            this.btnRefresh.Text = "refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnTabelNr.AutoSize = true;
+            this.btnTabelNr.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTabelNr.Location = new System.Drawing.Point(314, 131);
+            this.btnTabelNr.Name = "btnTabelNr";
+            this.btnTabelNr.Size = new System.Drawing.Size(179, 20);
+            this.btnTabelNr.TabIndex = 13;
+            this.btnTabelNr.Text = "Choose ready table No. :";
+            // 
+            // tbxTableNr
+            // 
+            this.tbxTableNr.Location = new System.Drawing.Point(433, 159);
+            this.tbxTableNr.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbxTableNr.Name = "tbxTableNr";
+            this.tbxTableNr.Size = new System.Drawing.Size(36, 27);
+            this.tbxTableNr.TabIndex = 14;
+            this.tbxTableNr.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(49, 131);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 20);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Choose displaying orders :";
+            // 
+            // lblReadyCourse
+            // 
+            this.lblReadyCourse.AutoSize = true;
+            this.lblReadyCourse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblReadyCourse.Location = new System.Drawing.Point(504, 131);
+            this.lblReadyCourse.Name = "lblReadyCourse";
+            this.lblReadyCourse.Size = new System.Drawing.Size(161, 20);
+            this.lblReadyCourse.TabIndex = 19;
+            this.lblReadyCourse.Text = "Choose ready course :";
+            // 
+            // chbxAppetizer
+            // 
+            this.chbxAppetizer.AutoSize = true;
+            this.chbxAppetizer.Location = new System.Drawing.Point(504, 162);
+            this.chbxAppetizer.Name = "chbxAppetizer";
+            this.chbxAppetizer.Size = new System.Drawing.Size(96, 24);
+            this.chbxAppetizer.TabIndex = 21;
+            this.chbxAppetizer.Text = "Appetizer";
+            this.chbxAppetizer.UseVisualStyleBackColor = true;
+            // 
+            // chbxMain
+            // 
+            this.chbxMain.AutoSize = true;
+            this.chbxMain.Location = new System.Drawing.Point(601, 162);
+            this.chbxMain.Name = "chbxMain";
+            this.chbxMain.Size = new System.Drawing.Size(64, 24);
+            this.chbxMain.TabIndex = 22;
+            this.chbxMain.Text = "Main";
+            this.chbxMain.UseVisualStyleBackColor = true;
+            // 
+            // chbxDessert
+            // 
+            this.chbxDessert.AutoSize = true;
+            this.chbxDessert.Location = new System.Drawing.Point(681, 163);
+            this.chbxDessert.Name = "chbxDessert";
+            this.chbxDessert.Size = new System.Drawing.Size(80, 24);
+            this.chbxDessert.TabIndex = 23;
+            this.chbxDessert.Text = "Dessert";
+            this.chbxDessert.UseVisualStyleBackColor = true;
             // 
             // KitchenAndBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 588);
-            this.Controls.Add(this.btnRefresh);
+            this.ClientSize = new System.Drawing.Size(920, 588);
+            this.Controls.Add(this.chbxDessert);
+            this.Controls.Add(this.chbxMain);
+            this.Controls.Add(this.chbxAppetizer);
+            this.Controls.Add(this.lblReadyCourse);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbxTableNr);
+            this.Controls.Add(this.btnTabelNr);
             this.Controls.Add(this.btnRunning);
             this.Controls.Add(this.btnFinished);
             this.Controls.Add(this.btnLogout);
@@ -200,7 +271,13 @@
         private System.Windows.Forms.ColumnHeader descriptionHeader;
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.Button btnRunning;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ColumnHeader tableNrHeader;
+        private System.Windows.Forms.Label btnTabelNr;
+        private System.Windows.Forms.TextBox tbxTableNr;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblReadyCourse;
+        private System.Windows.Forms.CheckBox chbxAppetizer;
+        private System.Windows.Forms.CheckBox chbxMain;
+        private System.Windows.Forms.CheckBox chbxDessert;
     }
 }
