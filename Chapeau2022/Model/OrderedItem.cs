@@ -29,10 +29,5 @@ namespace Model
         {
             this.menuItem = item;
         }
-
-        //public OrderedItem()
-        //{
-
-        //}
     }
 }

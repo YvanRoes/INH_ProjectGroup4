@@ -177,28 +177,132 @@ namespace UI
             }
         }
 
-        private void btnReady_Click(object sender, EventArgs e)
+        private void ReadyTable()
         {
-            if (lvOrders.SelectedItems.Count > 0)
+            List<ListViewItem> items = new List<ListViewItem>();
+
+            foreach (ListViewItem item in lvOrders.Items)
             {
-                //OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
-                //orderedItem.table_Id = int.Parse(tbxTableNr.Text);
-                //orderedItemService.UpdateItemOrderedStatus(orderedItem);
-
-                foreach (ListViewItem item in lvOrders.SelectedItems)
+                if (item.SubItems[0].Text == tbxTableNr.Text)
                 {
-                    orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+                    items.Add(item);
                 }
-                Refresh();
             }
-
+            
+            if (items.Count > 0)
+            {
+                items = ReadyCoursetype(items);
+            }
             else
             {
-                MessageBox.Show("Error: No item is selected ");
+                throw new Exception("no table selected");
             }
 
-            //OrderedItem orderedItem = new OrderedItem();
-            //orderedItem.table_Id = int.Parse(tbxTableNr.Text);
+            foreach (ListViewItem item in items)
+            {
+                orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+            }
+            Refresh();
+
+            //    List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
+
+            //    List<OrderedItem> orderedItems1 = new List<OrderedItem>();
+
+            //    foreach (OrderedItem orderedItem in orderedItems)
+            //    {
+            //        if (orderedItem.table_Id == int.Parse(tbxTableNr.Text))
+            //        {
+            //            orderedItems1.Add(orderedItem);
+            //        }
+            //    }
+
+            //    foreach (OrderedItem orderedItem in orderedItems1)
+            //    {
+            //        orderedItemService.UpdateItemOrderedStatus(orderedItem);
+            //    }
+            //    Refresh();
+        }
+
+        private void ReadyOrderedItem()
+        {
+            foreach (ListViewItem item in lvOrders.SelectedItems)
+            {
+                orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+            }
+            Refresh();
+        }
+
+        private List<ListViewItem> ReadyCoursetype(List<ListViewItem> lvItems)
+        {
+            List<ListViewItem> items = new List<ListViewItem>();
+
+            foreach (ListViewItem item in lvItems)
+            {
+                if (chbxAppetizer.Checked)
+                {
+                    if (item.SubItems[3].Text == chbxAppetizer.Text)
+                    {
+                        items.Add(item);
+                    }
+                }
+
+                if (chbxMain.Checked)
+                {
+                    if (item.SubItems[3].Text == chbxMain.Text)
+                    {
+                        items.Add(item);
+                    }
+                }
+
+                if (chbxDessert.Checked)
+                {
+                    if (item.SubItems[3].Text == chbxDessert.Text)
+                    {
+                        items.Add(item);
+                    }
+                }
+            }
+
+            return items;
+        }
+
+        private void btnReady_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0) && (!chbxDessert.Checked && !chbxMain.Checked && !chbxAppetizer.Checked))
+                {
+                    throw new Exception("no item selcted");
+                }
+
+                else if (tbxTableNr.Text.Length == 0)
+                {
+                    throw new Exception("no table selected");
+                }
+
+                else
+                {
+                    if ((tbxTableNr.Text.Length > 0) && (lvOrders.SelectedItems.Count > 0))
+                    {
+                        ReadyTable();
+                        ReadyOrderedItem();
+                    }
+
+                    else if (int.Parse(tbxTableNr.Text) > 0)
+                    {
+                        ReadyTable();
+                    }
+
+                    else if (lvOrders.SelectedItems.Count > 0)
+                    {
+                        ReadyOrderedItem();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

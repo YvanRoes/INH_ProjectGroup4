@@ -43,12 +43,11 @@
             this.btnRunning = new System.Windows.Forms.Button();
             this.btnTabelNr = new System.Windows.Forms.Label();
             this.tbxTableNr = new System.Windows.Forms.TextBox();
-            this.btnAppetizer = new System.Windows.Forms.Button();
-            this.btnMain = new System.Windows.Forms.Button();
-            this.btnDessert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblReadyCourse = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.chbxAppetizer = new System.Windows.Forms.CheckBox();
+            this.chbxMain = new System.Windows.Forms.CheckBox();
+            this.chbxDessert = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lvOrders
@@ -183,36 +182,6 @@
             this.tbxTableNr.TabIndex = 14;
             this.tbxTableNr.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // btnAppetizer
-            // 
-            this.btnAppetizer.Location = new System.Drawing.Point(504, 159);
-            this.btnAppetizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAppetizer.Name = "btnAppetizer";
-            this.btnAppetizer.Size = new System.Drawing.Size(86, 31);
-            this.btnAppetizer.TabIndex = 15;
-            this.btnAppetizer.Text = "Appetizer";
-            this.btnAppetizer.UseVisualStyleBackColor = true;
-            // 
-            // btnMain
-            // 
-            this.btnMain.Location = new System.Drawing.Point(597, 159);
-            this.btnMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnMain.Name = "btnMain";
-            this.btnMain.Size = new System.Drawing.Size(86, 31);
-            this.btnMain.TabIndex = 16;
-            this.btnMain.Text = "Main";
-            this.btnMain.UseVisualStyleBackColor = true;
-            // 
-            // btnDessert
-            // 
-            this.btnDessert.Location = new System.Drawing.Point(689, 159);
-            this.btnDessert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDessert.Name = "btnDessert";
-            this.btnDessert.Size = new System.Drawing.Size(86, 31);
-            this.btnDessert.TabIndex = 17;
-            this.btnDessert.Text = "Dessert";
-            this.btnDessert.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -233,26 +202,46 @@
             this.lblReadyCourse.TabIndex = 19;
             this.lblReadyCourse.Text = "Choose ready course :";
             // 
-            // label2
+            // chbxAppetizer
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(671, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "label2";
+            this.chbxAppetizer.AutoSize = true;
+            this.chbxAppetizer.Location = new System.Drawing.Point(504, 162);
+            this.chbxAppetizer.Name = "chbxAppetizer";
+            this.chbxAppetizer.Size = new System.Drawing.Size(96, 24);
+            this.chbxAppetizer.TabIndex = 21;
+            this.chbxAppetizer.Text = "Appetizer";
+            this.chbxAppetizer.UseVisualStyleBackColor = true;
+            // 
+            // chbxMain
+            // 
+            this.chbxMain.AutoSize = true;
+            this.chbxMain.Location = new System.Drawing.Point(601, 162);
+            this.chbxMain.Name = "chbxMain";
+            this.chbxMain.Size = new System.Drawing.Size(64, 24);
+            this.chbxMain.TabIndex = 22;
+            this.chbxMain.Text = "Main";
+            this.chbxMain.UseVisualStyleBackColor = true;
+            // 
+            // chbxDessert
+            // 
+            this.chbxDessert.AutoSize = true;
+            this.chbxDessert.Location = new System.Drawing.Point(681, 163);
+            this.chbxDessert.Name = "chbxDessert";
+            this.chbxDessert.Size = new System.Drawing.Size(80, 24);
+            this.chbxDessert.TabIndex = 23;
+            this.chbxDessert.Text = "Dessert";
+            this.chbxDessert.UseVisualStyleBackColor = true;
             // 
             // KitchenAndBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 588);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.chbxDessert);
+            this.Controls.Add(this.chbxMain);
+            this.Controls.Add(this.chbxAppetizer);
             this.Controls.Add(this.lblReadyCourse);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnDessert);
-            this.Controls.Add(this.btnMain);
-            this.Controls.Add(this.btnAppetizer);
             this.Controls.Add(this.tbxTableNr);
             this.Controls.Add(this.btnTabelNr);
             this.Controls.Add(this.btnRunning);
@@ -285,11 +274,10 @@
         private System.Windows.Forms.ColumnHeader tableNrHeader;
         private System.Windows.Forms.Label btnTabelNr;
         private System.Windows.Forms.TextBox tbxTableNr;
-        private System.Windows.Forms.Button btnAppetizer;
-        private System.Windows.Forms.Button btnMain;
-        private System.Windows.Forms.Button btnDessert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblReadyCourse;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chbxAppetizer;
+        private System.Windows.Forms.CheckBox chbxMain;
+        private System.Windows.Forms.CheckBox chbxDessert;
     }
 }
