@@ -41,7 +41,13 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnFinished = new System.Windows.Forms.Button();
             this.btnRunning = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnTabelNr = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAppetizer = new System.Windows.Forms.Button();
+            this.btnMain = new System.Windows.Forms.Button();
+            this.btnDessert = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblReadyCourse = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvOrders
@@ -56,17 +62,16 @@
             this.statusHeader});
             this.lvOrders.FullRowSelect = true;
             this.lvOrders.HideSelection = false;
-            this.lvOrders.Location = new System.Drawing.Point(49, 187);
-            this.lvOrders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvOrders.Location = new System.Drawing.Point(43, 166);
             this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(821, 267);
+            this.lvOrders.Size = new System.Drawing.Size(719, 201);
             this.lvOrders.TabIndex = 5;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
             this.lvOrders.View = System.Windows.Forms.View.Details;
             // 
             // tableNrHeader
             // 
-            this.tableNrHeader.Text = "Table Nr.";
+            this.tableNrHeader.Text = "Table No.";
             this.tableNrHeader.Width = 58;
             // 
             // placedHeader
@@ -91,7 +96,7 @@
             // 
             // descriptionHeader
             // 
-            this.descriptionHeader.Text = "Description";
+            this.descriptionHeader.Text = "Comment";
             this.descriptionHeader.Width = 200;
             // 
             // statusHeader
@@ -102,22 +107,21 @@
             // btnReady
             // 
             this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnReady.Location = new System.Drawing.Point(784, 497);
-            this.btnReady.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReady.Location = new System.Drawing.Point(686, 373);
             this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(86, 31);
+            this.btnReady.Size = new System.Drawing.Size(75, 23);
             this.btnReady.TabIndex = 9;
             this.btnReady.Text = "ready";
             this.btnReady.UseVisualStyleBackColor = false;
-            this.btnReady.Click += new System.EventHandler(this.btnReady_Click_1);
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
             // 
             // lblKitchenAndBar
             // 
             this.lblKitchenAndBar.AutoSize = true;
             this.lblKitchenAndBar.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblKitchenAndBar.Location = new System.Drawing.Point(49, 33);
+            this.lblKitchenAndBar.Location = new System.Drawing.Point(43, 25);
             this.lblKitchenAndBar.Name = "lblKitchenAndBar";
-            this.lblKitchenAndBar.Size = new System.Drawing.Size(354, 60);
+            this.lblKitchenAndBar.Size = new System.Drawing.Size(281, 47);
             this.lblKitchenAndBar.TabIndex = 8;
             this.lblKitchenAndBar.Text = "Kitchen/Bar View";
             // 
@@ -125,9 +129,10 @@
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Red;
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(776, 61);
+            this.btnLogout.Location = new System.Drawing.Point(679, 46);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 35);
+            this.btnLogout.Size = new System.Drawing.Size(82, 26);
             this.btnLogout.TabIndex = 10;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -136,10 +141,9 @@
             // btnFinished
             // 
             this.btnFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnFinished.Location = new System.Drawing.Point(166, 131);
-            this.btnFinished.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFinished.Location = new System.Drawing.Point(125, 119);
             this.btnFinished.Name = "btnFinished";
-            this.btnFinished.Size = new System.Drawing.Size(86, 31);
+            this.btnFinished.Size = new System.Drawing.Size(67, 23);
             this.btnFinished.TabIndex = 11;
             this.btnFinished.Text = "finished";
             this.btnFinished.UseVisualStyleBackColor = false;
@@ -148,38 +152,97 @@
             // btnRunning
             // 
             this.btnRunning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRunning.Location = new System.Drawing.Point(49, 131);
-            this.btnRunning.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRunning.Location = new System.Drawing.Point(43, 119);
             this.btnRunning.Name = "btnRunning";
-            this.btnRunning.Size = new System.Drawing.Size(86, 31);
+            this.btnRunning.Size = new System.Drawing.Size(67, 23);
             this.btnRunning.TabIndex = 12;
             this.btnRunning.Text = "running";
             this.btnRunning.UseVisualStyleBackColor = false;
             this.btnRunning.Click += new System.EventHandler(this.btnRunning_Click);
             // 
-            // btnRefresh
+            // btnTabelNr
             // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.Location = new System.Drawing.Point(776, 151);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(94, 29);
-            this.btnRefresh.TabIndex = 13;
-            this.btnRefresh.Text = "refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnTabelNr.AutoSize = true;
+            this.btnTabelNr.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTabelNr.Location = new System.Drawing.Point(275, 98);
+            this.btnTabelNr.Name = "btnTabelNr";
+            this.btnTabelNr.Size = new System.Drawing.Size(140, 15);
+            this.btnTabelNr.TabIndex = 13;
+            this.btnTabelNr.Text = "Choose ready table No. :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(379, 119);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(32, 23);
+            this.textBox1.TabIndex = 14;
+            // 
+            // btnAppetizer
+            // 
+            this.btnAppetizer.Location = new System.Drawing.Point(441, 119);
+            this.btnAppetizer.Name = "btnAppetizer";
+            this.btnAppetizer.Size = new System.Drawing.Size(75, 23);
+            this.btnAppetizer.TabIndex = 15;
+            this.btnAppetizer.Text = "Appetizer";
+            this.btnAppetizer.UseVisualStyleBackColor = true;
+            // 
+            // btnMain
+            // 
+            this.btnMain.Location = new System.Drawing.Point(522, 119);
+            this.btnMain.Name = "btnMain";
+            this.btnMain.Size = new System.Drawing.Size(75, 23);
+            this.btnMain.TabIndex = 16;
+            this.btnMain.Text = "Main";
+            this.btnMain.UseVisualStyleBackColor = true;
+            // 
+            // btnDessert
+            // 
+            this.btnDessert.Location = new System.Drawing.Point(603, 119);
+            this.btnDessert.Name = "btnDessert";
+            this.btnDessert.Size = new System.Drawing.Size(75, 23);
+            this.btnDessert.TabIndex = 17;
+            this.btnDessert.Text = "Dessert";
+            this.btnDessert.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(43, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 15);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Choose displaying orders :";
+            // 
+            // lblReadyCourse
+            // 
+            this.lblReadyCourse.AutoSize = true;
+            this.lblReadyCourse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblReadyCourse.Location = new System.Drawing.Point(441, 98);
+            this.lblReadyCourse.Name = "lblReadyCourse";
+            this.lblReadyCourse.Size = new System.Drawing.Size(127, 15);
+            this.lblReadyCourse.TabIndex = 19;
+            this.lblReadyCourse.Text = "Choose ready course :";
             // 
             // KitchenAndBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 588);
-            this.Controls.Add(this.btnRefresh);
+            this.ClientSize = new System.Drawing.Size(805, 441);
+            this.Controls.Add(this.lblReadyCourse);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnDessert);
+            this.Controls.Add(this.btnMain);
+            this.Controls.Add(this.btnAppetizer);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnTabelNr);
             this.Controls.Add(this.btnRunning);
             this.Controls.Add(this.btnFinished);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lvOrders);
             this.Controls.Add(this.btnReady);
             this.Controls.Add(this.lblKitchenAndBar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "KitchenAndBar";
             this.Text = "KitchenAndBar";
             this.ResumeLayout(false);
@@ -201,7 +264,13 @@
         private System.Windows.Forms.ColumnHeader descriptionHeader;
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.Button btnRunning;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ColumnHeader tableNrHeader;
+        private System.Windows.Forms.Label btnTabelNr;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnAppetizer;
+        private System.Windows.Forms.Button btnMain;
+        private System.Windows.Forms.Button btnDessert;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblReadyCourse;
     }
 }

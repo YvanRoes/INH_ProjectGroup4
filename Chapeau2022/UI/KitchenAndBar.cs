@@ -15,7 +15,7 @@ namespace UI
 {
     public partial class KitchenAndBar : Form
     {
-        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
         Employee employee;
         OrderDisplay orderDisplay;
@@ -29,12 +29,15 @@ namespace UI
             if (employee.EmployeeRole == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
-                //lvOrders.Columns(3).name "Drink Type";
+                lvOrders.Columns[3].Text = "Drink Type";
+                lvOrders.Columns[4].Text = "Drink Name";
                 DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             }
             else
             {
                 lblKitchenAndBar.Text = "Kitchen";
+                lvOrders.Columns[3].Text = "Food Type";
+                lvOrders.Columns[4].Text = "Food Name";
                 DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
             }
 
@@ -43,9 +46,9 @@ namespace UI
 
         void Timer()
         {
-            t.Interval = 10000; // specify interval time as you want
-            t.Tick += new EventHandler(timer_Tick);
-            t.Start();
+            timer.Interval = 10000; // specify interval time as you want
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -145,7 +148,7 @@ namespace UI
             Refresh();
         }
 
-        void Refresh()
+        private void Refresh()
         {
             if (orderDisplay == OrderDisplay.Running)
             {
@@ -174,17 +177,15 @@ namespace UI
 
         private void btnReady_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnReady_Click_1(object sender, EventArgs e)
-        {
             if (lvOrders.SelectedItems.Count > 0)
             {
-                OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
-                orderedItemService.UpdateItemOrderedStatus(orderedItem);
+                //OrderedItem orderedItem = (OrderedItem)lvOrders.SelectedItems[0].Tag;
+                //orderedItemService.UpdateItemOrderedStatus(orderedItem);
+                foreach (ListViewItem item in lvOrders.SelectedItems)
+                {
+                    orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+                }
                 Refresh();
-                // ... .Tag
             }
         }
     }

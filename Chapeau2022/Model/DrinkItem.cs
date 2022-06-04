@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum DrinkType
-    {
-        Alcoholic, NonAlcoholic
-    }
     public class DrinkItem : MenuItem
     {
         public DrinkType Item_DrinkType { get; set; }

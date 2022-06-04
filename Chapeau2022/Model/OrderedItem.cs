@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum ItemOrderedStatus
-    {
-        Ready, NotReady
-    }
     public class OrderedItem 
     {
         public MenuItem menuItem { get; set; }

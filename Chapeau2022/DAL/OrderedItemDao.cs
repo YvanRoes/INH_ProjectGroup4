@@ -42,7 +42,7 @@ namespace DAL
         public void UpdateItemOrderedStatus(OrderedItem orderedItem)
         {
             string query = "UPDATE ORDERED_ITEM " +
-                "SET itemOrdered_Status = 0 " +
+                "SET itemOrdered_Status = 1 " +
                 "WHERE itemOrdered_Id = @itemOrderedId; ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@itemOrderedId", orderedItem._itemOrdered_id.ToString());
