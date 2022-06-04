@@ -29,7 +29,7 @@ namespace DAL
         //Update Drink Item information in the database
         public void UpdateDrink(DrinkItem drink)
         {
-            string query = "UPDATE MENU_ITEM SET item_Name = @NameOfDrink, item_Price = @DrinkPrice, item_Stock = @Stock, item_AmountNeeded = @DrinkAmountNeeded  WHERE item_Id = @DrinkId; UPDATE DRINK SET item_DrinkType = @DrinkType WHERE item_Id = @DrinkId ";
+            string query = "UPDATE MENU_ITEM SET item_Name = @NameOfDrink, item_Price = @DrinkPrice, item_Stock = @Stock, item_AmountNeeded = @DrinkAmountNeeded WHERE item_Id = @DrinkId; UPDATE DRINK SET item_DrinkType = @DrinkType WHERE item_Id = @DrinkId ";
 
             SqlParameter[] sqlParameters = new SqlParameter[6];
             sqlParameters[0] = new SqlParameter("@NameOfDrink", drink.Item_Name);

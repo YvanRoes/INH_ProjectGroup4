@@ -40,6 +40,7 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,13 +51,14 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(54, 217);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(679, 281);
+            this.listView1.Size = new System.Drawing.Size(782, 281);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 42);
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(54, 96);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 29);
             this.button1.TabIndex = 1;
@@ -66,7 +68,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(54, 103);
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(54, 157);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 29);
             this.button2.TabIndex = 2;
@@ -76,7 +79,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(291, 42);
+            this.button3.Location = new System.Drawing.Point(291, 96);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(121, 29);
             this.button3.TabIndex = 3;
@@ -86,7 +89,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(291, 103);
+            this.button4.Location = new System.Drawing.Point(291, 157);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(121, 29);
             this.button4.TabIndex = 4;
@@ -96,7 +99,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(436, 42);
+            this.button5.Location = new System.Drawing.Point(291, 35);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(121, 29);
             this.button5.TabIndex = 5;
@@ -110,7 +113,7 @@
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(608, 42);
+            this.groupBox1.Location = new System.Drawing.Point(472, 35);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(179, 151);
             this.groupBox1.TabIndex = 6;
@@ -165,11 +168,22 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(54, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 32);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Stock View";
+            // 
             // StockView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 510);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -182,6 +196,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -199,5 +214,6 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label1;
     }
 }

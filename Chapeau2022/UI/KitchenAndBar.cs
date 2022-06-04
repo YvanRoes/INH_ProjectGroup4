@@ -26,7 +26,7 @@ namespace UI
 
             this.employee = employee;
 
-            if (employee.EmployeeRole == EmployeeRole.bartender)
+            if (employee.Employee_Role == EmployeeRole.bartender)
             {
                 lblKitchenAndBar.Text = "Bar";
                 DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
@@ -100,7 +100,7 @@ namespace UI
         {
             orderDisplay = OrderDisplay.Running;
 
-            if (employee.EmployeeRole == EmployeeRole.bartender)
+            if (employee.Employee_Role == EmployeeRole.bartender)
             {
                 DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             }
@@ -114,7 +114,7 @@ namespace UI
         {
             orderDisplay = OrderDisplay.Finished;
 
-            if (employee.EmployeeRole == EmployeeRole.bartender)
+            if (employee.Employee_Role == EmployeeRole.bartender)
             {
                 DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
             }
@@ -146,7 +146,7 @@ namespace UI
         {
             if (orderDisplay == OrderDisplay.Running)
             {
-                if (employee.EmployeeRole == EmployeeRole.bartender)
+                if (employee.Employee_Role == EmployeeRole.bartender)
                 {
                     DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
                 }
@@ -158,7 +158,7 @@ namespace UI
 
             else if (orderDisplay == OrderDisplay.Finished)
             {
-                if (employee.EmployeeRole == EmployeeRole.bartender)
+                if (employee.Employee_Role == EmployeeRole.bartender)
                 {
                     DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
                 }

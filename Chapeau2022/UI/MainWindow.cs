@@ -18,7 +18,7 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
-            this.Size = new Size(200, 235);
+            this.Size = new Size(228, 347);
         }
 
         private void btnOrderView_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace UI
 
         private void btnKitchenView_Click(object sender, EventArgs e)
         {
-            employee.EmployeeRole = EmployeeRole.chef;
+            employee.Employee_Role = EmployeeRole.chef;
 
             this.Hide();
             KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
@@ -48,11 +48,17 @@ namespace UI
 
         private void btnBarView_Click(object sender, EventArgs e)
         {
-            employee.EmployeeRole = EmployeeRole.bartender;
+            employee.Employee_Role = EmployeeRole.bartender;
 
             this.Hide();
             KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
             kitchenAndBar.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EmployeeView employeeView = new EmployeeView();
+            employeeView.Show();
         }
     }
 }

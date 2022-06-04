@@ -45,6 +45,25 @@ namespace UI
             }
             return index;
         }
+        public int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2, RadioButton radioButton3, RadioButton radioButton4)
+        {
+            List<RadioButton> buttons = new List<RadioButton>();
+            int index = 0;
+
+            buttons.Add(radioButton1);
+            buttons.Add(radioButton2);
+            buttons.Add(radioButton3);
+            buttons.Add(radioButton4);
+
+            foreach (RadioButton radioButton in buttons)
+            {
+                if (radioButton.Checked)
+                {
+                    index = buttons.IndexOf(radioButton);
+                }
+            }
+            return index;
+        }
         public int IndexOfSelectedCheckBox(CheckBox box1, CheckBox box2, CheckBox box3) 
         {
             List<CheckBox> boxes = new List<CheckBox>();
