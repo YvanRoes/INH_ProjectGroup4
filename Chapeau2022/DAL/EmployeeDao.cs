@@ -72,10 +72,10 @@ namespace DAL
             {
                 Employee employee = new Employee()
                 {
-                    Employee_Role = (EmployeeRole)dr["employee_StaffRole"],
+                    Employee_Role = (EmployeeRole)int.Parse((string)dr["employee_StaffRole"]),
                     Employee_Id = (int)dr["employee_Id"],
                     Employee_Name = (string)dr["employee_Name"],
-                    Employee_Pin = (int)dr["password"],
+                    Employee_Pin = BitConverter.ToInt32((Byte[])dr["password"]),
                     Employee_SecretQuestion = (string)dr["secret_question"],
                     Employee_SecretAnwser = (string)dr["secret_answer"],
                 };
