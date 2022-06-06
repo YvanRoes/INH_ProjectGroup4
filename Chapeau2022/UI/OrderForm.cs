@@ -16,6 +16,7 @@ namespace UI
     {
         List<IObserver> _observers;
         Order _order;
+        List<MenuItem> _CurrentItemsDisplayed;
 
         public OrderForm(int table_Id, int employeeId)
         {
@@ -26,25 +27,16 @@ namespace UI
 
         void Start(int table, int employee)
         {
-            MenuItemService _menuItemService  = MenuItemService.GetInstance();
-            List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
-            _menuItems = _menuItems.OrderBy(i => i.Item_Name).ToList();
-
+            _CurrentItemsDisplayed = new List<MenuItem>();
+            
             OrderService _orderService = OrderService.GetInstance();
 
             _observers = new List<IObserver>();
             _order = new Order(employee, table);
             _order.Order_Id = _orderService.GetNewOrderId();
 
-            //initialize listview
-            InitBaseListAttributes();
-
-            foreach(MenuItem item in _menuItems)
-            {
-                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_Stock.ToString() };
-                ListViewItem lvi = new ListViewItem(tempItem);
-                lVItems.Items.Add(lvi);
-            }
+            rbLunch.Checked = true;
+            btnDrinks.PerformClick();
         }
 
         //on button click return only drinks + drink attributes
@@ -52,23 +44,24 @@ namespace UI
         {
             //listview columns
             InitBaseListAttributes();
-            lVItems.Columns.Add("Alcohol");
 
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
             List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
             //order
 
+            _CurrentItemsDisplayed.Clear();
             foreach( MenuItem item in _menuItems)
             {
                 if (item is DrinkItem)
                 {
-                    DrinkItem tempDrink = (DrinkItem)item;
+                    DrinkItem _drinkItem = (DrinkItem)item;
+                    _CurrentItemsDisplayed.Add(_drinkItem);
                     string alc = "";
-                    if (tempDrink.Item_DrinkType == DrinkType.Alcoholic)
+                    if (_drinkItem.Item_DrinkType == DrinkType.Alcoholic)
                         alc = "yes";
                     
-                    string[] tempItem = { tempDrink.Item_Id.ToString(), tempDrink.Item_Name, tempDrink.Item_Price.ToString(), alc };
+                    string[] tempItem = {_drinkItem.Item_Name, _drinkItem.Item_Price.ToString(), alc };
                     ListViewItem lvi = new ListViewItem(tempItem);
                     lVItems.Items.Add(lvi);
                 }
@@ -79,12 +72,12 @@ namespace UI
         {
             //listview columns
             InitBaseListAttributes();
-            lVItems.Columns.Add("MenuType", 70);
 
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
             List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
 
+            _CurrentItemsDisplayed.Clear();
             foreach(MenuItem item in _menuItems)
             {
                 if (item is FoodItem)
@@ -92,8 +85,10 @@ namespace UI
                     FoodItem _foodItem = (FoodItem)item;
                     if (_foodItem.Item_CourseType == CourseType.Appetizer)
                     {
-                        AddFoodItemToListView(_foodItem);
+                        _CurrentItemsDisplayed.Add(_foodItem);
+                        UpdateListView();
                     }
+                        
                 }
             }
 
@@ -103,13 +98,12 @@ namespace UI
         private void btnMain_Click(object sender, EventArgs e)
         {
             InitBaseListAttributes();
-            lVItems.Columns.Add("MenuType", 70);
 
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
             List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
 
-
+            _CurrentItemsDisplayed.Clear();
             foreach( MenuItem item in _menuItems)
             {
                 if (item is FoodItem)
@@ -117,7 +111,8 @@ namespace UI
                     FoodItem _foodItem = (FoodItem)item;
                     if (_foodItem.Item_CourseType == CourseType.Main)
                     {
-                        AddFoodItemToListView(_foodItem);
+                        _CurrentItemsDisplayed.Add(_foodItem);
+                        UpdateListView();
                     }
                 }
             }
@@ -127,13 +122,12 @@ namespace UI
         private void btnDessert_Click(object sender, EventArgs e)
         {
             InitBaseListAttributes();
-            lVItems.Columns.Add("MenuType", 70);
 
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
             List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
 
-
+            _CurrentItemsDisplayed.Clear();
             foreach (MenuItem item in _menuItems)
             {
                 if (item is FoodItem)
@@ -141,17 +135,43 @@ namespace UI
                     FoodItem _foodItem = (FoodItem)item;
                     if (_foodItem.Item_CourseType == CourseType.Dessert)
                     {
-                        AddFoodItemToListView(_foodItem);
+                        _CurrentItemsDisplayed.Add(_foodItem);
+                        UpdateListView();
                     }
                 }
             }
         }
 
-        private void AddFoodItemToListView(FoodItem _foodItem)
+        private void AddFoodItemToList(FoodItem Item)
         {
-            string[] tempItem = { _foodItem.Item_Id.ToString(), _foodItem.Item_Name, _foodItem.Item_Price.ToString(), _foodItem.Item_MenuType.ToString() };
+            string[] tempItem = { Item.Item_Name, Item.Item_Price.ToString() };
             ListViewItem lvi = new ListViewItem(tempItem);
             lVItems.Items.Add(lvi);
+        }
+
+        private void AddDrinkItemToList(DrinkItem Item)
+        {
+            string alc = "";
+            if (Item.Item_DrinkType == DrinkType.Alcoholic)
+                alc = "yes";
+
+            string[] tempItem = { Item.Item_Name, Item.Item_Price.ToString(), alc };
+            ListViewItem lvi = new ListViewItem(tempItem);
+            lVItems.Items.Add(lvi);
+        }
+
+        private MenuType GetListViewMenuType()
+        {
+            MenuType type;
+            if (rbLunch.Checked)
+                type = MenuType.Lunch;
+            else if (rbDinner.Checked)
+                type = MenuType.Dinner;
+            else if (rbLunchDinner.Checked)
+                type = MenuType.Lunch_Dinner;
+            else
+                type = MenuType.Unknown;
+            return type;
         }
 
         //OverView Form
@@ -193,22 +213,63 @@ namespace UI
         }
 
         private MenuItem GetItemFromList()
-        {
-            int? id = int.Parse(lVItems.FocusedItem.SubItems[0].Text);
+         {
+            int id = lVItems.FocusedItem.Index;
             MenuItemService _service = MenuItemService.GetInstance();
-            return (MenuItem)_service.GetAllMenuItems().Find(i => i.Item_Id == id);
+            if (_CurrentItemsDisplayed[id] != null)
+                return _CurrentItemsDisplayed[id];
+            else
+                throw new Exception("Item selected could not be found");
+
         }
 
-        void InitBaseListAttributes()
+        private void InitBaseListAttributes()
         {
             lVItems.Items.Clear();
             lVItems.Columns.Clear();
             lVItems.View = View.Details;
             lVItems.FullRowSelect = true;
 
-            lVItems.Columns.Add("ID");
-            lVItems.Columns.Add("Name", 124);
+            /*lVItems.Columns.Add("ID");*/
+            lVItems.Columns.Add("Name", 160);
             lVItems.Columns.Add("Price");
         }
+
+        private void UpdateListView()
+        {
+            lVItems.Clear();
+            lVItems.Items.Clear();
+            InitBaseListAttributes();
+            MenuType _CurrentType = GetListViewMenuType();
+
+            foreach (MenuItem item in _CurrentItemsDisplayed)
+            {
+                if(item is FoodItem)
+                {
+                    FoodItem _foodItem = (FoodItem)item;
+                    if (_foodItem.Item_MenuType == _CurrentType)
+                        AddFoodItemToList((FoodItem)item);
+                    else
+                    {
+                        /*if (_CurrentType == MenuType.Lunch_Dinner)
+                        {
+                            if (_foodItem.Item_MenuType == MenuType.Lunch || _foodItem.Item_MenuType == MenuType.Dinner)
+                                AddFoodItemToList(_foodItem);
+                        }*/
+                        /*else
+                            _CurrentItemsDisplayed.Remove(item);*/
+
+                    }
+                }
+                if(item is DrinkItem)
+                    AddDrinkItemToList((DrinkItem)item);
+            }
+        }
+
+        private void rbLunch_CheckedChanged(object sender, EventArgs e) => UpdateListView();
+
+        private void rbDinner_CheckedChanged(object sender, EventArgs e) => UpdateListView();
+
+        private void rbLunchDinner_CheckedChanged(object sender, EventArgs e) => UpdateListView();
     }
 }
