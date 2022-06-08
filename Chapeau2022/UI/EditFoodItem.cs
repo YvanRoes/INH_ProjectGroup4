@@ -29,8 +29,8 @@ namespace UI
             Start();
         }
 
-        public void Start() 
-        { 
+        public void Start()
+        {
             label2.Text = item.Item_Name.ToString();
             textBoxItemName.Text = item.Item_Name.ToString();
             textBoxPrice.Text = item.Item_Price.ToString();
@@ -39,12 +39,19 @@ namespace UI
 
             int CourseId = (int)Enum.Parse(typeof(CourseType), item.Item_CourseType.ToString());
 
-            if (CourseId == 0)
-                radioButton1.Select();
-            else if (CourseId == 1)
-                radioButton2.Select();
-            else if (CourseId == 2)
-                radioButton3.Select();
+            switch (CourseId)
+            {
+                case 0:
+                    radioButton1.Select();
+                    break;
+                case 1:
+                    radioButton2.Select();
+                    break;
+                case 2: 
+                    radioButton3.Select();
+                    break;
+            }
+        
 
             int MenuTypeId = (int)Enum.Parse(typeof(MenuType), item.Item_MenuType.ToString());
 

@@ -26,7 +26,7 @@ namespace UI
         }
         private void Start() 
         {
-            employees = employeeService.GetAllDrinkItems();
+            employees = employeeService.GetAllEmployees();
             FillListView();
         }
         public void FillListView() 
@@ -56,16 +56,34 @@ namespace UI
 
         private void bttnDeleteEmployee_Click(object sender, EventArgs e)
         {
-            employeeService.DeleteEmployee(int.Parse(listView1.SelectedItems[0].Text));
-            employees = employeeService.GetAllDrinkItems();
-            FillListView();
-
+            if (listView1.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you want to delete the item.", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    employeeService.DeleteEmployee(int.Parse(listView1.SelectedItems[0].Text));
+                    employees = employeeService.GetAllEmployees();
+                    FillListView();
+                }
+            }
+            else
+                MessageBox.Show("Please select an employee first.");
         }
 
         private void bttnEditEmployee_Click(object sender, EventArgs e)
         {
-            EditEmployee editEmployee = new EditEmployee(employeeService.GetEmployeeById(int.Parse(listView1.SelectedItems[0].Text)), this);
-            editEmployee.ShowDialog();
+            try
+            {
+                EditEmployee editEmployee = new EditEmployee(employeeService.GetEmployeeById(int.Parse(listView1.SelectedItems[0].Text)), this);
+                editEmployee.ShowDialog();
+            }
+            catch 
+            {
+                MessageBox.Show("Please select an employee you would like to edit first.");
+            }
+        }
+        public void ListViewClearSelected() 
+        {
+            listView1.SelectedItems.Clear();
         }
     }
 }

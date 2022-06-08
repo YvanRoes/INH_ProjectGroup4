@@ -27,23 +27,28 @@ namespace UI
             InitializeComponent();
             LoadEmployeeInformation();
         }
-        public void LoadEmployeeInformation() 
+        public void LoadEmployeeInformation()
         {
             textBoxEmployeeName.Text = employee.Employee_Name;
             textBoxPIN.Text = employee.Employee_Pin.ToString();
             textBoxSecretA.Text = employee.Employee_SecretAnwser;
             textBoxSecretQ.Text = employee.Employee_SecretQuestion.ToString();
             int radioIndex = (int)employee.Employee_Role;
-
-            if (radioIndex == 1)
-                radioButton1.Checked = true;
-            else if (radioIndex == 2)
-                radioButton2.Checked = true;
-            else if (radioIndex == 3)
-                radioButton3.Checked = true;
-            else
-                radioButton4.Checked = true;
-
+            switch (radioIndex)
+            {
+                case 1:
+                    radioButton1.Checked = true;
+                    break;
+                case 2:
+                    radioButton2.Checked = true;
+                    break;
+                case 3:
+                    radioButton3.Checked = true;
+                    break;
+                case 4:
+                    radioButton4.Checked = true;
+                    break;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,9 +69,13 @@ namespace UI
             };
 
             employeeService.UpdateEmployee(employee);
-            employeeView.employees = employeeService.GetAllDrinkItems();
-            employeeView.FillListView();
             this.Close();
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            employeeView.employees = employeeService.GetAllEmployees();
+            employeeView.ListViewClearSelected();
+            employeeView.FillListView();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace UI
             };
 
             employeeService.AddEmployee(employee);
-            employeeView.employees = employeeService.GetAllDrinkItems();
+            employeeView.employees = employeeService.GetAllEmployees();
             employeeView.FillListView();
             this.Close();
         }
