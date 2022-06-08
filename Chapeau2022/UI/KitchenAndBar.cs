@@ -20,11 +20,9 @@ namespace UI
         Employee employee;
         OrderDisplay orderDisplay;
         
-        public KitchenAndBar(Employee employee, INotifierObservable notifierObservable)
+        public KitchenAndBar(Employee employee)
         {
             InitializeComponent();
-
-            notifierObservable.AddObserver(this);
 
             this.employee = employee;
 

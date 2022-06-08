@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class OrderedItem 
+    public class OrderedItem
     {
         public MenuItem menuItem { get; set; }
 

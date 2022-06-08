@@ -14,6 +14,7 @@ namespace UI
     public partial class MainWindow : Form
     {
         Employee employee = new Employee();
+        KitchenAndBar KitchenAndBar;
 
         public MainWindow()
         {
@@ -23,7 +24,8 @@ namespace UI
 
         private void btnOrderView_Click(object sender, EventArgs e)
         {
-            new OrderForm(4, 1);
+            OrderForm orderForm = new OrderForm(4, 1);
+            orderForm.AddObserver(KitchenAndBar);
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
@@ -42,8 +44,8 @@ namespace UI
             employee.Employee_Role = EmployeeRole.chef;
 
             this.Hide();
-            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
-            kitchenAndBar.ShowDialog();
+            KitchenAndBar = new KitchenAndBar(employee);
+            KitchenAndBar.Show();
         }
 
         private void btnBarView_Click(object sender, EventArgs e)
@@ -51,8 +53,8 @@ namespace UI
             employee.Employee_Role = EmployeeRole.bartender;
 
             this.Hide();
-            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
-            kitchenAndBar.ShowDialog();
+            KitchenAndBar = new KitchenAndBar(employee);
+            KitchenAndBar.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
