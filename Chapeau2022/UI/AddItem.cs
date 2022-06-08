@@ -77,7 +77,7 @@ namespace UI
         }
         private void CreateFoodItem() 
         {
-            int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
+            /*int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
             int MenuType = tools.IndexOfRadioButton(radioButton6,radioButton3);
             int Id = foodService.GetLastId()+1;
             
@@ -91,7 +91,7 @@ namespace UI
                 Item_MenuType = (MenuType)MenuType,
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
-            foodService.AddItem(item);
+            foodService.AddItem(item);*/
         }
         private void CreateDrinkItem() 
         {

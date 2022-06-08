@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class KitchenAndBar : Form/*, INotifierObserver*/
+    public partial class KitchenAndBar : Form, INotifierObserver
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
@@ -23,7 +23,7 @@ namespace UI
         public KitchenAndBar(Employee employee)
         {
             InitializeComponent();
-
+            this.Show();
             this.employee = employee;
 
             if (employee.Employee_Role == EmployeeRole.bartender)
@@ -326,6 +326,11 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void UpdateKitchenAndBar()
+        {
+            Refresh();
         }
     }
 }
