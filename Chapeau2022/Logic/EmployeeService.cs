@@ -12,11 +12,17 @@ namespace Logic
     {
         EmployeeDao employeeDao;
         public EmployeeService() => employeeDao = new EmployeeDao();
-        public List<Employee> GetAllDrinkItems() => employeeDao.GetAllEmployees();
+        public List<Employee> GetAllEmployees() => employeeDao.GetAllEmployees();
         public int GetLastId() => employeeDao.GetLastId();
         public void AddEmployee(Employee employee) => employeeDao.AddEmployee(employee);
         public void DeleteEmployee(int Id) => employeeDao.DeleteEmployee(Id);
         public Employee GetEmployeeById(int Id) => employeeDao.GetEmployeeItemById(Id);
+        public List<Employee> GetByEmployeeName(string username)
+        {
+            return employeeDao.GetEmployeeByEmployeeName(username);
+        }
         public void UpdateEmployee(Employee employee) => employeeDao.UpdateEmployee(employee);
+
+
     }
 }

@@ -28,22 +28,37 @@ namespace UI
 
             if (employee.Employee_Role == EmployeeRole.bartender)
             {
-                lblKitchenAndBar.Text = "Bar";
-                lvOrders.Columns[3].Text = "Drink Type";
-                lvOrders.Columns[4].Text = "Drink Name";
-                DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
-                orderDisplay = OrderDisplay.Running;
+                Bartender();
             }
             else
             {
-                lblKitchenAndBar.Text = "Kitchen";
-                lvOrders.Columns[3].Text = "Food Type";
-                lvOrders.Columns[4].Text = "Food Name";
-                DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
-                orderDisplay = OrderDisplay.Running;
+                Cheff();
             }
 
             Timer();
+        }
+
+        private void Bartender()
+        {
+            lblKitchenAndBar.Text = "Bar";
+            lvOrders.Columns[3].Text = "Drink Type";
+            lvOrders.Columns[4].Text = "Drink Name";
+            lblReadyCourse.Hide();
+            chbxAppetizer.Hide();
+            chbxMain.Hide();
+            chbxDessert.Hide();
+            tbxTableNr.Location = new Point(600, 120);
+            DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
+            orderDisplay = OrderDisplay.Running;
+        }
+
+        private void Cheff()
+        {
+            lblKitchenAndBar.Text = "Kitchen";
+            lvOrders.Columns[3].Text = "Food Type";
+            lvOrders.Columns[4].Text = "Food Name";
+            DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+            orderDisplay = OrderDisplay.Running;
         }
 
         void Timer()
@@ -303,11 +318,6 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

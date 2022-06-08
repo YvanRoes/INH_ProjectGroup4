@@ -62,10 +62,9 @@
             this.statusHeader});
             this.lvOrders.FullRowSelect = true;
             this.lvOrders.HideSelection = false;
-            this.lvOrders.Location = new System.Drawing.Point(49, 221);
-            this.lvOrders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvOrders.Location = new System.Drawing.Point(43, 166);
             this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(821, 267);
+            this.lvOrders.Size = new System.Drawing.Size(719, 201);
             this.lvOrders.TabIndex = 5;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
             this.lvOrders.View = System.Windows.Forms.View.Details;
@@ -108,10 +107,9 @@
             // btnReady
             // 
             this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnReady.Location = new System.Drawing.Point(784, 497);
-            this.btnReady.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReady.Location = new System.Drawing.Point(686, 373);
             this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(86, 31);
+            this.btnReady.Size = new System.Drawing.Size(75, 23);
             this.btnReady.TabIndex = 9;
             this.btnReady.Text = "ready";
             this.btnReady.UseVisualStyleBackColor = false;
@@ -121,9 +119,9 @@
             // 
             this.lblKitchenAndBar.AutoSize = true;
             this.lblKitchenAndBar.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblKitchenAndBar.Location = new System.Drawing.Point(49, 33);
+            this.lblKitchenAndBar.Location = new System.Drawing.Point(43, 25);
             this.lblKitchenAndBar.Name = "lblKitchenAndBar";
-            this.lblKitchenAndBar.Size = new System.Drawing.Size(354, 60);
+            this.lblKitchenAndBar.Size = new System.Drawing.Size(281, 47);
             this.lblKitchenAndBar.TabIndex = 8;
             this.lblKitchenAndBar.Text = "Kitchen/Bar View";
             // 
@@ -131,9 +129,10 @@
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Red;
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(776, 61);
+            this.btnLogout.Location = new System.Drawing.Point(679, 46);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 35);
+            this.btnLogout.Size = new System.Drawing.Size(82, 26);
             this.btnLogout.TabIndex = 10;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -142,10 +141,9 @@
             // btnFinished
             // 
             this.btnFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnFinished.Location = new System.Drawing.Point(143, 159);
-            this.btnFinished.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnFinished.Location = new System.Drawing.Point(125, 119);
             this.btnFinished.Name = "btnFinished";
-            this.btnFinished.Size = new System.Drawing.Size(77, 31);
+            this.btnFinished.Size = new System.Drawing.Size(67, 23);
             this.btnFinished.TabIndex = 11;
             this.btnFinished.Text = "finished";
             this.btnFinished.UseVisualStyleBackColor = false;
@@ -154,10 +152,9 @@
             // btnRunning
             // 
             this.btnRunning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRunning.Location = new System.Drawing.Point(49, 159);
-            this.btnRunning.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRunning.Location = new System.Drawing.Point(43, 119);
             this.btnRunning.Name = "btnRunning";
-            this.btnRunning.Size = new System.Drawing.Size(77, 31);
+            this.btnRunning.Size = new System.Drawing.Size(67, 23);
             this.btnRunning.TabIndex = 12;
             this.btnRunning.Text = "running";
             this.btnRunning.UseVisualStyleBackColor = false;
@@ -167,28 +164,26 @@
             // 
             this.btnTabelNr.AutoSize = true;
             this.btnTabelNr.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTabelNr.Location = new System.Drawing.Point(314, 131);
+            this.btnTabelNr.Location = new System.Drawing.Point(275, 98);
             this.btnTabelNr.Name = "btnTabelNr";
-            this.btnTabelNr.Size = new System.Drawing.Size(179, 20);
+            this.btnTabelNr.Size = new System.Drawing.Size(140, 15);
             this.btnTabelNr.TabIndex = 13;
             this.btnTabelNr.Text = "Choose ready table No. :";
             // 
             // tbxTableNr
             // 
-            this.tbxTableNr.Location = new System.Drawing.Point(433, 159);
-            this.tbxTableNr.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbxTableNr.Location = new System.Drawing.Point(379, 119);
             this.tbxTableNr.Name = "tbxTableNr";
-            this.tbxTableNr.Size = new System.Drawing.Size(36, 27);
+            this.tbxTableNr.Size = new System.Drawing.Size(32, 23);
             this.tbxTableNr.TabIndex = 14;
-            this.tbxTableNr.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(49, 131);
+            this.label1.Location = new System.Drawing.Point(43, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 20);
+            this.label1.Size = new System.Drawing.Size(149, 15);
             this.label1.TabIndex = 18;
             this.label1.Text = "Choose displaying orders :";
             // 
@@ -196,18 +191,19 @@
             // 
             this.lblReadyCourse.AutoSize = true;
             this.lblReadyCourse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblReadyCourse.Location = new System.Drawing.Point(504, 131);
+            this.lblReadyCourse.Location = new System.Drawing.Point(441, 98);
             this.lblReadyCourse.Name = "lblReadyCourse";
-            this.lblReadyCourse.Size = new System.Drawing.Size(161, 20);
+            this.lblReadyCourse.Size = new System.Drawing.Size(127, 15);
             this.lblReadyCourse.TabIndex = 19;
             this.lblReadyCourse.Text = "Choose ready course :";
             // 
             // chbxAppetizer
             // 
             this.chbxAppetizer.AutoSize = true;
-            this.chbxAppetizer.Location = new System.Drawing.Point(504, 162);
+            this.chbxAppetizer.Location = new System.Drawing.Point(441, 122);
+            this.chbxAppetizer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxAppetizer.Name = "chbxAppetizer";
-            this.chbxAppetizer.Size = new System.Drawing.Size(96, 24);
+            this.chbxAppetizer.Size = new System.Drawing.Size(76, 19);
             this.chbxAppetizer.TabIndex = 21;
             this.chbxAppetizer.Text = "Appetizer";
             this.chbxAppetizer.UseVisualStyleBackColor = true;
@@ -215,9 +211,10 @@
             // chbxMain
             // 
             this.chbxMain.AutoSize = true;
-            this.chbxMain.Location = new System.Drawing.Point(601, 162);
+            this.chbxMain.Location = new System.Drawing.Point(523, 121);
+            this.chbxMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxMain.Name = "chbxMain";
-            this.chbxMain.Size = new System.Drawing.Size(64, 24);
+            this.chbxMain.Size = new System.Drawing.Size(53, 19);
             this.chbxMain.TabIndex = 22;
             this.chbxMain.Text = "Main";
             this.chbxMain.UseVisualStyleBackColor = true;
@@ -225,18 +222,19 @@
             // chbxDessert
             // 
             this.chbxDessert.AutoSize = true;
-            this.chbxDessert.Location = new System.Drawing.Point(681, 163);
+            this.chbxDessert.Location = new System.Drawing.Point(596, 122);
+            this.chbxDessert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxDessert.Name = "chbxDessert";
-            this.chbxDessert.Size = new System.Drawing.Size(80, 24);
+            this.chbxDessert.Size = new System.Drawing.Size(64, 19);
             this.chbxDessert.TabIndex = 23;
             this.chbxDessert.Text = "Dessert";
             this.chbxDessert.UseVisualStyleBackColor = true;
             // 
             // KitchenAndBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 588);
+            this.ClientSize = new System.Drawing.Size(805, 441);
             this.Controls.Add(this.chbxDessert);
             this.Controls.Add(this.chbxMain);
             this.Controls.Add(this.chbxAppetizer);
@@ -250,6 +248,7 @@
             this.Controls.Add(this.lvOrders);
             this.Controls.Add(this.btnReady);
             this.Controls.Add(this.lblKitchenAndBar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "KitchenAndBar";
             this.Text = "KitchenAndBar";
             this.ResumeLayout(false);

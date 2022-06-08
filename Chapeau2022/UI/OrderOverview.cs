@@ -63,13 +63,6 @@ namespace UI
             }
         }
 
-        void RemoveEmptyItems()
-        {
-            foreach(OrderedItem item in _order.menuItems)
-                if(item._itemOrdered_Qty <= 0)
-                    _order.RemoveItem(item);
-        }
-
         private void btnClear_Click(object sender, EventArgs e) { _order.menuItems.Clear(); UpdateListView(); }
 
         private void btnFinish_Click(object sender, EventArgs e)
@@ -78,6 +71,10 @@ namespace UI
             {
                 OrderService _orderService = OrderService.GetInstance();
                 _orderService.SendOrderToDatabase(_order);
+                MessageBox.Show($"Order {_order.Order_Id} has been placed");
+                //close order form
+                OrderForm obj = (OrderForm)Application.OpenForms["OrderForm"];
+                obj.Close();
             }
             else
                 MessageBox.Show("The order you are trying to sumbit is empty");

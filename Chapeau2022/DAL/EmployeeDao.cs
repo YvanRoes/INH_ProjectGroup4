@@ -72,10 +72,10 @@ namespace DAL
             {
                 Employee employee = new Employee()
                 {
-                    Employee_Role = (EmployeeRole)dr["employee_StaffRole"],
+                    Employee_Role = (EmployeeRole)int.Parse((string)dr["employee_StaffRole"]),
                     Employee_Id = (int)dr["employee_Id"],
                     Employee_Name = (string)dr["employee_Name"],
-                    Employee_Pin = (int)dr["password"],
+                    Employee_Pin = BitConverter.ToInt32((Byte[])dr["password"]),
                     Employee_SecretQuestion = (string)dr["secret_question"],
                     Employee_SecretAnwser = (string)dr["secret_answer"],
                 };
@@ -89,5 +89,32 @@ namespace DAL
 
             return i;
         }
+        public List<Employee> GetEmployeeByEmployeeName(string username) //will be used for logging in
+        {
+            string query = "select E.employee_Id, E.employee_Name, E.employee_StaffRole, E.[password], E.secret_question, E.secret_answer, E.Salt from EMPLOYEE as E where E.employee_Name = @EmployeeName";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@EmployeeName", username);
+            return ReadTables2(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<Employee> ReadTables2(DataTable dataTable)
+        {
+            List<Employee> employees = new List<Employee>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Employee employee = new Employee()
+                {
+                    Employee_Role = (EmployeeRole)int.Parse((string)dr["employee_StaffRole"]),
+                    Employee_Id = (int)dr["employee_Id"],
+                    Employee_Name = (string)dr["employee_Name"],
+                    Password = BitConverter.ToString((Byte[])dr["password"]),
+                    Employee_SecretQuestion = (string)dr["secret_question"],
+                    Employee_SecretAnwser = (string)dr["secret_answer"],
+                };
+                employees.Add(employee);
+            }
+            return employees;
+        }
+
     }
 }

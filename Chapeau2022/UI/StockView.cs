@@ -109,25 +109,25 @@ namespace UI
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete the item.","", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (listView1.SelectedItems.Count > 0)
             {
-                if (IsDisplayingFood)
+                if (MessageBox.Show("Are you sure you want to delete the item.", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    try
+                    if (IsDisplayingFood)
                     {
+
                         _foodService.DeleteItem(int.Parse(listView1.SelectedItems[0].Text));
                         FoodStock();
-
                     }
-                    catch { MessageBox.Show("Please select the item you would like to delete."); }
-                }
-                else
-                {
-                    _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
-
-                    DrinkStock();
+                    else
+                    {
+                        _drinkService.DeleteDrink(int.Parse(listView1.SelectedItems[0].Text));
+                        DrinkStock();
+                    }
                 }
             }
+            else
+                MessageBox.Show("Please select an item first.");
         }
         private void button5_Click(object sender, EventArgs e)
         {

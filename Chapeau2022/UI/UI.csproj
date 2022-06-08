@@ -8,13 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj" />
-    <ProjectReference Include="..\Logic\Logic.csproj" />
-    <ProjectReference Include="..\Model\Model.csproj" />
+    <Compile Remove="EmployeeView\**" />
+    <EmbeddedResource Remove="EmployeeView\**" />
+    <None Remove="EmployeeView\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EmployeeView\" />
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\Logic\Logic.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>

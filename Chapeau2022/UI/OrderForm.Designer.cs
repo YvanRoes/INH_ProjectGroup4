@@ -34,15 +34,20 @@
             this.btnMain = new System.Windows.Forms.Button();
             this.btnDessert = new System.Windows.Forms.Button();
             this.btnOverview = new System.Windows.Forms.Button();
+            this.gBLunchDinner = new System.Windows.Forms.GroupBox();
+            this.rbLunchDinner = new System.Windows.Forms.RadioButton();
+            this.rbDinner = new System.Windows.Forms.RadioButton();
+            this.rbLunch = new System.Windows.Forms.RadioButton();
+            this.gBLunchDinner.SuspendLayout();
             this.SuspendLayout();
             // 
             // lVItems
             // 
             this.lVItems.BackColor = System.Drawing.Color.White;
             this.lVItems.HideSelection = false;
-            this.lVItems.Location = new System.Drawing.Point(12, 12);
+            this.lVItems.Location = new System.Drawing.Point(12, 64);
             this.lVItems.Name = "lVItems";
-            this.lVItems.Size = new System.Drawing.Size(318, 351);
+            this.lVItems.Size = new System.Drawing.Size(318, 299);
             this.lVItems.TabIndex = 0;
             this.lVItems.UseCompatibleStateImageBehavior = false;
             this.lVItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lVItems_MouseDoubleClick);
@@ -97,11 +102,60 @@
             this.btnOverview.UseVisualStyleBackColor = true;
             this.btnOverview.Click += new System.EventHandler(this.btnOverview_Click);
             // 
+            // gBLunchDinner
+            // 
+            this.gBLunchDinner.Controls.Add(this.rbLunchDinner);
+            this.gBLunchDinner.Controls.Add(this.rbDinner);
+            this.gBLunchDinner.Controls.Add(this.rbLunch);
+            this.gBLunchDinner.Location = new System.Drawing.Point(12, 12);
+            this.gBLunchDinner.Name = "gBLunchDinner";
+            this.gBLunchDinner.Size = new System.Drawing.Size(258, 46);
+            this.gBLunchDinner.TabIndex = 8;
+            this.gBLunchDinner.TabStop = false;
+            this.gBLunchDinner.Text = "Menu";
+            // 
+            // rbLunchDinner
+            // 
+            this.rbLunchDinner.AutoSize = true;
+            this.rbLunchDinner.Location = new System.Drawing.Point(136, 21);
+            this.rbLunchDinner.Name = "rbLunchDinner";
+            this.rbLunchDinner.Size = new System.Drawing.Size(119, 19);
+            this.rbLunchDinner.TabIndex = 2;
+            this.rbLunchDinner.TabStop = true;
+            this.rbLunchDinner.Text = "Lunch and Dinner";
+            this.rbLunchDinner.UseVisualStyleBackColor = true;
+            this.rbLunchDinner.CheckedChanged += new System.EventHandler(this.rbLunchDinner_CheckedChanged);
+            // 
+            // rbDinner
+            // 
+            this.rbDinner.AutoSize = true;
+            this.rbDinner.Location = new System.Drawing.Point(70, 21);
+            this.rbDinner.Name = "rbDinner";
+            this.rbDinner.Size = new System.Drawing.Size(60, 19);
+            this.rbDinner.TabIndex = 1;
+            this.rbDinner.TabStop = true;
+            this.rbDinner.Text = "Dinner";
+            this.rbDinner.UseVisualStyleBackColor = true;
+            this.rbDinner.CheckedChanged += new System.EventHandler(this.rbDinner_CheckedChanged);
+            // 
+            // rbLunch
+            // 
+            this.rbLunch.AutoSize = true;
+            this.rbLunch.Location = new System.Drawing.Point(6, 21);
+            this.rbLunch.Name = "rbLunch";
+            this.rbLunch.Size = new System.Drawing.Size(58, 19);
+            this.rbLunch.TabIndex = 0;
+            this.rbLunch.TabStop = true;
+            this.rbLunch.Text = "Lunch";
+            this.rbLunch.UseVisualStyleBackColor = true;
+            this.rbLunch.CheckedChanged += new System.EventHandler(this.rbLunch_CheckedChanged);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(342, 461);
+            this.Controls.Add(this.gBLunchDinner);
             this.Controls.Add(this.btnOverview);
             this.Controls.Add(this.btnDessert);
             this.Controls.Add(this.btnMain);
@@ -110,6 +164,8 @@
             this.Controls.Add(this.lVItems);
             this.Name = "OrderForm";
             this.Text = "Form1";
+            this.gBLunchDinner.ResumeLayout(false);
+            this.gBLunchDinner.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -122,5 +178,9 @@
         private System.Windows.Forms.Button btnMain;
         private System.Windows.Forms.Button btnDessert;
         private System.Windows.Forms.Button btnOverview;
+        private System.Windows.Forms.GroupBox gBLunchDinner;
+        private System.Windows.Forms.RadioButton rbDinner;
+        private System.Windows.Forms.RadioButton rbLunch;
+        private System.Windows.Forms.RadioButton rbLunchDinner;
     }
 }

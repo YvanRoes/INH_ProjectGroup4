@@ -60,5 +60,16 @@ namespace UI
             EmployeeView employeeView = new EmployeeView();
             employeeView.Show();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            new Login();
+        }
+
+        private void btnTableView_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new TableView();
+        }
     }
 }
