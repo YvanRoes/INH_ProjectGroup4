@@ -35,7 +35,6 @@
             this.btnDessert = new System.Windows.Forms.Button();
             this.btnOverview = new System.Windows.Forms.Button();
             this.gBLunchDinner = new System.Windows.Forms.GroupBox();
-            this.rbLunchDinner = new System.Windows.Forms.RadioButton();
             this.rbDinner = new System.Windows.Forms.RadioButton();
             this.rbLunch = new System.Windows.Forms.RadioButton();
             this.gBLunchDinner.SuspendLayout();
@@ -104,27 +103,14 @@
             // 
             // gBLunchDinner
             // 
-            this.gBLunchDinner.Controls.Add(this.rbLunchDinner);
             this.gBLunchDinner.Controls.Add(this.rbDinner);
             this.gBLunchDinner.Controls.Add(this.rbLunch);
             this.gBLunchDinner.Location = new System.Drawing.Point(12, 12);
             this.gBLunchDinner.Name = "gBLunchDinner";
-            this.gBLunchDinner.Size = new System.Drawing.Size(258, 46);
+            this.gBLunchDinner.Size = new System.Drawing.Size(156, 46);
             this.gBLunchDinner.TabIndex = 8;
             this.gBLunchDinner.TabStop = false;
             this.gBLunchDinner.Text = "Menu";
-            // 
-            // rbLunchDinner
-            // 
-            this.rbLunchDinner.AutoSize = true;
-            this.rbLunchDinner.Location = new System.Drawing.Point(136, 21);
-            this.rbLunchDinner.Name = "rbLunchDinner";
-            this.rbLunchDinner.Size = new System.Drawing.Size(119, 19);
-            this.rbLunchDinner.TabIndex = 2;
-            this.rbLunchDinner.TabStop = true;
-            this.rbLunchDinner.Text = "Lunch and Dinner";
-            this.rbLunchDinner.UseVisualStyleBackColor = true;
-            this.rbLunchDinner.CheckedChanged += new System.EventHandler(this.rbLunchDinner_CheckedChanged);
             // 
             // rbDinner
             // 
@@ -181,6 +167,5 @@
         private System.Windows.Forms.GroupBox gBLunchDinner;
         private System.Windows.Forms.RadioButton rbDinner;
         private System.Windows.Forms.RadioButton rbLunch;
-        private System.Windows.Forms.RadioButton rbLunchDinner;
     }
 }

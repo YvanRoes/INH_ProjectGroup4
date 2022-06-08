@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum MenuType 
-    { 
-        Lunch, Dinner, Unknown
+    public interface IOrderObserver
+    {
+        void Update(Order order);
     }
 }

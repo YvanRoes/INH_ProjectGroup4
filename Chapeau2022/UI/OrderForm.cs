@@ -12,9 +12,9 @@ using Model;
 
 namespace UI
 {
-    public partial class OrderForm : Form, IObservable
+    public partial class OrderForm : Form, IOrderObservable
     {
-        List<IObserver> _observers;
+        List<IOrderObserver> _observers;
         Order _order;
         List<MenuItem> _CurrentItemsDisplayed;
 
@@ -31,7 +31,7 @@ namespace UI
             
             OrderService _orderService = OrderService.GetInstance();
 
-            _observers = new List<IObserver>();
+            _observers = new List<IOrderObserver>();
             _order = new Order(employee, table);
             _order.Order_Id = _orderService.GetNewOrderId();
 
@@ -167,8 +167,6 @@ namespace UI
                 type = MenuType.Lunch;
             else if (rbDinner.Checked)
                 type = MenuType.Dinner;
-            else if (rbLunchDinner.Checked)
-                type = MenuType.Lunch_Dinner;
             else
                 type = MenuType.Unknown;
             return type;
@@ -184,13 +182,13 @@ namespace UI
         //observers
         public void NotifyObservers()
         {
-            foreach (IObserver obs in _observers)
+            foreach (IOrderObserver obs in _observers)
                 obs.Update(_order);
         }
 
-        public void AddObserver(IObserver observer) => _observers.Add(observer);
+        public void AddObserver(IOrderObserver observer) => _observers.Add(observer);
 
-        public void RemoveObserver(IObserver observer) => _observers.Remove(observer);
+        public void RemoveObserver(IOrderObserver observer) => _observers.Remove(observer);
 
         //list interaction
 

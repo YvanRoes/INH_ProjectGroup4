@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public interface IObserver
+    public interface INotifierObserver
     {
-        void Update(Order order);
+        void Update();
     }
 }

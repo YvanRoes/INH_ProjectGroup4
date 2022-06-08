@@ -12,16 +12,19 @@ using Logic;
 
 namespace UI
 {
-    public partial class OrderOverview : Form, IObserver
+    public partial class OrderOverview : Form, IOrderObserver, INotifierObservable
     {
-        IObservable _observable;
+        IOrderObservable _observable;
         Order _order;
 
-        public OrderOverview(IObservable observable, Order order)
+        //observers to update kitchen and stock accordingly
+        List<INotifierObserver> _observers = new List<INotifierObserver>();
+
+        public OrderOverview(IOrderObservable observable, Order order)
         {
             InitializeComponent();
             _observable = observable;
-            _observable.AddObserver((IObserver)this);
+            _observable.AddObserver((IOrderObserver)this);
             _order = order;
             lblOrder_Id.Text = _order.Order_Id.ToString();
 
@@ -29,13 +32,7 @@ namespace UI
                 UpdateListView();
         }
 
-        public void Update(Order order)
-        {
-            _order = order;
-            UpdateListView();
-            
-        }
-
+        //Listview
         void InitBaseListAttributes()
         {
             lvOrder.Items.Clear();
@@ -63,6 +60,7 @@ namespace UI
             }
         }
 
+        //Call to action
         private void btnClear_Click(object sender, EventArgs e) { _order.menuItems.Clear(); UpdateListView(); }
 
         private void btnFinish_Click(object sender, EventArgs e)
@@ -72,6 +70,9 @@ namespace UI
                 OrderService _orderService = OrderService.GetInstance();
                 _orderService.SendOrderToDatabase(_order);
                 MessageBox.Show($"Order {_order.Order_Id} has been placed");
+                //Notify kitchen and stock accordingly
+                NotifyObservers();
+
                 //close order form
                 OrderForm obj = (OrderForm)Application.OpenForms["OrderForm"];
                 obj.Close();
@@ -80,6 +81,25 @@ namespace UI
                 MessageBox.Show("The order you are trying to sumbit is empty");
 
 
+        }
+
+        //IOrderObserver
+        public void Update(Order order)
+        {
+            _order = order;
+            UpdateListView();
+
+        }
+
+        //INotifierObservable
+        public void AddObserver(INotifierObserver observer) => _observers.Add(observer);
+
+        public void RemoveObserver(INotifierObserver observer) => _observers.Remove(observer);
+
+        void NotifyObservers()
+        {
+            foreach (var observer in _observers)
+                observer.Update();
         }
     }
 }

@@ -16,9 +16,9 @@ namespace UI
         MenuItem _menuItem;
         Order _order;
         int _Qty = 1;
-        List<IObserver> _observers;
+        List<IOrderObserver> _observers;
 
-        public PopupAddToOrder(MenuItem item, Order order, List<IObserver> _observers)
+        public PopupAddToOrder(MenuItem item, Order order, List<IOrderObserver> _observers)
         {
             this._order = order;
             this._observers = _observers;
@@ -66,7 +66,7 @@ namespace UI
 
         public void NotifyObservers()
         {
-            foreach(IObserver obs in _observers)
+            foreach(IOrderObserver obs in _observers)
                 obs.Update(_order);
         }
 
