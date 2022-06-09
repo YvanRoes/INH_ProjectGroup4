@@ -12,7 +12,7 @@ using Model;
 
 namespace UI
 {
-    public partial class OrderForm : Form, IOrderObserver
+    public partial class OrderForm : Form, IOrderObserver, INotifierObservable
     {
         List<INotifierObserver> _observers;
 
@@ -25,17 +25,20 @@ namespace UI
         {
             InitializeComponent();
             Show();
-            Start(employeeId, table_Id);
             this.Size = new Size(375, 500);
-        }
 
-        void Start(int table, int employee)
-        {
+            //init globals
             _CurrentItemsDisplayed = new List<MenuItem>();
             _observers = new List<INotifierObserver>();
+            _order = new Order(table_Id, employeeId);
+
+            Start();
             
+        }
+
+        void Start()
+        {   
             OrderService _orderService = OrderService.GetInstance();
-            _order = new Order(employee, table);
             _order.Order_Id = _orderService.GetNewOrderId();
 
             rbLunch.Checked = true;
@@ -47,11 +50,15 @@ namespace UI
                 btnDrinks_Click(null, null);
         }
 
-        //on button click return only drinks + drink attributes
-        private void btnDrinks_Click(object sender, EventArgs e)
+
+        //order categories
+        private void btnDrinks_Click(object? sender, EventArgs? e)
         {
             //listview columns
             InitBaseListAttributes();
+            lVOrder.Columns.Add("Alcoholic", 70);
+            gBLunchDinner.Enabled = false;
+
 
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
@@ -71,17 +78,19 @@ namespace UI
                     
                     string[] tempItem = {_drinkItem.Item_Name, _drinkItem.Item_Price.ToString(), alc };
                     ListViewItem lvi = new ListViewItem(tempItem);
-                    lVItems.Items.Add(lvi);
+                    lVOrder.Items.Add(lvi);
                 }
             }
         }
 
-        private void btnAppetizers_Click(object sender, EventArgs e) => DisplayCourseInList(CourseType.Appetizer);
+        private void btnAppetizers_Click(object? sender, EventArgs? e) => DisplayCourseInList(CourseType.Appetizer);
 
-        private void btnMain_Click(object sender, EventArgs e) => DisplayCourseInList(CourseType.Main);
+        private void btnMain_Click(object? sender, EventArgs? e) => DisplayCourseInList(CourseType.Main);
 
-        private void btnDessert_Click(object sender, EventArgs e) => DisplayCourseInList(CourseType.Dessert);
+        private void btnDessert_Click(object? sender, EventArgs? e) => DisplayCourseInList(CourseType.Dessert);
 
+
+        //display functions
         private void AddFoodItemToCurrentItems(MenuItem item, CourseType type)
         {
             if (item is FoodItem)
@@ -110,106 +119,61 @@ namespace UI
             InitBaseListAttributes();
             _CurrentItemsDisplayed.Clear();
             _CurrentcourseType = courseType;
+            gBLunchDinner.Enabled = true;
 
             foreach (MenuItem item in menuItems)
                 AddFoodItemToCurrentItems(item, _CurrentcourseType);
             UpdateListViewItems();
         }
+
         private void AddFoodItemToList(FoodItem Item)
         {
             string[] tempItem = { Item.Item_Name, Item.Item_Price.ToString() };
             ListViewItem lvi = new ListViewItem(tempItem);
-            lVItems.Items.Add(lvi);
-        }
-
-        private void AddDrinkItemToList(DrinkItem Item)
-        {
-            string alc = "";
-            if (Item.Item_DrinkType == DrinkType.Alcoholic)
-                alc = "yes";
-
-            string[] tempItem = { Item.Item_Name, Item.Item_Price.ToString(), alc };
-            ListViewItem lvi = new ListViewItem(tempItem);
-            lVItems.Items.Add(lvi);
-        }
-
-        private MenuType GetListViewMenuType()
-        {
-            MenuType type;
-            if (rbLunch.Checked)
-                type = MenuType.Lunch;
-            else if (rbDinner.Checked)
-                type = MenuType.Dinner;
-            else
-                type = MenuType.Unknown;
-            return type;
+            lVOrder.Items.Add(lvi);
         }
 
 
-        //observers
-        public void NotifyObservers()
+        //list interaction OrderPanel
+        private void InitBaseListAttributes()
         {
-            foreach (IOrderObserver obs in _observers)
-                obs.Update(_order);
+            lVOrder.Items.Clear();
+            lVOrder.Columns.Clear();
+            lVOrder.View = View.Details;
+            lVOrder.FullRowSelect = true;
+
+            /*lVItems.Columns.Add("ID");*/
+            lVOrder.Columns.Add("Name", 160);
+            lVOrder.Columns.Add("Price");
         }
 
-        public void AddObserver(INotifierObserver observer) => _observers.Add(observer);
-
-        public void RemoveObserver(INotifierObserver observer) => _observers.Remove(observer);
-
-        //list interaction
-
-        private void lVItems_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void lVOrder_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ListViewHitTestInfo info = lVItems.HitTest(e.X, e.Y);
+            ListViewHitTestInfo info = lVOrder.HitTest(e.X, e.Y);
             ListViewItem item = info.Item;
 
             if (item != null)
             {
-                MenuItem _item = GetItemFromList();
+                MenuItem _item = GetItemFromOrderList();
                 PopupAddToOrder popup = new PopupAddToOrder(_item, _order, this);
                 popup.ShowDialog();
             }
             else
             {
-                this.lVItems.SelectedItems.Clear();
+                this.lVOrder.SelectedItems.Clear();
                 MessageBox.Show("No Item is selected");
             }
         }
 
-        private MenuItem GetItemFromList()
+        private MenuItem GetItemFromOrderList()
          {
-            int id = lVItems.FocusedItem.Index;
+            int id = lVOrder.FocusedItem.Index;
             MenuItemService _service = MenuItemService.GetInstance();
             if (_CurrentItemsDisplayed[id] != null)
                 return _CurrentItemsDisplayed[id];
             else
                 throw new Exception("Item selected could not be found");
 
-        }
-
-        private void InitBaseListAttributes()
-        {
-            lVItems.Items.Clear();
-            lVItems.Columns.Clear();
-            lVItems.View = View.Details;
-            lVItems.FullRowSelect = true;
-
-            /*lVItems.Columns.Add("ID");*/
-            lVItems.Columns.Add("Name", 160);
-            lVItems.Columns.Add("Price");
-        }
-
-        private void rbLunch_CheckedChanged(object sender, EventArgs e)
-        {
-            _CurrentmenuType = MenuType.Lunch;
-            UpdateCourseList();
-        }
-
-        private void rbDinner_CheckedChanged(object sender, EventArgs e)
-        {
-            _CurrentmenuType = MenuType.Dinner;
-            UpdateCourseList();
         }
 
         private void UpdateCourseList()
@@ -230,38 +194,50 @@ namespace UI
 
         }
 
-        private void makeTheOrderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Size = new Size(375, 500);
-            pnlOrder.Show();
-            pnlOverview.Hide();
-            pnlOrder.Dock = DockStyle.Fill;
-        }
 
-        private void orderOverviewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Size = new Size(425, 650);
-            pnlOverview.Show();
-            pnlOrder.Hide();
-            pnlOverview.Dock = DockStyle.Fill;
-            InitBaseListAttributesOverview();
-            UpdateListViewOverview();
-        }
-
-
+        //list interaction OverviewPanel
         void InitBaseListAttributesOverview()
         {
-            lvOrder.Items.Clear();
-            lvOrder.Columns.Clear();
-            lvOrder.View = View.Details;
-            lvOrder.FullRowSelect = true;
+            lVOverview.Items.Clear();
+            lVOverview.Columns.Clear();
+            lVOverview.View = View.Details;
+            lVOverview.FullRowSelect = true;
 
-            lvOrder.Columns.Add("ID");
-            lvOrder.Columns.Add("Name", 100);
-            lvOrder.Columns.Add("Price");
-            lvOrder.Columns.Add("Qty.");
-            lvOrder.Columns.Add("Comments", 100);
+            lVOverview.Columns.Add("ID");
+            lVOverview.Columns.Add("Name", 100);
+            lVOverview.Columns.Add("Price");
+            lVOverview.Columns.Add("Qty.");
+            lVOverview.Columns.Add("Comments", 100);
 
+        }
+
+        private void lvOverview_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ListViewHitTestInfo info = lVOverview.HitTest(e.X, e.Y);
+            ListViewItem item = info.Item;
+
+            if (item != null)
+            {
+                OrderedItem _item = GetItemFromOverviewList();
+                PopupEditOrderedItem popup = new PopupEditOrderedItem(_item, _order, this);
+                popup.ShowDialog();
+            }
+            else
+            {
+                this.lVOrder.SelectedItems.Clear();
+                MessageBox.Show("No Item is selected");
+            }
+        }
+
+        private OrderedItem GetItemFromOverviewList()
+        {
+            int id = lVOverview.FocusedItem.Index;
+            MenuItemService _service = MenuItemService.GetInstance();
+
+            if (_order.menuItems[id] != null)
+                return _order.menuItems[id];
+            else
+                throw new Exception("Item selected could not be found");
         }
 
         void UpdateListViewOverview()
@@ -269,12 +245,15 @@ namespace UI
             InitBaseListAttributes();
             foreach (OrderedItem item in _order.menuItems)
             {
-                string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, item.menuItem.Item_Price.ToString(), item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
-                ListViewItem listViewItem = new ListViewItem(it);
-                lvOrder.Items.Add(listViewItem);
-
+                if(item._itemOrdered_Qty > 0)
+                {
+                    string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, item.menuItem.Item_Price.ToString(), item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
+                    ListViewItem listViewItem = new ListViewItem(it);
+                    lVOverview.Items.Add(listViewItem);
+                }
             }
         }
+
 
         //Call to action
         private void btnClear_Click(object sender, EventArgs e) { _order.menuItems.Clear(); UpdateListViewOverview(); }
@@ -298,9 +277,49 @@ namespace UI
 
         }
 
-        public void Update(Order order)
+        private void makeTheOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(375, 500);
+            pnlOrder.Show();
+            pnlOverview.Hide();
+            pnlOrder.Dock = DockStyle.Fill;
+        }
+
+        private void orderOverviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(425, 650);
+            pnlOverview.Show();
+            pnlOrder.Hide();
+            pnlOverview.Dock = DockStyle.Fill;
+            InitBaseListAttributesOverview();
             UpdateListViewOverview();
         }
+
+        private void rbLunch_CheckedChanged(object sender, EventArgs e)
+        {
+            _CurrentmenuType = MenuType.Lunch;
+            UpdateCourseList();
+        }
+
+        private void rbDinner_CheckedChanged(object sender, EventArgs e)
+        {
+            _CurrentmenuType = MenuType.Dinner;
+            UpdateCourseList();
+        }
+
+        public void Update(Order order) => UpdateListViewOverview();
+
+
+        //observers
+        public void NotifyObservers()
+        {
+            foreach (INotifierObserver obs in _observers)
+                obs.UpdateKitchenAndBar();
+        }
+
+        public void AddObserver(INotifierObserver observer) => _observers.Add(observer);
+
+        public void RemoveObserver(INotifierObserver observer) => _observers.Remove(observer);
+
     }
 }

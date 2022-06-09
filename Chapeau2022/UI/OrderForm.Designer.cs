@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lVItems = new System.Windows.Forms.ListView();
+            this.lVOrder = new System.Windows.Forms.ListView();
             this.btnDrinks = new System.Windows.Forms.Button();
             this.btnAppetizers = new System.Windows.Forms.Button();
             this.btnMain = new System.Windows.Forms.Button();
@@ -44,26 +44,25 @@
             this.pnlOverview = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFinish = new System.Windows.Forms.Button();
-            this.btnDetails = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblOrder_Id = new System.Windows.Forms.Label();
-            this.lvOrder = new System.Windows.Forms.ListView();
+            this.lVOverview = new System.Windows.Forms.ListView();
             this.gBLunchDinner.SuspendLayout();
             this.pnlOrder.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.pnlOverview.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lVItems
+            // lVOrder
             // 
-            this.lVItems.BackColor = System.Drawing.Color.White;
-            this.lVItems.HideSelection = false;
-            this.lVItems.Location = new System.Drawing.Point(18, 83);
-            this.lVItems.Name = "lVItems";
-            this.lVItems.Size = new System.Drawing.Size(320, 300);
-            this.lVItems.TabIndex = 0;
-            this.lVItems.UseCompatibleStateImageBehavior = false;
-            this.lVItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lVItems_MouseDoubleClick);
+            this.lVOrder.BackColor = System.Drawing.Color.White;
+            this.lVOrder.HideSelection = false;
+            this.lVOrder.Location = new System.Drawing.Point(18, 83);
+            this.lVOrder.Name = "lVOrder";
+            this.lVOrder.Size = new System.Drawing.Size(320, 300);
+            this.lVOrder.TabIndex = 0;
+            this.lVOrder.UseCompatibleStateImageBehavior = false;
+            this.lVOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lVOrder_MouseDoubleClick);
             // 
             // btnDrinks
             // 
@@ -143,7 +142,7 @@
             // pnlOrder
             // 
             this.pnlOrder.Controls.Add(this.gBLunchDinner);
-            this.pnlOrder.Controls.Add(this.lVItems);
+            this.pnlOrder.Controls.Add(this.lVOrder);
             this.pnlOrder.Controls.Add(this.btnDrinks);
             this.pnlOrder.Controls.Add(this.btnDessert);
             this.pnlOrder.Controls.Add(this.btnAppetizers);
@@ -190,19 +189,18 @@
             // 
             this.pnlOverview.Controls.Add(this.btnClear);
             this.pnlOverview.Controls.Add(this.btnFinish);
-            this.pnlOverview.Controls.Add(this.btnDetails);
             this.pnlOverview.Controls.Add(this.label1);
             this.pnlOverview.Controls.Add(this.lblOrder_Id);
-            this.pnlOverview.Controls.Add(this.lvOrder);
+            this.pnlOverview.Controls.Add(this.lVOverview);
             this.pnlOverview.Location = new System.Drawing.Point(378, 27);
             this.pnlOverview.Name = "pnlOverview";
-            this.pnlOverview.Size = new System.Drawing.Size(406, 564);
+            this.pnlOverview.Size = new System.Drawing.Size(406, 514);
             this.pnlOverview.TabIndex = 12;
             this.pnlOverview.Visible = false;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(19, 447);
+            this.btnClear.Location = new System.Drawing.Point(19, 389);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(365, 53);
             this.btnClear.TabIndex = 12;
@@ -212,21 +210,13 @@
             // 
             // btnFinish
             // 
-            this.btnFinish.Location = new System.Drawing.Point(19, 506);
+            this.btnFinish.Location = new System.Drawing.Point(19, 448);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(365, 53);
             this.btnFinish.TabIndex = 11;
             this.btnFinish.Text = "Finish order";
             this.btnFinish.UseVisualStyleBackColor = true;
-            // 
-            // btnDetails
-            // 
-            this.btnDetails.Location = new System.Drawing.Point(19, 388);
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(365, 53);
-            this.btnDetails.TabIndex = 10;
-            this.btnDetails.Text = "View Selected Item Details";
-            this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // label1
             // 
@@ -246,14 +236,15 @@
             this.lblOrder_Id.TabIndex = 8;
             this.lblOrder_Id.Text = "label1";
             // 
-            // lvOrder
+            // lVOverview
             // 
-            this.lvOrder.HideSelection = false;
-            this.lvOrder.Location = new System.Drawing.Point(19, 83);
-            this.lvOrder.Name = "lvOrder";
-            this.lvOrder.Size = new System.Drawing.Size(365, 300);
-            this.lvOrder.TabIndex = 7;
-            this.lvOrder.UseCompatibleStateImageBehavior = false;
+            this.lVOverview.HideSelection = false;
+            this.lVOverview.Location = new System.Drawing.Point(19, 83);
+            this.lVOverview.Name = "lVOverview";
+            this.lVOverview.Size = new System.Drawing.Size(365, 300);
+            this.lVOverview.TabIndex = 7;
+            this.lVOverview.UseCompatibleStateImageBehavior = false;
+            this.lVOverview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvOverview_MouseDoubleClick);
             // 
             // OrderForm
             // 
@@ -281,7 +272,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView lVItems;
+        private System.Windows.Forms.ListView lVOrder;
         private System.Windows.Forms.Button btnDrinks;
         private System.Windows.Forms.Button btnAppetizers;
         private System.Windows.Forms.Button btnMain;
@@ -297,9 +288,8 @@
         private System.Windows.Forms.Panel pnlOverview;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnFinish;
-        private System.Windows.Forms.Button btnDetails;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblOrder_Id;
-        private System.Windows.Forms.ListView lvOrder;
+        private System.Windows.Forms.ListView lVOverview;
     }
 }
