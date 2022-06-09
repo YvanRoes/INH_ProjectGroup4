@@ -60,5 +60,10 @@ namespace UI
             EmployeeView employeeView = new EmployeeView();
             employeeView.Show();
         }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

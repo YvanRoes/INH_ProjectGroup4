@@ -27,7 +27,6 @@ namespace DAL
         // Get all the ordered items from database
         public List<OrderedItem> GetAllOrderedItems()
         {
-            //WHERE od.order_Status={(int)PayStatus.notpaid}
             string query = $@" 
                             SELECT m.item_Name,o.itemOrdered_Quantity,m.item_Price,od.order_Id,od.table_Nr,od.order_Status
                             FROM MENU_ITEM as m
@@ -53,10 +52,7 @@ namespace DAL
 
                 OrderedItem itemOrdered = new OrderedItem(menuItem)
                 {
-
-                   // Item_Name = (string)dr["item_Name"],
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
-                    //Item_Price = (decimal)dr["item_Price"],
                     table_Id = (int)dr["table_Nr"],
                     _itemOrder_id = (int)dr["order_Id"],
                      
