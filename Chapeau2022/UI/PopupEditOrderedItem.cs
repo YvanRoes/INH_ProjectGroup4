@@ -11,26 +11,96 @@ using Model;
 
 namespace UI
 {
-    public partial class PopupEditOrderedItem : Form
+    public partial class PopupEditOrderedItem : Form, IOrderObservable
     {
         OrderedItem _OrderedItem { get; set; }
         Order _Order { get; set; }
-        OrderForm _OrderForm { get; set; }
-        public PopupEditOrderedItem(OrderedItem item, Order order, OrderForm form)
+        IOrderObserver _Observer { get; set; }
+        int _Qty { get; set; }
+        string _Comment { get; set; }
+        public PopupEditOrderedItem(OrderedItem item, Order order, IOrderObserver observer)
         {
             InitializeComponent();
             _OrderedItem = item;
             _Order = order;
-            _OrderForm = form;
+            _Observer = observer;
+            _Qty = _OrderedItem._itemOrdered_Qty;
+            _Comment = _OrderedItem._itemOrdered_Comment;
+            Start(_OrderedItem);
+        }
 
-            Start();
+        void Start(OrderedItem item)
+        {
+            Displayitem(item);
+        }
+
+        //Quantity
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _Qty += 1;
+            LoadQty();
+        }
+
+        private void btnSubstract_Click(object sender, EventArgs e)
+        {
+            _Qty -= 1;
+            LoadQty();
+        }
+
+        //Comments
+        private void cBComments_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBComments.Checked)
+                tBComments.Enabled = true;
+            else
+            {
+                tBComments.Enabled = false;
+                tBComments.Clear();
+            }
+            
+        }
+
+        //Display
+        void Displayitem(OrderedItem item)
+        {
+            lblMenuItemName.Text = item.menuItem.Item_Name;
+            lblPrice.Text = item.menuItem.Item_Price.ToString();
+            LoadQty();
+
+            if(_OrderedItem._itemOrdered_Comment != null || _OrderedItem._itemOrdered_Comment != "")
+            {
+                tBComments.Text = _OrderedItem._itemOrdered_Comment;
+                tBComments.Enabled = true;
+                cBComments.Checked = true;
+                
+            }
 
         }
 
-        void Start()
+        private void LoadQty() => txtQty.Text = _Qty.ToString();
+
+        //observer
+        public void NotifyObservers() => _Observer.Update(_Order);
+
+        public void AddObserver(IOrderObserver observer)
         {
-            lblMenuItemName.Text = _OrderedItem.menuItem.Item_Name;
-            lblPrice.Text = _OrderedItem.menuItem.Item_Price.ToString();
+            throw new NotImplementedException();
+        }
+
+        public void RemoveObserver(IOrderObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            _OrderedItem._itemOrdered_Qty = _Qty;
+            if (cBComments.Checked)
+                _OrderedItem._itemOrdered_Comment = tBComments.Text;
+            else
+                _OrderedItem._itemOrdered_Comment = null;
+            NotifyObservers();
+            this.Close();
         }
     }
 }

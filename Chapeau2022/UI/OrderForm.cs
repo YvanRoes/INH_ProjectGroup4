@@ -42,12 +42,12 @@ namespace UI
             _order.Order_Id = _orderService.GetNewOrderId();
 
             rbLunch.Checked = true;
-            btnDrinks.PerformClick();
-
+            
             //pnl Overview
             lblOrder_Id.Text = _order.Order_Id.ToString();
             if (_order.menuItems.Count > 0)
                 btnDrinks_Click(null, null);
+   
         }
 
 
@@ -56,16 +56,19 @@ namespace UI
         {
             //listview columns
             InitBaseListAttributes();
+            _CurrentItemsDisplayed.Clear();
+            UpdateListViewItems();
             lVOrder.Columns.Add("Alcoholic", 70);
-            gBLunchDinner.Enabled = false;
+            
 
+            gBLunchDinner.Enabled = false;
 
             //service
             MenuItemService _menuItemService = MenuItemService.GetInstance();
             List<MenuItem> _menuItems = _menuItemService.GetAllMenuItems();
             //order
 
-            _CurrentItemsDisplayed.Clear();
+            
             foreach( MenuItem item in _menuItems)
             {
                 if (item is DrinkItem)
@@ -105,6 +108,7 @@ namespace UI
 
         private void UpdateListViewItems()
         {
+
             foreach(MenuItem item in _CurrentItemsDisplayed)
             {
                 if (item is FoodItem)
@@ -160,9 +164,9 @@ namespace UI
             }
             else
             {
-                this.lVOrder.SelectedItems.Clear();
                 MessageBox.Show("No Item is selected");
             }
+            UpdateListViewItems();
         }
 
         private MenuItem GetItemFromOrderList()
@@ -224,7 +228,6 @@ namespace UI
             }
             else
             {
-                this.lVOrder.SelectedItems.Clear();
                 MessageBox.Show("No Item is selected");
             }
         }
@@ -243,10 +246,20 @@ namespace UI
         void UpdateListViewOverview()
         {
             InitBaseListAttributes();
+            lVOverview.Items.Clear();
             foreach (OrderedItem item in _order.menuItems)
             {
                 if(item._itemOrdered_Qty > 0)
                 {
+                    //currently not working code for grouping items together
+                    /*foreach(OrderedItem similarItem in _order.menuItems)
+                    {
+                        if(item.menuItem.Item_Id == similarItem.menuItem.Item_Id && item._itemOrdered_Comment == similarItem._itemOrdered_Comment)
+                        {
+                            item._itemOrdered_Qty += similarItem._itemOrdered_Qty;
+                            _order.menuItems.Remove(similarItem);
+                        }
+                    }*/
                     string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, item.menuItem.Item_Price.ToString(), item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
                     ListViewItem listViewItem = new ListViewItem(it);
                     lVOverview.Items.Add(listViewItem);
@@ -262,11 +275,22 @@ namespace UI
         {
             if (_order.menuItems.Count > 0)
             {
+                //compare stock with qty 
+                foreach(OrderedItem item in _order.menuItems)
+                {
+                    if(item._itemOrdered_Qty > item.menuItem.Item_Stock)
+                    {
+                        MessageBox.Show($"The item {item.menuItem.Item_Name} Quantity has exceeded our stock. In stock: {item.menuItem.Item_Stock}");
+                        return;
+                    }
+                }
+
+                //make the order
                 OrderService _orderService = OrderService.GetInstance();
                 _orderService.SendOrderToDatabase(_order);
                 MessageBox.Show($"Order {_order.Order_Id} has been placed");
                 //Notify kitchen and stock accordingly
-                NotifyObservers();
+                /*NotifyObservers();*/
 
                 //close order form
                 this.Close();
@@ -277,15 +301,17 @@ namespace UI
 
         }
 
-        private void makeTheOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void makeTheOrderToolStripMenuItem_Click(object? sender, EventArgs? e)
         {
             this.Size = new Size(375, 500);
             pnlOrder.Show();
             pnlOverview.Hide();
             pnlOrder.Dock = DockStyle.Fill;
+            InitBaseListAttributes();
+            UpdateListViewItems();
         }
 
-        private void orderOverviewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void orderOverviewToolStripMenuItem_Click(object? sender, EventArgs? e)
         {
             this.Size = new Size(425, 650);
             pnlOverview.Show();
@@ -307,7 +333,7 @@ namespace UI
             UpdateCourseList();
         }
 
-        public void Update(Order order) => UpdateListViewOverview();
+        public void Update(Order order) { _order = order; UpdateListViewItems(); UpdateListViewOverview(); }
 
 
         //observers

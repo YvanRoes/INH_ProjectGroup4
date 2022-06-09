@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAddToOrder = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.cBComments = new System.Windows.Forms.CheckBox();
             this.tBComments = new System.Windows.Forms.RichTextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -38,14 +38,15 @@
             this.lblMenuItemName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnAddToOrder
+            // btnConfirm
             // 
-            this.btnAddToOrder.Location = new System.Drawing.Point(113, 233);
-            this.btnAddToOrder.Name = "btnAddToOrder";
-            this.btnAddToOrder.Size = new System.Drawing.Size(95, 23);
-            this.btnAddToOrder.TabIndex = 16;
-            this.btnAddToOrder.Text = "Confirm";
-            this.btnAddToOrder.UseVisualStyleBackColor = true;
+            this.btnConfirm.Location = new System.Drawing.Point(113, 233);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(95, 23);
+            this.btnConfirm.TabIndex = 16;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // cBComments
             // 
@@ -56,6 +57,7 @@
             this.cBComments.TabIndex = 15;
             this.cBComments.Text = "Comments";
             this.cBComments.UseVisualStyleBackColor = true;
+            this.cBComments.Click += new System.EventHandler(this.cBComments_CheckedChanged);
             // 
             // tBComments
             // 
@@ -74,6 +76,7 @@
             this.btnAdd.TabIndex = 13;
             this.btnAdd.Text = "+1";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnSubstract
             // 
@@ -83,6 +86,7 @@
             this.btnSubstract.TabIndex = 12;
             this.btnSubstract.Text = "-1";
             this.btnSubstract.UseVisualStyleBackColor = true;
+            this.btnSubstract.Click += new System.EventHandler(this.btnSubstract_Click);
             // 
             // txtQty
             // 
@@ -115,7 +119,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(226, 268);
-            this.Controls.Add(this.btnAddToOrder);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.cBComments);
             this.Controls.Add(this.tBComments);
             this.Controls.Add(this.btnAdd);
@@ -132,7 +136,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAddToOrder;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.CheckBox cBComments;
         private System.Windows.Forms.RichTextBox tBComments;
         private System.Windows.Forms.Button btnAdd;
