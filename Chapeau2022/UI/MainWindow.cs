@@ -14,7 +14,7 @@ namespace UI
     public partial class MainWindow : Form
     {
         Employee employee = new Employee();
-
+        INotifierObservable notifierObservable;
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace UI
             employee.Employee_Role = EmployeeRole.chef;
 
             this.Hide();
-            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
+            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee/*, notifierObservable*/);
             kitchenAndBar.ShowDialog();
         }
 
@@ -51,7 +51,7 @@ namespace UI
             employee.Employee_Role = EmployeeRole.bartender;
 
             this.Hide();
-            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee);
+            KitchenAndBar kitchenAndBar = new KitchenAndBar(employee/*, notifierObservable*/);
             kitchenAndBar.ShowDialog();
         }
 

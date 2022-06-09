@@ -13,18 +13,18 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class KitchenAndBar : Form, INotifierObserver
+    public partial class KitchenAndBar : Form/*, INotifierObserver*/
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
         Employee employee;
         OrderDisplay orderDisplay;
         
-        public KitchenAndBar(Employee employee, INotifierObservable notifierObservable)
+        public KitchenAndBar(Employee employee/*, INotifierObservable notifierObservable*/)
         {
             InitializeComponent();
 
-            notifierObservable.AddObserver(this);
+            //notifierObservable.AddObserver(this);
 
             this.employee = employee;
 
@@ -40,10 +40,10 @@ namespace UI
             Timer();
         }
 
-        public void UpdateKitchenAndBar()
-        {
-            Refresh();
-        }
+        //public void UpdateKitchenAndBar()
+        //{
+        //    Refresh();
+        //}
 
         private void Bartender()
         {
@@ -54,7 +54,7 @@ namespace UI
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            tbxTableNr.Location = new Point(600, 120);
+            //tbxTableNr.Location = new Point(600, 120);
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
@@ -70,7 +70,7 @@ namespace UI
 
         void Timer()
         {
-            timer.Interval = 10000; // specify interval time as you want
+            timer.Interval = 10000; // timer set to 10000 milisecond = 10 second
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
@@ -247,11 +247,14 @@ namespace UI
 
         private void ReadyOrderedItem()
         {
-            foreach (ListViewItem item in lvOrders.SelectedItems)
+            if (lvOrders.SelectedItems.Count > 0)
             {
-                orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+                foreach (ListViewItem item in lvOrders.SelectedItems)
+                {
+                    orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+                }
+                Refresh();
             }
-            Refresh();
         }
 
         private List<ListViewItem> ReadyCoursetype(List<ListViewItem> lvItems)
@@ -297,7 +300,7 @@ namespace UI
                     throw new Exception("no item selcted");
                 }
 
-                else if (tbxTableNr.Text.Length == 0)
+                else if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0))
                 {
                     throw new Exception("no table selected");
                 }
@@ -310,18 +313,18 @@ namespace UI
                         ReadyOrderedItem();
                     }
 
-                    else if (int.Parse(tbxTableNr.Text) > 0)
+                    else if (tbxTableNr.Text.Length > 0)
                     {
                         ReadyTable();
                     }
 
-                    else if (lvOrders.SelectedItems.Count > 0)
+                    else /*if (lvOrders.SelectedItems.Count > 0)*/
                     {
                         ReadyOrderedItem();
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
