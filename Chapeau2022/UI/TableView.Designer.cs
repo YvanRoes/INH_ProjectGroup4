@@ -71,6 +71,7 @@
             this.btnUpdateTable.TabIndex = 11;
             this.btnUpdateTable.Text = "&Mark Order as Served";
             this.btnUpdateTable.UseVisualStyleBackColor = false;
+            this.btnUpdateTable.Click += new System.EventHandler(this.btnUpdateTable_Click);
             // 
             // label5
             // 
@@ -196,12 +197,14 @@
             // 
             // lvOrders
             // 
+            this.lvOrders.AllowColumnReorder = true;
             this.lvOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.TableNr,
             this.OrderTime,
             this.Amount,
             this.ItemName,
             this.OrderStatus});
+            this.lvOrders.FullRowSelect = true;
             this.lvOrders.HideSelection = false;
             this.lvOrders.Location = new System.Drawing.Point(154, 301);
             this.lvOrders.Name = "lvOrders";

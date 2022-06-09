@@ -33,5 +33,9 @@ namespace Logic
         {
             orderedItemDao.UpdateItemOrderedStatus(orderedItem);
         }
+        public void MarkOrderedItemAsServed(OrderedItem orderedItem)
+        {
+            orderedItemDao.MarkOrderedItemAsServed(orderedItem);
+        }
     }
 }
