@@ -99,7 +99,7 @@ namespace UI
         void NotifyObservers()
         {
             foreach (var observer in _observers)
-                observer.Update();
+                observer.UpdateKitchenAndBar();
         }
     }
 }

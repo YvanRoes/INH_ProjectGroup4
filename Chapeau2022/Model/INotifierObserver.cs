@@ -8,6 +8,6 @@ namespace Model
 {
     public interface INotifierObserver
     {
-        void Update();
+        void UpdateKitchenAndBar();
     }
 }

@@ -13,16 +13,18 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class KitchenAndBar : Form
+    public partial class KitchenAndBar : Form, INotifierObserver
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
         Employee employee;
         OrderDisplay orderDisplay;
         
-        public KitchenAndBar(Employee employee)
+        public KitchenAndBar(Employee employee, INotifierObservable notifierObservable)
         {
             InitializeComponent();
+
+            notifierObservable.AddObserver(this);
 
             this.employee = employee;
 
@@ -36,6 +38,11 @@ namespace UI
             }
 
             Timer();
+        }
+
+        public void UpdateKitchenAndBar()
+        {
+            Refresh();
         }
 
         private void Bartender()
