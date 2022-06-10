@@ -51,8 +51,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxAmountNeeded = new System.Windows.Forms.TextBox();
             this.groupBoxMenu = new System.Windows.Forms.GroupBox();
-            this.cbLunch = new System.Windows.Forms.CheckBox();
             this.cbDinner = new System.Windows.Forms.CheckBox();
+            this.cbLunch = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxAlcoholContent.SuspendLayout();
             this.groupBoxCourse.SuspendLayout();
@@ -306,16 +306,6 @@
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Menu";
             // 
-            // cbLunch
-            // 
-            this.cbLunch.AutoSize = true;
-            this.cbLunch.Location = new System.Drawing.Point(69, 21);
-            this.cbLunch.Name = "cbLunch";
-            this.cbLunch.Size = new System.Drawing.Size(59, 19);
-            this.cbLunch.TabIndex = 2;
-            this.cbLunch.Text = "Lunch";
-            this.cbLunch.UseVisualStyleBackColor = true;
-            // 
             // cbDinner
             // 
             this.cbDinner.AutoSize = true;
@@ -325,6 +315,16 @@
             this.cbDinner.TabIndex = 3;
             this.cbDinner.Text = "Dinner";
             this.cbDinner.UseVisualStyleBackColor = true;
+            // 
+            // cbLunch
+            // 
+            this.cbLunch.AutoSize = true;
+            this.cbLunch.Location = new System.Drawing.Point(69, 21);
+            this.cbLunch.Name = "cbLunch";
+            this.cbLunch.Size = new System.Drawing.Size(59, 19);
+            this.cbLunch.TabIndex = 2;
+            this.cbLunch.Text = "Lunch";
+            this.cbLunch.UseVisualStyleBackColor = true;
             // 
             // AddItem
             // 

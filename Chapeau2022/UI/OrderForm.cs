@@ -125,7 +125,7 @@ namespace UI
 
         private void AddFoodItemToList(FoodItem Item)
         {
-            string[] tempItem = { Item.Item_Name, Item.Item_Price.ToString() };
+            string[] tempItem = { Item.Item_Name, $"{Item.Item_Price} /u"};
             ListViewItem lvi = new ListViewItem(tempItem);
             lVOrder.Items.Add(lvi);
         }
@@ -136,7 +136,7 @@ namespace UI
             if (item.Item_DrinkType == DrinkType.Alcoholic)
                 alc = "yes";
 
-            string[] tempItem = { item.Item_Name, item.Item_Price.ToString(), alc };
+            string[] tempItem = { item.Item_Name, $"{item.Item_Price} /u", alc };
             ListViewItem lvi = new ListViewItem(tempItem);
             lVOrder.Items.Add(lvi);
         }
@@ -255,16 +255,7 @@ namespace UI
             {
                 if(item._itemOrdered_Qty > 0)
                 {
-                    //currently not working code for grouping items together
-                    /*foreach(OrderedItem similarItem in _order.menuItems)
-                    {
-                        if(item.menuItem.Item_Id == similarItem.menuItem.Item_Id && item._itemOrdered_Comment == similarItem._itemOrdered_Comment)
-                        {
-                            item._itemOrdered_Qty += similarItem._itemOrdered_Qty;
-                            _order.menuItems.Remove(similarItem);
-                        }
-                    }*/
-                    string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, item.menuItem.Item_Price.ToString(), item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
+                    string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, $"{item.menuItem.Item_Price} /u", item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
                     ListViewItem listViewItem = new ListViewItem(it);
                     lVOverview.Items.Add(listViewItem);
                 }
