@@ -67,7 +67,10 @@ namespace UI
             }
 
             if (int.TryParse(textBoxEmployeeName.Text, out int b) || tools.hasSpecialChar(textBoxEmployeeName.Text))
+            {
                 MessageBox.Show("Name cannot contain integers or special characters.");
+                return;
+            }
 
             if (string.IsNullOrWhiteSpace(textBoxPIN.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
                 textBoxPIN.Text = "1234";
@@ -93,7 +96,6 @@ namespace UI
                 Employee_SecretQuestion = textBoxSecretQ.Text,
                 Employee_SecretAnwser = textBoxSecretA.Text
             };
-
             employeeService.UpdateEmployee(employee);
             this.Close();
         }

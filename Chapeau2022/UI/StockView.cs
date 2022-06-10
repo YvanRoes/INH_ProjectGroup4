@@ -111,7 +111,7 @@ namespace UI
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                if (MessageBox.Show("Are you sure you want to delete the item.", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete the selected item.", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (IsDisplayingFood)
                     {

@@ -72,8 +72,6 @@ namespace UI
             else 
             {
                 CreateDrinkItem();
-                stockView.DrinkStock();
-                Close();
             }
         }
         private void CreateFoodItem() 
@@ -181,6 +179,8 @@ namespace UI
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             drinkService.AddDrink(drink);
+            stockView.DrinkStock();
+            Close();
         }
         //the code below ensures proper functioning of the +/- buttons in case of inappropreate input
         private void button3_Click(object sender, EventArgs e)
