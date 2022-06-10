@@ -19,7 +19,7 @@ namespace UI
         CourseType _CurrentcourseType;
         MenuType _CurrentmenuType;
 
-        public OrderForm(int table_Id, int employeeId)
+        public OrderForm(int table_Id, int employee_Id)
         {
             InitializeComponent();
             Show();
@@ -27,7 +27,7 @@ namespace UI
 
             //init globals
             _CurrentItemsDisplayed = new List<MenuItem>();
-            _order = new Order(table_Id, employeeId);
+            _order = new Order(employee_Id, table_Id);
 
             Start();
             
@@ -43,7 +43,9 @@ namespace UI
             //pnl Overview
             lblOrder_Id.Text = _order.Order_Id.ToString();
             if (_order.menuItems.Count > 0)
-                btnDrinks_Click(null, null);
+                btnDrinks.PerformClick();
+
+            Order.PerformClick();
    
         }
 
@@ -91,7 +93,7 @@ namespace UI
             {
                 FoodItem foodItem = (FoodItem)item;
                 if (foodItem.Item_CourseType == type)
-                    if(foodItem.Item_MenuType == _CurrentmenuType)
+                    if(foodItem.Item_MenuType == _CurrentmenuType || foodItem.Item_MenuType == MenuType.LunchAndDinner)
                         if(foodItem.Item_Stock != 0)
                             _CurrentItemsDisplayed.Add(foodItem);
             }
@@ -102,6 +104,11 @@ namespace UI
 
             foreach(MenuItem item in _CurrentItemsDisplayed)
             {
+                foreach(ListViewItem it in lVOrder.Items)
+                {
+                    if (it.Index == _CurrentItemsDisplayed.IndexOf(item))
+                        return;
+                }
                 if (item is FoodItem)
                     AddFoodItemToList((FoodItem)item);
                 if (item is DrinkItem)
