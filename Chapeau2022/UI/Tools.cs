@@ -143,5 +143,15 @@ namespace UI
 
             return false;
         }
+        public bool hasInt(string input)
+        {
+            string specialChar = @"1234567890";
+            foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
+
+            return false;
+        }
     }
 }
