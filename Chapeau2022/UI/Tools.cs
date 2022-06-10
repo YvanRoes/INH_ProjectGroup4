@@ -8,9 +8,9 @@ using Model;
 
 namespace UI
 {
-    public class Tools
+    public static class Tools
     {
-        public int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2) 
+        public static int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2) 
         {
             List<RadioButton> buttons = new List<RadioButton>();
             int index = 0;
@@ -27,7 +27,7 @@ namespace UI
             }
             return index;
         }
-        public int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2, RadioButton radioButton3)
+        public static int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2, RadioButton radioButton3)
         {
             List<RadioButton> buttons = new List<RadioButton>();
             int index = 0;
@@ -45,7 +45,7 @@ namespace UI
             }
             return index;
         }
-        public int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2, RadioButton radioButton3, RadioButton radioButton4)
+        public static int IndexOfRadioButton(RadioButton radioButton1, RadioButton radioButton2, RadioButton radioButton3, RadioButton radioButton4)
         {
             List<RadioButton> buttons = new List<RadioButton>();
             int index = 0;
@@ -64,7 +64,7 @@ namespace UI
             }
             return index;
         }
-        public int IndexOfSelectedCheckBox(CheckBox box1, CheckBox box2, CheckBox box3) 
+        public static int IndexOfSelectedCheckBox(CheckBox box1, CheckBox box2, CheckBox box3) 
         {
             List<CheckBox> boxes = new List<CheckBox>();
             int index = 0;
@@ -82,7 +82,7 @@ namespace UI
             }
             return index;
         }
-        public void FillListViewWithDrinks(ListView listView1, List<DrinkItem> DrinkItems) 
+        public static void FillListViewWithDrinks(ListView listView1, List<DrinkItem> DrinkItems) 
         {
             listView1.Clear();
             listView1.View = View.Details;
@@ -103,7 +103,7 @@ namespace UI
             }
             
         }
-        public void FillListViewWithFood(ListView listView1, List<FoodItem> FoodItems)
+        public static void FillListViewWithFood(ListView listView1, List<FoodItem> FoodItems)
         {
             listView1.Clear();
             listView1.View = View.Details;
@@ -123,7 +123,7 @@ namespace UI
                 listView1.Items.Add(item2);
             }
         }
-        public bool hasSpecialChar(string input)
+        public static bool hasSpecialChar(string input)
         {
             string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,*";
             foreach (var item in specialChar)
@@ -133,7 +133,7 @@ namespace UI
 
             return false;
         }
-        public bool hasSpecialCharForPrice(string input)
+        public static bool hasSpecialCharForPrice(string input)
         {
             string specialChar = @"\|!#$%&/()=?»«@£§€{}-;'<>_*";
             foreach (var item in specialChar)
@@ -143,7 +143,7 @@ namespace UI
 
             return false;
         }
-        public bool hasInt(string input)
+        public static bool hasInt(string input)
         {
             string specialChar = @"1234567890";
             foreach (var item in specialChar)

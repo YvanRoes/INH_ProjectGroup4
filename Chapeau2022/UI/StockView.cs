@@ -22,7 +22,6 @@ namespace UI
         private FoodService _foodService;
         private DrinkService _drinkService;
         public bool IsDisplayingFood;
-        private Tools tools;
         private List<FoodItem> FoodItems;
         private List<DrinkItem> DrinkItems;
         public StockView()
@@ -31,7 +30,6 @@ namespace UI
             _drinkService = new DrinkService();
             FoodItems = new List<FoodItem>();
             DrinkItems = new List<DrinkItem>();
-            tools = new Tools();
             IsDisplayingFood = false;
             InitializeComponent();
             Start();
@@ -50,7 +48,7 @@ namespace UI
 
             FoodItems = _foodService.GetAllFoodItems();
 
-            tools.FillListViewWithFood(listView1, FoodItems);
+            Tools.FillListViewWithFood(listView1, FoodItems);
 
             if (radioButton1.Checked)
                 SortByStatus();
@@ -67,7 +65,7 @@ namespace UI
 
             DrinkItems = _drinkService.GetAllDrinkItems();
 
-            tools.FillListViewWithDrinks(listView1, DrinkItems);
+            Tools.FillListViewWithDrinks(listView1, DrinkItems);
 
             if (radioButton1.Checked)
                 SortByStatus();
@@ -147,12 +145,12 @@ namespace UI
             if (radioButton1.Checked && !IsDisplayingFood)
             {
                 DrinkItems = DrinkItems.OrderBy(i => i.Status()).ToList();
-                tools.FillListViewWithDrinks(listView1, DrinkItems);
+                Tools.FillListViewWithDrinks(listView1, DrinkItems);
             }
             else if (radioButton1.Checked && IsDisplayingFood)
             {
                 FoodItems = FoodItems.OrderBy(i => i.Status()).ToList();
-                tools.FillListViewWithFood(listView1, FoodItems);
+                Tools.FillListViewWithFood(listView1, FoodItems);
             }
         }
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -164,12 +162,12 @@ namespace UI
             if (radioButton2.Checked && !IsDisplayingFood)
             {
                 DrinkItems = DrinkItems.OrderBy(i => i.Item_Price).ToList();
-                tools.FillListViewWithDrinks(listView1, DrinkItems);
+                Tools.FillListViewWithDrinks(listView1, DrinkItems);
             }
             else if (radioButton2.Checked && IsDisplayingFood)
             {
                 FoodItems = FoodItems.OrderBy(i => i.Item_Price).ToList();
-                tools.FillListViewWithFood(listView1, FoodItems);
+                Tools.FillListViewWithFood(listView1, FoodItems);
             }
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -181,12 +179,12 @@ namespace UI
             if (radioButton3.Checked && !IsDisplayingFood)
             {
                 DrinkItems = DrinkItems.OrderBy(i => i.Item_Name).ToList();
-                tools.FillListViewWithDrinks(listView1, DrinkItems);
+                Tools.FillListViewWithDrinks(listView1, DrinkItems);
             }
             else if (radioButton3.Checked && IsDisplayingFood)
             {
                 FoodItems = FoodItems.OrderBy(i => i.Item_Name).ToList();
-                tools.FillListViewWithFood(listView1, FoodItems);
+                Tools.FillListViewWithFood(listView1, FoodItems);
             }
         }
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
@@ -198,12 +196,12 @@ namespace UI
             if (radioButton4.Checked && !IsDisplayingFood)
             {
                 DrinkItems = DrinkItems.OrderBy(i => i.Item_Id).ToList();
-                tools.FillListViewWithDrinks(listView1, DrinkItems);
+                Tools.FillListViewWithDrinks(listView1, DrinkItems);
             }
             else if (radioButton4.Checked && IsDisplayingFood)
             {
                 FoodItems = FoodItems.OrderBy(i => i.Item_Id).ToList();
-                tools.FillListViewWithFood(listView1, FoodItems);
+                Tools.FillListViewWithFood(listView1, FoodItems);
             }
         }
     }

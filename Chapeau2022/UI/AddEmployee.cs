@@ -15,12 +15,10 @@ namespace UI
 {
     public partial class AddEmployee : Form
     {
-        Tools tools;
         EmployeeService employeeService;
         EmployeeView employeeView;
         public AddEmployee(EmployeeView employeeView)
         {
-            tools = new Tools();
             employeeService = new EmployeeService();
             this.employeeView = employeeView;
             InitializeComponent();
@@ -32,12 +30,12 @@ namespace UI
                 MessageBox.Show("Item name cannot be empty.");
                 return;
             }
-            if (int.TryParse(textBoxEmployeeName.Text, out int b) || tools.hasSpecialChar(textBoxEmployeeName.Text))
+            if (int.TryParse(textBoxEmployeeName.Text, out int b) || Tools.hasSpecialChar(textBoxEmployeeName.Text))
             {
                 MessageBox.Show("Name cannot contain integers or special characters.");
                 return;
             }
-            if (tools.hasSpecialChar(textBoxEmployeeName.Text))
+            if (Tools.hasSpecialChar(textBoxEmployeeName.Text))
             {
                 MessageBox.Show("The PIN cannot contain special characters.");
                 return;
@@ -59,7 +57,7 @@ namespace UI
             {
                 Employee_Id = employeeService.GetLastId(),
                 Employee_Name = textBoxEmployeeName.Text,
-                Employee_Role = (EmployeeRole)(tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7, radioButton1)+1),
+                Employee_Role = (EmployeeRole)(Tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7, radioButton1)+1),
                 Employee_Pin = int.Parse(textBoxPIN.Text),
                 Employee_SecretQuestion = textBoxSecretQ.Text,
                 Employee_SecretAnwser = textBoxSecretA.Text

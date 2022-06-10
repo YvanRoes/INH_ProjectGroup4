@@ -18,13 +18,11 @@ namespace UI
         private DrinkItem item;
         private DrinkService drinkService;
         private StockView stockView;
-        private Tools tools;
         public EditDrinkItem(DrinkItem item, StockView stockView)
         {
             this.item = item;
             this.stockView = stockView;
             drinkService = new DrinkService();
-            tools = new Tools();
             InitializeComponent();
             Start();
         }
@@ -49,7 +47,7 @@ namespace UI
             if (CheckForInputErrors())
                 return;
 
-            int drinkType = tools.IndexOfRadioButton(radioButton4, radioButton5);
+            int drinkType = Tools.IndexOfRadioButton(radioButton4, radioButton5);
 
             DrinkItem drink = new DrinkItem()
             {
@@ -73,7 +71,7 @@ namespace UI
                 MessageBox.Show("Item name cannot be empty.");
                 return true;
             }
-            if (tools.hasSpecialChar(textBoxItemName.Text))
+            if (Tools.hasSpecialChar(textBoxItemName.Text))
             {
                 MessageBox.Show("Name cannot contain special characters.");
                 return true;
@@ -92,17 +90,17 @@ namespace UI
         private bool CheckForSpecialCharacters()
         {
             //checking if the price, amount and quantity fields have special characters
-            if (tools.hasSpecialCharForPrice(textBoxPrice.Text))
+            if (Tools.hasSpecialCharForPrice(textBoxPrice.Text))
             {
                 MessageBox.Show("Price cannot contain special characters.");
                 return true;
             }
-            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            if (Tools.hasSpecialChar(textBoxQuantity.Text))
             {
                 MessageBox.Show("Quantity cannot contain special characters.");
                 return true;
             }
-            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            if (Tools.hasSpecialChar(textBoxAmountNeeded.Text))
             {
                 MessageBox.Show("The amount needed field cannot contain special characters.");
                 return true;

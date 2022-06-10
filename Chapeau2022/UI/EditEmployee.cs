@@ -17,7 +17,6 @@ namespace UI
         private Employee employee;
         private EmployeeService employeeService;
         EmployeeView employeeView;
-        private Tools tools;
         private int employeeId;
 
         public EditEmployee(Employee employee, EmployeeView employeeView, int employeeId)
@@ -25,7 +24,6 @@ namespace UI
             this.employee = employee;
             this.employeeView = employeeView;
             this.employeeId = employeeId;
-            tools = new Tools();
             employeeService = new EmployeeService();
             InitializeComponent();
             LoadEmployeeInformation();
@@ -70,7 +68,7 @@ namespace UI
             {
                 Employee_Id = employeeId,
                 Employee_Name = textBoxEmployeeName.Text,
-                Employee_Role = (EmployeeRole)(tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3, radioButton4)+1),
+                Employee_Role = (EmployeeRole)(Tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3, radioButton4)+1),
                 Employee_Pin = int.Parse(textBoxPIN.Text),
                 Employee_SecretQuestion = textBoxSecretQ.Text,
                 Employee_SecretAnwser = textBoxSecretA.Text
@@ -88,7 +86,7 @@ namespace UI
                 return true;
             }
 
-            if (tools.hasInt(textBoxEmployeeName.Text) || tools.hasSpecialChar(textBoxEmployeeName.Text))
+            if (Tools.hasInt(textBoxEmployeeName.Text) || Tools.hasSpecialChar(textBoxEmployeeName.Text))
             {
                 MessageBox.Show("Name cannot contain integers or special characters.");
                 return true;

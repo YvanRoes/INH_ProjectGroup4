@@ -58,6 +58,7 @@
             // 
             // txtQty
             // 
+            this.txtQty.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQty.Location = new System.Drawing.Point(59, 98);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(100, 23);
