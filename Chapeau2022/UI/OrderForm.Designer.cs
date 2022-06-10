@@ -47,6 +47,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblOrder_Id = new System.Windows.Forms.Label();
             this.lVOverview = new System.Windows.Forms.ListView();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnLogout2 = new System.Windows.Forms.Button();
             this.gBLunchDinner.SuspendLayout();
             this.pnlOrder.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -141,6 +143,7 @@
             // 
             // pnlOrder
             // 
+            this.pnlOrder.Controls.Add(this.btnLogout);
             this.pnlOrder.Controls.Add(this.gBLunchDinner);
             this.pnlOrder.Controls.Add(this.lVOrder);
             this.pnlOrder.Controls.Add(this.btnDrinks);
@@ -187,6 +190,7 @@
             // 
             // pnlOverview
             // 
+            this.pnlOverview.Controls.Add(this.btnLogout2);
             this.pnlOverview.Controls.Add(this.btnClear);
             this.pnlOverview.Controls.Add(this.btnFinish);
             this.pnlOverview.Controls.Add(this.label1);
@@ -221,7 +225,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 54);
+            this.label1.Location = new System.Drawing.Point(19, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 9;
@@ -230,7 +234,7 @@
             // lblOrder_Id
             // 
             this.lblOrder_Id.AutoSize = true;
-            this.lblOrder_Id.Location = new System.Drawing.Point(84, 54);
+            this.lblOrder_Id.Location = new System.Drawing.Point(84, 52);
             this.lblOrder_Id.Name = "lblOrder_Id";
             this.lblOrder_Id.Size = new System.Drawing.Size(38, 15);
             this.lblOrder_Id.TabIndex = 8;
@@ -245,6 +249,26 @@
             this.lVOverview.TabIndex = 7;
             this.lVOverview.UseCompatibleStateImageBehavior = false;
             this.lVOverview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvOverview_MouseDoubleClick);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(263, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 9;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.Logout);
+            // 
+            // btnLogout2
+            // 
+            this.btnLogout2.Location = new System.Drawing.Point(309, 13);
+            this.btnLogout2.Name = "btnLogout2";
+            this.btnLogout2.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout2.TabIndex = 13;
+            this.btnLogout2.Text = "Logout";
+            this.btnLogout2.UseVisualStyleBackColor = true;
+            this.btnLogout2.Click += new System.EventHandler(this.Logout);
             // 
             // OrderForm
             // 
@@ -291,5 +315,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblOrder_Id;
         private System.Windows.Forms.ListView lVOverview;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnLogout2;
     }
 }

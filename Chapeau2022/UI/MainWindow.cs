@@ -19,11 +19,13 @@ namespace UI
         {
             InitializeComponent();
             this.Size = new Size(228, 347);
+            this.Show();
         }
 
         private void btnOrderView_Click(object sender, EventArgs e)
         {
             OrderForm orderForm = new OrderForm(4, 1);
+            this.Hide();
         }
 
         private void btnPayment_Click(object sender, EventArgs e)

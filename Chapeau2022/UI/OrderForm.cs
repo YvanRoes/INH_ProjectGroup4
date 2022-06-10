@@ -296,8 +296,7 @@ namespace UI
                 menuItemService.UpdateMenuItemStocks(_order);
                 MessageBox.Show($"Order {_order.Order_Id} has been placed");
 
-                //close order form
-                this.Close();
+                Logout(null, null);
             }
             else
                 MessageBox.Show("The order you are trying to sumbit is empty");
@@ -338,6 +337,12 @@ namespace UI
         }
 
         public void Update(Order order) { _order = order; UpdateListViewItems(); UpdateListViewOverview(); }
+
+        private void Logout(object? sender, EventArgs? e)
+        {
+            this.Close();
+            new MainWindow();
+        }
 
     }
 }
