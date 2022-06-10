@@ -183,7 +183,7 @@
             // 
             this.textBoxSecretA.Location = new System.Drawing.Point(28, 311);
             this.textBoxSecretA.Name = "textBoxSecretA";
-            this.textBoxSecretA.PlaceholderText = "Anwser: Skippy";
+            this.textBoxSecretA.PlaceholderText = "Eg. Skippy";
             this.textBoxSecretA.Size = new System.Drawing.Size(299, 27);
             this.textBoxSecretA.TabIndex = 64;
             // 
@@ -199,7 +199,7 @@
             // 
             this.textBoxSecretQ.Location = new System.Drawing.Point(28, 242);
             this.textBoxSecretQ.Name = "textBoxSecretQ";
-            this.textBoxSecretQ.PlaceholderText = "eg. What was your first pet\'s name?";
+            this.textBoxSecretQ.PlaceholderText = "Eg. What was your first pet\'s name?";
             this.textBoxSecretQ.Size = new System.Drawing.Size(299, 27);
             this.textBoxSecretQ.TabIndex = 63;
             // 
