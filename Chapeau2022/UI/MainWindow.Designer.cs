@@ -134,7 +134,6 @@
             this.Controls.Add(this.btnTableView);
             this.Name = "MainWindow";
             this.Text = "Control Panel";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
         }

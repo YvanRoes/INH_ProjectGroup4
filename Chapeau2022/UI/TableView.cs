@@ -88,14 +88,13 @@ namespace UI
         {
             this.Hide();
             MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
         }
         private void ServeOrderedItem()
         {
             foreach (ListViewItem item in lvOrders.SelectedItems)
             {
                 orderedItemService.MarkOrderedItemAsServed((OrderedItem)item.Tag);
-            }  
+            }
         }
 
         private void btnUpdateTable_Click(object sender, EventArgs e)
