@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public interface IObservable
+    public interface IOrderObservable
     {
-        void AddObserver(IObserver observer);
-        void RemoveObserver(IObserver observer);
+        void AddObserver(IOrderObserver observer);
+        void RemoveObserver(IOrderObserver observer);
         void NotifyObservers();
     }
 }

@@ -41,9 +41,6 @@
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.lblDrinkName = new System.Windows.Forms.Label();
             this.textBoxItemName = new System.Windows.Forms.TextBox();
-            this.groupBoxMenu = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.groupBoxCourse = new System.Windows.Forms.GroupBox();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
@@ -53,16 +50,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxAmountNeeded = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxAlcoholContent.SuspendLayout();
-            this.groupBoxMenu.SuspendLayout();
             this.groupBoxCourse.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 26);
+            this.radioButton1.Location = new System.Drawing.Point(6, 27);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(99, 24);
             this.radioButton1.TabIndex = 0;
@@ -86,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(11, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 31);
             this.label1.TabIndex = 16;
@@ -96,9 +101,9 @@
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 60);
+            this.groupBox1.Location = new System.Drawing.Point(11, 60);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(148, 95);
+            this.groupBox1.Size = new System.Drawing.Size(149, 95);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose Item Type";
@@ -106,7 +111,7 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 26);
+            this.radioButton4.Location = new System.Drawing.Point(6, 27);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(92, 24);
             this.radioButton4.TabIndex = 0;
@@ -120,7 +125,7 @@
             this.groupBoxAlcoholContent.Controls.Add(this.radioButton4);
             this.groupBoxAlcoholContent.Location = new System.Drawing.Point(222, 264);
             this.groupBoxAlcoholContent.Name = "groupBoxAlcoholContent";
-            this.groupBoxAlcoholContent.Size = new System.Drawing.Size(172, 95);
+            this.groupBoxAlcoholContent.Size = new System.Drawing.Size(171, 95);
             this.groupBoxAlcoholContent.TabIndex = 31;
             this.groupBoxAlcoholContent.TabStop = false;
             this.groupBoxAlcoholContent.Text = "Alcohol Content";
@@ -139,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 313);
+            this.label5.Location = new System.Drawing.Point(18, 312);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 30;
@@ -147,10 +152,13 @@
             // 
             // textBoxQuantity
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(18, 336);
+            this.textBoxQuantity.Location = new System.Drawing.Point(46, 336);
             this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(135, 27);
+            this.textBoxQuantity.PlaceholderText = "0";
+            this.textBoxQuantity.Size = new System.Drawing.Size(70, 27);
             this.textBoxQuantity.TabIndex = 29;
+            this.textBoxQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxQuantity.TextChanged += new System.EventHandler(this.textBoxQuantity_TextChanged);
             // 
             // lblPrice
             // 
@@ -163,10 +171,12 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(18, 264);
+            this.textBoxPrice.Location = new System.Drawing.Point(17, 264);
             this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.PlaceholderText = "0";
             this.textBoxPrice.Size = new System.Drawing.Size(135, 27);
             this.textBoxPrice.TabIndex = 27;
+            this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDrinkName
             // 
@@ -181,41 +191,9 @@
             // 
             this.textBoxItemName.Location = new System.Drawing.Point(18, 199);
             this.textBoxItemName.Name = "textBoxItemName";
-            this.textBoxItemName.Size = new System.Drawing.Size(376, 27);
+            this.textBoxItemName.PlaceholderText = "Name";
+            this.textBoxItemName.Size = new System.Drawing.Size(377, 27);
             this.textBoxItemName.TabIndex = 25;
-            // 
-            // groupBoxMenu
-            // 
-            this.groupBoxMenu.Controls.Add(this.radioButton3);
-            this.groupBoxMenu.Controls.Add(this.radioButton6);
-            this.groupBoxMenu.Location = new System.Drawing.Point(222, 402);
-            this.groupBoxMenu.Name = "groupBoxMenu";
-            this.groupBoxMenu.Size = new System.Drawing.Size(172, 95);
-            this.groupBoxMenu.TabIndex = 33;
-            this.groupBoxMenu.TabStop = false;
-            this.groupBoxMenu.Text = "Menu";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 56);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(74, 24);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Dinner";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(6, 26);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(68, 24);
-            this.radioButton6.TabIndex = 0;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Lunch";
-            this.radioButton6.UseVisualStyleBackColor = true;
             // 
             // groupBoxCourse
             // 
@@ -224,7 +202,7 @@
             this.groupBoxCourse.Controls.Add(this.radioButton9);
             this.groupBoxCourse.Location = new System.Drawing.Point(222, 264);
             this.groupBoxCourse.Name = "groupBoxCourse";
-            this.groupBoxCourse.Size = new System.Drawing.Size(172, 122);
+            this.groupBoxCourse.Size = new System.Drawing.Size(171, 123);
             this.groupBoxCourse.TabIndex = 32;
             this.groupBoxCourse.TabStop = false;
             this.groupBoxCourse.Text = "Course";
@@ -232,7 +210,7 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(6, 86);
+            this.radioButton7.Location = new System.Drawing.Point(6, 85);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(73, 24);
             this.radioButton7.TabIndex = 2;
@@ -254,7 +232,7 @@
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(6, 26);
+            this.radioButton9.Location = new System.Drawing.Point(6, 27);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(86, 24);
             this.radioButton9.TabIndex = 0;
@@ -294,7 +272,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 391);
+            this.label6.Location = new System.Drawing.Point(18, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 20);
             this.label6.TabIndex = 38;
@@ -302,22 +280,113 @@
             // 
             // textBoxAmountNeeded
             // 
-            this.textBoxAmountNeeded.Location = new System.Drawing.Point(18, 414);
+            this.textBoxAmountNeeded.Location = new System.Drawing.Point(46, 413);
             this.textBoxAmountNeeded.Name = "textBoxAmountNeeded";
-            this.textBoxAmountNeeded.Size = new System.Drawing.Size(135, 27);
+            this.textBoxAmountNeeded.PlaceholderText = "0";
+            this.textBoxAmountNeeded.Size = new System.Drawing.Size(70, 27);
             this.textBoxAmountNeeded.TabIndex = 37;
+            this.textBoxAmountNeeded.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Controls.Add(this.radioButton6);
+            this.groupBox2.Controls.Add(this.radioButton10);
+            this.groupBox2.Location = new System.Drawing.Point(222, 413);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(171, 123);
+            this.groupBox2.TabIndex = 33;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Menu";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 85);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(61, 24);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Both";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(6, 56);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(74, 24);
+            this.radioButton6.TabIndex = 1;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "Dinner";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Location = new System.Drawing.Point(6, 27);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(68, 24);
+            this.radioButton10.TabIndex = 0;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "Lunch";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(122, 335);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 29);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "+";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(9, 335);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 29);
+            this.button4.TabIndex = 40;
+            this.button4.Text = "-";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(9, 413);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 29);
+            this.button5.TabIndex = 42;
+            this.button5.Text = "-";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(122, 413);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 29);
+            this.button6.TabIndex = 41;
+            this.button6.Text = "+";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // AddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 558);
+            this.ClientSize = new System.Drawing.Size(421, 557);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxAmountNeeded);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblFoodName);
-            this.Controls.Add(this.groupBoxMenu);
             this.Controls.Add(this.groupBoxCourse);
             this.Controls.Add(this.groupBoxAlcoholContent);
             this.Controls.Add(this.label5);
@@ -335,10 +404,10 @@
             this.groupBox1.PerformLayout();
             this.groupBoxAlcoholContent.ResumeLayout(false);
             this.groupBoxAlcoholContent.PerformLayout();
-            this.groupBoxMenu.ResumeLayout(false);
-            this.groupBoxMenu.PerformLayout();
             this.groupBoxCourse.ResumeLayout(false);
             this.groupBoxCourse.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,9 +428,6 @@
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label lblDrinkName;
         private System.Windows.Forms.TextBox textBoxItemName;
-        private System.Windows.Forms.GroupBox groupBoxMenu;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.GroupBox groupBoxCourse;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton8;
@@ -371,5 +437,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxAmountNeeded;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

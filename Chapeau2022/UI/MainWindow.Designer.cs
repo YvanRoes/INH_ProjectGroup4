@@ -133,7 +133,8 @@
             this.Controls.Add(this.btnOrderView);
             this.Controls.Add(this.btnTableView);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "Control Panel";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
         }

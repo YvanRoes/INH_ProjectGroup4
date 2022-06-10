@@ -15,7 +15,9 @@ namespace UI
     public partial class EmployeeView : Form
     {
         public EmployeeService employeeService;
+
         public List<Employee> employees;
+
         public EmployeeView()
         {
             employeeService = new EmployeeService();
@@ -24,11 +26,13 @@ namespace UI
             InitializeComponent();
             Start();
         }
+
         private void Start() 
         {
             employees = employeeService.GetAllEmployees();
             FillListView();
         }
+
         public void FillListView() 
         {
             listView1.Clear();
@@ -81,9 +85,36 @@ namespace UI
                 MessageBox.Show("Please select an employee you would like to edit first.");
             }
         }
+
         public void ListViewClearSelected() 
         {
             listView1.SelectedItems.Clear();
+        }
+
+        //sorting the listView
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                employees = employees.OrderBy(i => i.Employee_Id).ToList();
+                FillListView();
+            }
+        }
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                employees = employees.OrderBy(i => i.Employee_Role).ToList();
+                FillListView();
+            }
+        }
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                employees = employees.OrderBy(i => i.Employee_Name).ToList();
+                FillListView();
+            }
         }
     }
 }

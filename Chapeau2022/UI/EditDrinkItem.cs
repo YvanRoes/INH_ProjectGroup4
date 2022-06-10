@@ -46,6 +46,40 @@ namespace UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBoxItemName.Text) || string.IsNullOrEmpty(textBoxItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxItemName.Text))
+            {
+                MessageBox.Show("Name cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxPrice.Text))
+            {
+                MessageBox.Show("Price cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            {
+                MessageBox.Show("Quantity cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            {
+                MessageBox.Show("The amount needed field cannot contain special characters.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
+                textBoxPrice.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text) || string.IsNullOrEmpty(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
             int drinkType = tools.IndexOfRadioButton(radioButton4, radioButton5);
 
             DrinkItem drink = new DrinkItem()
@@ -60,6 +94,48 @@ namespace UI
             drinkService.UpdateDrink(drink);
             stockView.DrinkStock();
             Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) + 1).ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
+            textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) + 1).ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBoxQuantity.Text != "0")
+                try
+                {
+                    textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxQuantity.Text = "0";
+                }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBoxAmountNeeded.Text != "0")
+                try
+                {
+                    textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxAmountNeeded.Text = "0";
+                }
         }
     }
 }

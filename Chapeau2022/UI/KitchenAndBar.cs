@@ -23,47 +23,51 @@ namespace UI
         public KitchenAndBar(Employee employee)
         {
             InitializeComponent();
-
+            this.Show();
             this.employee = employee;
 
             if (employee.Employee_Role == EmployeeRole.bartender)
             {
-                Bartender();
+                BarView();
             }
             else
             {
-                Cheff();
+                KitchenView();
             }
 
             Timer();
         }
 
-        private void Bartender()
+        private void BarView()
         {
-            lblKitchenAndBar.Text = "Bar";
+            lblKitchenAndBar.Text = "Bar View";
             lvOrders.Columns[3].Text = "Drink Type";
             lvOrders.Columns[4].Text = "Drink Name";
             lblReadyCourse.Hide();
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            tbxTableNr.Location = new Point(600, 120);
+            btnReady.Left -= 258;
+
+            //start display
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
 
-        private void Cheff()
+        private void KitchenView()
         {
-            lblKitchenAndBar.Text = "Kitchen";
+            lblKitchenAndBar.Text = "Kitchen View";
             lvOrders.Columns[3].Text = "Food Type";
             lvOrders.Columns[4].Text = "Food Name";
+
+            //start display
             DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
 
         void Timer()
         {
-            timer.Interval = 10000; // specify interval time as you want
+            timer.Interval = 10000; // timer set to 10000 milisecond = 10 second
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
@@ -155,9 +159,13 @@ namespace UI
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
+            if ((MessageBox.Show("are you sure you would like to logout?", "Logout?",
+MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+            {
+                this.Hide();
+                MainWindow mainWindow = new MainWindow();
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -210,7 +218,7 @@ namespace UI
             }
             else
             {
-                throw new Exception("no table selected");
+                throw new Exception("please select a table");
             }
 
             foreach (ListViewItem item in items)
@@ -218,33 +226,18 @@ namespace UI
                 orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
             }
             Refresh();
-
-            //    List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
-
-            //    List<OrderedItem> orderedItems1 = new List<OrderedItem>();
-
-            //    foreach (OrderedItem orderedItem in orderedItems)
-            //    {
-            //        if (orderedItem.table_Id == int.Parse(tbxTableNr.Text))
-            //        {
-            //            orderedItems1.Add(orderedItem);
-            //        }
-            //    }
-
-            //    foreach (OrderedItem orderedItem in orderedItems1)
-            //    {
-            //        orderedItemService.UpdateItemOrderedStatus(orderedItem);
-            //    }
-            //    Refresh();
         }
 
         private void ReadyOrderedItem()
         {
-            foreach (ListViewItem item in lvOrders.SelectedItems)
+            if (lvOrders.SelectedItems.Count > 0)
             {
-                orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+                foreach (ListViewItem item in lvOrders.SelectedItems)
+                {
+                    orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
+                }
+                Refresh();
             }
-            Refresh();
         }
 
         private List<ListViewItem> ReadyCoursetype(List<ListViewItem> lvItems)
@@ -260,7 +253,6 @@ namespace UI
                         items.Add(item);
                     }
                 }
-
                 if (chbxMain.Checked)
                 {
                     if (item.SubItems[3].Text == chbxMain.Text)
@@ -268,13 +260,17 @@ namespace UI
                         items.Add(item);
                     }
                 }
-
                 if (chbxDessert.Checked)
                 {
                     if (item.SubItems[3].Text == chbxDessert.Text)
                     {
                         items.Add(item);
                     }
+                }
+                //so the list is not null
+                if (chbxMain.Checked == false && chbxDessert.Checked == false && chbxAppetizer.Checked == false)
+                {
+                    items.Add(item);
                 }
             }
 
@@ -286,35 +282,24 @@ namespace UI
             try
             {
                 if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0) && (!chbxDessert.Checked && !chbxMain.Checked && !chbxAppetizer.Checked))
-                {
-                    throw new Exception("no item selcted");
-                }
-
-                else if (tbxTableNr.Text.Length == 0)
-                {
-                    throw new Exception("no table selected");
-                }
-
+                    throw new Exception("please select a item");
+                else if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0))
+                    throw new Exception("please select a table");
                 else
                 {
+                    //having both table nr entered and item selected
                     if ((tbxTableNr.Text.Length > 0) && (lvOrders.SelectedItems.Count > 0))
                     {
                         ReadyTable();
                         ReadyOrderedItem();
                     }
-
-                    else if (int.Parse(tbxTableNr.Text) > 0)
-                    {
+                    else if (tbxTableNr.Text.Length > 0)
                         ReadyTable();
-                    }
-
-                    else if (lvOrders.SelectedItems.Count > 0)
-                    {
+                    else
                         ReadyOrderedItem();
-                    }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

@@ -71,6 +71,7 @@
             // 
             this.textBoxSecretA.Location = new System.Drawing.Point(18, 301);
             this.textBoxSecretA.Name = "textBoxSecretA";
+            this.textBoxSecretA.PlaceholderText = "Anwser: Skippy";
             this.textBoxSecretA.Size = new System.Drawing.Size(299, 27);
             this.textBoxSecretA.TabIndex = 60;
             // 
@@ -153,6 +154,7 @@
             // 
             this.textBoxEmployeeName.Location = new System.Drawing.Point(18, 95);
             this.textBoxEmployeeName.Name = "textBoxEmployeeName";
+            this.textBoxEmployeeName.PlaceholderText = "Name";
             this.textBoxEmployeeName.Size = new System.Drawing.Size(376, 27);
             this.textBoxEmployeeName.TabIndex = 51;
             // 
@@ -179,6 +181,7 @@
             // 
             this.textBoxSecretQ.Location = new System.Drawing.Point(18, 232);
             this.textBoxSecretQ.Name = "textBoxSecretQ";
+            this.textBoxSecretQ.PlaceholderText = "eg. What was your first pet\'s name?";
             this.textBoxSecretQ.Size = new System.Drawing.Size(299, 27);
             this.textBoxSecretQ.TabIndex = 53;
             // 
@@ -186,6 +189,7 @@
             // 
             this.textBoxPIN.Location = new System.Drawing.Point(18, 160);
             this.textBoxPIN.Name = "textBoxPIN";
+            this.textBoxPIN.PlaceholderText = "Personal Identification Number";
             this.textBoxPIN.Size = new System.Drawing.Size(299, 27);
             this.textBoxPIN.TabIndex = 52;
             // 
@@ -218,6 +222,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditEmployee";
             this.Text = "EditEmployee";
+            this.Load += new System.EventHandler(this.EditEmployee_Load);
             this.groupBoxCourse.ResumeLayout(false);
             this.groupBoxCourse.PerformLayout();
             this.ResumeLayout(false);

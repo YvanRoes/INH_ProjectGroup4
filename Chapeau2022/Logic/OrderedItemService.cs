@@ -33,9 +33,12 @@ namespace Logic
         {
             orderedItemDao.UpdateItemOrderedStatus(orderedItem);
         }
-        public void MarkOrderedItemAsServed(OrderedItem orderedItem)
+
+        //Md Tasnim Kabir 
+        public List<OrderedItem> GetAllOrderedItems()
         {
-            orderedItemDao.MarkOrderedItemAsServed(orderedItem);
+            
+            return orderedItemDao.GetAllOrderedItems();
         }
     }
 }

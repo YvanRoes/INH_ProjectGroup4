@@ -18,9 +18,9 @@ namespace UI
     public partial class BillUI : Form
     {
         private BillService billService = new BillService();
+        private OrderedItemService getOrderedItems = new OrderedItemService();
         private List<OrderedItem> listOfOrderedItems;
-        //List<OrderedItem> listOfOrderedItems;
-        //Order order;
+
         private const decimal HighVatRate = 0.21m;
         private const decimal LowVatRate = 0.06m;
         private decimal highVat = 0;
@@ -36,7 +36,9 @@ namespace UI
 
             txtTip.Enabled = false;
             txtComment.Enabled = false;
-
+            txtNumberOfPeople.Enabled = false;
+            btnSubmit.Visible = false;
+            listOfOrderedItems = getOrderedItems.GetAllOrderedItems();
             DisplayOrderedItems();
             CalculateTotalandVat();
         }
@@ -51,7 +53,6 @@ namespace UI
             Thread.CurrentThread.CurrentCulture = ci;
 
 
-            listOfOrderedItems = billService.GetAllOrderedItems();
 
             // clear the listview before filling it again
             lvOrderedItems.Items.Clear();
@@ -63,6 +64,7 @@ namespace UI
                 li.SubItems.Add(orderedItems.menuItem.Item_Price.ToString("€0.00"));
                 lblTable.Text = orderedItems.table_Id.ToString();
                 orderID = orderedItems._itemOrder_id;
+                li.Tag =orderedItems;
                 lvOrderedItems.Items.Add(li);
             }
             return listOfOrderedItems;
@@ -70,7 +72,7 @@ namespace UI
         }
 
         //calculate the total price and vat
-        public void CalculateTotalandVat()
+        private void CalculateTotalandVat()
         {
             DrinkItem drinkItem = new DrinkItem();
             foreach (OrderedItem orderedItems in listOfOrderedItems)
@@ -85,25 +87,21 @@ namespace UI
                 }
                 subTotal += orderedItems.menuItem.Item_Price * orderedItems._itemOrdered_Qty;
             }
-            lblSubTotal.Text = subTotal.ToString("€0.00");
-            lblTotalVat.Text = (highVat + lowVat).ToString("€0.00");
-            lblTotal.Text = (subTotal + highVat + lowVat).ToString("€0.00");
+            lblSubTotal.Text = subTotal.ToString("0.00");
+            lblTotalVat.Text = (highVat + lowVat).ToString("0.00");
+            lblTotal.Text = (subTotal + highVat + lowVat).ToString("0.00");
         }
-
 
         // Check the tip box whether the user enter any tip ot not
 
-        public decimal CheckTipBox()
+        private decimal CheckTipBox()
         {
 
             if (txtTip.Text != string.Empty)
             {
-
-
-                // Running on the worker thread
                 tip = decimal.Parse(txtTip.Text);
 
-                lblTotal.Text = (subTotal + highVat + lowVat + tip).ToString("€0.00");
+                lblTotal.Text = (subTotal + highVat + lowVat + tip).ToString("0.00");
             }
             else
             {
@@ -112,7 +110,7 @@ namespace UI
             return tip;
         }
         // Check the Comment box whether the user enter any comment ot not
-        public string CheckCommentBox()
+        private string CheckCommentBox()
         {
             string comment = "";
 
@@ -122,7 +120,7 @@ namespace UI
             }
             else
             {
-                comment = "No comment enter";
+                comment = "No comment";
             }
 
             return comment;
@@ -131,11 +129,11 @@ namespace UI
         /// Insert data into database when user click on pay
         /// </summary>
         /// <param name="bill"></param>
-
+        
         private void btnPay_Click_1(object sender, EventArgs e)
         {
-            Bill bill = new Bill();
             decimal total = subTotal + highVat + lowVat + tip;
+            Bill bill = new Bill();
             try
             {
                 if (rbCreditcard.Checked)
@@ -144,13 +142,11 @@ namespace UI
                     bill.Method = BillMethod.Pin;
                 else if (rbCash.Checked)
                     bill.Method = BillMethod.Cash;
-
                 Bill insertBill = new Bill(total, CheckTipBox(), CheckCommentBox(), bill.Method);
                 billService.InsertBill(insertBill);
-                MessageBox.Show($"Payment Successfull");
+                MessageBox.Show($"Payment Successfull");              
                 billService.UpdatePaymentStatus(orderID);
                 ClearBillForm();
-
             }
             catch (Exception ex)
             {
@@ -158,32 +154,70 @@ namespace UI
 
             }
         }
-        public void ClearBillForm()
+        private void ClearBillForm()
         {
+            lblTable.Text = "";
             lvOrderedItems.Clear();
             lblSubTotal.Text = "";
             lblTotalVat.Text = "";
             lblTotal.Text = "";
+            lblSplitBill.Text = "";
             cbTip.Checked = false;
             txtTip.Text = "";
             txtComment.Text = "";
+            txtNumberOfPeople.Text = "";
             cbComment.Checked = false;
+            checkBoxSplit.Checked = false;
+            btnSubmit.Visible = false;
             rbCreditcard.Checked = false;
             rbPin.Checked = false;
             rbCash.Checked = false;
+
         }
 
         private void cbComment_CheckedChanged(object sender, EventArgs e)
         {
-            txtComment.Enabled = true;
+            if(cbComment.Checked)
+                txtComment.Enabled = true;
+            else
+                txtComment.Enabled =false;
 
         }
 
         private void cbTip_CheckedChanged(object sender, EventArgs e)
         {
-            txtTip.Enabled = true;
+            if (cbTip.Checked)
+                txtTip.Enabled = true;
+            else
+                txtTip.Enabled = false;
+        }
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            MainWindow back=new MainWindow();
+            back.Show();
+        }
+
+        private void checkBoxSplit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSplit.Checked)
+            {
+                txtNumberOfPeople.Enabled = true;
+                btnSubmit.Visible = true;
+            }
+            else
+            {
+                txtNumberOfPeople.Enabled = false;
+                btnSubmit.Visible = false;
+            }
 
         }
 
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            int nrOfPeople = int.Parse(txtNumberOfPeople.Text.ToString());
+            double total = double.Parse(lblTotal.Text.ToString());
+            double splitAmount = (double)(total/nrOfPeople);
+            lblSplitBill.Text = splitAmount.ToString("€ 0.00");
+        }
     }
 }

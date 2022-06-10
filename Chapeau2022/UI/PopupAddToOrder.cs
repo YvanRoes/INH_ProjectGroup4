@@ -11,17 +11,17 @@ using Model;
 
 namespace UI
 {
-    public partial class PopupAddToOrder : Form
+    public partial class PopupAddToOrder : Form, IOrderObservable
     {
         MenuItem _menuItem;
         Order _order;
         int _Qty = 1;
-        List<IObserver> _observers;
+        IOrderObserver _observer; //OrderForm
 
-        public PopupAddToOrder(MenuItem item, Order order, List<IObserver> _observers)
+        public PopupAddToOrder(MenuItem item, Order order, IOrderObserver observer)
         {
             this._order = order;
-            this._observers = _observers;
+            this._observer = observer;
             this._menuItem = item;
             InitializeComponent();
             Start(item, order);
@@ -64,11 +64,7 @@ namespace UI
 
         private void LoadQty() => txtQty.Text = _Qty.ToString();
 
-        public void NotifyObservers()
-        {
-            foreach(IObserver obs in _observers)
-                obs.Update(_order);
-        }
+        public void NotifyObservers() => _observer.Update(_order);
 
         private void btnAddToOrder_Click(object sender, EventArgs e)
         {
@@ -81,6 +77,16 @@ namespace UI
             else
                 MessageBox.Show("Quantity specified is not possible");
             
+        }
+
+        public void AddObserver(IOrderObserver observer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveObserver(IOrderObserver observer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

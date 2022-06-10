@@ -34,6 +34,9 @@ namespace UI
         private void AddItem_Load(object sender, EventArgs e)
         {
             radioButton1.Checked = true;
+            radioButton9.Checked = true;
+            radioButton10.Checked = true;
+            radioButton4.Checked = true;
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -44,7 +47,7 @@ namespace UI
 
                 groupBoxAlcoholContent.Show();
                 groupBoxCourse.Hide();
-                groupBoxMenu.Hide();
+                groupBox2.Hide();
 
                 isFood = false;
             }
@@ -55,7 +58,7 @@ namespace UI
 
                 groupBoxAlcoholContent.Hide();
                 groupBoxCourse.Show();
-                groupBoxMenu.Show();
+                groupBox2.Show();
 
                 isFood = true;
             }
@@ -65,20 +68,52 @@ namespace UI
             if (isFood)
             {
                 CreateFoodItem();
-                stockView.FoodStock();
-                Close();
             }
             else 
             {
                 CreateDrinkItem();
-                stockView.DrinkStock();
-                Close();
             }
         }
         private void CreateFoodItem() 
         {
+            if (string.IsNullOrWhiteSpace(textBoxItemName.Text) || string.IsNullOrEmpty(textBoxItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxItemName.Text))
+            {
+                MessageBox.Show("Name cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxPrice.Text)) 
+            {
+                MessageBox.Show("Price cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            {
+                MessageBox.Show("Quantity cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            {
+                MessageBox.Show("The amount needed field cannot contain special characters.");
+                return;
+            }
+
+            //if the user fails to provide appropreate information the price, quantity and amount needed are all automatically assigned a value of 0
+            if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
+                textBoxPrice.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text) || string.IsNullOrEmpty(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
             int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
-            int MenuType = tools.IndexOfRadioButton(radioButton6,radioButton3);
+            int MenuType = tools.IndexOfRadioButton(radioButton10,radioButton6, radioButton3);
             int Id = foodService.GetLastId()+1;
             
             FoodItem item = new FoodItem()
@@ -92,9 +127,45 @@ namespace UI
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             foodService.AddItem(item);
+            stockView.FoodStock();
+            Close();
         }
         private void CreateDrinkItem() 
         {
+            if (string.IsNullOrWhiteSpace(textBoxItemName.Text) || string.IsNullOrEmpty(textBoxItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxItemName.Text))
+            {
+                MessageBox.Show("Name cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxPrice.Text))
+            {
+                MessageBox.Show("Price cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            {
+                MessageBox.Show("Quantity cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            {
+                MessageBox.Show("The amount needed field cannot contain special characters.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
+                textBoxPrice.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text) || string.IsNullOrEmpty(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
             int drinkType = tools.IndexOfRadioButton(radioButton4, radioButton5);
             int Id = foodService.GetLastId() + 1;
 
@@ -108,6 +179,54 @@ namespace UI
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             drinkService.AddDrink(drink);
+            stockView.DrinkStock();
+            Close();
+        }
+        //the code below ensures proper functioning of the +/- buttons in case of inappropreate input
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) + 1).ToString();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
+            textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) + 1).ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBoxQuantity.Text != "0")
+                try
+                {
+                    textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxQuantity.Text = "0";
+                }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if(textBoxAmountNeeded.Text != "0")
+                try
+                {
+                    textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxAmountNeeded.Text = "0";
+                }
+        }
+
+        private void textBoxQuantity_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

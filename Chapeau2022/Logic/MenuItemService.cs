@@ -23,5 +23,7 @@ namespace Logic
         }
 
         public List<MenuItem> GetAllMenuItems() => _menuItemDao.GetAllMenuItems().OrderBy(i => i.Item_Name).ToList();
+
+        public void UpdateMenuItemStocks(Order order) => _menuItemDao.UpdateMenuItemStocks(order);
     }
 }
