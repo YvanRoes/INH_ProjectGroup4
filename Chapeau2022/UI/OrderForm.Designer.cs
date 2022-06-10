@@ -257,7 +257,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "OrderForm";
-            this.Text = "Form1";
+            this.Text = "Order";
             this.gBLunchDinner.ResumeLayout(false);
             this.gBLunchDinner.PerformLayout();
             this.pnlOrder.ResumeLayout(false);

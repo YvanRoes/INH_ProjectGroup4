@@ -98,7 +98,7 @@ namespace UI
             if (cBComments.Checked)
                 _OrderedItem._itemOrdered_Comment = tBComments.Text;
             else
-                _OrderedItem._itemOrdered_Comment = null;
+                _OrderedItem._itemOrdered_Comment = "";
             NotifyObservers();
             this.Close();
         }

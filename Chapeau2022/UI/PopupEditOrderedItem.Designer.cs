@@ -128,7 +128,7 @@
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.lblMenuItemName);
             this.Name = "PopupEditOrderedItem";
-            this.Text = "PopupEditOrderedItem";
+            this.Text = "Edit item";
             this.ResumeLayout(false);
             this.PerformLayout();
 

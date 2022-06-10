@@ -25,9 +25,6 @@ namespace Model
 
         public int table_Id { get; set; }
 
-        public OrderedItem (MenuItem item)
-        {
-            this.menuItem = item;
-        }
+        public OrderedItem (MenuItem item) => menuItem = item;
     }
 }

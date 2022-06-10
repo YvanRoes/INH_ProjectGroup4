@@ -78,5 +78,16 @@ namespace DAL
             }
             return menuItems;
         }
+
+        public void UpdateMenuItemStocks(Order order)
+        {
+            foreach(OrderedItem item in order.menuItems)
+            {
+                string query = "UPDATE [MENU_ITEM] SET item_Stock = @stock WHERE item_Id = @id";
+                SqlParameter[] sqlParameters = new SqlParameter[] { new SqlParameter("@stock", (item.menuItem.Item_Stock - item._itemOrdered_Qty)), new SqlParameter("@id", item.menuItem.Item_Id)};
+                ExecuteEditQuery(query, sqlParameters);
+            }
+            
+        }
     }
 }

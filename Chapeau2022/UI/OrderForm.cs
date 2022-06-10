@@ -12,10 +12,8 @@ using Model;
 
 namespace UI
 {
-    public partial class OrderForm : Form, IOrderObserver, INotifierObservable
+    public partial class OrderForm : Form, IOrderObserver
     {
-        List<INotifierObserver> _observers;
-
         Order _order;
         List<MenuItem> _CurrentItemsDisplayed;
         CourseType _CurrentcourseType;
@@ -29,7 +27,6 @@ namespace UI
 
             //init globals
             _CurrentItemsDisplayed = new List<MenuItem>();
-            _observers = new List<INotifierObserver>();
             _order = new Order(table_Id, employeeId);
 
             Start();
@@ -73,15 +70,9 @@ namespace UI
             {
                 if (item is DrinkItem)
                 {
-                    DrinkItem _drinkItem = (DrinkItem)item;
-                    _CurrentItemsDisplayed.Add(_drinkItem);
-                    string alc = "";
-                    if (_drinkItem.Item_DrinkType == DrinkType.Alcoholic)
-                        alc = "yes";
+                    _CurrentItemsDisplayed.Add(item as DrinkItem);
+                    AddDrinkItemToList((DrinkItem)item);
                     
-                    string[] tempItem = {_drinkItem.Item_Name, _drinkItem.Item_Price.ToString(), alc };
-                    ListViewItem lvi = new ListViewItem(tempItem);
-                    lVOrder.Items.Add(lvi);
                 }
             }
         }
@@ -113,6 +104,8 @@ namespace UI
             {
                 if (item is FoodItem)
                     AddFoodItemToList((FoodItem)item);
+                if (item is DrinkItem)
+                    AddDrinkItemToList((DrinkItem)item);
             }
         }
 
@@ -133,6 +126,17 @@ namespace UI
         private void AddFoodItemToList(FoodItem Item)
         {
             string[] tempItem = { Item.Item_Name, Item.Item_Price.ToString() };
+            ListViewItem lvi = new ListViewItem(tempItem);
+            lVOrder.Items.Add(lvi);
+        }
+
+        private void AddDrinkItemToList(DrinkItem item)
+        {
+            string alc = "";
+            if (item.Item_DrinkType == DrinkType.Alcoholic)
+                alc = "yes";
+
+            string[] tempItem = { item.Item_Name, item.Item_Price.ToString(), alc };
             ListViewItem lvi = new ListViewItem(tempItem);
             lVOrder.Items.Add(lvi);
         }
@@ -288,9 +292,9 @@ namespace UI
                 //make the order
                 OrderService _orderService = OrderService.GetInstance();
                 _orderService.SendOrderToDatabase(_order);
+                MenuItemService menuItemService = MenuItemService.GetInstance();
+                menuItemService.UpdateMenuItemStocks(_order);
                 MessageBox.Show($"Order {_order.Order_Id} has been placed");
-                //Notify kitchen and stock accordingly
-                /*NotifyObservers();*/
 
                 //close order form
                 this.Close();
@@ -334,18 +338,6 @@ namespace UI
         }
 
         public void Update(Order order) { _order = order; UpdateListViewItems(); UpdateListViewOverview(); }
-
-
-        //observers
-        public void NotifyObservers()
-        {
-            foreach (INotifierObserver obs in _observers)
-                obs.UpdateKitchenAndBar();
-        }
-
-        public void AddObserver(INotifierObserver observer) => _observers.Add(observer);
-
-        public void RemoveObserver(INotifierObserver observer) => _observers.Remove(observer);
 
     }
 }

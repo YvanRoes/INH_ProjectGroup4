@@ -14,7 +14,6 @@ namespace UI
     public partial class MainWindow : Form
     {
         Employee employee = new Employee();
-        INotifierObserver KitchenAndBar;
 
         public MainWindow()
         {
@@ -25,7 +24,6 @@ namespace UI
         private void btnOrderView_Click(object sender, EventArgs e)
         {
             OrderForm orderForm = new OrderForm(4, 1);
-            orderForm.AddObserver(KitchenAndBar);
         }
 
         private void btnPayment_Click(object sender, EventArgs e)
@@ -44,7 +42,7 @@ namespace UI
             employee.Employee_Role = EmployeeRole.chef;
 
             this.Hide();
-            KitchenAndBar = new KitchenAndBar(employee);
+            KitchenAndBar kitchen = new KitchenAndBar(employee);
         }
 
         private void btnBarView_Click(object sender, EventArgs e)
@@ -52,7 +50,7 @@ namespace UI
             employee.Employee_Role = EmployeeRole.bartender;
 
             this.Hide();
-            KitchenAndBar = new KitchenAndBar(employee);
+            KitchenAndBar bar = new KitchenAndBar(employee);
         }
 
         private void button1_Click(object sender, EventArgs e)

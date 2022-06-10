@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class KitchenAndBar : Form, INotifierObserver
+    public partial class KitchenAndBar : Form
     {
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
