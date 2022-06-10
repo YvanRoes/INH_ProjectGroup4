@@ -86,6 +86,7 @@ namespace UI
             };
             foodService.UpdateFoodItem(food);
             stockView.FoodStock();
+            stockView.ClearSelectedListViewItems();
             Close();
         }
         private bool CheckForInputErrors()

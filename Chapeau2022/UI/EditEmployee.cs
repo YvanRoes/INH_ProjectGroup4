@@ -18,11 +18,13 @@ namespace UI
         private EmployeeService employeeService;
         EmployeeView employeeView;
         private Tools tools;
+        private int employeeId;
 
-        public EditEmployee(Employee employee, EmployeeView employeeView)
+        public EditEmployee(Employee employee, EmployeeView employeeView, int employeeId)
         {
             this.employee = employee;
             this.employeeView = employeeView;
+            this.employeeId = employeeId;
             tools = new Tools();
             employeeService = new EmployeeService();
             InitializeComponent();
@@ -59,16 +61,37 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxEmployeeName.Text) || string.IsNullOrEmpty(textBoxEmployeeName.Text))
+            if (CheckForErrors()) 
             {
-                MessageBox.Show("Item name cannot be empty.");
                 return;
             }
 
-            if (int.TryParse(textBoxEmployeeName.Text, out int b) || tools.hasSpecialChar(textBoxEmployeeName.Text))
+            Employee employee = new Employee()
+            {
+                Employee_Id = employeeId,
+                Employee_Name = textBoxEmployeeName.Text,
+                Employee_Role = (EmployeeRole)(tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3, radioButton4)+1),
+                Employee_Pin = int.Parse(textBoxPIN.Text),
+                Employee_SecretQuestion = textBoxSecretQ.Text,
+                Employee_SecretAnwser = textBoxSecretA.Text
+            };
+            employeeService.UpdateEmployee(employee);
+            employeeView.FillListView();
+            employeeView.ListViewClearSelected();
+            this.Close();
+        }
+        private bool CheckForErrors() 
+        {
+            if (string.IsNullOrWhiteSpace(textBoxEmployeeName.Text) || string.IsNullOrEmpty(textBoxEmployeeName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return true;
+            }
+
+            if (tools.hasInt(textBoxEmployeeName.Text) || tools.hasSpecialChar(textBoxEmployeeName.Text))
             {
                 MessageBox.Show("Name cannot contain integers or special characters.");
-                return;
+                return true;
             }
 
             if (string.IsNullOrWhiteSpace(textBoxPIN.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
@@ -77,26 +100,15 @@ namespace UI
             if (string.IsNullOrWhiteSpace(textBoxSecretQ.Text) || string.IsNullOrEmpty(textBoxSecretQ.Text))
             {
                 MessageBox.Show("Secret question cannot be empty.");
-                return;
+                return true;
             }
 
             if (string.IsNullOrWhiteSpace(textBoxSecretA.Text) || string.IsNullOrEmpty(textBoxSecretA.Text))
             {
                 MessageBox.Show("Secret question cannot be empty.");
-                return;
+                return true;
             }
-
-            Employee employee = new Employee()
-            {
-                Employee_Id = employeeService.GetLastId(),
-                Employee_Name = textBoxEmployeeName.Text,
-                Employee_Role = (EmployeeRole)(tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3, radioButton4)+1),
-                Employee_Pin = int.Parse(textBoxPIN.Text),
-                Employee_SecretQuestion = textBoxSecretQ.Text,
-                Employee_SecretAnwser = textBoxSecretA.Text
-            };
-            employeeService.UpdateEmployee(employee);
-            this.Close();
+            return false;
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {

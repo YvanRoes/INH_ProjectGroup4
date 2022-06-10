@@ -134,6 +134,10 @@ namespace UI
             Form addItem = new AddItem(this);
             addItem.ShowDialog();
         }
+        public void ClearSelectedListViewItems() 
+        {
+            listView1.SelectedItems.Clear();
+        }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             SortByStatus();
