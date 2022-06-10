@@ -101,8 +101,14 @@ namespace UI
 
         private void UpdateListViewItems()
         {
+
             foreach(MenuItem item in _CurrentItemsDisplayed)
             {
+                foreach(ListViewItem it in lVOrder.Items)
+                {
+                    if (it.Index == _CurrentItemsDisplayed.IndexOf(item))
+                        return;
+                }
                 if (item is FoodItem)
                     AddFoodItemToList((FoodItem)item);
                 if (item is DrinkItem)
@@ -171,6 +177,7 @@ namespace UI
             {
                 MessageBox.Show("No Item is selected");
             }
+            UpdateListViewItems();
         }
 
         private MenuItem GetItemFromOrderList()
