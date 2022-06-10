@@ -29,12 +29,13 @@ namespace UI
 
         private void Start() 
         {
-            employees = employeeService.GetAllEmployees();
             FillListView();
         }
 
         public void FillListView() 
         {
+            employees = employeeService.GetAllEmployees();
+
             listView1.Clear();
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
@@ -77,7 +78,7 @@ namespace UI
         {
             try
             {
-                EditEmployee editEmployee = new EditEmployee(employeeService.GetEmployeeById(int.Parse(listView1.SelectedItems[0].Text)), this);
+                EditEmployee editEmployee = new EditEmployee(employeeService.GetEmployeeById(int.Parse(listView1.SelectedItems[0].Text)), this, employeeService.GetEmployeeById(int.Parse(listView1.SelectedItems[0].Text)).Employee_Id);
                 editEmployee.ShowDialog();
             }
             catch 

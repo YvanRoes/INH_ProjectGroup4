@@ -62,6 +62,7 @@ namespace UI
             };
             drinkService.UpdateDrink(drink);
             stockView.DrinkStock();
+            stockView.ClearSelectedListViewItems();
             Close();
         }
         private bool CheckForInputErrors()
