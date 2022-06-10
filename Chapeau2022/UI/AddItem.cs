@@ -145,7 +145,7 @@ namespace UI
         private bool CheckForSpecialCharacters() 
         {
             //checking if the price, amount and quantity fields have special characters
-            if (tools.hasSpecialChar(textBoxPrice.Text))
+            if (tools.hasSpecialCharForPrice(textBoxPrice.Text))
             {
                 MessageBox.Show("Price cannot contain special characters.");
                 return true;

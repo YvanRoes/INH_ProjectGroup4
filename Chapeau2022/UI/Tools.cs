@@ -125,7 +125,17 @@ namespace UI
         }
         public bool hasSpecialChar(string input)
         {
-            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,**";
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,*";
+            foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
+
+            return false;
+        }
+        public bool hasSpecialCharForPrice(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}-;'<>_*";
             foreach (var item in specialChar)
             {
                 if (input.Contains(item)) return true;
