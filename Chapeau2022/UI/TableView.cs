@@ -14,6 +14,7 @@ namespace UI
 {
     public partial class TableView : Form
     {
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         OrderedItemService orderedItemService = new OrderedItemService();
         TableService tableService = new TableService();
         int tableNumber;
@@ -23,20 +24,16 @@ namespace UI
             InitializeComponent();
             Show();
             Waiter();
-
+            
         }
         
-        private void TableView_Load(object sender, EventArgs e)
-        {
-
-        }
         private void Waiter()
         {
+            lvOrders.Items.Clear();
             DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
             DisplayOrderedFoodItem(ItemOrderedStatus.Ready);
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
-            
         }
 
         //fills the listview with the ordered drinks
@@ -80,26 +77,6 @@ namespace UI
                 }
             }
         }
-        //checks if the table currently has any running or ready to be served orders
-        private void CheckTableStatus (int table, out string tableStatus)
-        {
-            tableStatus = "";
-            if (lvOrders.Items[0].SubItems[0].Text == $"{table}") //checks if the table number is in the listview
-            {
-                if (lvOrders.Items[0].SubItems[4].Text == "NotReady") //checks if the order is not ready
-                {
-                    tableStatus = "Running";
-                }
-                else if (lvOrders.Items[0].SubItems[4].Text == "Ready") //checks if the order is ready
-                {
-                    tableStatus = "Ready to serve";
-                }
-            }
-            else
-            {
-                tableStatus = "Free";
-            }
-        }
 
         TimeSpan orderTimePlaced(DateTime placed)
         {
@@ -118,8 +95,7 @@ namespace UI
             foreach (ListViewItem item in lvOrders.SelectedItems)
             {
                 orderedItemService.MarkOrderedItemAsServed((OrderedItem)item.Tag);
-            }
-            
+            }  
         }
 
         private void btnUpdateTable_Click(object sender, EventArgs e)
@@ -130,21 +106,18 @@ namespace UI
                 {
                     throw new Exception("No order selected");
                 }
-
                 else if (lvOrders.SelectedItems[0].SubItems[4].Text == "NotReady")
                 {
                     throw new Exception("This order is not yet ready to serve!");
                 }
-
                 else
                 {
                     if (lvOrders.SelectedItems[0].SubItems[4].Text == "Ready")
                     {
                         ServeOrderedItem();
                         MessageBox.Show("Order has been served!");
-                        
+                        Waiter();
                     }
-
                     else 
                     {
                         MessageBox.Show("Unable so serve order");                
@@ -157,226 +130,142 @@ namespace UI
             }
         }
 
+        //checks if the table currently has any running or ready to be served orders
+        private void CheckTableStatus(int table, Button b, out string tableStatus)
+        {
+            tableStatus = "";
+            if (lvOrders.Items[0].SubItems[0].Text == $"{table}") //checks if the table number is in the listview
+            {
+                if (lvOrders.Items[0].SubItems[4].Text == "NotReady") //checks if the order is not ready
+                {
+                    tableStatus = "Running";
+                }
+                else if (lvOrders.Items[0].SubItems[4].Text == "Ready") //checks if the order is ready
+                {
+                    tableStatus = "Ready to serve";
+                }
+            }
+            else if (b.BackColor == Color.White)
+            {
+                tableStatus = "Free";
+            }
+            else
+            {
+                tableStatus = "Occupied";
+            }
+        }
+        void CheckButtonClick(object sender, EventArgs e) //checks which button was clicked 
+        {
+            Control ctrl = ((Control)sender);
+
+            switch (ctrl.Name) //selects the correct table number
+            {
+                case "btnTable1":
+                    tableNumber = 1;
+                    break;
+                case "btnTable2":
+                    tableNumber = 2;
+                    break;
+                case "btnTable3":
+                    tableNumber = 3;
+                    break;
+                case "btnTable4":
+                    tableNumber = 4;
+                    break;
+                case "btnTable5":
+                    tableNumber = 5;
+                    break;
+                case "btnTable6":
+                    tableNumber = 6;
+                    break;
+                case "btnTable7":
+                    tableNumber = 7;
+                    break;
+                case "btnTable8":
+                    tableNumber = 8;
+                    break;
+                case "btnTable9":
+                    tableNumber = 9;
+                    break;
+                case "btnTable10":
+                    tableNumber = 10;
+                    break;
+
+                default: //the tablnumber is 1 by default
+                    tableNumber = 1;
+                    break;
+            }
+        }
 
         //clicking the table buttons will change its status according to the TableStatus method
         private void btnTable1_Click(object sender, EventArgs e)
         {
-            tableNumber = 1;
-            CheckTableStatus(tableNumber, out tableStatus);
+            Button b = (Button)sender;
+            CheckButtonClick(sender, e);
+            CheckTableStatus(tableNumber, b, out tableStatus);
             if (tableStatus == "Running")
             {
-                btnTable1.BackColor = Color.White;
+                b.ForeColor = Color.Black;
+                b.BackColor = Color.White;
             }
             else if (tableStatus == "Ready to serve")
             {
-                btnTable1.BackColor = Color.Red;
+                b.BackColor = Color.Red;
+                b.ForeColor = Color.White;
+            }
+            else if (tableStatus == "Free")
+            {
+                b.BackColor = Color.Green;
+                b.ForeColor = Color.White;
             }
             else
             {
-                btnTable1.BackColor = Color.Green;
+                b.BackColor = Color.White;
+                b.ForeColor = Color.Black;
             }
-            txtTable1.Text = $"{tableStatus}";
-        }
-
-        private void btnTable2_Click(object sender, EventArgs e)
-        {
-            tableNumber = 2;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
+            switch (tableNumber) //fills the correct label
             {
-                btnTable2.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready to serve")
-            {
-                btnTable2.BackColor = Color.Red;
-            }
-            else if (tableStatus == "Occupied")
-            {
-                btnTable2.BackColor = Color.White;
-            }
-            else
-            {
-                btnTable2.BackColor = Color.Green;
-            }
-            txtTable2.Text = $"{tableStatus}";
-        }
-
-        private void btnTable3_Click(object sender, EventArgs e)
-        {
-            tableNumber = 3;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable3.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready to serve")
-            {
-                btnTable3.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable3.BackColor = Color.Green;
-            }
-            txtTable3.Text = $"{tableStatus}";
-        }
-
-        private void btnTable4_Click(object sender, EventArgs e)
-        {
-            tableNumber = 4;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable4.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable4.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable4.BackColor = Color.Green;
-            }
-            txtTable4.Text = $"{tableStatus}";
-        }
-
-        private void btnTable5_Click(object sender, EventArgs e)
-        {
-            tableNumber = 5;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable4.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable5.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable5.BackColor = Color.Green;
-            }
-            txtTable5.Text = $"{tableStatus}";
-        }
-
-        private void btnTable6_Click(object sender, EventArgs e)
-        {
-            tableNumber = 6;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable6.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable6.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable6.BackColor = Color.Green;
-            }
-            txtTable6.Text = $"{tableStatus}";
-        }
-
-        private void btnTable7_Click(object sender, EventArgs e)
-        {
-            tableNumber = 7;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable7.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable7.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable7.BackColor = Color.Green;
-            }
-            txtTable7.Text = $"{tableStatus}";
-        }
-
-        private void btnTable8_Click(object sender, EventArgs e)
-        {
-            tableNumber = 8;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable8.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable8.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable8.BackColor = Color.Green;
-            }
-            txtTable8.Text = $"{tableStatus}";
-        }
-
-        private void btnTable9_Click(object sender, EventArgs e)
-        {
-            tableNumber = 9;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable9.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable9.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable9.BackColor = Color.Green;
-            }
-            txtTable9.Text = $"{tableStatus}";
-        }
-
-        private void btnTable10_Click(object sender, EventArgs e)
-        {
-            tableNumber = 10;
-            CheckTableStatus(tableNumber, out tableStatus);
-            if (tableStatus == "Running")
-            {
-                btnTable10.BackColor = Color.White;
-            }
-            else if (tableStatus == "Ready")
-            {
-                btnTable10.BackColor = Color.Red;
-            }
-            else
-            {
-                btnTable10.BackColor = Color.Green;
-            }
-            txtTable10.Text = $"{tableStatus}";
-        }
-        //changes table status by clicking a table button
-        /*private void OccupyOrFreeUpTable(object sender)
-        {
-            Control ctrl = ((Control)sender);
-
-            switch (ctrl.BackColor.Name)
-            {
-                case "Red": //clicking a "ready to serve" table won't change its status to free or occupied
-                    ctrl.BackColor = Color.Red;
-                    tableStatus = "Ready to Serve"; 
+                case 1:
+                    txtTable1.Text = $"{tableStatus}";
                     break;
-                case "Green": //if the table is free, clicking it will turn it to occupied
-                    ctrl.BackColor = Color.White;
-                    tableStatus = "Occupied";
+                case 2:
+                    txtTable2.Text = $"{tableStatus}";
                     break;
-                case "White":
-                    ctrl.BackColor = Color.Green;
-                    tableStatus = "Free";
+                case 3:
+                    txtTable3.Text = $"{tableStatus}";
+                    break;
+                case 4:
+                    txtTable4.Text = $"{tableStatus}";
+                    break;
+                case 5:
+                    txtTable5.Text = $"{tableStatus}";
+                    break;
+                case 6:
+                    txtTable6.Text = $"{tableStatus}";
+                    break;
+                case 7:
+                    txtTable7.Text = $"{tableStatus}";
+                    break;
+                case 8:
+                    txtTable8.Text = $"{tableStatus}";
+                    break;
+                case 9:
+                    txtTable9.Text = $"{tableStatus}";
+                    break;
+                case 10:
+                    txtTable10.Text = $"{tableStatus}";
                     break;
 
-                default: //the table is free by default
-                    ctrl.BackColor = Color.Green;
-                    tableStatus = "Free";
+                default: //the tablnumber is 1 by default
+                    txtTable1.Text = $"{tableStatus}";
                     break;
             }
-        }*/
+            
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            Waiter();
+        }
     }
 }
