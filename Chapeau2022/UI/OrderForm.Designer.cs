@@ -37,18 +37,18 @@
             this.rbDinner = new System.Windows.Forms.RadioButton();
             this.rbLunch = new System.Windows.Forms.RadioButton();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.makeTheOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.orderOverviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Order = new System.Windows.Forms.ToolStripMenuItem();
+            this.Overview = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlOverview = new System.Windows.Forms.Panel();
+            this.btnLogout2 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFinish = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblOrder_Id = new System.Windows.Forms.Label();
             this.lVOverview = new System.Windows.Forms.ListView();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnLogout2 = new System.Windows.Forms.Button();
             this.gBLunchDinner.SuspendLayout();
             this.pnlOrder.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -156,30 +156,40 @@
             this.pnlOrder.TabIndex = 9;
             this.pnlOrder.Visible = false;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(263, 13);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 9;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.Logout);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.makeTheOrderToolStripMenuItem,
-            this.orderOverviewToolStripMenuItem});
+            this.Order,
+            this.Overview});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(796, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // makeTheOrderToolStripMenuItem
+            // Order
             // 
-            this.makeTheOrderToolStripMenuItem.Name = "makeTheOrderToolStripMenuItem";
-            this.makeTheOrderToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
-            this.makeTheOrderToolStripMenuItem.Text = "Make the Order";
-            this.makeTheOrderToolStripMenuItem.Click += new System.EventHandler(this.makeTheOrderToolStripMenuItem_Click);
+            this.Order.Name = "Order";
+            this.Order.Size = new System.Drawing.Size(101, 20);
+            this.Order.Text = "Make the Order";
+            this.Order.Click += new System.EventHandler(this.makeTheOrderToolStripMenuItem_Click);
             // 
-            // orderOverviewToolStripMenuItem
+            // Overview
             // 
-            this.orderOverviewToolStripMenuItem.Name = "orderOverviewToolStripMenuItem";
-            this.orderOverviewToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
-            this.orderOverviewToolStripMenuItem.Text = "Order Overview";
-            this.orderOverviewToolStripMenuItem.Click += new System.EventHandler(this.orderOverviewToolStripMenuItem_Click);
+            this.Overview.Name = "Overview";
+            this.Overview.Size = new System.Drawing.Size(101, 20);
+            this.Overview.Text = "Order Overview";
+            this.Overview.Click += new System.EventHandler(this.orderOverviewToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -201,6 +211,16 @@
             this.pnlOverview.Size = new System.Drawing.Size(406, 514);
             this.pnlOverview.TabIndex = 12;
             this.pnlOverview.Visible = false;
+            // 
+            // btnLogout2
+            // 
+            this.btnLogout2.Location = new System.Drawing.Point(309, 13);
+            this.btnLogout2.Name = "btnLogout2";
+            this.btnLogout2.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout2.TabIndex = 13;
+            this.btnLogout2.Text = "Logout";
+            this.btnLogout2.UseVisualStyleBackColor = true;
+            this.btnLogout2.Click += new System.EventHandler(this.Logout);
             // 
             // btnClear
             // 
@@ -250,26 +270,6 @@
             this.lVOverview.UseCompatibleStateImageBehavior = false;
             this.lVOverview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvOverview_MouseDoubleClick);
             // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(263, 13);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout.TabIndex = 9;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.Logout);
-            // 
-            // btnLogout2
-            // 
-            this.btnLogout2.Location = new System.Drawing.Point(309, 13);
-            this.btnLogout2.Name = "btnLogout2";
-            this.btnLogout2.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout2.TabIndex = 13;
-            this.btnLogout2.Text = "Logout";
-            this.btnLogout2.UseVisualStyleBackColor = true;
-            this.btnLogout2.Click += new System.EventHandler(this.Logout);
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -306,8 +306,8 @@
         private System.Windows.Forms.RadioButton rbLunch;
         private System.Windows.Forms.Panel pnlOrder;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem makeTheOrderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem orderOverviewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Order;
+        private System.Windows.Forms.ToolStripMenuItem Overview;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlOverview;
         private System.Windows.Forms.Button btnClear;

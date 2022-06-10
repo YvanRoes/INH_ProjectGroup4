@@ -43,7 +43,9 @@ namespace UI
             //pnl Overview
             lblOrder_Id.Text = _order.Order_Id.ToString();
             if (_order.menuItems.Count > 0)
-                btnDrinks_Click(null, null);
+                btnDrinks.PerformClick();
+
+            Order.PerformClick();
    
         }
 
