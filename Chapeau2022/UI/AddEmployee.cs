@@ -34,8 +34,17 @@ namespace UI
             }
 
             if (int.TryParse(textBoxEmployeeName.Text, out int b) || tools.hasSpecialChar(textBoxEmployeeName.Text))
+            {
                 MessageBox.Show("Name cannot contain integers or special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxEmployeeName.Text))
+            {
+                MessageBox.Show("The PIN cannot contain special characters.");
+                return;
+            }
 
+            //if the user doesnt provide a PIN they are assigned a default one 
             if (string.IsNullOrWhiteSpace(textBoxPIN.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
                 textBoxPIN.Text = "1234";
 

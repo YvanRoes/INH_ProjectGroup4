@@ -83,6 +83,28 @@ namespace UI
                 MessageBox.Show("Item name cannot be empty.");
                 return;
             }
+            if (tools.hasSpecialChar(textBoxItemName.Text))
+            {
+                MessageBox.Show("Name cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxPrice.Text)) 
+            {
+                MessageBox.Show("Price cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            {
+                MessageBox.Show("Quantity cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            {
+                MessageBox.Show("The amount needed field cannot contain special characters.");
+                return;
+            }
+
+            //if the user fails to provide appropreate information the price, quantity and amount needed are all automatically assigned a value of 0
             if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
                 textBoxPrice.Text = "0";
 
@@ -117,6 +139,26 @@ namespace UI
                 MessageBox.Show("Item name cannot be empty.");
                 return;
             }
+            if (tools.hasSpecialChar(textBoxItemName.Text))
+            {
+                MessageBox.Show("Name cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxPrice.Text))
+            {
+                MessageBox.Show("Price cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            {
+                MessageBox.Show("Quantity cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            {
+                MessageBox.Show("The amount needed field cannot contain special characters.");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
                 textBoxPrice.Text = "0";
 
@@ -140,7 +182,7 @@ namespace UI
             };
             drinkService.AddDrink(drink);
         }
-
+        //the code below ensures proper functioning of the +/- buttons in case of inappropreate input
         private void button3_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxQuantity.Text))

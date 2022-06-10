@@ -73,6 +73,26 @@ namespace UI
                 MessageBox.Show("Item name cannot be empty.");
                 return;
             }
+            if (tools.hasSpecialChar(textBoxItemName.Text))
+            {
+                MessageBox.Show("Name cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxPrice.Text))
+            {
+                MessageBox.Show("Price cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxQuantity.Text))
+            {
+                MessageBox.Show("Quantity cannot contain special characters.");
+                return;
+            }
+            if (tools.hasSpecialChar(textBoxAmountNeeded.Text))
+            {
+                MessageBox.Show("The amount needed field cannot contain special characters.");
+                return;
+            }
             if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
                 textBoxPrice.Text = "0";
 
