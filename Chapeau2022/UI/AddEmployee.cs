@@ -32,7 +32,6 @@ namespace UI
                 MessageBox.Show("Item name cannot be empty.");
                 return;
             }
-
             if (int.TryParse(textBoxEmployeeName.Text, out int b) || tools.hasSpecialChar(textBoxEmployeeName.Text))
             {
                 MessageBox.Show("Name cannot contain integers or special characters.");
@@ -43,23 +42,19 @@ namespace UI
                 MessageBox.Show("The PIN cannot contain special characters.");
                 return;
             }
-
             //if the user doesnt provide a PIN they are assigned a default one 
             if (string.IsNullOrWhiteSpace(textBoxPIN.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
                 textBoxPIN.Text = "1234";
-
             if (string.IsNullOrWhiteSpace(textBoxSecretQ.Text) || string.IsNullOrEmpty(textBoxSecretQ.Text))
             {
                 MessageBox.Show("Secret question cannot be empty.");
                 return;
             }
-
             if (string.IsNullOrWhiteSpace(textBoxSecretA.Text) || string.IsNullOrEmpty(textBoxSecretA.Text))
             {
                 MessageBox.Show("Secret question cannot be empty.");
                 return;
             }
-
             Employee employee = new Employee()
             {
                 Employee_Id = employeeService.GetLastId(),
@@ -69,7 +64,6 @@ namespace UI
                 Employee_SecretQuestion = textBoxSecretQ.Text,
                 Employee_SecretAnwser = textBoxSecretA.Text
             };
-
             employeeService.AddEmployee(employee);
             employeeView.employees = employeeService.GetAllEmployees();
             employeeView.FillListView();
