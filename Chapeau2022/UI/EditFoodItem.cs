@@ -69,7 +69,7 @@ namespace UI
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
             int CourseType = tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3);
-            int MenuType = tools.IndexOfRadioButton(radioButton4, radioButton5);
+            int MenuType = tools.IndexOfRadioButton(radioButton4, radioButton5, radioButton6);
 
             FoodItem food = new FoodItem()
             {

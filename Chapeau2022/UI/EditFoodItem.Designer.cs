@@ -47,6 +47,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxAmountNeeded = new System.Windows.Forms.TextBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -166,11 +167,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.radioButton6);
             this.groupBox2.Controls.Add(this.radioButton5);
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Location = new System.Drawing.Point(226, 339);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(172, 95);
+            this.groupBox2.Size = new System.Drawing.Size(172, 118);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Menu";
@@ -234,6 +236,17 @@
             this.textBoxAmountNeeded.Size = new System.Drawing.Size(135, 27);
             this.textBoxAmountNeeded.TabIndex = 15;
             // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(5, 86);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(61, 24);
+            this.radioButton6.TabIndex = 2;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "Both";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
             // EditFoodItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -285,5 +298,6 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxAmountNeeded;
+        private System.Windows.Forms.RadioButton radioButton6;
     }
 }

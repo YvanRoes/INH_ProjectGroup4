@@ -44,7 +44,7 @@ namespace UI
 
                 groupBoxAlcoholContent.Show();
                 groupBoxCourse.Hide();
-                groupBoxMenu.Hide();
+                groupBox2.Hide();
 
                 isFood = false;
             }
@@ -55,7 +55,7 @@ namespace UI
 
                 groupBoxAlcoholContent.Hide();
                 groupBoxCourse.Show();
-                groupBoxMenu.Show();
+                groupBox2.Show();
 
                 isFood = true;
             }
@@ -77,8 +77,8 @@ namespace UI
         }
         private void CreateFoodItem() 
         {
-            /*int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
-            int MenuType = tools.IndexOfRadioButton(radioButton6,radioButton3);
+            int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
+            int MenuType = tools.IndexOfRadioButton(radioButton10,radioButton6, radioButton3);
             int Id = foodService.GetLastId()+1;
             
             FoodItem item = new FoodItem()
@@ -91,7 +91,7 @@ namespace UI
                 Item_MenuType = (MenuType)MenuType,
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
-            foodService.AddItem(item);*/
+            foodService.AddItem(item);
         }
         private void CreateDrinkItem() 
         {
