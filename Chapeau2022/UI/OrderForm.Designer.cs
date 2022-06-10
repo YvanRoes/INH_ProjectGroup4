@@ -110,9 +110,9 @@
             // 
             this.gBLunchDinner.Controls.Add(this.rbDinner);
             this.gBLunchDinner.Controls.Add(this.rbLunch);
-            this.gBLunchDinner.Location = new System.Drawing.Point(18, 31);
+            this.gBLunchDinner.Location = new System.Drawing.Point(12, 12);
             this.gBLunchDinner.Name = "gBLunchDinner";
-            this.gBLunchDinner.Size = new System.Drawing.Size(156, 46);
+            this.gBLunchDinner.Size = new System.Drawing.Size(139, 46);
             this.gBLunchDinner.TabIndex = 8;
             this.gBLunchDinner.TabStop = false;
             this.gBLunchDinner.Text = "Menu";

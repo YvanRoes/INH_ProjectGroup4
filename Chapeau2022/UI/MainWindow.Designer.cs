@@ -35,6 +35,7 @@
             this.btnStockView = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnTableView
@@ -45,6 +46,7 @@
             this.btnTableView.TabIndex = 0;
             this.btnTableView.Text = "Table view";
             this.btnTableView.UseVisualStyleBackColor = true;
+            this.btnTableView.Click += new System.EventHandler(this.btnTableView_Click);
             // 
             // btnOrderView
             // 
@@ -107,11 +109,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(23, 213);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(138, 23);
+            this.btnLogin.TabIndex = 7;
+            this.btnLogin.Text = "Log In";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(184, 225);
+            this.ClientSize = new System.Drawing.Size(184, 240);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.btnStockView);
@@ -121,7 +134,6 @@
             this.Controls.Add(this.btnTableView);
             this.Name = "MainWindow";
             this.Text = "Control Panel";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
         }
@@ -135,5 +147,6 @@
         private System.Windows.Forms.Button btnStockView;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogin;
     }
 }

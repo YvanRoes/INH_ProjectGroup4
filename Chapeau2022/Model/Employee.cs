@@ -24,5 +24,13 @@ namespace Model
         public string Employee_SecretAnwser { get { return employee_SecretAnwser; } set { employee_SecretAnwser = value; } }
         public int Employee_Pin { get { return employee_Pin; } set { employee_Pin = value; } }
         public EmployeeRole Employee_Role { get { return employeeRole; } set { employeeRole = value; } }
+        public string Salt { get; set; }
+        public string Password { get; set; }
+
+        public Employee()
+        {
+
+        }
+
     }
 }

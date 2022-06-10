@@ -40,5 +40,7 @@ namespace Logic
             
             return orderedItemDao.GetAllOrderedItems();
         }
+
+        public void MarkOrderedItemAsServed(OrderedItem item) => orderedItemDao.MarkOrderedItemAsServed(item);
     }
 }

@@ -28,7 +28,6 @@ namespace UI
             InitializeComponent();
             LoadEmployeeInformation();
         }
-
         public void LoadEmployeeInformation()
         {
             textBoxEmployeeName.Text = employee.Employee_Name;
@@ -99,7 +98,6 @@ namespace UI
             employeeService.UpdateEmployee(employee);
             this.Close();
         }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             employeeView.employees = employeeService.GetAllEmployees();
