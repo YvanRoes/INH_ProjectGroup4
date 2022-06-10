@@ -68,6 +68,20 @@ namespace UI
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBoxItemName.Text) || string.IsNullOrEmpty(textBoxItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
+                textBoxPrice.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text) || string.IsNullOrEmpty(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
             int CourseType = tools.IndexOfRadioButton(radioButton1, radioButton2, radioButton3);
             int MenuType = tools.IndexOfRadioButton(radioButton4, radioButton5, radioButton6);
 
@@ -84,6 +98,48 @@ namespace UI
             foodService.UpdateFoodItem(food);
             stockView.FoodStock();
             Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) + 1).ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBoxQuantity.Text != "0")
+                try
+                {
+                    textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxQuantity.Text = "0";
+                }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
+            textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) + 1).ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBoxAmountNeeded.Text != "0")
+                try
+                {
+                    textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxAmountNeeded.Text = "0";
+                }
         }
     }
 }

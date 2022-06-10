@@ -122,7 +122,16 @@ namespace UI
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
             }
+        }
+        public bool hasSpecialChar(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+            foreach (var item in specialChar)
+            {
+                if (input.Contains(item)) return true;
+            }
 
+            return false;
         }
     }
 }

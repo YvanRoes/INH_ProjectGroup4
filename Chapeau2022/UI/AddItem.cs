@@ -34,6 +34,9 @@ namespace UI
         private void AddItem_Load(object sender, EventArgs e)
         {
             radioButton1.Checked = true;
+            radioButton9.Checked = true;
+            radioButton10.Checked = true;
+            radioButton4.Checked = true;
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -65,8 +68,6 @@ namespace UI
             if (isFood)
             {
                 CreateFoodItem();
-                stockView.FoodStock();
-                Close();
             }
             else 
             {
@@ -77,6 +78,20 @@ namespace UI
         }
         private void CreateFoodItem() 
         {
+            if (string.IsNullOrWhiteSpace(textBoxItemName.Text) || string.IsNullOrEmpty(textBoxItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
+                textBoxPrice.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text) || string.IsNullOrEmpty(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
             int CourseType = tools.IndexOfRadioButton(radioButton9, radioButton8, radioButton7);
             int MenuType = tools.IndexOfRadioButton(radioButton10,radioButton6, radioButton3);
             int Id = foodService.GetLastId()+1;
@@ -92,9 +107,25 @@ namespace UI
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             foodService.AddItem(item);
+            stockView.FoodStock();
+            Close();
         }
         private void CreateDrinkItem() 
         {
+            if (string.IsNullOrWhiteSpace(textBoxItemName.Text) || string.IsNullOrEmpty(textBoxItemName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(textBoxPrice.Text) || string.IsNullOrEmpty(textBoxPrice.Text))
+                textBoxPrice.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text) || string.IsNullOrEmpty(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text) || string.IsNullOrEmpty(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
             int drinkType = tools.IndexOfRadioButton(radioButton4, radioButton5);
             int Id = foodService.GetLastId() + 1;
 
@@ -108,6 +139,52 @@ namespace UI
                 Item_AmountNeeded = int.Parse(textBoxAmountNeeded.Text)
             };
             drinkService.AddDrink(drink);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxQuantity.Text))
+                textBoxQuantity.Text = "0";
+
+            textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) + 1).ToString();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxAmountNeeded.Text))
+                textBoxAmountNeeded.Text = "0";
+
+            textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) + 1).ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBoxQuantity.Text != "0")
+                try
+                {
+                    textBoxQuantity.Text = (int.Parse(textBoxQuantity.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxQuantity.Text = "0";
+                }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if(textBoxAmountNeeded.Text != "0")
+                try
+                {
+                    textBoxAmountNeeded.Text = (int.Parse(textBoxAmountNeeded.Text) - 1).ToString();
+                }
+                catch
+                {
+                    textBoxAmountNeeded.Text = "0";
+                }
+        }
+
+        private void textBoxQuantity_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

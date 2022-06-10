@@ -18,6 +18,7 @@ namespace UI
         private EmployeeService employeeService;
         EmployeeView employeeView;
         private Tools tools;
+
         public EditEmployee(Employee employee, EmployeeView employeeView)
         {
             this.employee = employee;
@@ -27,6 +28,7 @@ namespace UI
             InitializeComponent();
             LoadEmployeeInformation();
         }
+
         public void LoadEmployeeInformation()
         {
             textBoxEmployeeName.Text = employee.Employee_Name;
@@ -58,6 +60,30 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBoxEmployeeName.Text) || string.IsNullOrEmpty(textBoxEmployeeName.Text))
+            {
+                MessageBox.Show("Item name cannot be empty.");
+                return;
+            }
+
+            if (int.TryParse(textBoxEmployeeName.Text, out int b) || tools.hasSpecialChar(textBoxEmployeeName.Text))
+                MessageBox.Show("Name cannot contain integers or special characters.");
+
+            if (string.IsNullOrWhiteSpace(textBoxPIN.Text) || string.IsNullOrEmpty(textBoxPIN.Text))
+                textBoxPIN.Text = "1234";
+
+            if (string.IsNullOrWhiteSpace(textBoxSecretQ.Text) || string.IsNullOrEmpty(textBoxSecretQ.Text))
+            {
+                MessageBox.Show("Secret question cannot be empty.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxSecretA.Text) || string.IsNullOrEmpty(textBoxSecretA.Text))
+            {
+                MessageBox.Show("Secret question cannot be empty.");
+                return;
+            }
+
             Employee employee = new Employee()
             {
                 Employee_Id = employeeService.GetLastId(),
@@ -71,11 +97,17 @@ namespace UI
             employeeService.UpdateEmployee(employee);
             this.Close();
         }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             employeeView.employees = employeeService.GetAllEmployees();
             employeeView.ListViewClearSelected();
             employeeView.FillListView();
+        }
+
+        private void EditEmployee_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

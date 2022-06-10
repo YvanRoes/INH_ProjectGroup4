@@ -35,16 +35,16 @@
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.textBoxEmployeeName = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBoxSecretQ = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.textBoxPIN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSecretA = new System.Windows.Forms.TextBox();
+            this.textBoxEmployeeName = new System.Windows.Forms.TextBox();
+            this.textBoxSecretQ = new System.Windows.Forms.TextBox();
+            this.textBoxPIN = new System.Windows.Forms.TextBox();
             this.groupBoxCourse.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,13 +125,6 @@
             this.radioButton9.Text = "Waiter/Waitress";
             this.radioButton9.UseVisualStyleBackColor = true;
             // 
-            // textBoxEmployeeName
-            // 
-            this.textBoxEmployeeName.Location = new System.Drawing.Point(28, 105);
-            this.textBoxEmployeeName.Name = "textBoxEmployeeName";
-            this.textBoxEmployeeName.Size = new System.Drawing.Size(376, 27);
-            this.textBoxEmployeeName.TabIndex = 38;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(28, 431);
@@ -150,13 +143,6 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Secret Question";
             // 
-            // textBoxSecretQ
-            // 
-            this.textBoxSecretQ.Location = new System.Drawing.Point(28, 242);
-            this.textBoxSecretQ.Name = "textBoxSecretQ";
-            this.textBoxSecretQ.Size = new System.Drawing.Size(299, 27);
-            this.textBoxSecretQ.TabIndex = 41;
-            // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
@@ -164,13 +150,6 @@
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(0, 20);
             this.lblPrice.TabIndex = 40;
-            // 
-            // textBoxPIN
-            // 
-            this.textBoxPIN.Location = new System.Drawing.Point(28, 170);
-            this.textBoxPIN.Name = "textBoxPIN";
-            this.textBoxPIN.Size = new System.Drawing.Size(299, 27);
-            this.textBoxPIN.TabIndex = 39;
             // 
             // label1
             // 
@@ -204,26 +183,51 @@
             // 
             this.textBoxSecretA.Location = new System.Drawing.Point(28, 311);
             this.textBoxSecretA.Name = "textBoxSecretA";
+            this.textBoxSecretA.PlaceholderText = "Anwser: Skippy";
             this.textBoxSecretA.Size = new System.Drawing.Size(299, 27);
-            this.textBoxSecretA.TabIndex = 48;
+            this.textBoxSecretA.TabIndex = 64;
+            // 
+            // textBoxEmployeeName
+            // 
+            this.textBoxEmployeeName.Location = new System.Drawing.Point(28, 105);
+            this.textBoxEmployeeName.Name = "textBoxEmployeeName";
+            this.textBoxEmployeeName.PlaceholderText = "Name";
+            this.textBoxEmployeeName.Size = new System.Drawing.Size(376, 27);
+            this.textBoxEmployeeName.TabIndex = 61;
+            // 
+            // textBoxSecretQ
+            // 
+            this.textBoxSecretQ.Location = new System.Drawing.Point(28, 242);
+            this.textBoxSecretQ.Name = "textBoxSecretQ";
+            this.textBoxSecretQ.PlaceholderText = "eg. What was your first pet\'s name?";
+            this.textBoxSecretQ.Size = new System.Drawing.Size(299, 27);
+            this.textBoxSecretQ.TabIndex = 63;
+            // 
+            // textBoxPIN
+            // 
+            this.textBoxPIN.Location = new System.Drawing.Point(28, 170);
+            this.textBoxPIN.Name = "textBoxPIN";
+            this.textBoxPIN.PlaceholderText = "Personal Identification Number";
+            this.textBoxPIN.Size = new System.Drawing.Size(299, 27);
+            this.textBoxPIN.TabIndex = 62;
             // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 514);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxSecretA);
+            this.Controls.Add(this.textBoxEmployeeName);
+            this.Controls.Add(this.textBoxSecretQ);
+            this.Controls.Add(this.textBoxPIN);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblFoodName);
             this.Controls.Add(this.groupBoxCourse);
-            this.Controls.Add(this.textBoxEmployeeName);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxSecretQ);
             this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.textBoxPIN);
             this.Controls.Add(this.label1);
             this.Name = "AddEmployee";
             this.Text = "AddEmployee";
@@ -243,15 +247,15 @@
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.TextBox textBoxEmployeeName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBoxSecretQ;
         private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.TextBox textBoxPIN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxSecretA;
+        private System.Windows.Forms.TextBox textBoxEmployeeName;
+        private System.Windows.Forms.TextBox textBoxSecretQ;
+        private System.Windows.Forms.TextBox textBoxPIN;
     }
 }

@@ -54,6 +54,10 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxAlcoholContent.SuspendLayout();
             this.groupBoxCourse.SuspendLayout();
@@ -140,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 313);
+            this.label5.Location = new System.Drawing.Point(18, 312);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 20);
             this.label5.TabIndex = 30;
@@ -148,10 +152,13 @@
             // 
             // textBoxQuantity
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(18, 336);
+            this.textBoxQuantity.Location = new System.Drawing.Point(46, 336);
             this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(135, 27);
+            this.textBoxQuantity.PlaceholderText = "0";
+            this.textBoxQuantity.Size = new System.Drawing.Size(70, 27);
             this.textBoxQuantity.TabIndex = 29;
+            this.textBoxQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxQuantity.TextChanged += new System.EventHandler(this.textBoxQuantity_TextChanged);
             // 
             // lblPrice
             // 
@@ -164,10 +171,12 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(18, 264);
+            this.textBoxPrice.Location = new System.Drawing.Point(17, 264);
             this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.PlaceholderText = "0";
             this.textBoxPrice.Size = new System.Drawing.Size(135, 27);
             this.textBoxPrice.TabIndex = 27;
+            this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblDrinkName
             // 
@@ -182,6 +191,7 @@
             // 
             this.textBoxItemName.Location = new System.Drawing.Point(18, 199);
             this.textBoxItemName.Name = "textBoxItemName";
+            this.textBoxItemName.PlaceholderText = "Name";
             this.textBoxItemName.Size = new System.Drawing.Size(377, 27);
             this.textBoxItemName.TabIndex = 25;
             // 
@@ -262,7 +272,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 391);
+            this.label6.Location = new System.Drawing.Point(18, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 20);
             this.label6.TabIndex = 38;
@@ -270,10 +280,12 @@
             // 
             // textBoxAmountNeeded
             // 
-            this.textBoxAmountNeeded.Location = new System.Drawing.Point(18, 413);
+            this.textBoxAmountNeeded.Location = new System.Drawing.Point(46, 413);
             this.textBoxAmountNeeded.Name = "textBoxAmountNeeded";
-            this.textBoxAmountNeeded.Size = new System.Drawing.Size(135, 27);
+            this.textBoxAmountNeeded.PlaceholderText = "0";
+            this.textBoxAmountNeeded.Size = new System.Drawing.Size(70, 27);
             this.textBoxAmountNeeded.TabIndex = 37;
+            this.textBoxAmountNeeded.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox2
             // 
@@ -320,11 +332,55 @@
             this.radioButton10.Text = "Lunch";
             this.radioButton10.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(122, 335);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 29);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "+";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(9, 335);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 29);
+            this.button4.TabIndex = 40;
+            this.button4.Text = "-";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(9, 413);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 29);
+            this.button5.TabIndex = 42;
+            this.button5.Text = "-";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(122, 413);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 29);
+            this.button6.TabIndex = 41;
+            this.button6.Text = "+";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // AddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 557);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxAmountNeeded);
@@ -385,5 +441,9 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
