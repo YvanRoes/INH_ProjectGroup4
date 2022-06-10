@@ -18,9 +18,8 @@ namespace UI
     public partial class BillUI : Form
     {
         private BillService billService = new BillService();
-        private OrderedItemService getOrderedItems = new OrderedItemService();
-        private List<OrderedItem> listOfOrderedItems;
-
+        private OrderedItemService orderedItemsService = new OrderedItemService();
+        private List<OrderedItem> getOrderedItems;
         private const decimal HighVatRate = 0.21m;
         private const decimal LowVatRate = 0.06m;
         private decimal highVat = 0;
@@ -38,7 +37,7 @@ namespace UI
             txtComment.Enabled = false;
             txtNumberOfPeople.Enabled = false;
             btnSubmit.Visible = false;
-            listOfOrderedItems = getOrderedItems.GetAllOrderedItems();
+            getOrderedItems = orderedItemsService.GetAllOrderedItems();
             DisplayOrderedItems();
             CalculateTotalandVat();
         }
@@ -57,7 +56,7 @@ namespace UI
             // clear the listview before filling it again
             lvOrderedItems.Items.Clear();
 
-            foreach (OrderedItem orderedItems in listOfOrderedItems)
+            foreach (OrderedItem orderedItems in getOrderedItems)
             {
                 ListViewItem li = new ListViewItem(orderedItems.menuItem.Item_Name.ToString());
                 li.SubItems.Add(orderedItems._itemOrdered_Qty.ToString());
@@ -67,7 +66,7 @@ namespace UI
                 li.Tag =orderedItems;
                 lvOrderedItems.Items.Add(li);
             }
-            return listOfOrderedItems;
+            return getOrderedItems;
 
         }
 
@@ -75,7 +74,7 @@ namespace UI
         private void CalculateTotalandVat()
         {
             DrinkItem drinkItem = new DrinkItem();
-            foreach (OrderedItem orderedItems in listOfOrderedItems)
+            foreach (OrderedItem orderedItems in getOrderedItems)
             {
                 if (drinkItem.Item_DrinkType == DrinkType.Alcoholic)
                 {
@@ -142,7 +141,7 @@ namespace UI
                     bill.Method = BillMethod.Pin;
                 else if (rbCash.Checked)
                     bill.Method = BillMethod.Cash;
-                Bill insertBill = new Bill(total, CheckTipBox(), CheckCommentBox(), bill.Method);
+                Bill insertBill = new Bill(orderID,total, CheckTipBox(), CheckCommentBox(), bill.Method);
                 billService.InsertBill(insertBill);
                 MessageBox.Show($"Payment Successfull");              
                 billService.UpdatePaymentStatus(orderID);
@@ -154,6 +153,7 @@ namespace UI
 
             }
         }
+        // Clear the form when the payment done
         private void ClearBillForm()
         {
             lblTable.Text = "";
@@ -191,6 +191,7 @@ namespace UI
             else
                 txtTip.Enabled = false;
         }
+        
         private void btnBack_Click(object sender, EventArgs e)
         {
             MainWindow back=new MainWindow();
@@ -211,11 +212,11 @@ namespace UI
             }
 
         }
-
+        //Split the bill among the group of people
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            int nrOfPeople = int.Parse(txtNumberOfPeople.Text.ToString());
-            double total = double.Parse(lblTotal.Text.ToString());
+            int nrOfPeople = int.Parse(txtNumberOfPeople.Text);
+            double total = double.Parse(lblTotal.Text);
             double splitAmount = (double)(total/nrOfPeople);
             lblSplitBill.Text = splitAmount.ToString("€ 0.00");
         }

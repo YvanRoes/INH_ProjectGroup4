@@ -14,13 +14,14 @@ namespace DAL
         //Inser the  bill into the database
         public void InsertBill(Bill bill)
         {
-            string query = $"INSERT INTO [BILL] VALUES (@total, @tip, @comment, @method)";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
+            string query = $"INSERT INTO [BILL] VALUES (@order_Id, @total, @tip, @comment, @method)";
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+            sqlParameters[0] = new SqlParameter("@order_Id", bill.OrderId);
+            sqlParameters[1] = new SqlParameter("@total", bill.Total);
+            sqlParameters[2] = new SqlParameter("@tip", bill.Tip);
+            sqlParameters[3] = new SqlParameter("@comment", bill.Comment);
+            sqlParameters[4] = new SqlParameter("@method", bill.Method);
 
-            sqlParameters[0] = new SqlParameter("@total", bill.Total);
-            sqlParameters[1] = new SqlParameter("@tip", bill.Tip);
-            sqlParameters[2] = new SqlParameter("@comment", bill.Comment);
-            sqlParameters[3] = new SqlParameter("@method", bill.Method);
             ExecuteEditQuery(query, sqlParameters);
 
         }

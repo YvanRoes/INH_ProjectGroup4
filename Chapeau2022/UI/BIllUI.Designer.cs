@@ -140,7 +140,7 @@ namespace UI
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(445, 432);
+            this.lblTotal.Location = new System.Drawing.Point(440, 432);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 20);
             this.lblTotal.TabIndex = 34;
@@ -299,13 +299,13 @@ namespace UI
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.Location = new System.Drawing.Point(26, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 38);
+            this.label6.Size = new System.Drawing.Size(72, 38);
             this.label6.TabIndex = 37;
-            this.label6.Text = "BIll";
+            this.label6.Text = "BILL";
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.DarkGray;
+            this.btnBack.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
             this.btnBack.Location = new System.Drawing.Point(456, 11);
             this.btnBack.Name = "btnBack";
@@ -398,7 +398,7 @@ namespace UI
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(425, 432);
+            this.label16.Location = new System.Drawing.Point(424, 432);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(17, 20);
             this.label16.TabIndex = 62;
@@ -417,7 +417,7 @@ namespace UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(536, 1055);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
