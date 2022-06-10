@@ -18,6 +18,7 @@ namespace UI
     public partial class BillUI : Form
     {
         private BillService billService = new BillService();
+        private OrderedItemService getOrderedItems = new OrderedItemService();
         private List<OrderedItem> listOfOrderedItems;
 
         private const decimal HighVatRate = 0.21m;
@@ -35,7 +36,7 @@ namespace UI
 
             txtTip.Enabled = false;
             txtComment.Enabled = false;
-            listOfOrderedItems = billService.GetAllOrderedItems();
+            listOfOrderedItems = getOrderedItems.GetAllOrderedItems();
             DisplayOrderedItems();
             CalculateTotalandVat();
         }
@@ -88,7 +89,6 @@ namespace UI
             lblTotalVat.Text = (highVat + lowVat).ToString("€0.00");
             lblTotal.Text = (subTotal + highVat + lowVat).ToString("€0.00");
         }
-
 
         // Check the tip box whether the user enter any tip ot not
 
@@ -180,7 +180,6 @@ namespace UI
         {
             txtTip.Enabled = true;
         }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             MainWindow back=new MainWindow();

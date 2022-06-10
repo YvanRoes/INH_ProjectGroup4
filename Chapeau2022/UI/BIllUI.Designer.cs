@@ -57,6 +57,7 @@ namespace UI
             this.Price = new System.Windows.Forms.ColumnHeader();
             this.label6 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rbCash
@@ -129,7 +130,7 @@ namespace UI
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(443, 552);
+            this.lblTotal.Location = new System.Drawing.Point(440, 552);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(48, 20);
             this.lblTotal.TabIndex = 47;
@@ -147,7 +148,7 @@ namespace UI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(380, 552);
+            this.label7.Location = new System.Drawing.Point(377, 552);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 20);
             this.label7.TabIndex = 45;
@@ -165,7 +166,7 @@ namespace UI
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(358, 512);
+            this.label9.Location = new System.Drawing.Point(355, 512);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 43;
@@ -174,7 +175,7 @@ namespace UI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(99, 106);
+            this.label10.Location = new System.Drawing.Point(111, 108);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(0, 20);
             this.label10.TabIndex = 42;
@@ -191,7 +192,7 @@ namespace UI
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(354, 478);
+            this.label12.Location = new System.Drawing.Point(351, 478);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 20);
             this.label12.TabIndex = 40;
@@ -211,7 +212,7 @@ namespace UI
             // lblTotalVat
             // 
             this.lblTotalVat.AutoSize = true;
-            this.lblTotalVat.Location = new System.Drawing.Point(443, 509);
+            this.lblTotalVat.Location = new System.Drawing.Point(440, 509);
             this.lblTotalVat.Name = "lblTotalVat";
             this.lblTotalVat.Size = new System.Drawing.Size(48, 20);
             this.lblTotalVat.TabIndex = 33;
@@ -220,7 +221,7 @@ namespace UI
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.Location = new System.Drawing.Point(442, 475);
+            this.lblSubTotal.Location = new System.Drawing.Point(439, 475);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(48, 20);
             this.lblSubTotal.TabIndex = 34;
@@ -229,7 +230,7 @@ namespace UI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(358, 509);
+            this.label1.Location = new System.Drawing.Point(355, 509);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 20);
             this.label1.TabIndex = 35;
@@ -238,7 +239,7 @@ namespace UI
             // lblTable
             // 
             this.lblTable.AutoSize = true;
-            this.lblTable.Location = new System.Drawing.Point(99, 103);
+            this.lblTable.Location = new System.Drawing.Point(111, 105);
             this.lblTable.Name = "lblTable";
             this.lblTable.Size = new System.Drawing.Size(0, 20);
             this.lblTable.TabIndex = 36;
@@ -246,7 +247,7 @@ namespace UI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(354, 475);
+            this.label3.Location = new System.Drawing.Point(351, 475);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 38;
@@ -296,12 +297,21 @@ namespace UI
             // 
             this.btnBack.BackColor = System.Drawing.Color.DarkGray;
             this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
-            this.btnBack.Location = new System.Drawing.Point(456, 44);
+            this.btnBack.Location = new System.Drawing.Point(456, 42);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(35, 29);
             this.btnBack.TabIndex = 55;
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(465, 20);
+            this.label2.TabIndex = 56;
+            this.label2.Text = "----------------------------------------------------------------------------";
             // 
             // BillUI
             // 
@@ -309,6 +319,7 @@ namespace UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(536, 928);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.rbCash);
             this.Controls.Add(this.rbPin);
@@ -370,5 +381,6 @@ namespace UI
         private System.Windows.Forms.ColumnHeader Price;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label label2;
     }
 }

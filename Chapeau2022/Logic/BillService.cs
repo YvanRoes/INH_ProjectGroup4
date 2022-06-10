@@ -16,10 +16,6 @@ namespace Logic
         {
             billdao.InsertBill(bill);
         }
-        public List<OrderedItem> GetAllOrderedItems()
-        {
-            return billdao.GetAllOrderedItems();
-        }
         public void UpdatePaymentStatus(int orderId)
         {
             billdao.UpdatePaymentStatus(orderId);
