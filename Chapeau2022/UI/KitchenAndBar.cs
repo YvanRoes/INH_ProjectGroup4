@@ -47,7 +47,7 @@ namespace UI
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            btnReady.Location = new Point(545, 163);
+            //btnReady.Location = new Point(545, 163);
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
@@ -240,7 +240,7 @@ namespace UI
             {
                 if (chbxAppetizer.Checked)
                 {
-                    if (item.SubItems[3].Text == chbxAppetizer.Text)
+                    if (item.SubItems[3].Text == chbxAppetizer.Text) // (!item.SubItems[3].Text == chbxAppetizer.Text) lvitems.remove(item)
                     {
                         items.Add(item);
                     }
@@ -258,6 +258,10 @@ namespace UI
                     {
                         items.Add(item);
                     }
+                }
+                if (chbxMain.Checked == false && chbxDessert.Checked == false && chbxAppetizer.Checked == false)
+                {
+                    items.Add(item);
                 }
             }
 
