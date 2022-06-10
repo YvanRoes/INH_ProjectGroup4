@@ -157,7 +157,6 @@ namespace UI
         {
             this.Hide();
             MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

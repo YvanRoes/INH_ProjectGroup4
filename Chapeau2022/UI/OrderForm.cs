@@ -93,7 +93,7 @@ namespace UI
             {
                 FoodItem foodItem = (FoodItem)item;
                 if (foodItem.Item_CourseType == type)
-                    if(foodItem.Item_MenuType == _CurrentmenuType)
+                    if(foodItem.Item_MenuType == _CurrentmenuType || foodItem.Item_MenuType == MenuType.LunchAndDinner)
                         if(foodItem.Item_Stock != 0)
                             _CurrentItemsDisplayed.Add(foodItem);
             }
