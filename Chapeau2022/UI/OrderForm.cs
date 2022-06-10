@@ -19,7 +19,7 @@ namespace UI
         CourseType _CurrentcourseType;
         MenuType _CurrentmenuType;
 
-        public OrderForm(int table_Id, int employeeId)
+        public OrderForm(int table_Id, int employee_Id)
         {
             InitializeComponent();
             Show();
@@ -27,7 +27,7 @@ namespace UI
 
             //init globals
             _CurrentItemsDisplayed = new List<MenuItem>();
-            _order = new Order(table_Id, employeeId);
+            _order = new Order(employee_Id, table_Id);
 
             Start();
             
@@ -101,7 +101,6 @@ namespace UI
 
         private void UpdateListViewItems()
         {
-
             foreach(MenuItem item in _CurrentItemsDisplayed)
             {
                 if (item is FoodItem)
@@ -172,7 +171,6 @@ namespace UI
             {
                 MessageBox.Show("No Item is selected");
             }
-            UpdateListViewItems();
         }
 
         private MenuItem GetItemFromOrderList()

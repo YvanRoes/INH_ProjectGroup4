@@ -24,7 +24,7 @@ namespace UI
 
         private void btnOrderView_Click(object sender, EventArgs e)
         {
-            OrderForm orderForm = new OrderForm(4, 1);
+            OrderForm orderForm = new OrderForm(2, 1);
             this.Hide();
         }
 
