@@ -40,23 +40,27 @@ namespace UI
 
         private void BarView()
         {
-            lblKitchenAndBar.Text = "Bar";
+            lblKitchenAndBar.Text = "Bar View";
             lvOrders.Columns[3].Text = "Drink Type";
             lvOrders.Columns[4].Text = "Drink Name";
             lblReadyCourse.Hide();
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            //btnReady.Location = new Point(545, 163);
+            btnReady.Left -= 258;
+
+            //start display
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
 
         private void KitchenView()
         {
-            lblKitchenAndBar.Text = "Kitchen";
+            lblKitchenAndBar.Text = "Kitchen View";
             lvOrders.Columns[3].Text = "Food Type";
             lvOrders.Columns[4].Text = "Food Name";
+
+            //start display
             DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
@@ -155,8 +159,13 @@ namespace UI
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainWindow mainWindow = new MainWindow();
+            if ((MessageBox.Show("are you sure you would like to logout?", "Logout?",
+MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+            {
+                this.Hide();
+                MainWindow mainWindow = new MainWindow();
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -209,7 +218,7 @@ namespace UI
             }
             else
             {
-                throw new Exception("no table selected");
+                throw new Exception("please select a table");
             }
 
             foreach (ListViewItem item in items)
@@ -239,7 +248,7 @@ namespace UI
             {
                 if (chbxAppetizer.Checked)
                 {
-                    if (item.SubItems[3].Text == chbxAppetizer.Text) // (!item.SubItems[3].Text == chbxAppetizer.Text) lvitems.remove(item)
+                    if (item.SubItems[3].Text == chbxAppetizer.Text)
                     {
                         items.Add(item);
                     }
@@ -258,6 +267,7 @@ namespace UI
                         items.Add(item);
                     }
                 }
+                //so the list is not null
                 if (chbxMain.Checked == false && chbxDessert.Checked == false && chbxAppetizer.Checked == false)
                 {
                     items.Add(item);
@@ -272,11 +282,12 @@ namespace UI
             try
             {
                 if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0) && (!chbxDessert.Checked && !chbxMain.Checked && !chbxAppetizer.Checked))
-                    throw new Exception("no item selcted");
+                    throw new Exception("please select a item");
                 else if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0))
-                    throw new Exception("no table selected");
+                    throw new Exception("please select a table");
                 else
                 {
+                    //having both table nr entered and item selected
                     if ((tbxTableNr.Text.Length > 0) && (lvOrders.SelectedItems.Count > 0))
                     {
                         ReadyTable();
@@ -292,11 +303,6 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        public void UpdateKitchenAndBar()
-        {
-            Refresh();
         }
     }
 }
