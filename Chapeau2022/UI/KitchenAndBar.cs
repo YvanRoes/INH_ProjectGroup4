@@ -40,7 +40,7 @@ namespace UI
 
         private void BarView()
         {
-            lblKitchenAndBar.Text = "Bar";
+            lblKitchenAndBar.Text = "Bar View";
             lvOrders.Columns[3].Text = "Drink Type";
             lvOrders.Columns[4].Text = "Drink Name";
             lblReadyCourse.Hide();
@@ -54,7 +54,7 @@ namespace UI
 
         private void KitchenView()
         {
-            lblKitchenAndBar.Text = "Kitchen";
+            lblKitchenAndBar.Text = "Kitchen View";
             lvOrders.Columns[3].Text = "Food Type";
             lvOrders.Columns[4].Text = "Food Name";
             DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
