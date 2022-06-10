@@ -28,22 +28,17 @@ namespace UI
 
             if (employee.Employee_Role == EmployeeRole.bartender)
             {
-                Bartender();
+                BarView();
             }
             else
             {
-                Cheff();
+                KitchenView();
             }
 
             Timer();
         }
 
-        //public void UpdateKitchenAndBar()
-        //{
-        //    Refresh();
-        //}
-
-        private void Bartender()
+        private void BarView()
         {
             lblKitchenAndBar.Text = "Bar";
             lvOrders.Columns[3].Text = "Drink Type";
@@ -52,12 +47,12 @@ namespace UI
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            //tbxTableNr.Location = new Point(600, 120);
+            btnReady.Location = new Point(545, 163);
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
 
-        private void Cheff()
+        private void KitchenView()
         {
             lblKitchenAndBar.Text = "Kitchen";
             lvOrders.Columns[3].Text = "Food Type";
@@ -223,24 +218,6 @@ namespace UI
                 orderedItemService.UpdateItemOrderedStatus((OrderedItem)item.Tag);
             }
             Refresh();
-
-            //    List<OrderedItem> orderedItems = orderedItemService.GetAllDrinkOrders(ItemOrderedStatus.NotReady);
-
-            //    List<OrderedItem> orderedItems1 = new List<OrderedItem>();
-
-            //    foreach (OrderedItem orderedItem in orderedItems)
-            //    {
-            //        if (orderedItem.table_Id == int.Parse(tbxTableNr.Text))
-            //        {
-            //            orderedItems1.Add(orderedItem);
-            //        }
-            //    }
-
-            //    foreach (OrderedItem orderedItem in orderedItems1)
-            //    {
-            //        orderedItemService.UpdateItemOrderedStatus(orderedItem);
-            //    }
-            //    Refresh();
         }
 
         private void ReadyOrderedItem()
@@ -268,7 +245,6 @@ namespace UI
                         items.Add(item);
                     }
                 }
-
                 if (chbxMain.Checked)
                 {
                     if (item.SubItems[3].Text == chbxMain.Text)
@@ -276,7 +252,6 @@ namespace UI
                         items.Add(item);
                     }
                 }
-
                 if (chbxDessert.Checked)
                 {
                     if (item.SubItems[3].Text == chbxDessert.Text)
@@ -294,15 +269,9 @@ namespace UI
             try
             {
                 if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0) && (!chbxDessert.Checked && !chbxMain.Checked && !chbxAppetizer.Checked))
-                {
                     throw new Exception("no item selcted");
-                }
-
                 else if ((tbxTableNr.Text.Length == 0) && (lvOrders.SelectedItems.Count == 0))
-                {
                     throw new Exception("no table selected");
-                }
-
                 else
                 {
                     if ((tbxTableNr.Text.Length > 0) && (lvOrders.SelectedItems.Count > 0))
@@ -310,16 +279,10 @@ namespace UI
                         ReadyTable();
                         ReadyOrderedItem();
                     }
-
                     else if (tbxTableNr.Text.Length > 0)
-                    {
                         ReadyTable();
-                    }
-
-                    else /*if (lvOrders.SelectedItems.Count > 0)*/
-                    {
+                    else
                         ReadyOrderedItem();
-                    }
                 }
             }
             catch (Exception ex)
