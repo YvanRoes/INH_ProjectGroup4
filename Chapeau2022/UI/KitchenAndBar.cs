@@ -48,6 +48,8 @@ namespace UI
             chbxMain.Hide();
             chbxDessert.Hide();
             btnReady.Left -= 258;
+
+            //start display
             DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
@@ -57,6 +59,8 @@ namespace UI
             lblKitchenAndBar.Text = "Kitchen View";
             lvOrders.Columns[3].Text = "Food Type";
             lvOrders.Columns[4].Text = "Food Name";
+
+            //start display
             DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
             orderDisplay = OrderDisplay.Running;
         }
@@ -263,6 +267,7 @@ MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                         items.Add(item);
                     }
                 }
+                //so the list is not null
                 if (chbxMain.Checked == false && chbxDessert.Checked == false && chbxAppetizer.Checked == false)
                 {
                     items.Add(item);
@@ -282,6 +287,7 @@ MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                     throw new Exception("please select a table");
                 else
                 {
+                    //having both table nr entered and item selected
                     if ((tbxTableNr.Text.Length > 0) && (lvOrders.SelectedItems.Count > 0))
                     {
                         ReadyTable();
