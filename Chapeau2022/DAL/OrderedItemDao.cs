@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public  class OrderedItemDao : BaseDao
+    public class OrderedItemDao : BaseDao
     {
         public List<OrderedItem> GetAllFoodOrders(ItemOrderedStatus itemOrderedStatus)
         {
@@ -44,12 +44,12 @@ namespace DAL
             string query = "UPDATE ORDERED_ITEM " +
                 "SET itemOrdered_Status = 1 " +
                 "WHERE itemOrdered_Id = @itemOrderedId; ";
-            SqlParameter[] sqlParameters = new SqlParameter[] { new SqlParameter("@itemOrderedId", orderedItem._itemOrdered_id) };        
+            SqlParameter[] sqlParameters = new SqlParameter[] { new SqlParameter("@itemOrderedId", orderedItem._itemOrdered_id) };
             ExecuteEditQuery(query, sqlParameters);
         }
 
         /////// end KitchenAndBar queries
-        
+
         public void MarkOrderedItemAsServed(OrderedItem orderedItem)
         {
             string query = "UPDATE ORDERED_ITEM " +
@@ -64,13 +64,13 @@ namespace DAL
         {
             List<OrderedItem> items = new List<OrderedItem>();
 
-            foreach(DataRow dr in datatable.Rows)
+            foreach (DataRow dr in datatable.Rows)
             {
                 FoodItem item = new FoodItem()
                 {
                     Item_Name = (string)dr["item_Name"],
                     Item_CourseType = (CourseType)dr["item_CourseType"],
-                    
+
                 };
 
                 string comment = "";
@@ -88,7 +88,7 @@ namespace DAL
                 };
                 items.Add(itemOrdered);
             }
-           
+
             return items;
         }
 
@@ -110,7 +110,7 @@ namespace DAL
 
                 OrderedItem itemOrdered = new OrderedItem(item)
                 {
-                    _itemOrdered_id= (int)dr["itemOrdered_Id"],
+                    _itemOrdered_id = (int)dr["itemOrdered_Id"],
                     _itemOrdered_Comment = comment,
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
                     _itemOrdered_Placed = (DateTime)dr["order_TimeTaken"],
@@ -127,14 +127,14 @@ namespace DAL
         // MD Tasnim Kabir
 
         // Get all the ordered items from database
-        public List<OrderedItem> GetAllOrderedItems()
+        public List<OrderedItem> GetAllOrderedItems(int tableNr)
         {
             string query = $@" 
                             SELECT m.item_Name,o.itemOrdered_Quantity,m.item_Price,od.order_Id,od.table_Nr,od.order_Status
                             FROM MENU_ITEM as m
                             JOIN ORDERED_ITEM as o on o.item_Id=m.item_Id
                             join [dbo].[ORDER] as od on od.order_Id=o.order_Id
-                            WHERE od.order_Status={(int)PayStatus.notpaid}
+                            WHERE od.order_Status={(int)PayStatus.notpaid} and od.table_Nr={tableNr}
                              ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -160,9 +160,10 @@ namespace DAL
 
                 };
                 items.Add(itemOrdered);
-            }
 
+            }
             return items;
+
         }
     }
 }

@@ -25,7 +25,7 @@ namespace DAL
             ExecuteEditQuery(query, sqlParameters);
 
         }
-        
+
         // When the order is paid ,then update the payment status as paid on database
         public void UpdatePaymentStatus(int orderId)
         {
@@ -38,6 +38,34 @@ namespace DAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+        public List<Bill> GetAllTables()
+        {
+            string query = @"SELECT o.table_Nr
+                            FROM [ORDER] as o
+                            join [TABLE] as t on t.table_Nr=o.table_Nr
+                            ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
 
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
+        }
+
+        private List<Bill> ReadTables(DataTable datatable)
+        {
+            List<Bill> tables = new List<Bill>();
+
+            foreach (DataRow dr in datatable.Rows)
+            {
+
+                Bill tableNr = new Bill()
+                {
+                    Table_Nr = (int)dr["table_Nr"]
+                };
+                tables.Add(tableNr);
+            }
+
+            return tables;
+        }
     }
+
 }

@@ -20,5 +20,9 @@ namespace Logic
         {
             billdao.UpdatePaymentStatus(orderId);
         }
+        public List<Bill> GetAllTables()
+        {
+            return billdao.GetAllTables();
+        }
     }
 }

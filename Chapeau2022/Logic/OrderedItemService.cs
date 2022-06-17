@@ -35,10 +35,10 @@ namespace Logic
         }
 
         //Md Tasnim Kabir 
-        public List<OrderedItem> GetAllOrderedItems()
+        public List<OrderedItem> GetAllOrderedItems(int tableNr)
         {
             
-            return orderedItemDao.GetAllOrderedItems();
+            return orderedItemDao.GetAllOrderedItems(tableNr);
         }
 
         public void MarkOrderedItemAsServed(OrderedItem item) => orderedItemDao.MarkOrderedItemAsServed(item);
