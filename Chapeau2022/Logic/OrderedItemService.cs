@@ -40,7 +40,16 @@ namespace Logic
             
             return orderedItemDao.GetAllOrderedItems(tableNr);
         }
+        //Anna Koster
+        public List<OrderedItem> GetAllOrders(int tableNr)
+        {
 
-        public void MarkOrderedItemAsServed(OrderedItem item) => orderedItemDao.MarkOrderedItemAsServed(item);
+            return orderedItemDao.GetAllOrders(tableNr);
+        }
+
+        public void MarkOrderedItemAsServed(OrderedItem orderedItem)
+        {
+            orderedItemDao.MarkOrderedItemAsServed(orderedItem);
+        }
     }
 }

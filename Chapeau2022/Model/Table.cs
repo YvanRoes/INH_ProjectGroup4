@@ -9,5 +9,11 @@ namespace Model
     public class Table
     {
         public int tableId { get; set; }
+
     }
+    public enum TableStatus
+    {
+        Free, Occupied, ReadyToServe
+    }
+
 }
