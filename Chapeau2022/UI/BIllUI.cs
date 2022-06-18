@@ -27,14 +27,18 @@ namespace UI
         private decimal subTotal = 0;
         private decimal tip;
         private int orderID;
+        decimal splitAmount=0;
 
         public BillUI()
         {
             InitializeComponent();
             Show();
             DisplayAllTable();
+            lblStillToPay.Visible = false;
+
             txtTip.Enabled = false;
             txtComment.Enabled = false;
+            txtSplitAmount.Enabled = false;
 
         }
         private void DisplayAllTable()
@@ -46,7 +50,7 @@ namespace UI
             }
 
         }
-        
+
         private void cmbTable_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             int selectedIndex = int.Parse(cmbTable.SelectedItem.ToString());
@@ -105,7 +109,6 @@ namespace UI
                 tip = decimal.Parse(txtTip.Text);
 
                 lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) + tip).ToString();
-                //(subTotal + highVat + lowVat + tip).ToString("0.00");
             }
             else
             {
@@ -132,7 +135,7 @@ namespace UI
 
         private void cbComment_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbComment.Checked)
+            if (cbAddComment.Checked)
                 txtComment.Enabled = true;
             else
                 txtComment.Enabled = false;
@@ -147,57 +150,116 @@ namespace UI
                 txtTip.Enabled = false;
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            MainWindow back = new MainWindow();
-            back.Show();
-        }
-        public void CheckPaymentMethod(Bill bill)
-        {
-            
-          
-        }
+
+        Bill bill = new Bill();
+
         private void btnPay_Click_1(object sender, EventArgs e)
         {
-            Bill bill = new Bill();
-            decimal total = decimal.Parse((lblTotal.Text).ToString());
-            decimal splitAmount = decimal.Parse(txtSplitAmount.Text.ToString());
+            try
+            {
+                decimal total = decimal.Parse((lblTotal.Text).ToString());
+                if (cbSplitAmount.Checked)
+                {
+                    if (txtSplitAmount.Text != string.Empty)
+                    {
+                        splitAmount = decimal.Parse(txtSplitAmount.Text.ToString());
+                        if (splitAmount > total)
+                        {
+                            MessageBox.Show("Please enter a valid amount");
+                            return;
+                        }
 
-            
-            if (txtSplitAmount.Text != string.Empty && splitAmount <= total)
-            {
-                total = splitAmount;
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid amount");
-                return;
-            }
-            if (rbCreditcard.Checked == false || rbPin.Checked == false || rbCash.Checked == false)
-            {
-                MessageBox.Show("Please select a payment method");
-                return;
-            }
-            else
-            {
+                    }
+                    total = splitAmount;
+
+                }
+
                 if (rbCreditcard.Checked)
                     bill.Method = BillMethod.CreditCard;
                 else if (rbPin.Checked)
                     bill.Method = BillMethod.Pin;
                 else if (rbCash.Checked)
                     bill.Method = BillMethod.Cash;
+                else
+                {
+                    MessageBox.Show("Please select a payment method");
+                    return;
+                }
+                Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
+                // billService.UpdatePaymentStatus(orderID);
+                billService.InsertBill(insertBill);
+                MessageBox.Show($"Payment Successfull");
+ 
+                Clear();
+                lblStillToPay.Visible = true;
+                txtTip.Text = "";
+                txtSplitAmount.Text = "";
+                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
+
+
+
             }
-            Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
-            //billService.UpdatePaymentStatus(orderID);
-            billService.InsertBill(insertBill);
-            MessageBox.Show($"Payment Successfull");
-            txtTip.Text = "";
-            lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Eroor:{ex.Message}");
+            }
+
+
+        }
+        public void Clear()
+        {
+            lblSubTotalName.Text = "";
+            lblTotalVatNaam.Text = "";
+            lblSubTotal.Text = "";
+            lblTotalVat.Text = "";
+            lblEuro2.Text = "";
+            lblEuro1.Text = "";
+            //lblTotal.Text = "";
 
 
         }
 
+        private void cbTip_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (cbTip.Checked)
+            {
+                txtTip.Enabled = true;
+            }
+            else
+            {
+                txtTip.Enabled = false;
 
+            }
+        }
+
+        private void cbAddComment_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAddComment.Checked)
+            {
+                txtComment.Enabled = true;
+            }
+            else
+            {
+                txtComment.Enabled = false;
+
+            }
+
+        }
+
+        private void cbSplitAmount_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSplitAmount.Checked)
+            {
+                txtSplitAmount.Enabled = true;
+
+            }
+            else
+            {
+                txtSplitAmount.Enabled = false;
+
+            }
+
+        }
 
     }
 }
