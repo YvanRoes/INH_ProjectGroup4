@@ -152,28 +152,37 @@ namespace UI
 
 
         Bill bill = new Bill();
+        decimal total;
+        private void CheckSplitBox()
+        {
+            total = decimal.Parse((lblTotal.Text).ToString());
+            if (cbSplitAmount.Checked)
+            {
+
+                if (txtSplitAmount.Text != string.Empty)
+                {
+                    splitAmount = decimal.Parse(txtSplitAmount.Text.ToString());
+                    if (splitAmount > total)
+                    {
+                        MessageBox.Show("Please enter less than total amount");
+                        return;
+                    }
+
+                }
+                total = splitAmount;
+                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
+                UpdateTheForm1();
+
+                
+
+            }
+        }
 
         private void btnPay_Click_1(object sender, EventArgs e)
         {
             try
             {
-                decimal total = decimal.Parse((lblTotal.Text).ToString());
-                if (cbSplitAmount.Checked)
-                {
-                    if (txtSplitAmount.Text != string.Empty)
-                    {
-                        splitAmount = decimal.Parse(txtSplitAmount.Text.ToString());
-                        if (splitAmount > total)
-                        {
-                            MessageBox.Show("Please enter a valid amount");
-                            return;
-                        }
-
-                    }
-                    total = splitAmount;
-
-                }
-
+                CheckSplitBox();
                 if (rbCreditcard.Checked)
                     bill.Method = BillMethod.CreditCard;
                 else if (rbPin.Checked)
@@ -182,22 +191,16 @@ namespace UI
                     bill.Method = BillMethod.Cash;
                 else
                 {
-                    MessageBox.Show("Please select a payment method");
+                    MessageBox.Show("Please select a payment method first");
                     return;
                 }
+                
                 Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
                 // billService.UpdatePaymentStatus(orderID);
                 billService.InsertBill(insertBill);
                 MessageBox.Show($"Payment Successfull");
- 
-                Clear();
-                lblStillToPay.Visible = true;
-                txtTip.Text = "";
-                txtSplitAmount.Text = "";
-                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
-
-
-
+                CloseForm();
+                
             }
             catch (Exception ex)
             {
@@ -206,7 +209,7 @@ namespace UI
 
 
         }
-        public void Clear()
+        public void UpdateTheForm1()
         {
             lblSubTotalName.Text = "";
             lblTotalVatNaam.Text = "";
@@ -214,9 +217,50 @@ namespace UI
             lblTotalVat.Text = "";
             lblEuro2.Text = "";
             lblEuro1.Text = "";
-            //lblTotal.Text = "";
+            txtTip.Text = "";
+            txtSplitAmount.Text = "";
+            lblTotalName.Visible = false;
+            lblStillToPay.Visible = true;
+
+        }
+        public void UpdateTheForm2()
+        {
+            lblSubTotalName.Text = "";
+            lblTotalVatNaam.Text = "";
+            lblSubTotal.Text = "";
+            lblTotalVat.Text = "";
+            lblEuro1.Text = "";
+            lblEuro2.Text = "";
+            lblEuro3.Text = "";
+            lblStillToPay.Visible = true;
+            txtTip.Text = "";
+            txtSplitAmount.Text = "";
+            lblTotal.Text = "";
+            lblStillToPay.Text = "";
+            lblTotalName.Text = "";
 
 
+        }
+        private void CloseForm()
+        {
+            if (cbSplitAmount.Checked)
+            {
+                if (decimal.Parse(lblTotal.Text.ToString()) == 0)
+                {
+
+                    this.Close();
+                    new MainWindow();
+
+                }
+
+            }
+            else
+            {
+                UpdateTheForm2();
+                this.Close();
+                new MainWindow();
+
+            }
         }
 
         private void cbTip_CheckedChanged_1(object sender, EventArgs e)

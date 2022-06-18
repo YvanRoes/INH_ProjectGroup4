@@ -46,7 +46,7 @@ namespace UI
             this.txtTip = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblTotalName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@ namespace UI
             // rbCash
             // 
             this.rbCash.AutoSize = true;
-            this.rbCash.Location = new System.Drawing.Point(202, 939);
+            this.rbCash.Location = new System.Drawing.Point(200, 898);
             this.rbCash.Name = "rbCash";
             this.rbCash.Size = new System.Drawing.Size(61, 24);
             this.rbCash.TabIndex = 54;
@@ -80,7 +80,7 @@ namespace UI
             // rbPin
             // 
             this.rbPin.AutoSize = true;
-            this.rbPin.Location = new System.Drawing.Point(140, 938);
+            this.rbPin.Location = new System.Drawing.Point(138, 897);
             this.rbPin.Name = "rbPin";
             this.rbPin.Size = new System.Drawing.Size(50, 24);
             this.rbPin.TabIndex = 53;
@@ -91,7 +91,7 @@ namespace UI
             // rbCreditcard
             // 
             this.rbCreditcard.AutoSize = true;
-            this.rbCreditcard.Location = new System.Drawing.Point(36, 936);
+            this.rbCreditcard.Location = new System.Drawing.Point(34, 895);
             this.rbCreditcard.Name = "rbCreditcard";
             this.rbCreditcard.Size = new System.Drawing.Size(99, 24);
             this.rbCreditcard.TabIndex = 52;
@@ -102,7 +102,7 @@ namespace UI
             // btnPay
             // 
             this.btnPay.BackColor = System.Drawing.Color.Salmon;
-            this.btnPay.Location = new System.Drawing.Point(31, 975);
+            this.btnPay.Location = new System.Drawing.Point(29, 934);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(94, 39);
             this.btnPay.TabIndex = 39;
@@ -125,13 +125,13 @@ namespace UI
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(465, 20);
+            this.label2.Size = new System.Drawing.Size(345, 20);
             this.label2.TabIndex = 56;
-            this.label2.Text = "----------------------------------------------------------------------------";
+            this.label2.Text = "--------------------------------------------------------";
             // 
             // txtSplitAmount
             // 
-            this.txtSplitAmount.Location = new System.Drawing.Point(28, 813);
+            this.txtSplitAmount.Location = new System.Drawing.Point(34, 805);
             this.txtSplitAmount.Name = "txtSplitAmount";
             this.txtSplitAmount.Size = new System.Drawing.Size(125, 27);
             this.txtSplitAmount.TabIndex = 89;
@@ -139,7 +139,7 @@ namespace UI
             // cmbTable
             // 
             this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(31, 141);
+            this.cmbTable.Location = new System.Drawing.Point(10, 141);
             this.cmbTable.Name = "cmbTable";
             this.cmbTable.Size = new System.Drawing.Size(53, 28);
             this.cmbTable.TabIndex = 88;
@@ -148,7 +148,7 @@ namespace UI
             // lblEuro1
             // 
             this.lblEuro1.AutoSize = true;
-            this.lblEuro1.Location = new System.Drawing.Point(449, 290);
+            this.lblEuro1.Location = new System.Drawing.Point(313, 404);
             this.lblEuro1.Name = "lblEuro1";
             this.lblEuro1.Size = new System.Drawing.Size(17, 20);
             this.lblEuro1.TabIndex = 87;
@@ -157,7 +157,7 @@ namespace UI
             // lblEuro3
             // 
             this.lblEuro3.AutoSize = true;
-            this.lblEuro3.Location = new System.Drawing.Point(448, 361);
+            this.lblEuro3.Location = new System.Drawing.Point(312, 475);
             this.lblEuro3.Name = "lblEuro3";
             this.lblEuro3.Size = new System.Drawing.Size(17, 20);
             this.lblEuro3.TabIndex = 86;
@@ -166,7 +166,7 @@ namespace UI
             // lblEuro2
             // 
             this.lblEuro2.AutoSize = true;
-            this.lblEuro2.Location = new System.Drawing.Point(449, 322);
+            this.lblEuro2.Location = new System.Drawing.Point(313, 436);
             this.lblEuro2.Name = "lblEuro2";
             this.lblEuro2.Size = new System.Drawing.Size(17, 20);
             this.lblEuro2.TabIndex = 85;
@@ -175,7 +175,7 @@ namespace UI
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 899);
+            this.label17.Location = new System.Drawing.Point(30, 858);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(191, 20);
             this.label17.TabIndex = 84;
@@ -184,7 +184,7 @@ namespace UI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 738);
+            this.label4.Location = new System.Drawing.Point(32, 740);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 20);
             this.label4.TabIndex = 83;
@@ -192,14 +192,14 @@ namespace UI
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(26, 710);
+            this.txtComment.Location = new System.Drawing.Point(32, 702);
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(125, 27);
             this.txtComment.TabIndex = 80;
             // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(31, 545);
+            this.txtTip.Location = new System.Drawing.Point(31, 588);
             this.txtTip.Name = "txtTip";
             this.txtTip.Size = new System.Drawing.Size(125, 27);
             this.txtTip.TabIndex = 79;
@@ -207,7 +207,7 @@ namespace UI
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(464, 361);
+            this.lblTotal.Location = new System.Drawing.Point(328, 475);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 20);
             this.lblTotal.TabIndex = 68;
@@ -216,25 +216,25 @@ namespace UI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 642);
+            this.label5.Location = new System.Drawing.Point(31, 634);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 20);
             this.label5.TabIndex = 78;
             this.label5.Text = "Add comment:";
             // 
-            // label7
+            // lblTotalName
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(399, 362);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 20);
-            this.label7.TabIndex = 77;
-            this.label7.Text = "Total:";
+            this.lblTotalName.AutoSize = true;
+            this.lblTotalName.Location = new System.Drawing.Point(263, 476);
+            this.lblTotalName.Name = "lblTotalName";
+            this.lblTotalName.Size = new System.Drawing.Size(45, 20);
+            this.lblTotalName.TabIndex = 77;
+            this.lblTotalName.Text = "Total:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 477);
+            this.label8.Location = new System.Drawing.Point(30, 520);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 20);
             this.label8.TabIndex = 76;
@@ -251,16 +251,16 @@ namespace UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(25, 107);
+            this.label11.Location = new System.Drawing.Point(4, 107);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 20);
+            this.label11.Size = new System.Drawing.Size(157, 20);
             this.label11.TabIndex = 73;
-            this.label11.Text = "Table Nr:";
+            this.label11.Text = "Select a table number:";
             // 
             // lblTotalVat
             // 
             this.lblTotalVat.AutoSize = true;
-            this.lblTotalVat.Location = new System.Drawing.Point(469, 322);
+            this.lblTotalVat.Location = new System.Drawing.Point(333, 436);
             this.lblTotalVat.Name = "lblTotalVat";
             this.lblTotalVat.Size = new System.Drawing.Size(36, 20);
             this.lblTotalVat.TabIndex = 67;
@@ -269,7 +269,7 @@ namespace UI
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.Location = new System.Drawing.Point(468, 290);
+            this.lblSubTotal.Location = new System.Drawing.Point(332, 404);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(36, 20);
             this.lblSubTotal.TabIndex = 66;
@@ -291,9 +291,9 @@ namespace UI
             this.Price});
             this.lvOrderedItems.FullRowSelect = true;
             this.lvOrderedItems.HideSelection = false;
-            this.lvOrderedItems.Location = new System.Drawing.Point(98, 107);
+            this.lvOrderedItems.Location = new System.Drawing.Point(70, 141);
             this.lvOrderedItems.Name = "lvOrderedItems";
-            this.lvOrderedItems.Size = new System.Drawing.Size(411, 154);
+            this.lvOrderedItems.Size = new System.Drawing.Size(299, 215);
             this.lvOrderedItems.TabIndex = 65;
             this.lvOrderedItems.UseCompatibleStateImageBehavior = false;
             this.lvOrderedItems.View = System.Windows.Forms.View.Details;
@@ -301,31 +301,31 @@ namespace UI
             // itemName
             // 
             this.itemName.Text = "Item Name";
-            this.itemName.Width = 150;
+            this.itemName.Width = 100;
             // 
             // Quantity
             // 
             this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 150;
+            this.Quantity.Width = 100;
             // 
             // Price
             // 
             this.Price.Text = "Price";
-            this.Price.Width = 150;
+            this.Price.Width = 100;
             // 
             // lblStillToPay
             // 
             this.lblStillToPay.AutoSize = true;
-            this.lblStillToPay.Location = new System.Drawing.Point(367, 393);
+            this.lblStillToPay.Location = new System.Drawing.Point(198, 476);
             this.lblStillToPay.Name = "lblStillToPay";
-            this.lblStillToPay.Size = new System.Drawing.Size(83, 20);
+            this.lblStillToPay.Size = new System.Drawing.Size(110, 20);
             this.lblStillToPay.TabIndex = 90;
-            this.lblStillToPay.Text = "To be paid:";
+            this.lblStillToPay.Text = "Still to be paid:";
             // 
             // cbSplitAmount
             // 
             this.cbSplitAmount.AutoSize = true;
-            this.cbSplitAmount.Location = new System.Drawing.Point(36, 777);
+            this.cbSplitAmount.Location = new System.Drawing.Point(37, 774);
             this.cbSplitAmount.Name = "cbSplitAmount";
             this.cbSplitAmount.Size = new System.Drawing.Size(18, 17);
             this.cbSplitAmount.TabIndex = 91;
@@ -334,7 +334,7 @@ namespace UI
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(415, 14);
+            this.btnLogout.Location = new System.Drawing.Point(280, 8);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(94, 29);
             this.btnLogout.TabIndex = 92;
@@ -344,7 +344,7 @@ namespace UI
             // cbTip
             // 
             this.cbTip.AutoSize = true;
-            this.cbTip.Location = new System.Drawing.Point(40, 514);
+            this.cbTip.Location = new System.Drawing.Point(36, 557);
             this.cbTip.Name = "cbTip";
             this.cbTip.Size = new System.Drawing.Size(18, 17);
             this.cbTip.TabIndex = 93;
@@ -354,7 +354,7 @@ namespace UI
             // cbAddComment
             // 
             this.cbAddComment.AutoSize = true;
-            this.cbAddComment.Location = new System.Drawing.Point(29, 678);
+            this.cbAddComment.Location = new System.Drawing.Point(35, 670);
             this.cbAddComment.Name = "cbAddComment";
             this.cbAddComment.Size = new System.Drawing.Size(18, 17);
             this.cbAddComment.TabIndex = 94;
@@ -364,7 +364,7 @@ namespace UI
             // lblSubTotalName
             // 
             this.lblSubTotalName.AutoSize = true;
-            this.lblSubTotalName.Location = new System.Drawing.Point(360, 290);
+            this.lblSubTotalName.Location = new System.Drawing.Point(224, 404);
             this.lblSubTotalName.Name = "lblSubTotalName";
             this.lblSubTotalName.Size = new System.Drawing.Size(74, 20);
             this.lblSubTotalName.TabIndex = 95;
@@ -373,7 +373,7 @@ namespace UI
             // lblTotalVatNaam
             // 
             this.lblTotalVatNaam.AutoSize = true;
-            this.lblTotalVatNaam.Location = new System.Drawing.Point(367, 322);
+            this.lblTotalVatNaam.Location = new System.Drawing.Point(231, 436);
             this.lblTotalVatNaam.Name = "lblTotalVatNaam";
             this.lblTotalVatNaam.Size = new System.Drawing.Size(67, 20);
             this.lblTotalVatNaam.TabIndex = 96;
@@ -383,8 +383,9 @@ namespace UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(536, 1055);
+            this.ClientSize = new System.Drawing.Size(396, 689);
             this.Controls.Add(this.lblTotalVatNaam);
             this.Controls.Add(this.lblSubTotalName);
             this.Controls.Add(this.cbAddComment);
@@ -403,7 +404,7 @@ namespace UI
             this.Controls.Add(this.txtTip);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblTotalName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
@@ -444,7 +445,7 @@ namespace UI
         private System.Windows.Forms.TextBox txtTip;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTotalName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotalVatName;
         private System.Windows.Forms.Label label10;
