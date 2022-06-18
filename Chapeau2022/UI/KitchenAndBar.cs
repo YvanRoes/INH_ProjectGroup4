@@ -47,21 +47,21 @@ namespace UI
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            btnReady.Left -= 258;
+            btnReady.Left -= 315;
 
             //start display
-            DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
+            DisplayOrderedDrinkItem(ItemOrderedStatus.Running);
             orderDisplay = OrderDisplay.Running;
         }
 
         private void KitchenView()
         {
             lblKitchenAndBar.Text = "Kitchen View";
-            lvOrders.Columns[3].Text = "Food Type";
+            lvOrders.Columns[3].Text = "Course Type";
             lvOrders.Columns[4].Text = "Food Name";
 
             //start display
-            DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+            DisplayOrderedFoodItem(ItemOrderedStatus.Running);
             orderDisplay = OrderDisplay.Running;
         }
 
@@ -129,11 +129,11 @@ namespace UI
 
             if (employee.Employee_Role == EmployeeRole.bartender)
             {
-                DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
+                DisplayOrderedDrinkItem(ItemOrderedStatus.Running);
             }
             else
             {
-                DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+                DisplayOrderedFoodItem(ItemOrderedStatus.Running);
             }
         }
 
@@ -143,11 +143,11 @@ namespace UI
 
             if (employee.Employee_Role == EmployeeRole.bartender)
             {
-                DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
+                DisplayOrderedDrinkItem(ItemOrderedStatus.Finished);
             }
             else
             {
-                DisplayOrderedFoodItem(ItemOrderedStatus.Ready);
+                DisplayOrderedFoodItem(ItemOrderedStatus.Finished);
             }
         }
 
@@ -179,11 +179,11 @@ MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
                 if (employee.Employee_Role == EmployeeRole.bartender)
                 {
-                    DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
+                    DisplayOrderedDrinkItem(ItemOrderedStatus.Running);
                 }
                 else
                 {
-                    DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+                    DisplayOrderedFoodItem(ItemOrderedStatus.Running);
                 }
             }
 
@@ -191,11 +191,11 @@ MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
                 if (employee.Employee_Role == EmployeeRole.bartender)
                 {
-                    DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
+                    DisplayOrderedDrinkItem(ItemOrderedStatus.Finished);
                 }
                 else
                 {
-                    DisplayOrderedFoodItem(ItemOrderedStatus.Ready);
+                    DisplayOrderedFoodItem(ItemOrderedStatus.Finished);
                 }
             }
         }

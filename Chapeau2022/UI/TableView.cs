@@ -30,10 +30,10 @@ namespace UI
         private void Waiter()
         {
             lvOrders.Items.Clear();
-            DisplayOrderedDrinkItem(ItemOrderedStatus.Ready);
-            DisplayOrderedFoodItem(ItemOrderedStatus.Ready);
-            DisplayOrderedDrinkItem(ItemOrderedStatus.NotReady);
-            DisplayOrderedFoodItem(ItemOrderedStatus.NotReady);
+            DisplayOrderedDrinkItem(ItemOrderedStatus.Finished);
+            DisplayOrderedFoodItem(ItemOrderedStatus.Finished);
+            DisplayOrderedDrinkItem(ItemOrderedStatus.Running);
+            DisplayOrderedFoodItem(ItemOrderedStatus.Running);
         }
 
         //fills the listview with the ordered drinks

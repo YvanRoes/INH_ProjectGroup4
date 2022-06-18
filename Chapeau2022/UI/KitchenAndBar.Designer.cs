@@ -31,10 +31,10 @@
             this.lvOrders = new System.Windows.Forms.ListView();
             this.tableNrHeader = new System.Windows.Forms.ColumnHeader();
             this.placedHeader = new System.Windows.Forms.ColumnHeader();
-            this.quantityHeader = new System.Windows.Forms.ColumnHeader();
-            this.typeHeader = new System.Windows.Forms.ColumnHeader();
+            this.qtyHeader = new System.Windows.Forms.ColumnHeader();
+            this.orderTypeHeader = new System.Windows.Forms.ColumnHeader();
             this.orderHeader = new System.Windows.Forms.ColumnHeader();
-            this.descriptionHeader = new System.Windows.Forms.ColumnHeader();
+            this.commentHeader = new System.Windows.Forms.ColumnHeader();
             this.statusHeader = new System.Windows.Forms.ColumnHeader();
             this.btnReady = new System.Windows.Forms.Button();
             this.lblKitchenAndBar = new System.Windows.Forms.Label();
@@ -55,16 +55,17 @@
             this.lvOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.tableNrHeader,
             this.placedHeader,
-            this.quantityHeader,
-            this.typeHeader,
+            this.qtyHeader,
+            this.orderTypeHeader,
             this.orderHeader,
-            this.descriptionHeader,
+            this.commentHeader,
             this.statusHeader});
+            this.lvOrders.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lvOrders.FullRowSelect = true;
             this.lvOrders.HideSelection = false;
-            this.lvOrders.Location = new System.Drawing.Point(12, 141);
+            this.lvOrders.Location = new System.Drawing.Point(12, 142);
             this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(868, 350);
+            this.lvOrders.Size = new System.Drawing.Size(970, 382);
             this.lvOrders.TabIndex = 5;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
             this.lvOrders.View = System.Windows.Forms.View.Details;
@@ -72,45 +73,45 @@
             // tableNrHeader
             // 
             this.tableNrHeader.Text = "Table No.";
-            this.tableNrHeader.Width = 62;
+            this.tableNrHeader.Width = 75;
             // 
             // placedHeader
             // 
             this.placedHeader.Text = "Placed";
-            this.placedHeader.Width = 110;
+            this.placedHeader.Width = 140;
             // 
-            // quantityHeader
+            // qtyHeader
             // 
-            this.quantityHeader.Text = "Quantity";
-            this.quantityHeader.Width = 62;
+            this.qtyHeader.Text = "Qty";
+            this.qtyHeader.Width = 40;
             // 
-            // typeHeader
+            // orderTypeHeader
             // 
-            this.typeHeader.Text = "Type";
-            this.typeHeader.Width = 100;
+            this.orderTypeHeader.Text = "Order Type";
+            this.orderTypeHeader.Width = 108;
             // 
             // orderHeader
             // 
             this.orderHeader.Text = "Order";
-            this.orderHeader.Width = 250;
+            this.orderHeader.Width = 311;
             // 
-            // descriptionHeader
+            // commentHeader
             // 
-            this.descriptionHeader.Text = "Comment";
-            this.descriptionHeader.Width = 200;
+            this.commentHeader.Text = "Comment";
+            this.commentHeader.Width = 220;
             // 
             // statusHeader
             // 
             this.statusHeader.Text = "Status";
-            this.statusHeader.Width = 80;
+            this.statusHeader.Width = 72;
             // 
             // btnReady
             // 
             this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnReady.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReady.Location = new System.Drawing.Point(806, 97);
+            this.btnReady.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReady.Location = new System.Drawing.Point(885, 89);
             this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(74, 30);
+            this.btnReady.Size = new System.Drawing.Size(95, 40);
             this.btnReady.TabIndex = 9;
             this.btnReady.Text = "ready";
             this.btnReady.UseVisualStyleBackColor = false;
@@ -129,12 +130,12 @@
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Red;
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(806, 20);
+            this.btnLogout.Location = new System.Drawing.Point(885, 7);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(74, 30);
+            this.btnLogout.Size = new System.Drawing.Size(95, 40);
             this.btnLogout.TabIndex = 10;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -143,72 +144,73 @@
             // btnFinished
             // 
             this.btnFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnFinished.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnFinished.Location = new System.Drawing.Point(105, 97);
+            this.btnFinished.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnFinished.Location = new System.Drawing.Point(127, 89);
             this.btnFinished.Name = "btnFinished";
-            this.btnFinished.Size = new System.Drawing.Size(74, 30);
+            this.btnFinished.Size = new System.Drawing.Size(95, 40);
             this.btnFinished.TabIndex = 11;
-            this.btnFinished.Text = "finished";
+            this.btnFinished.Text = "Finished";
             this.btnFinished.UseVisualStyleBackColor = false;
             this.btnFinished.Click += new System.EventHandler(this.btnFinished_Click);
             // 
             // btnRunning
             // 
             this.btnRunning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRunning.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRunning.Location = new System.Drawing.Point(12, 97);
+            this.btnRunning.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRunning.Location = new System.Drawing.Point(12, 89);
             this.btnRunning.Name = "btnRunning";
-            this.btnRunning.Size = new System.Drawing.Size(74, 30);
+            this.btnRunning.Size = new System.Drawing.Size(95, 40);
             this.btnRunning.TabIndex = 12;
-            this.btnRunning.Text = "running";
+            this.btnRunning.Text = "Running";
             this.btnRunning.UseVisualStyleBackColor = false;
             this.btnRunning.Click += new System.EventHandler(this.btnRunning_Click);
             // 
             // btnTabelNr
             // 
             this.btnTabelNr.AutoSize = true;
-            this.btnTabelNr.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTabelNr.Location = new System.Drawing.Point(372, 79);
+            this.btnTabelNr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnTabelNr.Location = new System.Drawing.Point(346, 65);
             this.btnTabelNr.Name = "btnTabelNr";
-            this.btnTabelNr.Size = new System.Drawing.Size(160, 17);
+            this.btnTabelNr.Size = new System.Drawing.Size(195, 21);
             this.btnTabelNr.TabIndex = 13;
             this.btnTabelNr.Text = "Choose ready table No. :";
             // 
             // tbxTableNr
             // 
-            this.tbxTableNr.Location = new System.Drawing.Point(497, 100);
+            this.tbxTableNr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbxTableNr.Location = new System.Drawing.Point(509, 96);
             this.tbxTableNr.Name = "tbxTableNr";
-            this.tbxTableNr.Size = new System.Drawing.Size(32, 23);
+            this.tbxTableNr.Size = new System.Drawing.Size(32, 29);
             this.tbxTableNr.TabIndex = 14;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 79);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 17);
+            this.label1.Size = new System.Drawing.Size(210, 21);
             this.label1.TabIndex = 18;
             this.label1.Text = "Choose displaying orders :";
             // 
             // lblReadyCourse
             // 
             this.lblReadyCourse.AutoSize = true;
-            this.lblReadyCourse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblReadyCourse.Location = new System.Drawing.Point(559, 79);
+            this.lblReadyCourse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblReadyCourse.Location = new System.Drawing.Point(585, 65);
             this.lblReadyCourse.Name = "lblReadyCourse";
-            this.lblReadyCourse.Size = new System.Drawing.Size(143, 17);
+            this.lblReadyCourse.Size = new System.Drawing.Size(175, 21);
             this.lblReadyCourse.TabIndex = 19;
             this.lblReadyCourse.Text = "Choose ready course :";
             // 
             // chbxAppetizer
             // 
             this.chbxAppetizer.AutoSize = true;
-            this.chbxAppetizer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chbxAppetizer.Location = new System.Drawing.Point(559, 100);
+            this.chbxAppetizer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chbxAppetizer.Location = new System.Drawing.Point(585, 98);
             this.chbxAppetizer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxAppetizer.Name = "chbxAppetizer";
-            this.chbxAppetizer.Size = new System.Drawing.Size(81, 19);
+            this.chbxAppetizer.Size = new System.Drawing.Size(103, 25);
             this.chbxAppetizer.TabIndex = 21;
             this.chbxAppetizer.Text = "Appetizer";
             this.chbxAppetizer.UseVisualStyleBackColor = true;
@@ -216,11 +218,11 @@
             // chbxMain
             // 
             this.chbxMain.AutoSize = true;
-            this.chbxMain.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chbxMain.Location = new System.Drawing.Point(648, 100);
+            this.chbxMain.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chbxMain.Location = new System.Drawing.Point(694, 98);
             this.chbxMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxMain.Name = "chbxMain";
-            this.chbxMain.Size = new System.Drawing.Size(53, 19);
+            this.chbxMain.Size = new System.Drawing.Size(68, 25);
             this.chbxMain.TabIndex = 22;
             this.chbxMain.Text = "Main";
             this.chbxMain.UseVisualStyleBackColor = true;
@@ -228,11 +230,11 @@
             // chbxDessert
             // 
             this.chbxDessert.AutoSize = true;
-            this.chbxDessert.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chbxDessert.Location = new System.Drawing.Point(709, 100);
+            this.chbxDessert.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chbxDessert.Location = new System.Drawing.Point(768, 98);
             this.chbxDessert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxDessert.Name = "chbxDessert";
-            this.chbxDessert.Size = new System.Drawing.Size(69, 19);
+            this.chbxDessert.Size = new System.Drawing.Size(85, 25);
             this.chbxDessert.TabIndex = 23;
             this.chbxDessert.Text = "Dessert";
             this.chbxDessert.UseVisualStyleBackColor = true;
@@ -241,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 499);
+            this.ClientSize = new System.Drawing.Size(994, 536);
             this.Controls.Add(this.chbxDessert);
             this.Controls.Add(this.chbxMain);
             this.Controls.Add(this.chbxAppetizer);
@@ -272,9 +274,9 @@
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Label lblKitchenAndBar;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.ColumnHeader quantityHeader;
-        private System.Windows.Forms.ColumnHeader typeHeader;
-        private System.Windows.Forms.ColumnHeader descriptionHeader;
+        private System.Windows.Forms.ColumnHeader qtyHeader;
+        private System.Windows.Forms.ColumnHeader orderTypeHeader;
+        private System.Windows.Forms.ColumnHeader commentHeader;
         private System.Windows.Forms.Button btnFinished;
         private System.Windows.Forms.Button btnRunning;
         private System.Windows.Forms.ColumnHeader tableNrHeader;

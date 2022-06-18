@@ -8,6 +8,6 @@ namespace Model
 {
     public enum ItemOrderedStatus
     {
-        NotReady, Ready, Served
+        Running, Finished, Served
     }
 }
