@@ -40,16 +40,14 @@ namespace DAL
         }
         public List<Bill> GetAllTables()
         {
-            string query = @"SELECT o.table_Nr
-                            FROM [ORDER] as o
-                            join [TABLE] as t on t.table_Nr=o.table_Nr
+            string query = @"SELECT table_Nr FROM [TABLE]
                             ";
+   
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
         }
-
         private List<Bill> ReadTables(DataTable datatable)
         {
             List<Bill> tables = new List<Bill>();

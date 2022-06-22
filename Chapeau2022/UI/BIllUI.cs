@@ -18,6 +18,7 @@ namespace UI
     public partial class BillUI : Form
     {
         private BillService billService = new BillService();
+        private Bill bill = new Bill();
         private OrderedItemService orderedItemsService = new OrderedItemService();
         private List<OrderedItem> getOrderedItems;
         private const decimal HighVatRate = 0.21m;
@@ -25,9 +26,11 @@ namespace UI
         private decimal highVat = 0;
         private decimal lowVat = 0;
         private decimal subTotal = 0;
+        private decimal total;
         private decimal tip;
         private int orderID;
-        decimal splitAmount=0;
+        private decimal splitAmount = 0;
+
 
         public BillUI()
         {
@@ -35,10 +38,10 @@ namespace UI
             Show();
             DisplayAllTable();
             lblStillToPay.Visible = false;
-
+            btnPay.Enabled = false;
             txtTip.Enabled = false;
             txtComment.Enabled = false;
-            txtSplitAmount.Enabled = false;
+            txtSplitBox.Enabled = false;
 
         }
         private void DisplayAllTable()
@@ -53,13 +56,16 @@ namespace UI
 
         private void cmbTable_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
             int selectedIndex = int.Parse(cmbTable.SelectedItem.ToString());
+            if (cmbTable.SelectedIndex > -1)
+            {
+                btnPay.Enabled = true;
+            }
             getOrderedItems = orderedItemsService.GetAllOrderedItems(selectedIndex);
             DisplayOrderedItems();
             CalculateTotalandVat();
-            subTotal = 0;
-            highVat = 0;
-            lowVat = 0;
+            
         }
         private void DisplayOrderedItems()
         {
@@ -96,9 +102,9 @@ namespace UI
                 }
                 subTotal += orderedItems.menuItem.Item_Price * orderedItems._itemOrdered_Qty;
             }
-            lblSubTotal.Text = subTotal.ToString("0.00");
-            lblTotalVat.Text = (highVat + lowVat).ToString("0.00");
-            lblTotal.Text = (subTotal + highVat + lowVat).ToString("0.00");
+            lblSubTotal.Text = subTotal.ToString("00.00");
+            lblTotalVat.Text = (highVat + lowVat).ToString("00.00");
+            lblTotal.Text = (subTotal + highVat + lowVat).ToString("00.00");
         }
 
         private decimal CheckTipBox()
@@ -133,51 +139,44 @@ namespace UI
             return comment;
         }
 
-        private void cbComment_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbAddComment.Checked)
-                txtComment.Enabled = true;
-            else
-                txtComment.Enabled = false;
+       
 
-        }
-
-        private void cbTip_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbTip.Checked)
-                txtTip.Enabled = true;
-            else
-                txtTip.Enabled = false;
-        }
-
-
-        Bill bill = new Bill();
-        decimal total;
         private void CheckSplitBox()
         {
             total = decimal.Parse((lblTotal.Text).ToString());
-            if (cbSplitAmount.Checked)
+            if (cbSplitAmount.Checked && txtSplitBox.Text!=string.Empty)
             {
-
-                if (txtSplitAmount.Text != string.Empty)
-                {
-                    splitAmount = decimal.Parse(txtSplitAmount.Text.ToString());
-                    if (splitAmount > total)
-                    {
-                        MessageBox.Show("Please enter less than total amount");
-                        return;
-                    }
-
-                }
+                splitAmount = decimal.Parse(txtSplitBox.Text.ToString());      
                 total = splitAmount;
-                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
+            }
+        }
+        private void PayBill()
+        {
+            if (cbSplitAmount.Checked && txtSplitBox.Text == "")
+            {
+                MessageBox.Show("Enter the amount you want to split");
+
+            }
+            else if (splitAmount > decimal.Parse((lblTotal.Text).ToString()))
+            {
+                MessageBox.Show("Please enter less than total amount");
+                return;
+
+            }
+
+            else
+            {
+                Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
+                billService.InsertBill(insertBill);
+                billService.UpdatePaymentStatus(orderID);
+                MessageBox.Show($"Payment Successfull");
                 UpdateTheForm1();
-
-                
-
+                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
+                CloseForm();
             }
         }
 
+        // Insert the bill to the database and update the payment status
         private void btnPay_Click_1(object sender, EventArgs e)
         {
             try
@@ -194,12 +193,7 @@ namespace UI
                     MessageBox.Show("Please select a payment method first");
                     return;
                 }
-                
-                Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
-                // billService.UpdatePaymentStatus(orderID);
-                billService.InsertBill(insertBill);
-                MessageBox.Show($"Payment Successfull");
-                CloseForm();
+                PayBill();              
                 
             }
             catch (Exception ex)
@@ -218,7 +212,7 @@ namespace UI
             lblEuro2.Text = "";
             lblEuro1.Text = "";
             txtTip.Text = "";
-            txtSplitAmount.Text = "";
+            txtSplitBox.Text = "";
             lblTotalName.Visible = false;
             lblStillToPay.Visible = true;
 
@@ -234,13 +228,13 @@ namespace UI
             lblEuro3.Text = "";
             lblStillToPay.Visible = true;
             txtTip.Text = "";
-            txtSplitAmount.Text = "";
             lblTotal.Text = "";
             lblStillToPay.Text = "";
             lblTotalName.Text = "";
 
 
         }
+        // Close the form when there is nothing to pay
         private void CloseForm()
         {
             if (cbSplitAmount.Checked)
@@ -294,16 +288,23 @@ namespace UI
         {
             if (cbSplitAmount.Checked)
             {
-                txtSplitAmount.Enabled = true;
+                txtSplitBox.Enabled = true;
 
             }
             else
             {
-                txtSplitAmount.Enabled = false;
+                txtSplitBox.Enabled = false;
 
             }
 
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            new MainWindow();
+            this.Hide();
+        }
+
+        
     }
 }

@@ -134,9 +134,10 @@ namespace DAL
                             FROM MENU_ITEM as m
                             JOIN ORDERED_ITEM as o on o.item_Id=m.item_Id
                             join [dbo].[ORDER] as od on od.order_Id=o.order_Id
-                            WHERE od.order_Status={(int)PayStatus.notpaid} and od.table_Nr={tableNr}
+                            WHERE od.order_Status={(int)PayStatus.notpaid} and od.table_Nr=@table_Nr
                              ";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@table_Nr", tableNr);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 

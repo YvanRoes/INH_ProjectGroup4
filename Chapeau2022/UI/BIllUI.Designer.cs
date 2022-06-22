@@ -35,7 +35,7 @@ namespace UI
             this.btnPay = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtSplitAmount = new System.Windows.Forms.TextBox();
+            this.txtSplitBox = new System.Windows.Forms.TextBox();
             this.cmbTable = new System.Windows.Forms.ComboBox();
             this.lblEuro1 = new System.Windows.Forms.Label();
             this.lblEuro3 = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@ namespace UI
             // rbCash
             // 
             this.rbCash.AutoSize = true;
-            this.rbCash.Location = new System.Drawing.Point(200, 898);
+            this.rbCash.Location = new System.Drawing.Point(180, 901);
             this.rbCash.Name = "rbCash";
             this.rbCash.Size = new System.Drawing.Size(61, 24);
             this.rbCash.TabIndex = 54;
@@ -80,7 +80,7 @@ namespace UI
             // rbPin
             // 
             this.rbPin.AutoSize = true;
-            this.rbPin.Location = new System.Drawing.Point(138, 897);
+            this.rbPin.Location = new System.Drawing.Point(118, 900);
             this.rbPin.Name = "rbPin";
             this.rbPin.Size = new System.Drawing.Size(50, 24);
             this.rbPin.TabIndex = 53;
@@ -91,7 +91,7 @@ namespace UI
             // rbCreditcard
             // 
             this.rbCreditcard.AutoSize = true;
-            this.rbCreditcard.Location = new System.Drawing.Point(34, 895);
+            this.rbCreditcard.Location = new System.Drawing.Point(14, 898);
             this.rbCreditcard.Name = "rbCreditcard";
             this.rbCreditcard.Size = new System.Drawing.Size(99, 24);
             this.rbCreditcard.TabIndex = 52;
@@ -102,7 +102,7 @@ namespace UI
             // btnPay
             // 
             this.btnPay.BackColor = System.Drawing.Color.Salmon;
-            this.btnPay.Location = new System.Drawing.Point(29, 934);
+            this.btnPay.Location = new System.Drawing.Point(9, 937);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(94, 39);
             this.btnPay.TabIndex = 39;
@@ -114,7 +114,7 @@ namespace UI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(26, 4);
+            this.label6.Location = new System.Drawing.Point(-1, 4);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 38);
             this.label6.TabIndex = 37;
@@ -123,23 +123,23 @@ namespace UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 40);
+            this.label2.Location = new System.Drawing.Point(4, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(345, 20);
+            this.label2.Size = new System.Drawing.Size(369, 20);
             this.label2.TabIndex = 56;
-            this.label2.Text = "--------------------------------------------------------";
+            this.label2.Text = "------------------------------------------------------------";
             // 
-            // txtSplitAmount
+            // txtSplitBox
             // 
-            this.txtSplitAmount.Location = new System.Drawing.Point(34, 805);
-            this.txtSplitAmount.Name = "txtSplitAmount";
-            this.txtSplitAmount.Size = new System.Drawing.Size(125, 27);
-            this.txtSplitAmount.TabIndex = 89;
+            this.txtSplitBox.Location = new System.Drawing.Point(16, 808);
+            this.txtSplitBox.Name = "txtSplitBox";
+            this.txtSplitBox.Size = new System.Drawing.Size(125, 27);
+            this.txtSplitBox.TabIndex = 89;
             // 
             // cmbTable
             // 
             this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(10, 141);
+            this.cmbTable.Location = new System.Drawing.Point(10, 126);
             this.cmbTable.Name = "cmbTable";
             this.cmbTable.Size = new System.Drawing.Size(53, 28);
             this.cmbTable.TabIndex = 88;
@@ -157,7 +157,7 @@ namespace UI
             // lblEuro3
             // 
             this.lblEuro3.AutoSize = true;
-            this.lblEuro3.Location = new System.Drawing.Point(312, 475);
+            this.lblEuro3.Location = new System.Drawing.Point(313, 475);
             this.lblEuro3.Name = "lblEuro3";
             this.lblEuro3.Size = new System.Drawing.Size(17, 20);
             this.lblEuro3.TabIndex = 86;
@@ -175,7 +175,7 @@ namespace UI
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(30, 858);
+            this.label17.Location = new System.Drawing.Point(10, 859);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(191, 20);
             this.label17.TabIndex = 84;
@@ -184,7 +184,7 @@ namespace UI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 740);
+            this.label4.Location = new System.Drawing.Point(12, 743);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 20);
             this.label4.TabIndex = 83;
@@ -192,14 +192,14 @@ namespace UI
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(32, 702);
+            this.txtComment.Location = new System.Drawing.Point(13, 703);
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(125, 27);
             this.txtComment.TabIndex = 80;
             // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(31, 588);
+            this.txtTip.Location = new System.Drawing.Point(16, 588);
             this.txtTip.Name = "txtTip";
             this.txtTip.Size = new System.Drawing.Size(125, 27);
             this.txtTip.TabIndex = 79;
@@ -207,7 +207,7 @@ namespace UI
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(328, 475);
+            this.lblTotal.Location = new System.Drawing.Point(333, 475);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 20);
             this.lblTotal.TabIndex = 68;
@@ -216,7 +216,7 @@ namespace UI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 634);
+            this.label5.Location = new System.Drawing.Point(11, 637);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 20);
             this.label5.TabIndex = 78;
@@ -234,7 +234,7 @@ namespace UI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 520);
+            this.label8.Location = new System.Drawing.Point(11, 523);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 20);
             this.label8.TabIndex = 76;
@@ -251,11 +251,11 @@ namespace UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 107);
+            this.label11.Location = new System.Drawing.Point(3, 87);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 20);
+            this.label11.Size = new System.Drawing.Size(102, 20);
             this.label11.TabIndex = 73;
-            this.label11.Text = "Select a table number:";
+            this.label11.Text = "Select a table:";
             // 
             // lblTotalVat
             // 
@@ -291,9 +291,9 @@ namespace UI
             this.Price});
             this.lvOrderedItems.FullRowSelect = true;
             this.lvOrderedItems.HideSelection = false;
-            this.lvOrderedItems.Location = new System.Drawing.Point(70, 141);
+            this.lvOrderedItems.Location = new System.Drawing.Point(70, 126);
             this.lvOrderedItems.Name = "lvOrderedItems";
-            this.lvOrderedItems.Size = new System.Drawing.Size(299, 215);
+            this.lvOrderedItems.Size = new System.Drawing.Size(299, 230);
             this.lvOrderedItems.TabIndex = 65;
             this.lvOrderedItems.UseCompatibleStateImageBehavior = false;
             this.lvOrderedItems.View = System.Windows.Forms.View.Details;
@@ -306,17 +306,17 @@ namespace UI
             // Quantity
             // 
             this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 100;
+            this.Quantity.Width = 70;
             // 
             // Price
             // 
-            this.Price.Text = "Price";
-            this.Price.Width = 100;
+            this.Price.Text = "Price(Exc vat)";
+            this.Price.Width = 130;
             // 
             // lblStillToPay
             // 
             this.lblStillToPay.AutoSize = true;
-            this.lblStillToPay.Location = new System.Drawing.Point(198, 476);
+            this.lblStillToPay.Location = new System.Drawing.Point(198, 474);
             this.lblStillToPay.Name = "lblStillToPay";
             this.lblStillToPay.Size = new System.Drawing.Size(110, 20);
             this.lblStillToPay.TabIndex = 90;
@@ -325,7 +325,7 @@ namespace UI
             // cbSplitAmount
             // 
             this.cbSplitAmount.AutoSize = true;
-            this.cbSplitAmount.Location = new System.Drawing.Point(37, 774);
+            this.cbSplitAmount.Location = new System.Drawing.Point(16, 777);
             this.cbSplitAmount.Name = "cbSplitAmount";
             this.cbSplitAmount.Size = new System.Drawing.Size(18, 17);
             this.cbSplitAmount.TabIndex = 91;
@@ -334,17 +334,19 @@ namespace UI
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(280, 8);
+            this.btnLogout.BackColor = System.Drawing.Color.Salmon;
+            this.btnLogout.Location = new System.Drawing.Point(277, 12);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 29);
+            this.btnLogout.Size = new System.Drawing.Size(94, 35);
             this.btnLogout.TabIndex = 92;
             this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // cbTip
             // 
             this.cbTip.AutoSize = true;
-            this.cbTip.Location = new System.Drawing.Point(36, 557);
+            this.cbTip.Location = new System.Drawing.Point(15, 557);
             this.cbTip.Name = "cbTip";
             this.cbTip.Size = new System.Drawing.Size(18, 17);
             this.cbTip.TabIndex = 93;
@@ -354,7 +356,7 @@ namespace UI
             // cbAddComment
             // 
             this.cbAddComment.AutoSize = true;
-            this.cbAddComment.Location = new System.Drawing.Point(35, 670);
+            this.cbAddComment.Location = new System.Drawing.Point(16, 673);
             this.cbAddComment.Name = "cbAddComment";
             this.cbAddComment.Size = new System.Drawing.Size(18, 17);
             this.cbAddComment.TabIndex = 94;
@@ -364,7 +366,7 @@ namespace UI
             // lblSubTotalName
             // 
             this.lblSubTotalName.AutoSize = true;
-            this.lblSubTotalName.Location = new System.Drawing.Point(224, 404);
+            this.lblSubTotalName.Location = new System.Drawing.Point(232, 404);
             this.lblSubTotalName.Name = "lblSubTotalName";
             this.lblSubTotalName.Size = new System.Drawing.Size(74, 20);
             this.lblSubTotalName.TabIndex = 95;
@@ -373,11 +375,11 @@ namespace UI
             // lblTotalVatNaam
             // 
             this.lblTotalVatNaam.AutoSize = true;
-            this.lblTotalVatNaam.Location = new System.Drawing.Point(231, 436);
+            this.lblTotalVatNaam.Location = new System.Drawing.Point(119, 436);
             this.lblTotalVatNaam.Name = "lblTotalVatNaam";
-            this.lblTotalVatNaam.Size = new System.Drawing.Size(67, 20);
+            this.lblTotalVatNaam.Size = new System.Drawing.Size(185, 20);
             this.lblTotalVatNaam.TabIndex = 96;
-            this.lblTotalVatNaam.Text = "Total Vat";
+            this.lblTotalVatNaam.Text = "Total vat(alc 21%, rest 6%):";
             // 
             // BillUI
             // 
@@ -393,7 +395,7 @@ namespace UI
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.cbSplitAmount);
             this.Controls.Add(this.lblStillToPay);
-            this.Controls.Add(this.txtSplitAmount);
+            this.Controls.Add(this.txtSplitBox);
             this.Controls.Add(this.cmbTable);
             this.Controls.Add(this.lblEuro1);
             this.Controls.Add(this.lblEuro3);
@@ -434,7 +436,7 @@ namespace UI
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSplitAmount;
+        private System.Windows.Forms.TextBox txtSplitBox;
         private System.Windows.Forms.ComboBox cmbTable;
         private System.Windows.Forms.Label lblEuro1;
         private System.Windows.Forms.Label lblEuro3;
