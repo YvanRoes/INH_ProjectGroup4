@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Table
+    public enum TableStatus
     {
-        public int tableId { get; set; }
-        public TableStatus tableOccupancy { get; set; }
+        Free, Occupied
     }
 }

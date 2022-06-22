@@ -10,18 +10,25 @@ namespace Logic
 {
     public class TableService
     {
-            private TableDao tableDao;
-            public TableService()
-            {
-                tableDao = new TableDao();
-            }
+        private TableDao tableDao;
+        public TableService()
+        {
+            tableDao = new TableDao();
+        }
 
-           /*public List<Table> ReadTables(int tableId) // Gets all employees for the table
-            {
-                return tableDao.ReadTables(tableId);
-            }*/
-
-
+        public void SetTableAsFree(Table table)
+        {
+            tableDao.SetTableAsFree(table);
+        }
+        public void SetTableAsOccupied(Table table)
+        {
+            tableDao.SetTableAsOccupied(table);
+        }
+        public List<Table> GetTableStatus(TableStatus tablestatus)
+        {
+            List<Table> tables = tableDao.GetTableStatus(tablestatus);
+            return tables;
+        }
 
     }
 }
