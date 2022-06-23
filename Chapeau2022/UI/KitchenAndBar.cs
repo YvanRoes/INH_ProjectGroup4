@@ -47,7 +47,7 @@ namespace UI
             chbxAppetizer.Hide();
             chbxMain.Hide();
             chbxDessert.Hide();
-            btnReady.Left -= 375;
+            btnReady.Left -= 350;
 
             //start display
             DisplayOrderedDrinkItem(ItemOrderedStatus.Running);

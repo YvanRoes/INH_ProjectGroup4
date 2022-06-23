@@ -192,7 +192,7 @@ namespace UI
             else if (splitAmount > decimal.Parse((lblTotal.Text).ToString()))
             {
                 MessageBox.Show("Please enter less than total amount");
-                //return;
+               
 
             }
 
@@ -200,7 +200,8 @@ namespace UI
             {
                 Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
                 billService.InsertBill(insertBill);
-                //billService.UpdatePaymentStatus(orderID);
+                
+                billService.UpdatePaymentStatus(orderID);
                 MessageBox.Show($"Payment Successfull");
                 UpdateTheForm1();
                 lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
