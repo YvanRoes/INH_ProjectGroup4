@@ -23,7 +23,7 @@ namespace Model
             {
                 return "Restock";
             }
-            else if ((Item_Stock > Item_AmountNeeded) && (Math.Abs(Item_Stock-Item_AmountNeeded) < 10))
+            else if ((Item_Stock >= Item_AmountNeeded) && (Math.Abs(Item_Stock-Item_AmountNeeded) < 10))
             {
                 return "Low";
             }
