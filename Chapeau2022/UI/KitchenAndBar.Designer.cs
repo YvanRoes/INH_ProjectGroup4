@@ -33,7 +33,7 @@
             this.placedHeader = new System.Windows.Forms.ColumnHeader();
             this.qtyHeader = new System.Windows.Forms.ColumnHeader();
             this.orderTypeHeader = new System.Windows.Forms.ColumnHeader();
-            this.orderHeader = new System.Windows.Forms.ColumnHeader();
+            this.orderItemNameHeader = new System.Windows.Forms.ColumnHeader();
             this.commentHeader = new System.Windows.Forms.ColumnHeader();
             this.statusHeader = new System.Windows.Forms.ColumnHeader();
             this.btnReady = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.placedHeader,
             this.qtyHeader,
             this.orderTypeHeader,
-            this.orderHeader,
+            this.orderItemNameHeader,
             this.commentHeader,
             this.statusHeader});
             this.lvOrders.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -65,7 +65,7 @@
             this.lvOrders.HideSelection = false;
             this.lvOrders.Location = new System.Drawing.Point(12, 142);
             this.lvOrders.Name = "lvOrders";
-            this.lvOrders.Size = new System.Drawing.Size(970, 382);
+            this.lvOrders.Size = new System.Drawing.Size(1010, 382);
             this.lvOrders.TabIndex = 5;
             this.lvOrders.UseCompatibleStateImageBehavior = false;
             this.lvOrders.View = System.Windows.Forms.View.Details;
@@ -90,15 +90,15 @@
             this.orderTypeHeader.Text = "Order Type";
             this.orderTypeHeader.Width = 108;
             // 
-            // orderHeader
+            // orderItemNameHeader
             // 
-            this.orderHeader.Text = "Order";
-            this.orderHeader.Width = 311;
+            this.orderItemNameHeader.Text = "Ordered Item Name";
+            this.orderItemNameHeader.Width = 345;
             // 
             // commentHeader
             // 
             this.commentHeader.Text = "Comment";
-            this.commentHeader.Width = 220;
+            this.commentHeader.Width = 226;
             // 
             // statusHeader
             // 
@@ -109,7 +109,7 @@
             // 
             this.btnReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnReady.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReady.Location = new System.Drawing.Point(885, 89);
+            this.btnReady.Location = new System.Drawing.Point(927, 89);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(95, 40);
             this.btnReady.TabIndex = 9;
@@ -120,10 +120,10 @@
             // lblKitchenAndBar
             // 
             this.lblKitchenAndBar.AutoSize = true;
-            this.lblKitchenAndBar.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblKitchenAndBar.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblKitchenAndBar.Location = new System.Drawing.Point(12, 0);
             this.lblKitchenAndBar.Name = "lblKitchenAndBar";
-            this.lblKitchenAndBar.Size = new System.Drawing.Size(281, 47);
+            this.lblKitchenAndBar.Size = new System.Drawing.Size(306, 47);
             this.lblKitchenAndBar.TabIndex = 8;
             this.lblKitchenAndBar.Text = "Kitchen/Bar View";
             // 
@@ -132,7 +132,7 @@
             this.btnLogout.BackColor = System.Drawing.Color.Red;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(885, 7);
+            this.btnLogout.Location = new System.Drawing.Point(927, 7);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(95, 40);
@@ -169,7 +169,7 @@
             // 
             this.btnTabelNr.AutoSize = true;
             this.btnTabelNr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnTabelNr.Location = new System.Drawing.Point(346, 65);
+            this.btnTabelNr.Location = new System.Drawing.Point(391, 65);
             this.btnTabelNr.Name = "btnTabelNr";
             this.btnTabelNr.Size = new System.Drawing.Size(195, 21);
             this.btnTabelNr.TabIndex = 13;
@@ -178,7 +178,7 @@
             // tbxTableNr
             // 
             this.tbxTableNr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbxTableNr.Location = new System.Drawing.Point(509, 96);
+            this.tbxTableNr.Location = new System.Drawing.Point(554, 96);
             this.tbxTableNr.Name = "tbxTableNr";
             this.tbxTableNr.Size = new System.Drawing.Size(32, 29);
             this.tbxTableNr.TabIndex = 14;
@@ -197,7 +197,7 @@
             // 
             this.lblReadyCourse.AutoSize = true;
             this.lblReadyCourse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblReadyCourse.Location = new System.Drawing.Point(585, 65);
+            this.lblReadyCourse.Location = new System.Drawing.Point(627, 65);
             this.lblReadyCourse.Name = "lblReadyCourse";
             this.lblReadyCourse.Size = new System.Drawing.Size(175, 21);
             this.lblReadyCourse.TabIndex = 19;
@@ -207,7 +207,7 @@
             // 
             this.chbxAppetizer.AutoSize = true;
             this.chbxAppetizer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chbxAppetizer.Location = new System.Drawing.Point(585, 98);
+            this.chbxAppetizer.Location = new System.Drawing.Point(627, 98);
             this.chbxAppetizer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxAppetizer.Name = "chbxAppetizer";
             this.chbxAppetizer.Size = new System.Drawing.Size(103, 25);
@@ -219,7 +219,7 @@
             // 
             this.chbxMain.AutoSize = true;
             this.chbxMain.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chbxMain.Location = new System.Drawing.Point(694, 98);
+            this.chbxMain.Location = new System.Drawing.Point(736, 98);
             this.chbxMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxMain.Name = "chbxMain";
             this.chbxMain.Size = new System.Drawing.Size(68, 25);
@@ -231,7 +231,7 @@
             // 
             this.chbxDessert.AutoSize = true;
             this.chbxDessert.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.chbxDessert.Location = new System.Drawing.Point(768, 98);
+            this.chbxDessert.Location = new System.Drawing.Point(810, 98);
             this.chbxDessert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbxDessert.Name = "chbxDessert";
             this.chbxDessert.Size = new System.Drawing.Size(85, 25);
@@ -243,7 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 536);
+            this.ClientSize = new System.Drawing.Size(1034, 536);
             this.Controls.Add(this.chbxDessert);
             this.Controls.Add(this.chbxMain);
             this.Controls.Add(this.chbxAppetizer);
@@ -269,7 +269,7 @@
 
         private System.Windows.Forms.ListView lvOrders;
         private System.Windows.Forms.ColumnHeader placedHeader;
-        private System.Windows.Forms.ColumnHeader orderHeader;
+        private System.Windows.Forms.ColumnHeader orderItemNameHeader;
         private System.Windows.Forms.ColumnHeader statusHeader;
         private System.Windows.Forms.Button btnReady;
         private System.Windows.Forms.Label lblKitchenAndBar;
