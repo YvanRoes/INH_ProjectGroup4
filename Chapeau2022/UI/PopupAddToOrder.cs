@@ -46,14 +46,6 @@ namespace UI
             LoadQty();
         }
 
-        //Comments
-        private void cBComments_CheckedChanged(object sender, EventArgs e)
-        {
-            if(cBComments.Checked)
-                tBComments.Enabled = true;
-            else
-                tBComments.Enabled = false;
-        }
 
         //Display
         void Displayitem(MenuItem item)
@@ -88,5 +80,6 @@ namespace UI
         {
             throw new NotImplementedException();
         }
+
     }
 }

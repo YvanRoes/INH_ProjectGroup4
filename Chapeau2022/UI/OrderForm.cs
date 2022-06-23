@@ -23,12 +23,13 @@ namespace UI
         {
             InitializeComponent();
             Show();
-            this.Size = new Size(375, 500);
 
             //init globals
             _CurrentItemsDisplayed = new List<MenuItem>();
             _order = new Order(employee_Id, table_Id);
 
+            colorListViewHeader(ref lVOrder, Color.FromArgb(141, 153, 174) ,Color.FromArgb(225,233,236));
+            colorListViewHeader(ref lVOverview, Color.FromArgb(141, 153, 174), Color.FromArgb(225, 233, 236));
             Start();
             
         }
@@ -42,11 +43,10 @@ namespace UI
             
             //pnl Overview
             lblOrder_Id.Text = _order.Order_Id.ToString();
+            lblTable.Text = _order.table_Id.ToString();
             if (_order.menuItems.Count > 0)
                 btnDrinks.PerformClick();
-
-            Order.PerformClick();
-   
+            InitBaseListAttributesOverview();
         }
 
 
@@ -57,6 +57,7 @@ namespace UI
             InitBaseListAttributes();
             _CurrentItemsDisplayed.Clear();
             UpdateListViewItems();
+            lVOrder.Columns[1].Width = 85;
             lVOrder.Columns.Add("Alcoholic", 70);
             
 
@@ -159,7 +160,7 @@ namespace UI
 
             /*lVItems.Columns.Add("ID");*/
             lVOrder.Columns.Add("Name", 160);
-            lVOrder.Columns.Add("Price");
+            lVOrder.Columns.Add("Price", 155);
         }
 
         private void lVOrder_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -218,11 +219,10 @@ namespace UI
             lVOverview.View = View.Details;
             lVOverview.FullRowSelect = true;
 
-            lVOverview.Columns.Add("ID");
-            lVOverview.Columns.Add("Name", 100);
+            lVOverview.Columns.Add("Name", 150);
             lVOverview.Columns.Add("Price");
             lVOverview.Columns.Add("Qty.");
-            lVOverview.Columns.Add("Comments", 100);
+            lVOverview.Columns.Add("Comments", 90);
 
         }
 
@@ -238,9 +238,7 @@ namespace UI
                 popup.ShowDialog();
             }
             else
-            {
                 MessageBox.Show("No Item is selected");
-            }
         }
 
         private OrderedItem GetItemFromOverviewList()
@@ -262,7 +260,7 @@ namespace UI
             {
                 if(item._itemOrdered_Qty > 0)
                 {
-                    string[] it = new string[] { item.menuItem.Item_Id.ToString(), item.menuItem.Item_Name, $"{item.menuItem.Item_Price} /u", item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
+                    string[] it = new string[] { item.menuItem.Item_Name, $"{item.menuItem.Item_Price} /u", item._itemOrdered_Qty.ToString(), item._itemOrdered_Comment };
                     ListViewItem listViewItem = new ListViewItem(it);
                     lVOverview.Items.Add(listViewItem);
                 }
@@ -294,32 +292,13 @@ namespace UI
                 menuItemService.UpdateMenuItemStocks(_order);
                 MessageBox.Show($"Order {_order.Order_Id} has been placed");
 
-                Logout(null, null);
+                this.Close();
+                MainWindow mainWindow = new MainWindow();
             }
             else
                 MessageBox.Show("The order you are trying to sumbit is empty");
 
 
-        }
-
-        private void makeTheOrderToolStripMenuItem_Click(object? sender, EventArgs? e)
-        {
-            this.Size = new Size(375, 500);
-            pnlOrder.Show();
-            pnlOverview.Hide();
-            pnlOrder.Dock = DockStyle.Fill;
-            InitBaseListAttributes();
-            UpdateListViewItems();
-        }
-
-        private void orderOverviewToolStripMenuItem_Click(object? sender, EventArgs? e)
-        {
-            this.Size = new Size(425, 650);
-            pnlOverview.Show();
-            pnlOrder.Hide();
-            pnlOverview.Dock = DockStyle.Fill;
-            InitBaseListAttributesOverview();
-            UpdateListViewOverview();
         }
 
         private void rbLunch_CheckedChanged(object sender, EventArgs e)
@@ -338,9 +317,46 @@ namespace UI
 
         private void Logout(object? sender, EventArgs? e)
         {
-            this.Close();
-            new MainWindow();
+            if ((MessageBox.Show("are you sure you would like to logout?", "Logout?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+            {
+                this.Close();
+                MainWindow mainWindow = new MainWindow();
+            }
         }
 
+        public void Hello()
+        {
+            MessageBox.Show("Hellpo");
+        }
+
+
+        public static void colorListViewHeader(ref ListView list, Color backColor, Color foreColor)
+        {
+            list.OwnerDraw = true;
+            list.DrawColumnHeader +=
+                new DrawListViewColumnHeaderEventHandler
+                (
+                    (sender, e) => headerDraw(sender, e, backColor, foreColor)
+                );
+            list.DrawItem += new DrawListViewItemEventHandler(bodyDraw);
+        }
+
+        private static void headerDraw(object sender, DrawListViewColumnHeaderEventArgs e, Color backColor, Color foreColor)
+        {
+            using (SolidBrush backBrush = new SolidBrush(backColor))
+            {
+                e.Graphics.FillRectangle(backBrush, e.Bounds);
+            }
+
+            using (SolidBrush foreBrush = new SolidBrush(foreColor))
+            {
+                e.Graphics.DrawString(e.Header.Text, e.Font, foreBrush, e.Bounds);
+            }
+        }
+
+        private static void bodyDraw(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+        }
     }
 }

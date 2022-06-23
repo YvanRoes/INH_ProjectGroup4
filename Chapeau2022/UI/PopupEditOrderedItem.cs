@@ -47,19 +47,6 @@ namespace UI
             LoadQty();
         }
 
-        //Comments
-        private void cBComments_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cBComments.Checked)
-                tBComments.Enabled = true;
-            else
-            {
-                tBComments.Enabled = false;
-                tBComments.Clear();
-            }
-            
-        }
-
         //Display
         void Displayitem(OrderedItem item)
         {
@@ -71,7 +58,6 @@ namespace UI
             {
                 tBComments.Text = _OrderedItem._itemOrdered_Comment;
                 tBComments.Enabled = true;
-                cBComments.Checked = true;
                 
             }
 
@@ -95,10 +81,7 @@ namespace UI
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             _OrderedItem._itemOrdered_Qty = _Qty;
-            if (cBComments.Checked)
-                _OrderedItem._itemOrdered_Comment = tBComments.Text;
-            else
-                _OrderedItem._itemOrdered_Comment = "";
+            _OrderedItem._itemOrdered_Comment = tBComments.Text;
             NotifyObservers();
             this.Close();
         }

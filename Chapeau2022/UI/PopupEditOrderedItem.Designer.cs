@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.cBComments = new System.Windows.Forms.CheckBox();
             this.tBComments = new System.Windows.Forms.RichTextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSubstract = new System.Windows.Forms.Button();
@@ -40,27 +39,20 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.Location = new System.Drawing.Point(113, 233);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(95, 23);
+            this.btnConfirm.Size = new System.Drawing.Size(95, 30);
             this.btnConfirm.TabIndex = 16;
             this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // cBComments
-            // 
-            this.cBComments.AutoSize = true;
-            this.cBComments.Location = new System.Drawing.Point(30, 135);
-            this.cBComments.Name = "cBComments";
-            this.cBComments.Size = new System.Drawing.Size(85, 19);
-            this.cBComments.TabIndex = 15;
-            this.cBComments.Text = "Comments";
-            this.cBComments.UseVisualStyleBackColor = true;
-            this.cBComments.Click += new System.EventHandler(this.cBComments_CheckedChanged);
             // 
             // tBComments
             // 
+            this.tBComments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.tBComments.Enabled = false;
             this.tBComments.Location = new System.Drawing.Point(30, 160);
             this.tBComments.Name = "tBComments";
@@ -90,6 +82,7 @@
             // 
             // txtQty
             // 
+            this.txtQty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtQty.Location = new System.Drawing.Point(69, 93);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(100, 23);
@@ -118,9 +111,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(226, 268);
             this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.cBComments);
             this.Controls.Add(this.tBComments);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnSubstract);
@@ -137,7 +130,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.CheckBox cBComments;
         private System.Windows.Forms.RichTextBox tBComments;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSubstract;

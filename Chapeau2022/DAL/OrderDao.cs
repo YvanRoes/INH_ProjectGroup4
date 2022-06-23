@@ -37,7 +37,7 @@ namespace DAL
         {
             string query = "INSERT INTO [ORDER](order_Id, order_TimeTaken, order_Status, employee_Id, table_Nr) VALUES(@order, @time, @status, @employee, @table)";
             /*SqlParameter[] parameters = new SqlParameter[]{new SqlParameter("@time", DateTime.Now), new SqlParameter("@status", order.status), new SqlParameter("@employee", order.employee_Id), new SqlParameter("@table", order.table_Id)};*/
-            SqlParameter[] parameters = new SqlParameter[] { new SqlParameter("@order", order.Order_Id), new SqlParameter("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), new SqlParameter("@status", order.status), new SqlParameter("@employee", 1), new SqlParameter("@table", order.table_Id) };
+            SqlParameter[] parameters = new SqlParameter[] { new SqlParameter("@order", order.Order_Id), new SqlParameter("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), new SqlParameter("@status", order.status), new SqlParameter("@employee", order.employee_Id), new SqlParameter("@table", order.table_Id) };
             ExecuteEditQuery(query, parameters);
         }
 
