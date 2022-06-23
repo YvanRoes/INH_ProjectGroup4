@@ -42,9 +42,7 @@ namespace DAL
         {
             string query = @"SELECT table_Nr FROM [TABLE]
                             ";
-   
             SqlParameter[] sqlParameters = new SqlParameter[0];
-
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
         }

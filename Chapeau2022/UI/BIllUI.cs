@@ -65,6 +65,10 @@ namespace UI
             getOrderedItems = orderedItemsService.GetAllOrderedItems(selectedIndex);
             DisplayOrderedItems();
             CalculateTotalandVat();
+            highVat = 0;
+            lowVat = 0;
+            subTotal = 0;
+            total = 0;
             
         }
         private void DisplayOrderedItems()
@@ -141,41 +145,7 @@ namespace UI
 
        
 
-        private void CheckSplitBox()
-        {
-            total = decimal.Parse((lblTotal.Text).ToString());
-            if (cbSplitAmount.Checked && txtSplitBox.Text!=string.Empty)
-            {
-                splitAmount = decimal.Parse(txtSplitBox.Text.ToString());      
-                total = splitAmount;
-            }
-        }
-        private void PayBill()
-        {
-            if (cbSplitAmount.Checked && txtSplitBox.Text == "")
-            {
-                MessageBox.Show("Enter the amount you want to split");
-
-            }
-            else if (splitAmount > decimal.Parse((lblTotal.Text).ToString()))
-            {
-                MessageBox.Show("Please enter less than total amount");
-                return;
-
-            }
-
-            else
-            {
-                Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
-                billService.InsertBill(insertBill);
-                billService.UpdatePaymentStatus(orderID);
-                MessageBox.Show($"Payment Successfull");
-                UpdateTheForm1();
-                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
-                CloseForm();
-            }
-        }
-
+        
         // Insert the bill to the database and update the payment status
         private void btnPay_Click_1(object sender, EventArgs e)
         {
@@ -203,6 +173,41 @@ namespace UI
 
 
         }
+        private void CheckSplitBox()
+        {
+            total = decimal.Parse((lblTotal.Text).ToString());
+            if (cbSplitAmount.Checked && txtSplitBox.Text != string.Empty)
+            {
+                splitAmount = decimal.Parse(txtSplitBox.Text.ToString());
+                total = splitAmount;
+            }
+        }
+        private void PayBill()
+        {
+            if (cbSplitAmount.Checked && txtSplitBox.Text == "")
+            {
+                MessageBox.Show("Enter the amount first in the split box");
+
+            }
+            else if (splitAmount > decimal.Parse((lblTotal.Text).ToString()))
+            {
+                MessageBox.Show("Please enter less than total amount");
+                //return;
+
+            }
+
+            else
+            {
+                Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
+                billService.InsertBill(insertBill);
+                //billService.UpdatePaymentStatus(orderID);
+                MessageBox.Show($"Payment Successfull");
+                UpdateTheForm1();
+                lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
+                CloseForm();
+            }
+        }
+
         public void UpdateTheForm1()
         {
             lblSubTotalName.Text = "";

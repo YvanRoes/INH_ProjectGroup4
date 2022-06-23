@@ -148,7 +148,7 @@ namespace UI
             // lblEuro1
             // 
             this.lblEuro1.AutoSize = true;
-            this.lblEuro1.Location = new System.Drawing.Point(313, 404);
+            this.lblEuro1.Location = new System.Drawing.Point(308, 404);
             this.lblEuro1.Name = "lblEuro1";
             this.lblEuro1.Size = new System.Drawing.Size(17, 20);
             this.lblEuro1.TabIndex = 87;
@@ -157,7 +157,7 @@ namespace UI
             // lblEuro3
             // 
             this.lblEuro3.AutoSize = true;
-            this.lblEuro3.Location = new System.Drawing.Point(313, 475);
+            this.lblEuro3.Location = new System.Drawing.Point(308, 475);
             this.lblEuro3.Name = "lblEuro3";
             this.lblEuro3.Size = new System.Drawing.Size(17, 20);
             this.lblEuro3.TabIndex = 86;
@@ -166,7 +166,7 @@ namespace UI
             // lblEuro2
             // 
             this.lblEuro2.AutoSize = true;
-            this.lblEuro2.Location = new System.Drawing.Point(313, 436);
+            this.lblEuro2.Location = new System.Drawing.Point(308, 436);
             this.lblEuro2.Name = "lblEuro2";
             this.lblEuro2.Size = new System.Drawing.Size(17, 20);
             this.lblEuro2.TabIndex = 85;
@@ -207,7 +207,7 @@ namespace UI
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(333, 475);
+            this.lblTotal.Location = new System.Drawing.Point(326, 475);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 20);
             this.lblTotal.TabIndex = 68;
@@ -225,7 +225,7 @@ namespace UI
             // lblTotalName
             // 
             this.lblTotalName.AutoSize = true;
-            this.lblTotalName.Location = new System.Drawing.Point(263, 476);
+            this.lblTotalName.Location = new System.Drawing.Point(258, 476);
             this.lblTotalName.Name = "lblTotalName";
             this.lblTotalName.Size = new System.Drawing.Size(45, 20);
             this.lblTotalName.TabIndex = 77;
@@ -260,7 +260,7 @@ namespace UI
             // lblTotalVat
             // 
             this.lblTotalVat.AutoSize = true;
-            this.lblTotalVat.Location = new System.Drawing.Point(333, 436);
+            this.lblTotalVat.Location = new System.Drawing.Point(328, 436);
             this.lblTotalVat.Name = "lblTotalVat";
             this.lblTotalVat.Size = new System.Drawing.Size(36, 20);
             this.lblTotalVat.TabIndex = 67;
@@ -269,7 +269,7 @@ namespace UI
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.Location = new System.Drawing.Point(332, 404);
+            this.lblSubTotal.Location = new System.Drawing.Point(327, 404);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(36, 20);
             this.lblSubTotal.TabIndex = 66;
@@ -293,7 +293,7 @@ namespace UI
             this.lvOrderedItems.HideSelection = false;
             this.lvOrderedItems.Location = new System.Drawing.Point(70, 126);
             this.lvOrderedItems.Name = "lvOrderedItems";
-            this.lvOrderedItems.Size = new System.Drawing.Size(299, 230);
+            this.lvOrderedItems.Size = new System.Drawing.Size(298, 230);
             this.lvOrderedItems.TabIndex = 65;
             this.lvOrderedItems.UseCompatibleStateImageBehavior = false;
             this.lvOrderedItems.View = System.Windows.Forms.View.Details;
@@ -306,17 +306,17 @@ namespace UI
             // Quantity
             // 
             this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 70;
+            this.Quantity.Width = 72;
             // 
             // Price
             // 
             this.Price.Text = "Price(Exc vat)";
-            this.Price.Width = 130;
+            this.Price.Width = 121;
             // 
             // lblStillToPay
             // 
             this.lblStillToPay.AutoSize = true;
-            this.lblStillToPay.Location = new System.Drawing.Point(198, 474);
+            this.lblStillToPay.Location = new System.Drawing.Point(193, 474);
             this.lblStillToPay.Name = "lblStillToPay";
             this.lblStillToPay.Size = new System.Drawing.Size(110, 20);
             this.lblStillToPay.TabIndex = 90;
@@ -366,7 +366,7 @@ namespace UI
             // lblSubTotalName
             // 
             this.lblSubTotalName.AutoSize = true;
-            this.lblSubTotalName.Location = new System.Drawing.Point(232, 404);
+            this.lblSubTotalName.Location = new System.Drawing.Point(227, 404);
             this.lblSubTotalName.Name = "lblSubTotalName";
             this.lblSubTotalName.Size = new System.Drawing.Size(74, 20);
             this.lblSubTotalName.TabIndex = 95;
@@ -375,7 +375,7 @@ namespace UI
             // lblTotalVatNaam
             // 
             this.lblTotalVatNaam.AutoSize = true;
-            this.lblTotalVatNaam.Location = new System.Drawing.Point(119, 436);
+            this.lblTotalVatNaam.Location = new System.Drawing.Point(114, 436);
             this.lblTotalVatNaam.Name = "lblTotalVatNaam";
             this.lblTotalVatNaam.Size = new System.Drawing.Size(185, 20);
             this.lblTotalVatNaam.TabIndex = 96;

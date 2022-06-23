@@ -22,6 +22,7 @@ namespace Logic
         }
         public List<Bill> GetAllTables()
         {
+
             return billdao.GetAllTables();
         }
     }
