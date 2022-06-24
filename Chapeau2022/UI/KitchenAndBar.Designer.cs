@@ -93,12 +93,12 @@
             // orderItemNameHeader
             // 
             this.orderItemNameHeader.Text = "Ordered Item Name";
-            this.orderItemNameHeader.Width = 385;
+            this.orderItemNameHeader.Width = 400;
             // 
             // commentHeader
             // 
             this.commentHeader.Text = "Comment";
-            this.commentHeader.Width = 250;
+            this.commentHeader.Width = 252;
             // 
             // statusHeader
             // 
