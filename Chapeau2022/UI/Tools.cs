@@ -122,6 +122,128 @@ namespace UI
             }
             ColourInRows(listView1);
         }
+        public static void FillListViewWithEmptyDrinks(ListView listView1, List<DrinkItem> DrinkItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+
+            listView1.Columns.Add("Id", 250);
+            listView1.Columns.Add("Name", 380);
+            listView1.Columns.Add("Price", 200);
+            listView1.Columns.Add("Alcohol", 320);
+            listView1.Columns.Add("Qty.", 200);
+            listView1.Columns.Add("Status", 150);
+            listView1.Columns.Add(" ", 80);
+            string s = "      ";
+            foreach (DrinkItem item in DrinkItems)
+            {
+                if (item.Status() == "Restock") {
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
+                    ListViewItem item2 = new ListViewItem(tempItem);
+                    listView1.Items.Add(item2);
+
+                    if (item2.SubItems[5].Text == "Full")
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(97, 203, 71);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else if (item2.SubItems[5].Text == "Low")
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(228, 246, 119);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(242, 77, 97);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                }
+            }
+            ColourInRows(listView1);
+        }
+        public static void FillListViewWithLowDrinks(ListView listView1, List<DrinkItem> DrinkItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+
+            listView1.Columns.Add("Id", 250);
+            listView1.Columns.Add("Name", 380);
+            listView1.Columns.Add("Price", 200);
+            listView1.Columns.Add("Alcohol", 320);
+            listView1.Columns.Add("Qty.", 200);
+            listView1.Columns.Add("Status", 150);
+            listView1.Columns.Add(" ", 80);
+            string s = "      ";
+            foreach (DrinkItem item in DrinkItems)
+            {
+                if (item.Status() == "Low")
+                {
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
+                    ListViewItem item2 = new ListViewItem(tempItem);
+                    listView1.Items.Add(item2);
+
+                    if (item2.SubItems[5].Text == "Full")
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(97, 203, 71);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else if (item2.SubItems[5].Text == "Low")
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(228, 246, 119);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(242, 77, 97);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                }
+            }
+            ColourInRows(listView1);
+        }
+        public static void FillListViewWithFullDrinks(ListView listView1, List<DrinkItem> DrinkItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+
+            listView1.Columns.Add("Id", 250);
+            listView1.Columns.Add("Name", 380);
+            listView1.Columns.Add("Price", 200);
+            listView1.Columns.Add("Alcohol", 320);
+            listView1.Columns.Add("Qty.", 200);
+            listView1.Columns.Add("Status", 150);
+            listView1.Columns.Add(" ", 80);
+            string s = "      ";
+            foreach (DrinkItem item in DrinkItems)
+            {
+                if (item.Status() == "Full")
+                {
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
+                    ListViewItem item2 = new ListViewItem(tempItem);
+                    listView1.Items.Add(item2);
+
+                    if (item2.SubItems[5].Text == "Full")
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(97, 203, 71);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else if (item2.SubItems[5].Text == "Low")
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(228, 246, 119);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else
+                    {
+                        item2.SubItems[6].ForeColor = System.Drawing.Color.FromArgb(242, 77, 97);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                }
+            }
+            ColourInRows(listView1);
+        }
         public static void FillListViewWithFood(ListView listView1, List<FoodItem> FoodItems)
         {
             listView1.Clear();
@@ -177,6 +299,129 @@ namespace UI
             foreach (FoodItem item in FoodItems)
             {
                 if (item.Item_MenuType == MenuType.Lunch) 
+                {
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
+                    ListViewItem item2 = new ListViewItem(tempItem);
+                    listView1.Items.Add(item2);
+
+                    if (item2.SubItems[6].Text == "Full")
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(97, 203, 71);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else if (item2.SubItems[6].Text == "Low")
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(228, 246, 119);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(242, 77, 97);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                }
+            }
+            ColourInRows(listView1);
+        }
+        public static void FillListViewWithEmptyFood(ListView listView1, List<FoodItem> FoodItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+            listView1.Columns.Add("ID", 120);
+            listView1.Columns.Add("Name", 500);
+            listView1.Columns.Add("Price", 180);
+            listView1.Columns.Add("Item Type", 250);
+            listView1.Columns.Add("Item Course", 175);
+            listView1.Columns.Add("Qty.", 150);
+            listView1.Columns.Add("Status", 100);
+            listView1.Columns.Add(" ", 80);
+
+            foreach (FoodItem item in FoodItems)
+            {
+                if (item.Status() == "Restock")
+                {
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
+                    ListViewItem item2 = new ListViewItem(tempItem);
+                    listView1.Items.Add(item2);
+
+                    if (item2.SubItems[6].Text == "Full")
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(97, 203, 71);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else if (item2.SubItems[6].Text == "Low")
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(228, 246, 119);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(242, 77, 97);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                }
+            }
+            ColourInRows(listView1);
+        }
+        public static void FillListViewWithLowFood(ListView listView1, List<FoodItem> FoodItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+            listView1.Columns.Add("ID", 120);
+            listView1.Columns.Add("Name", 500);
+            listView1.Columns.Add("Price", 180);
+            listView1.Columns.Add("Item Type", 250);
+            listView1.Columns.Add("Item Course", 175);
+            listView1.Columns.Add("Qty.", 150);
+            listView1.Columns.Add("Status", 100);
+            listView1.Columns.Add(" ", 80);
+
+            foreach (FoodItem item in FoodItems)
+            {
+                if (item.Status() == "Low")
+                {
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
+                    ListViewItem item2 = new ListViewItem(tempItem);
+                    listView1.Items.Add(item2);
+
+                    if (item2.SubItems[6].Text == "Full")
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(97, 203, 71);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else if (item2.SubItems[6].Text == "Low")
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(228, 246, 119);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                    else
+                    {
+                        item2.SubItems[7].ForeColor = System.Drawing.Color.FromArgb(242, 77, 97);
+                        item2.UseItemStyleForSubItems = false;
+                    }
+                }
+            }
+            ColourInRows(listView1);
+        }
+        public static void FillListViewWithFullFood(ListView listView1, List<FoodItem> FoodItems)
+        {
+            listView1.Clear();
+            listView1.View = View.Details;
+            listView1.FullRowSelect = true;
+            listView1.Columns.Add("ID", 120);
+            listView1.Columns.Add("Name", 500);
+            listView1.Columns.Add("Price", 180);
+            listView1.Columns.Add("Item Type", 250);
+            listView1.Columns.Add("Item Course", 175);
+            listView1.Columns.Add("Qty.", 150);
+            listView1.Columns.Add("Status", 100);
+            listView1.Columns.Add(" ", 80);
+
+            foreach (FoodItem item in FoodItems)
+            {
+                if (item.Status() == "Full")
                 {
                     string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
                     ListViewItem item2 = new ListViewItem(tempItem);

@@ -1079,5 +1079,37 @@ namespace UI
         {
 
         }
+
+        private void emptyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(IsDisplayingFood)
+                Tools.FillListViewWithEmptyFood(listView1, FoodItems);
+            else
+                Tools.FillListViewWithEmptyDrinks(listView1, DrinkItems);
+        }
+
+        private void lowToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if(IsDisplayingFood)
+                Tools.FillListViewWithLowFood(listView1, FoodItems);
+            else
+                Tools.FillListViewWithLowDrinks(listView1, DrinkItems);
+        }
+
+        private void fullToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (IsDisplayingFood)
+                Tools.FillListViewWithFullFood(listView1, FoodItems);
+            else
+                Tools.FillListViewWithFullDrinks(listView1, DrinkItems);
+        }
+
+        private void allToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (IsDisplayingFood)
+                Tools.FillListViewWithFood(listView1, FoodItems);
+            else
+                Tools.FillListViewWithDrinks(listView1, DrinkItems);
+        }
     }
 }
