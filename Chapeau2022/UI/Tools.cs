@@ -95,7 +95,7 @@ namespace UI
             listView1.Columns.Add("Price", 200);
             listView1.Columns.Add("Alcohol", 320);
             listView1.Columns.Add("Qty.", 200);
-            listView1.Columns.Add("Status", 300);
+            listView1.Columns.Add("Status", 150);
             listView1.Columns.Add(" ", 80);
             string s = "      ";
             foreach (DrinkItem item in DrinkItems)
@@ -133,7 +133,7 @@ namespace UI
             listView1.Columns.Add("Item Type", 250);
             listView1.Columns.Add("Item Course", 175);
             listView1.Columns.Add("Qty.", 150);
-            listView1.Columns.Add("Status", 360);
+            listView1.Columns.Add("Status", 100);
             listView1.Columns.Add(" ", 80);
 
             foreach (FoodItem item in FoodItems)
@@ -171,7 +171,7 @@ namespace UI
             listView1.Columns.Add("Item Type", 250);
             listView1.Columns.Add("Item Course", 175);
             listView1.Columns.Add("Qty.", 150);
-            listView1.Columns.Add("Status", 360);
+            listView1.Columns.Add("Status", 100);
             listView1.Columns.Add(" ", 80);
 
             foreach (FoodItem item in FoodItems)
@@ -212,7 +212,7 @@ namespace UI
             listView1.Columns.Add("Item Type", 250);
             listView1.Columns.Add("Item Course", 175);
             listView1.Columns.Add("Qty.", 150);
-            listView1.Columns.Add("Status", 360);
+            listView1.Columns.Add("Status", 100);
             listView1.Columns.Add(" ", 80);
 
             foreach (FoodItem item in FoodItems)
@@ -254,7 +254,7 @@ namespace UI
             listView1.Columns.Add("Item Type", 250);
             listView1.Columns.Add("Item Course", 175);
             listView1.Columns.Add("Qty.", 150);
-            listView1.Columns.Add("Status", 360);
+            listView1.Columns.Add("Status", 100);
             listView1.Columns.Add(" ", 80);
 
             int i;
@@ -308,7 +308,7 @@ namespace UI
             listView1.Columns.Add("Price", 200);
             listView1.Columns.Add("Alcohol", 320);
             listView1.Columns.Add("Qty.", 200);
-            listView1.Columns.Add("Status", 300);
+            listView1.Columns.Add("Status", 150);
             listView1.Columns.Add(" ", 80);
 
             int i;
