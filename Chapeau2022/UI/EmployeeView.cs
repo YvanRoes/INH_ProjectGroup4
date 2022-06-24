@@ -12,17 +12,18 @@ using Model;
 
 namespace UI
 {
+    public enum SortType { ascending, descending };
     public partial class EmployeeView : Form
     {
         public EmployeeService employeeService;
 
         public List<Employee> employees;
-
+        public SortType sortType;
         public EmployeeView()
         {
             employeeService = new EmployeeService();
             employees = new List<Employee>();
-
+            sortType = SortType.ascending;
             InitializeComponent();
             Start();
         }
@@ -31,12 +32,11 @@ namespace UI
         {
             employees = employeeService.GetAllEmployees();
             FillListView();
+            changeSortTypeArrows();
         }
 
         public void FillListView() 
         {
-            
-
             listView1.Clear();
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
@@ -48,7 +48,7 @@ namespace UI
 
             foreach (Employee e in employees)
             {
-                string[] tempItem = {e.Employee_Id.ToString(), e.Employee_Name, e.Employee_Role.ToString(), e.Employee_Pin.ToString()};
+                string[] tempItem = {e.Employee_Id.ToString(), e.Employee_Name, e.Employee_Role.ToString(), "****"};
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
             }
@@ -139,26 +139,73 @@ namespace UI
         //SORTING USING THE HEADER
         private void idToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            employees = employees.OrderBy(i => i.Employee_Id).ToList();
+            if(sortType == SortType.ascending)
+                employees = employees.OrderBy(i => i.Employee_Id).ToList();
+            else
+                employees = employees.OrderByDescending(i => i.Employee_Id).ToList();
+
+            if (sortType == SortType.ascending)
+                sortType = SortType.descending;
+            else
+                sortType = SortType.ascending;
+
             FillListView();
+            changeSortTypeArrows();
         }
 
         private void nameToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            employees = employees.OrderBy(i => i.Employee_Name).ToList();
+            if (sortType == SortType.ascending)
+                employees = employees.OrderBy(i => i.Employee_Name).ToList();
+            else
+                employees = employees.OrderByDescending(i => i.Employee_Name).ToList();
+
+            if (sortType == SortType.ascending)
+                sortType = SortType.descending;
+            else
+                sortType = SortType.ascending;
+
             FillListView();
+            changeSortTypeArrows();
         }
 
         private void roleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            employees = employees.OrderBy(i => i.Employee_Role).ToList();
+            if (sortType == SortType.ascending)
+                employees = employees.OrderBy(i => i.Employee_Role).ToList();
+            else
+                employees = employees.OrderByDescending(i => i.Employee_Role).ToList();
+
+            if (sortType == SortType.ascending)
+                sortType = SortType.descending;
+            else
+                sortType = SortType.ascending;
+
             FillListView();
+            changeSortTypeArrows();
         }
 
         private void pINToolStripMenuItem_Click(object sender, EventArgs e)
         {
             employees = employees.OrderBy(i => i.Employee_Pin).ToList();
             FillListView();
+        }
+        private void changeSortTypeArrows()
+        {
+            if (sortType == SortType.descending)
+            {
+                idToolStripMenuItem1.Text = "Id ▼";
+                nameToolStripMenuItem1.Text = "Name ▼";
+                roleToolStripMenuItem.Text = "Role ▼";
+                pINToolStripMenuItem.Text = "PIN ▼";
+            }
+            else
+            {
+                idToolStripMenuItem1.Text = "Id ▲";
+                nameToolStripMenuItem1.Text = "Name ▲";
+                roleToolStripMenuItem.Text = "Role ▲";
+                pINToolStripMenuItem.Text = "PIN ▲";
+            }
         }
     }
 }

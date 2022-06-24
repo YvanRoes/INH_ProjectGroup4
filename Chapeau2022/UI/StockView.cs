@@ -18,7 +18,6 @@ using System.Windows;
 namespace UI
 {
     public enum SortBy {status, price, name, id, quantity, alcohol,menu,course };
-    public enum SortType { ascending, descending };
     public partial class StockView : Form
     {
         private FoodService _foodService;
