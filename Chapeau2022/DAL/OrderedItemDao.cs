@@ -129,16 +129,15 @@ namespace DAL
         // Get all the ordered items from database
         public List<OrderedItem> GetAllOrderedItems(int tableNr)
         {
-            string query = @" 
+            string query = $@" 
                             SELECT m.item_Name,o.itemOrdered_Quantity,m.item_Price,od.order_Id,od.table_Nr,od.order_Status
                             FROM MENU_ITEM as m
                             JOIN ORDERED_ITEM as o on o.item_Id=m.item_Id
                             join [dbo].[ORDER] as od on od.order_Id=o.order_Id
-                            WHERE od.order_Status=@status and od.table_Nr=@table_Nr
+                            WHERE od.order_Status={(int)PayStatus.notpaid} and od.table_Nr=@table_Nr
                              ";
-            SqlParameter[] sqlParameters = new SqlParameter[2];
+            SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@table_Nr", tableNr);
-            sqlParameters[1] = new SqlParameter("@status", (int)PayStatus.notpaid);
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

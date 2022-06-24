@@ -17,5 +17,6 @@ namespace Model
         public int Item_Stock { get; set; }
 
         public int Item_AmountNeeded { get; set; }
+
     }
 }

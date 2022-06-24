@@ -9,7 +9,7 @@ namespace Model
     public class OrderedItem
     {
         public MenuItem menuItem { get; set; }
-
+        public DrinkType Item_DrinkType { get; set; }
         public int _itemOrdered_id { get; set; }
 
         public int _itemOrder_id { get; set; }
@@ -24,7 +24,7 @@ namespace Model
         public DateTime _itemOrdered_Placed { get; set; }
 
         public int table_Id { get; set; }
-
+ 
         public OrderedItem (MenuItem item) => menuItem = item;
     }
 }

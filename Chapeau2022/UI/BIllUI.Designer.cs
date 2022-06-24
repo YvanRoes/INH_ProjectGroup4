@@ -29,6 +29,7 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillUI));
             this.rbCash = new System.Windows.Forms.RadioButton();
             this.rbPin = new System.Windows.Forms.RadioButton();
             this.rbCreditcard = new System.Windows.Forms.RadioButton();
@@ -69,9 +70,10 @@ namespace UI
             // rbCash
             // 
             this.rbCash.AutoSize = true;
-            this.rbCash.Location = new System.Drawing.Point(180, 901);
+            this.rbCash.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rbCash.Location = new System.Drawing.Point(198, 901);
             this.rbCash.Name = "rbCash";
-            this.rbCash.Size = new System.Drawing.Size(61, 24);
+            this.rbCash.Size = new System.Drawing.Size(74, 32);
             this.rbCash.TabIndex = 54;
             this.rbCash.TabStop = true;
             this.rbCash.Text = "Cash";
@@ -80,9 +82,10 @@ namespace UI
             // rbPin
             // 
             this.rbPin.AutoSize = true;
-            this.rbPin.Location = new System.Drawing.Point(118, 900);
+            this.rbPin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rbPin.Location = new System.Drawing.Point(136, 900);
             this.rbPin.Name = "rbPin";
-            this.rbPin.Size = new System.Drawing.Size(50, 24);
+            this.rbPin.Size = new System.Drawing.Size(60, 32);
             this.rbPin.TabIndex = 53;
             this.rbPin.TabStop = true;
             this.rbPin.Text = "Pin";
@@ -91,9 +94,10 @@ namespace UI
             // rbCreditcard
             // 
             this.rbCreditcard.AutoSize = true;
+            this.rbCreditcard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rbCreditcard.Location = new System.Drawing.Point(14, 898);
             this.rbCreditcard.Name = "rbCreditcard";
-            this.rbCreditcard.Size = new System.Drawing.Size(99, 24);
+            this.rbCreditcard.Size = new System.Drawing.Size(124, 32);
             this.rbCreditcard.TabIndex = 52;
             this.rbCreditcard.TabStop = true;
             this.rbCreditcard.Text = "Creditcard";
@@ -102,6 +106,7 @@ namespace UI
             // btnPay
             // 
             this.btnPay.BackColor = System.Drawing.Color.Salmon;
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPay.Location = new System.Drawing.Point(9, 937);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(94, 39);
@@ -131,9 +136,10 @@ namespace UI
             // 
             // txtSplitBox
             // 
+            this.txtSplitBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSplitBox.Location = new System.Drawing.Point(16, 808);
             this.txtSplitBox.Name = "txtSplitBox";
-            this.txtSplitBox.Size = new System.Drawing.Size(125, 27);
+            this.txtSplitBox.Size = new System.Drawing.Size(125, 34);
             this.txtSplitBox.TabIndex = 89;
             // 
             // cmbTable
@@ -148,95 +154,106 @@ namespace UI
             // lblEuro1
             // 
             this.lblEuro1.AutoSize = true;
-            this.lblEuro1.Location = new System.Drawing.Point(308, 404);
+            this.lblEuro1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEuro1.Location = new System.Drawing.Point(297, 404);
             this.lblEuro1.Name = "lblEuro1";
-            this.lblEuro1.Size = new System.Drawing.Size(17, 20);
+            this.lblEuro1.Size = new System.Drawing.Size(23, 28);
             this.lblEuro1.TabIndex = 87;
             this.lblEuro1.Text = "€";
             // 
             // lblEuro3
             // 
             this.lblEuro3.AutoSize = true;
-            this.lblEuro3.Location = new System.Drawing.Point(308, 475);
+            this.lblEuro3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEuro3.Location = new System.Drawing.Point(297, 475);
             this.lblEuro3.Name = "lblEuro3";
-            this.lblEuro3.Size = new System.Drawing.Size(17, 20);
+            this.lblEuro3.Size = new System.Drawing.Size(23, 28);
             this.lblEuro3.TabIndex = 86;
             this.lblEuro3.Text = "€";
             // 
             // lblEuro2
             // 
             this.lblEuro2.AutoSize = true;
-            this.lblEuro2.Location = new System.Drawing.Point(308, 436);
+            this.lblEuro2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEuro2.Location = new System.Drawing.Point(297, 436);
             this.lblEuro2.Name = "lblEuro2";
-            this.lblEuro2.Size = new System.Drawing.Size(17, 20);
+            this.lblEuro2.Size = new System.Drawing.Size(23, 28);
             this.lblEuro2.TabIndex = 85;
             this.lblEuro2.Text = "€";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 859);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(10, 858);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(191, 20);
+            this.label17.Size = new System.Drawing.Size(252, 28);
             this.label17.TabIndex = 84;
             this.label17.Text = "Choose a payment method:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(12, 743);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 20);
+            this.label4.Size = new System.Drawing.Size(176, 28);
             this.label4.TabIndex = 83;
             this.label4.Text = "Enter split amount:";
             // 
             // txtComment
             // 
+            this.txtComment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtComment.Location = new System.Drawing.Point(13, 703);
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(125, 27);
+            this.txtComment.Size = new System.Drawing.Size(125, 34);
             this.txtComment.TabIndex = 80;
             // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(16, 588);
+            this.txtTip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTip.Location = new System.Drawing.Point(15, 588);
             this.txtTip.Name = "txtTip";
-            this.txtTip.Size = new System.Drawing.Size(125, 27);
+            this.txtTip.Size = new System.Drawing.Size(125, 34);
             this.txtTip.TabIndex = 79;
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(326, 475);
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotal.Location = new System.Drawing.Point(315, 475);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(36, 20);
+            this.lblTotal.Size = new System.Drawing.Size(49, 28);
             this.lblTotal.TabIndex = 68;
             this.lblTotal.Text = "0.00";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(11, 637);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 20);
+            this.label5.Size = new System.Drawing.Size(141, 28);
             this.label5.TabIndex = 78;
             this.label5.Text = "Add comment:";
             // 
             // lblTotalName
             // 
             this.lblTotalName.AutoSize = true;
-            this.lblTotalName.Location = new System.Drawing.Point(258, 476);
+            this.lblTotalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalName.Location = new System.Drawing.Point(224, 476);
             this.lblTotalName.Name = "lblTotalName";
-            this.lblTotalName.Size = new System.Drawing.Size(45, 20);
+            this.lblTotalName.Size = new System.Drawing.Size(58, 28);
             this.lblTotalName.TabIndex = 77;
             this.lblTotalName.Text = "Total:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(11, 523);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 20);
+            this.label8.Size = new System.Drawing.Size(82, 28);
             this.label8.TabIndex = 76;
             this.label8.Text = "Add tip:";
             // 
@@ -251,27 +268,30 @@ namespace UI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 87);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(3, 81);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 20);
+            this.label11.Size = new System.Drawing.Size(132, 28);
             this.label11.TabIndex = 73;
             this.label11.Text = "Select a table:";
             // 
             // lblTotalVat
             // 
             this.lblTotalVat.AutoSize = true;
-            this.lblTotalVat.Location = new System.Drawing.Point(328, 436);
+            this.lblTotalVat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalVat.Location = new System.Drawing.Point(317, 436);
             this.lblTotalVat.Name = "lblTotalVat";
-            this.lblTotalVat.Size = new System.Drawing.Size(36, 20);
+            this.lblTotalVat.Size = new System.Drawing.Size(49, 28);
             this.lblTotalVat.TabIndex = 67;
             this.lblTotalVat.Text = "0.00";
             // 
             // lblSubTotal
             // 
             this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.Location = new System.Drawing.Point(327, 404);
+            this.lblSubTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSubTotal.Location = new System.Drawing.Point(316, 404);
             this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(36, 20);
+            this.lblSubTotal.Size = new System.Drawing.Size(49, 28);
             this.lblSubTotal.TabIndex = 66;
             this.lblSubTotal.Text = "0.00";
             // 
@@ -289,6 +309,7 @@ namespace UI
             this.itemName,
             this.Quantity,
             this.Price});
+            this.lvOrderedItems.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lvOrderedItems.FullRowSelect = true;
             this.lvOrderedItems.HideSelection = false;
             this.lvOrderedItems.Location = new System.Drawing.Point(70, 126);
@@ -301,30 +322,32 @@ namespace UI
             // itemName
             // 
             this.itemName.Text = "Item Name";
-            this.itemName.Width = 100;
+            this.itemName.Width = 140;
             // 
             // Quantity
             // 
             this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 72;
+            this.Quantity.Width = 90;
             // 
             // Price
             // 
-            this.Price.Text = "Price(Exc vat)";
-            this.Price.Width = 121;
+            this.Price.Text = "Price";
+            this.Price.Width = 100;
             // 
             // lblStillToPay
             // 
             this.lblStillToPay.AutoSize = true;
-            this.lblStillToPay.Location = new System.Drawing.Point(193, 474);
+            this.lblStillToPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblStillToPay.Location = new System.Drawing.Point(139, 474);
             this.lblStillToPay.Name = "lblStillToPay";
-            this.lblStillToPay.Size = new System.Drawing.Size(110, 20);
+            this.lblStillToPay.Size = new System.Drawing.Size(143, 28);
             this.lblStillToPay.TabIndex = 90;
             this.lblStillToPay.Text = "Still to be paid:";
             // 
             // cbSplitAmount
             // 
             this.cbSplitAmount.AutoSize = true;
+            this.cbSplitAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbSplitAmount.Location = new System.Drawing.Point(16, 777);
             this.cbSplitAmount.Name = "cbSplitAmount";
             this.cbSplitAmount.Size = new System.Drawing.Size(18, 17);
@@ -334,18 +357,19 @@ namespace UI
             // 
             // btnLogout
             // 
-            this.btnLogout.BackColor = System.Drawing.Color.Salmon;
-            this.btnLogout.Location = new System.Drawing.Point(277, 12);
+            this.btnLogout.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogout.BackgroundImage")));
+            this.btnLogout.Location = new System.Drawing.Point(330, 14);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 35);
+            this.btnLogout.Size = new System.Drawing.Size(36, 30);
             this.btnLogout.TabIndex = 92;
-            this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // cbTip
             // 
             this.cbTip.AutoSize = true;
+            this.cbTip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbTip.Location = new System.Drawing.Point(15, 557);
             this.cbTip.Name = "cbTip";
             this.cbTip.Size = new System.Drawing.Size(18, 17);
@@ -356,6 +380,7 @@ namespace UI
             // cbAddComment
             // 
             this.cbAddComment.AutoSize = true;
+            this.cbAddComment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbAddComment.Location = new System.Drawing.Point(16, 673);
             this.cbAddComment.Name = "cbAddComment";
             this.cbAddComment.Size = new System.Drawing.Size(18, 17);
@@ -366,20 +391,22 @@ namespace UI
             // lblSubTotalName
             // 
             this.lblSubTotalName.AutoSize = true;
-            this.lblSubTotalName.Location = new System.Drawing.Point(227, 404);
+            this.lblSubTotalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSubTotalName.Location = new System.Drawing.Point(191, 404);
             this.lblSubTotalName.Name = "lblSubTotalName";
-            this.lblSubTotalName.Size = new System.Drawing.Size(74, 20);
+            this.lblSubTotalName.Size = new System.Drawing.Size(97, 28);
             this.lblSubTotalName.TabIndex = 95;
             this.lblSubTotalName.Text = "Sub Total:";
             // 
             // lblTotalVatNaam
             // 
             this.lblTotalVatNaam.AutoSize = true;
-            this.lblTotalVatNaam.Location = new System.Drawing.Point(114, 436);
+            this.lblTotalVatNaam.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalVatNaam.Location = new System.Drawing.Point(196, 436);
             this.lblTotalVatNaam.Name = "lblTotalVatNaam";
-            this.lblTotalVatNaam.Size = new System.Drawing.Size(185, 20);
+            this.lblTotalVatNaam.Size = new System.Drawing.Size(90, 28);
             this.lblTotalVatNaam.TabIndex = 96;
-            this.lblTotalVatNaam.Text = "Total vat(alc 21%, rest 6%):";
+            this.lblTotalVatNaam.Text = "Total vat:";
             // 
             // BillUI
             // 
@@ -387,7 +414,7 @@ namespace UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(396, 689);
+            this.ClientSize = new System.Drawing.Size(396, 726);
             this.Controls.Add(this.lblTotalVatNaam);
             this.Controls.Add(this.lblSubTotalName);
             this.Controls.Add(this.cbAddComment);
@@ -422,6 +449,7 @@ namespace UI
             this.Controls.Add(this.label6);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "BillUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "BIllUI";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -37,6 +37,10 @@ namespace UI
             InitializeComponent();
             Show();
             DisplayAllTable();
+            CheckTipBox();
+            
+
+
             lblStillToPay.Visible = false;
             btnPay.Enabled = false;
             txtTip.Enabled = false;
@@ -44,6 +48,11 @@ namespace UI
             txtSplitBox.Enabled = false;
 
         }
+        //negative amount in txtTip box asked by frank
+        //if you split the bill and paid and come back again to the application again it has
+        //to be the rest of the money
+        
+        // This has to be in table method 
         private void DisplayAllTable()
         {
             List<Bill> tables = billService.GetAllTables();
@@ -57,12 +66,12 @@ namespace UI
         private void cmbTable_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
-            int selectedIndex = int.Parse(cmbTable.SelectedItem.ToString());
+            int tableNr = int.Parse(cmbTable.SelectedItem.ToString());
             if (cmbTable.SelectedIndex > -1)
             {
                 btnPay.Enabled = true;
             }
-            getOrderedItems = orderedItemsService.GetAllOrderedItems(selectedIndex);
+            getOrderedItems = orderedItemsService.GetAllOrderedItems(tableNr);
             DisplayOrderedItems();
             CalculateTotalandVat();
             highVat = 0;
@@ -91,6 +100,7 @@ namespace UI
             }
 
         }
+        //here i have to display the high vat and low vat
         private void CalculateTotalandVat()
         {
             DrinkItem drinkItem = new DrinkItem();
@@ -192,7 +202,6 @@ namespace UI
             else if (splitAmount > decimal.Parse((lblTotal.Text).ToString()))
             {
                 MessageBox.Show("Please enter less than total amount");
-               
 
             }
 
@@ -200,8 +209,11 @@ namespace UI
             {
                 Bill insertBill = new Bill(orderID, total, CheckTipBox(), CheckCommentBox(), bill.Method);
                 billService.InsertBill(insertBill);
-                
-                billService.UpdatePaymentStatus(orderID);
+                if (decimal.Parse(lblTotal.Text) == 0)
+                {
+                    billService.UpdatePaymentStatus(orderID);
+
+                }
                 MessageBox.Show($"Payment Successfull");
                 UpdateTheForm1();
                 lblTotal.Text = (decimal.Parse(lblTotal.Text.ToString()) - splitAmount).ToString();
