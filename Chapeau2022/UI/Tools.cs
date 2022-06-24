@@ -91,16 +91,16 @@ namespace UI
             listView1.FullRowSelect = true;
 
             listView1.Columns.Add("Id", 250);
-            listView1.Columns.Add("Name", 550);
-            listView1.Columns.Add("Price", 180);
-            listView1.Columns.Add("Alcohol", 275);
-            listView1.Columns.Add("Qty.", 150);
+            listView1.Columns.Add("Name", 380);
+            listView1.Columns.Add("Price", 200);
+            listView1.Columns.Add("Alcohol", 320);
+            listView1.Columns.Add("Qty.", 200);
             listView1.Columns.Add("Status", 300);
             listView1.Columns.Add(" ", 80);
             string s = "      ";
             foreach (DrinkItem item in DrinkItems)
             {
-                string[] tempItem = {item.Item_Id.ToString(),item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString(), item.Status(), "⬤" };
+                string[] tempItem = {item.Item_Id.ToString(),item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString() +"  /  "+item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
 
@@ -128,7 +128,7 @@ namespace UI
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
             listView1.Columns.Add("ID", 120);
-            listView1.Columns.Add("Name", 500);
+            listView1.Columns.Add("Name", 530);
             listView1.Columns.Add("Price", 180);
             listView1.Columns.Add("Item Type", 250);
             listView1.Columns.Add("Item Course", 175);
@@ -138,7 +138,7 @@ namespace UI
 
             foreach (FoodItem item in FoodItems)
             {
-                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString(), item.Status(), "⬤" };
+                string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
                 ListViewItem item2 = new ListViewItem(tempItem);
                 listView1.Items.Add(item2);
 
@@ -178,7 +178,7 @@ namespace UI
             {
                 if (item.Item_MenuType == MenuType.Lunch) 
                 {
-                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString(), item.Status(), "⬤" };
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
                     ListViewItem item2 = new ListViewItem(tempItem);
                     listView1.Items.Add(item2);
 
@@ -219,7 +219,7 @@ namespace UI
             {
                 if (item.Item_MenuType == MenuType.Dinner)
                 {
-                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString(), item.Status(), "⬤" };
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(),  "⬤" };
                     ListViewItem item2 = new ListViewItem(tempItem);
                     listView1.Items.Add(item2);
 
@@ -276,7 +276,7 @@ namespace UI
                 }
                 if (i == searchWord.Length) 
                 {
-                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString(), item.Status(), "⬤" };
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_MenuType.ToString(), item.Item_CourseType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
                     ListViewItem item2 = new ListViewItem(tempItem);
                     listView1.Items.Add(item2);
 
@@ -303,11 +303,11 @@ namespace UI
         {
 
             listView1.Clear();
-            listView1.Columns.Add("Id", 150);
-            listView1.Columns.Add("Name", 500);
-            listView1.Columns.Add("Price", 180);
-            listView1.Columns.Add("Alcohol", 375);
-            listView1.Columns.Add("Qty.", 150);
+            listView1.Columns.Add("Id", 250);
+            listView1.Columns.Add("Name", 380);
+            listView1.Columns.Add("Price", 200);
+            listView1.Columns.Add("Alcohol", 320);
+            listView1.Columns.Add("Qty.", 200);
             listView1.Columns.Add("Status", 300);
             listView1.Columns.Add(" ", 80);
 
@@ -330,7 +330,7 @@ namespace UI
                 }
                 if (i == searchWord.Length)
                 {
-                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString(), item.Status(), "⬤" };
+                    string[] tempItem = { item.Item_Id.ToString(), item.Item_Name, item.Item_Price.ToString(), item.Item_DrinkType.ToString(), item.Item_Stock.ToString() + "  /  " + item.Item_AmountNeeded.ToString(), item.Status(), "⬤" };
                     ListViewItem item2 = new ListViewItem(tempItem);
                     listView1.Items.Add(item2);
 

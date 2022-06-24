@@ -563,7 +563,6 @@ namespace UI
 
         private void sToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SortByStatus();
             sortBy = SortBy.status;
 
             if(sortType == SortType.ascending)
@@ -571,11 +570,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrows();
+            SortByStatus();
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            SortById();
             this.sortBy = SortBy.id;
 
             if (sortType == SortType.ascending)
@@ -583,12 +582,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrows();
-        
+            SortById();
         }
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            SortByName();
             this.sortBy = SortBy.name;
 
             if (sortType == SortType.ascending)
@@ -596,11 +594,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrows();
+            SortByName();
         }
 
         private void toolStripMenuItem13_Click(object sender, EventArgs e)
         {
-            SortByPrice();
             this.sortBy = SortBy.price;
 
             if (sortType == SortType.ascending)
@@ -608,11 +606,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrows();
+            SortByPrice();
         }
 
         private void toolStripMenuItem23_Click(object sender, EventArgs e)
         {
-            SortByQuantity();
             this.sortBy = SortBy.quantity;
 
             if (sortType == SortType.ascending)
@@ -620,11 +618,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrows();
+            SortByQuantity();
         }
 
         private void toolStripMenuItem18_Click(object sender, EventArgs e)
         {
-            SortByAlcohol();
             this.sortBy = SortBy.alcohol;
 
             if (sortType == SortType.ascending)
@@ -632,6 +630,7 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrows();
+            SortByAlcohol();
         }
         private void changeSortTypeArrows() 
         {
@@ -730,7 +729,6 @@ namespace UI
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            SortById();
             this.sortBy = SortBy.id;
 
             if (sortType == SortType.ascending)
@@ -738,11 +736,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortById();
         }
 
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            SortByName();
             this.sortBy = SortBy.name;
 
             if (sortType == SortType.ascending)
@@ -750,11 +748,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortByName();
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
-            SortByPrice();
             this.sortBy = SortBy.price;
 
             if (sortType == SortType.ascending)
@@ -762,11 +760,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortByPrice();
         }
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
-            SortByMenuType();
             this.sortBy = SortBy.menu;
 
             if (sortType == SortType.ascending)
@@ -774,11 +772,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortByMenuType();
         }
 
         private void toolStripMenuItem14_Click(object sender, EventArgs e)
         {
-            SortByCourse();
             this.sortBy = SortBy.course;
 
             if (sortType == SortType.ascending)
@@ -786,11 +784,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortByCourse();
         }
 
         private void toolStripMenuItem15_Click(object sender, EventArgs e)
         {
-            SortByQuantity();
             this.sortBy = SortBy.quantity;
 
             if (sortType == SortType.ascending)
@@ -798,11 +796,11 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortByQuantity();
         }
 
         private void toolStripMenuItem16_Click(object sender, EventArgs e)
         {
-            SortByStatus();
             this.sortBy = SortBy.status;
 
             if (sortType == SortType.ascending)
@@ -810,6 +808,7 @@ namespace UI
             else
                 sortType = SortType.ascending;
             changeSortTypeArrowsFood();
+            SortByStatus();
         }
 
         private void bToolStripMenuItem_Click(object sender, EventArgs e)

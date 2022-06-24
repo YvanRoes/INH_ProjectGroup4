@@ -29,21 +29,22 @@ namespace UI
 
         private void Start() 
         {
+            employees = employeeService.GetAllEmployees();
             FillListView();
         }
 
         public void FillListView() 
         {
-            employees = employeeService.GetAllEmployees();
+            
 
             listView1.Clear();
             listView1.View = View.Details;
             listView1.FullRowSelect = true;
 
-            listView1.Columns.Add("Id", 30);
-            listView1.Columns.Add("Name", 165);
-            listView1.Columns.Add("Role", 105);
-            listView1.Columns.Add("PIN", 50);
+            listView1.Columns.Add("Id", 325);
+            listView1.Columns.Add("Name", 375);
+            listView1.Columns.Add("Role", 300);
+            listView1.Columns.Add("PIN", 200);
 
             foreach (Employee e in employees)
             {
@@ -116,6 +117,48 @@ namespace UI
                 employees = employees.OrderBy(i => i.Employee_Name).ToList();
                 FillListView();
             }
+        }
+
+        private void idToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Id).ToList();
+            FillListView();
+        }
+        
+        private void staffRoleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Role).ToList();
+            FillListView();
+        }
+
+        private void nameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Name).ToList();
+            FillListView();
+        }
+        //SORTING USING THE HEADER
+        private void idToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Id).ToList();
+            FillListView();
+        }
+
+        private void nameToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Name).ToList();
+            FillListView();
+        }
+
+        private void roleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Role).ToList();
+            FillListView();
+        }
+
+        private void pINToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            employees = employees.OrderBy(i => i.Employee_Pin).ToList();
+            FillListView();
         }
     }
 }

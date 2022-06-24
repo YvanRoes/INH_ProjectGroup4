@@ -50,21 +50,24 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(28, 380);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(117)))), ((int)(((byte)(66)))));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(415, 531);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 29);
+            this.button1.Size = new System.Drawing.Size(172, 51);
             this.button1.TabIndex = 45;
             this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblFoodName
             // 
             this.lblFoodName.AutoSize = true;
+            this.lblFoodName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblFoodName.Location = new System.Drawing.Point(28, 82);
             this.lblFoodName.Name = "lblFoodName";
-            this.lblFoodName.Size = new System.Drawing.Size(140, 20);
+            this.lblFoodName.Size = new System.Drawing.Size(198, 28);
             this.lblFoodName.TabIndex = 44;
             this.lblFoodName.Text = "Name and Surname";
             // 
@@ -74,19 +77,21 @@
             this.groupBoxCourse.Controls.Add(this.radioButton7);
             this.groupBoxCourse.Controls.Add(this.radioButton8);
             this.groupBoxCourse.Controls.Add(this.radioButton9);
-            this.groupBoxCourse.Location = new System.Drawing.Point(232, 350);
+            this.groupBoxCourse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBoxCourse.Location = new System.Drawing.Point(432, 133);
             this.groupBoxCourse.Name = "groupBoxCourse";
-            this.groupBoxCourse.Size = new System.Drawing.Size(172, 152);
+            this.groupBoxCourse.Size = new System.Drawing.Size(195, 152);
             this.groupBoxCourse.TabIndex = 43;
             this.groupBoxCourse.TabStop = false;
             this.groupBoxCourse.Text = "Role";
+            this.groupBoxCourse.Enter += new System.EventHandler(this.groupBoxCourse_Enter);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(6, 116);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(89, 24);
+            this.radioButton1.Size = new System.Drawing.Size(117, 32);
             this.radioButton1.TabIndex = 3;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Manager";
@@ -97,7 +102,7 @@
             this.radioButton7.AutoSize = true;
             this.radioButton7.Location = new System.Drawing.Point(6, 86);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(60, 24);
+            this.radioButton7.Size = new System.Drawing.Size(76, 32);
             this.radioButton7.TabIndex = 2;
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "Chef";
@@ -108,7 +113,7 @@
             this.radioButton8.AutoSize = true;
             this.radioButton8.Location = new System.Drawing.Point(6, 56);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(95, 24);
+            this.radioButton8.Size = new System.Drawing.Size(128, 32);
             this.radioButton8.TabIndex = 1;
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "Bartender";
@@ -119,7 +124,7 @@
             this.radioButton9.AutoSize = true;
             this.radioButton9.Location = new System.Drawing.Point(6, 26);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(134, 24);
+            this.radioButton9.Size = new System.Drawing.Size(186, 32);
             this.radioButton9.TabIndex = 0;
             this.radioButton9.TabStop = true;
             this.radioButton9.Text = "Waiter/Waitress";
@@ -127,9 +132,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(28, 431);
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(28, 531);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 29);
+            this.button2.Size = new System.Drawing.Size(172, 51);
             this.button2.TabIndex = 46;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -137,9 +143,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 219);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(28, 262);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 20);
+            this.label5.Size = new System.Drawing.Size(162, 28);
             this.label5.TabIndex = 42;
             this.label5.Text = "Secret Question";
             // 
@@ -154,68 +161,76 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(117)))), ((int)(((byte)(66)))));
             this.label1.Location = new System.Drawing.Point(22, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 31);
+            this.label1.Size = new System.Drawing.Size(222, 41);
             this.label1.TabIndex = 37;
             this.label1.Text = "Add Employee";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 147);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(28, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 20);
+            this.label2.Size = new System.Drawing.Size(46, 28);
             this.label2.TabIndex = 47;
             this.label2.Text = "PIN";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 288);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(22, 358);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 20);
+            this.label3.Size = new System.Drawing.Size(147, 28);
             this.label3.TabIndex = 49;
             this.label3.Text = "Secret Anwser";
             // 
             // textBoxSecretA
             // 
-            this.textBoxSecretA.Location = new System.Drawing.Point(28, 311);
+            this.textBoxSecretA.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSecretA.Location = new System.Drawing.Point(28, 396);
             this.textBoxSecretA.Name = "textBoxSecretA";
             this.textBoxSecretA.PlaceholderText = "Eg. Skippy";
-            this.textBoxSecretA.Size = new System.Drawing.Size(299, 27);
+            this.textBoxSecretA.Size = new System.Drawing.Size(376, 34);
             this.textBoxSecretA.TabIndex = 64;
             // 
             // textBoxEmployeeName
             // 
-            this.textBoxEmployeeName.Location = new System.Drawing.Point(28, 105);
+            this.textBoxEmployeeName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxEmployeeName.Location = new System.Drawing.Point(28, 133);
             this.textBoxEmployeeName.Name = "textBoxEmployeeName";
             this.textBoxEmployeeName.PlaceholderText = "Name";
-            this.textBoxEmployeeName.Size = new System.Drawing.Size(376, 27);
+            this.textBoxEmployeeName.Size = new System.Drawing.Size(376, 34);
             this.textBoxEmployeeName.TabIndex = 61;
             // 
             // textBoxSecretQ
             // 
-            this.textBoxSecretQ.Location = new System.Drawing.Point(28, 242);
+            this.textBoxSecretQ.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSecretQ.Location = new System.Drawing.Point(28, 311);
             this.textBoxSecretQ.Name = "textBoxSecretQ";
             this.textBoxSecretQ.PlaceholderText = "Eg. What was your first pet\'s name?";
-            this.textBoxSecretQ.Size = new System.Drawing.Size(299, 27);
+            this.textBoxSecretQ.Size = new System.Drawing.Size(376, 34);
             this.textBoxSecretQ.TabIndex = 63;
             // 
             // textBoxPIN
             // 
-            this.textBoxPIN.Location = new System.Drawing.Point(28, 170);
+            this.textBoxPIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxPIN.Location = new System.Drawing.Point(28, 210);
             this.textBoxPIN.Name = "textBoxPIN";
             this.textBoxPIN.PlaceholderText = "Personal Identification Number";
-            this.textBoxPIN.Size = new System.Drawing.Size(299, 27);
+            this.textBoxPIN.Size = new System.Drawing.Size(376, 34);
             this.textBoxPIN.TabIndex = 62;
             // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 514);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(639, 594);
             this.Controls.Add(this.textBoxSecretA);
             this.Controls.Add(this.textBoxEmployeeName);
             this.Controls.Add(this.textBoxSecretQ);

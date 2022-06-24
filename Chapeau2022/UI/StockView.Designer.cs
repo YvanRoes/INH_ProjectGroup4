@@ -667,7 +667,7 @@
             this.toolStripMenuItem9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem9.ForeColor = System.Drawing.Color.White;
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(500, 34);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(400, 34);
             this.toolStripMenuItem9.Text = "Name ▼";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
@@ -896,8 +896,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.menuStrip5);
             this.Controls.Add(this.menuStrip4);
+            this.Controls.Add(this.menuStrip5);
             this.Controls.Add(this.listView1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "StockView";

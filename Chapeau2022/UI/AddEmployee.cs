@@ -67,5 +67,10 @@ namespace UI
             employeeView.FillListView();
             this.Close();
         }
+
+        private void groupBoxCourse_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
