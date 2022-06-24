@@ -414,24 +414,27 @@
             // lunchToolStripMenuItem
             // 
             this.lunchToolStripMenuItem.CheckOnClick = true;
+            this.lunchToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(117)))), ((int)(((byte)(66)))));
             this.lunchToolStripMenuItem.Name = "lunchToolStripMenuItem";
-            this.lunchToolStripMenuItem.Size = new System.Drawing.Size(155, 34);
+            this.lunchToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
             this.lunchToolStripMenuItem.Text = "Lunch";
             this.lunchToolStripMenuItem.Click += new System.EventHandler(this.lunchToolStripMenuItem_Click);
             // 
             // dinnerToolStripMenuItem
             // 
             this.dinnerToolStripMenuItem.CheckOnClick = true;
+            this.dinnerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(117)))), ((int)(((byte)(66)))));
             this.dinnerToolStripMenuItem.Name = "dinnerToolStripMenuItem";
-            this.dinnerToolStripMenuItem.Size = new System.Drawing.Size(155, 34);
+            this.dinnerToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
             this.dinnerToolStripMenuItem.Text = "Dinner";
             this.dinnerToolStripMenuItem.Click += new System.EventHandler(this.dinnerToolStripMenuItem_Click);
             // 
             // bToolStripMenuItem
             // 
             this.bToolStripMenuItem.CheckOnClick = true;
+            this.bToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(117)))), ((int)(((byte)(66)))));
             this.bToolStripMenuItem.Name = "bToolStripMenuItem";
-            this.bToolStripMenuItem.Size = new System.Drawing.Size(155, 34);
+            this.bToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
             this.bToolStripMenuItem.Text = "Both";
             this.bToolStripMenuItem.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
             // 
