@@ -29,6 +29,10 @@ namespace Logic
             List<Table> tables = tableDao.GetTableStatus(tablestatus);
             return tables;
         }
+        public List<Table> GetALlTables()
+        {
+            return tableDao.GetAllTables();
+        }
 
     }
 }

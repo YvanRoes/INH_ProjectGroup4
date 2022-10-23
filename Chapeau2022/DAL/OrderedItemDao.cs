@@ -127,14 +127,15 @@ namespace DAL
         // MD Tasnim Kabir
 
         // Get all the ordered items from database
-        public List<OrderedItem> GetAllOrderedItems(int tableNr)
+        public List<OrderedItem> GetAllOrderedFoods(int tableNr)
         {
             string query = $@" 
-                            SELECT m.item_Name,o.itemOrdered_Quantity,m.item_Price,od.order_Id,od.table_Nr,od.order_Status
-                            FROM MENU_ITEM as m
-                            JOIN ORDERED_ITEM as o on o.item_Id=m.item_Id
-                            join [dbo].[ORDER] as od on od.order_Id=o.order_Id
-                            WHERE od.order_Status={(int)PayStatus.notpaid} and od.table_Nr=@table_Nr
+                                SELECT m.item_Name,m.item_Price,o.itemOrdered_Quantity,od.order_Id
+                                FROM [dbo].[MENU_ITEM] as m
+                                join [dbo].[ORDERED_ITEM] as o on o.item_Id=m.item_Id
+                                join [dbo].[ORDER] as od on od.order_Id=o.order_Id
+                                JOIN FOOD as f on f.item_Id=o.item_Id
+                                WHERE od.order_Status=0 and od.table_Nr=@table_Nr
                              ";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@table_Nr", tableNr);
@@ -157,7 +158,48 @@ namespace DAL
                 OrderedItem itemOrdered = new OrderedItem(menuItem)
                 {
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
-                    table_Id = (int)dr["table_Nr"],
+                    _itemOrdered_id = (int)dr["order_Id"]
+                    
+
+                };
+                items.Add(itemOrdered);
+
+            }
+            return items;
+
+        }
+
+        public List<OrderedItem> GetAllOrderedDrinks(int tableNr)
+        {
+            string query = $@"
+                                  SELECT d.item_DrinkType,m.item_Name,m.item_Price,o.itemOrdered_Quantity,od.order_Id
+                                  FROM [dbo].DRINK as d
+                                  join MENU_ITEM as m on m.item_Id=d.item_Id
+                                  JOIN ORDERED_ITEM as o on d.item_Id=o.item_Id
+                                  join [dbo].[ORDER] as od on od.order_Id=o.order_Id 
+                                  WHERE od.order_Status=0 and od.table_Nr=@table_Nr 
+                             ";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@table_Nr", tableNr);
+
+            return ReadDrinksTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private List<OrderedItem> ReadDrinksTables(DataTable datatable)
+        {
+            List<OrderedItem> items = new List<OrderedItem>();
+
+            foreach (DataRow dr in datatable.Rows)
+            {
+                MenuItem menuItem = new MenuItem()
+                {
+                    Item_Name = (string)dr["item_Name"],
+                    Item_Price = (decimal)dr["item_Price"]
+                };
+
+                OrderedItem itemOrdered = new OrderedItem(menuItem)
+                {
+                    _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
                     _itemOrder_id = (int)dr["order_Id"],
 
                 };

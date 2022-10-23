@@ -9,8 +9,6 @@
         public decimal Tip { get; set; }
         public decimal Total { get; set; }
         public int OrderId { get; set; }
-        public int Table_Nr { get; set; }
-
         public BillMethod Method { get; set; }
         public string Comment { get; set; }
 

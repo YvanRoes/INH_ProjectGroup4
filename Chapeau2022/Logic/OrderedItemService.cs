@@ -35,10 +35,14 @@ namespace Logic
         }
 
         //Md Tasnim Kabir 
-        public List<OrderedItem> GetAllOrderedItems(int tableNr)
+        public List<OrderedItem> GetAllOrderedFoods(int tableNr)
         {
             
-            return orderedItemDao.GetAllOrderedItems(tableNr);
+            return orderedItemDao.GetAllOrderedFoods(tableNr);
+        }
+        public List<OrderedItem> GetALlOrdereDrinks(int tableNr)
+        {
+            return orderedItemDao.GetAllOrderedDrinks(tableNr);
         }
 
         //Anna Koster

@@ -52,5 +52,30 @@ namespace DAL
             }
             return tables;
         }
+
+        public List<Table> GetAllTables()
+        {
+            string query = @"SELECT table_Nr FROM [TABLE]
+                            ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadAllTables(ExecuteSelectQuery(query, sqlParameters));
+
+        }
+        private List<Table> ReadAllTables(DataTable datatable)
+        {
+            List<Table> tables = new List<Table>();
+
+            foreach (DataRow dr in datatable.Rows)
+            {
+
+                Table tableNr = new Table()
+                {
+                    Table_Nr = (int)dr["table_Nr"]
+                };
+                tables.Add(tableNr);
+            }
+
+            return tables;
+        }
     }
 }

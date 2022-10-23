@@ -9,6 +9,8 @@ namespace Model
     public class Table
     {
         public int tableId { get; set; }
+        public int Table_Nr { get; set; }
+
         public TableStatus tableOccupancy { get; set; }
     }
 }

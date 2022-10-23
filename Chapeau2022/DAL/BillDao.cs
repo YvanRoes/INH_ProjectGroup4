@@ -38,30 +38,7 @@ namespace DAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
-        public List<Bill> GetAllTables()
-        {
-            string query = @"SELECT table_Nr FROM [TABLE]
-                            ";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-
-        }
-        private List<Bill> ReadTables(DataTable datatable)
-        {
-            List<Bill> tables = new List<Bill>();
-
-            foreach (DataRow dr in datatable.Rows)
-            {
-
-                Bill tableNr = new Bill()
-                {
-                    Table_Nr = (int)dr["table_Nr"]
-                };
-                tables.Add(tableNr);
-            }
-
-            return tables;
-        }
+       
     }
 
 }
