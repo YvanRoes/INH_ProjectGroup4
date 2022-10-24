@@ -13,7 +13,6 @@ namespace UI
     {
         private BillService billService = new BillService();
         private TableService tableService = new TableService();
-        private Bill bill = new Bill();
         private OrderedItemService orderedItemsService = new OrderedItemService();
         private List<OrderedItem> getOrderedFoods;
         private List<OrderedItem> getOrderedDrinks;
@@ -74,10 +73,10 @@ namespace UI
             getOrderedDrinks = orderedItemsService.GetALlOrdereDrinks(tableNr);
             DisplayOrderedItems();
             CalculateTotalandVat();
-            highVat = 0;
-            lowVat = 0;
-            subTotal = 0;
-            total = 0;
+            //highVat = 0;
+            //lowVat = 0;
+            //subTotal = 0;
+            //total = 0;
             
         }
         private void DisplayOrderedItems()
@@ -133,10 +132,10 @@ namespace UI
             lblHighVat.Text=highVat.ToString("0.00");
             lblLowVat.Text = lowVat.ToString("0.00");
             lblSubTotal.Text = subTotal.ToString("0.00");
-           
             total = (subTotal + highVat + lowVat);
             lblTotal.Text = total.ToString("0.00");
             txtSplitBox.Text = total.ToString("0.00");
+
         }
 
 
@@ -240,17 +239,17 @@ namespace UI
                 btnComment.Enabled = false;
 
             }
-
-
         }
-  
+
+        decimal splitAmount;
 
         // Insert the bill to the database and update the payment status
+       
         private void btnPay_Click(object sender, EventArgs e)
         {
+            Bill bill = new Bill();
             try
             {
-                decimal splitAmount;
 
                 if (decimal.Parse(txtSplitBox.Text) <= 0)
                 {
@@ -267,19 +266,20 @@ namespace UI
                     splitAmount = decimal.Parse(txtSplitBox.Text);
                 }
 
+
                 if (rbCreditcard.Checked)
+                {
                     bill.Method = BillMethod.CreditCard;
+                }
                 else if (rbPin.Checked)
                     bill.Method = BillMethod.Pin;
-                else if(rbCash.Checked)
+                else if (rbCash.Checked)
                     bill.Method = BillMethod.Cash;
                 else
                 {
                     MessageBox.Show("Please select a payment method first");
-                    return;
                 }
-
-                PayBill();
+                PayBill(bill.Method);
 
             }
             catch (Exception ex)
@@ -289,15 +289,18 @@ namespace UI
 
         }
 
-        private void PayBill()
+        private void PayBill(BillMethod method)
         {
             Bill insertBill;
+            splitAmount = decimal.Parse(txtSplitBox.Text);
+        
             if (decimal.Parse(lblTotal.Text) != 0)
             {
                 decimal tip= txtTip.Text == ""?tip=0.00m: tip = decimal.Parse(txtTip.Text);
-                if (decimal.Parse(lblTotal.Text) == decimal.Parse(txtSplitBox.Text))
+
+                if (total == splitAmount)
                 {
-                    insertBill = new Bill(orderID, decimal.Parse(lblTotal.Text), tip, txtComment.Text, bill.Method);
+                    insertBill = new Bill(orderID, total, tip, txtComment.Text, method);
                     billService.InsertBill(insertBill);
                     //billService.UpdatePaymentStatus(orderID);
                     MessageBox.Show($"Full Payment Successfull");
@@ -305,12 +308,13 @@ namespace UI
                 }
                 else
                 {
-                    insertBill = new Bill(orderID, decimal.Parse(txtSplitBox.Text), tip, txtComment.Text, bill.Method);
+                    insertBill = new Bill(orderID,splitAmount, tip, txtComment.Text, method);
                     billService.InsertBill(insertBill);
                     MessageBox.Show($"Partial payment is successfull");
-                    UpdateTheForm();                   
-                    lblTotal.Text = (decimal.Parse(lblTotal.Text) - decimal.Parse(txtSplitBox.Text)).ToString();
-                    txtSplitBox.Text=lblTotal.Text;
+                    UpdateTheForm();
+                    total = total - splitAmount;
+                    lblTotal.Text = total.ToString();
+                    
                 }
             }
             
