@@ -11,13 +11,6 @@ namespace UI
 
     public partial class BillUI : Form
     {
-        private BillService billService = new BillService();
-        private TableService tableService = new TableService();
-        private OrderedItemService orderedItemsService = new OrderedItemService();
-        private List<OrderedItem> getOrderedFoods;
-        private List<OrderedItem> getOrderedDrinks;
-
-
         private const decimal HighVatRate = 0.21m;
         private const decimal LowVatRate = 0.06m;
 
@@ -48,6 +41,7 @@ namespace UI
  
         private void DisplayAllTable()
         {
+            TableService tableService = new TableService();
             List<Table> allTables =tableService.GetALlTables();
             foreach (Table table in allTables)
             {
@@ -69,18 +63,21 @@ namespace UI
                 btnPay.Enabled = true;
             }
             //GetAllOrderedFoods(tableNr);
-            getOrderedFoods = orderedItemsService.GetAllOrderedFoods(tableNr);
-            getOrderedDrinks = orderedItemsService.GetALlOrdereDrinks(tableNr);
-            DisplayOrderedItems();
-            CalculateTotalandVat();
+            //getOrderedFoods = orderedItemsService.GetAllOrderedFoods(tableNr);
+            //getOrderedDrinks = orderedItemsService.GetALlOrdereDrinks(tableNr);
+            DisplayOrderedItems(tableNr);
+            //CalculateTotalandVat();
             //highVat = 0;
             //lowVat = 0;
             //subTotal = 0;
-            //total = 0;
-            
+            ////total = 0;
+
         }
-        private void DisplayOrderedItems()
+        private void DisplayOrderedItems(int tableNr)
         {
+            OrderedItemService orderedItemsService = new OrderedItemService();
+            List<OrderedItem> listOfOrdderedDrinks = orderedItemsService.GetALlOrdereDrinks(tableNr);
+            List<OrderedItem> listOfOrdderedFoods = orderedItemsService.GetAllOrderedFoods(tableNr);
 
             //set culture of program
             CultureInfo ci = new CultureInfo("en-US");
@@ -89,30 +86,31 @@ namespace UI
             // clear the listview before filling it again
             lvOrderedItems.Items.Clear();
 
-            foreach (OrderedItem orderedItems in getOrderedFoods)
+            foreach (OrderedItem orderedDrinks in listOfOrdderedDrinks)
             {
-                ListViewItem li = new ListViewItem(orderedItems.menuItem.Item_Name.ToString());
-                li.SubItems.Add(orderedItems._itemOrdered_Qty.ToString());
-                li.SubItems.Add(orderedItems.menuItem.Item_Price.ToString("€0.00"));
-                orderID = orderedItems._itemOrder_id;
+                ListViewItem li = new ListViewItem(orderedDrinks.menuItem.Item_Name.ToString());
+                li.SubItems.Add(orderedDrinks._itemOrdered_Qty.ToString());
+                li.SubItems.Add(orderedDrinks.menuItem.Item_Price.ToString("€0.00"));
+                orderID = orderedDrinks._itemOrdered_id;
                 lvOrderedItems.Items.Add(li);
             }
-            foreach (OrderedItem orderedItems in getOrderedDrinks)
+            foreach (OrderedItem orderedFoods in listOfOrdderedFoods)
             {
-                ListViewItem li = new ListViewItem(orderedItems.menuItem.Item_Name.ToString());
-                li.SubItems.Add(orderedItems._itemOrdered_Qty.ToString());
-                li.SubItems.Add(orderedItems.menuItem.Item_Price.ToString("€0.00"));
-                orderID = orderedItems._itemOrder_id;
-
+                ListViewItem li = new ListViewItem(orderedFoods.menuItem.Item_Name.ToString());
+                li.SubItems.Add(orderedFoods._itemOrdered_Qty.ToString());
+                li.SubItems.Add(orderedFoods.menuItem.Item_Price.ToString("€0.00"));
+                orderID = orderedFoods._itemOrdered_id;
                 lvOrderedItems.Items.Add(li);
             }
-
+            CalculateTotalandVat(listOfOrdderedDrinks, listOfOrdderedFoods);
+            
         }
+
         //here i have to display the high vat and low vat
-        private void CalculateTotalandVat()
+        private void CalculateTotalandVat(List<OrderedItem> allOrderedDrinks, List<OrderedItem> allOrderedFoods)
         {
             DrinkItem drinkItem = new DrinkItem();
-            foreach (OrderedItem orderedItems in getOrderedDrinks)
+            foreach (OrderedItem orderedItems in allOrderedDrinks)
             {
                 if (drinkItem.Item_DrinkType == DrinkType.Alcoholic)
                 {
@@ -124,7 +122,7 @@ namespace UI
                 }
                 subTotal += orderedItems.menuItem.Item_Price * orderedItems._itemOrdered_Qty;
             }
-            foreach(OrderedItem orderedItems in getOrderedFoods)
+            foreach(OrderedItem orderedItems in allOrderedFoods)
             {
                 lowVat += orderedItems.menuItem.Item_Price * orderedItems._itemOrdered_Qty * LowVatRate;
                 subTotal += orderedItems.menuItem.Item_Price * orderedItems._itemOrdered_Qty;
@@ -291,12 +289,13 @@ namespace UI
 
         private void PayBill(BillMethod method)
         {
+            BillService billService = new BillService();
             Bill insertBill;
             splitAmount = decimal.Parse(txtSplitBox.Text);
         
             if (decimal.Parse(lblTotal.Text) != 0)
             {
-                decimal tip= txtTip.Text == ""?tip=0.00m: tip = decimal.Parse(txtTip.Text);
+                decimal tip = txtTip.Text == ""?tip=0.00m: tip = decimal.Parse(txtTip.Text);
 
                 if (total == splitAmount)
                 {
@@ -313,7 +312,7 @@ namespace UI
                     MessageBox.Show($"Partial payment is successfull");
                     UpdateTheForm();
                     total = total - splitAmount;
-                    lblTotal.Text = total.ToString();
+                    lblTotal.Text = total.ToString("0.00");
                     
                 }
             }

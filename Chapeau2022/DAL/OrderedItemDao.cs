@@ -129,7 +129,7 @@ namespace DAL
         // Get all the ordered items from database
         public List<OrderedItem> GetAllOrderedFoods(int tableNr)
         {
-            string query = $@" 
+            string query = @" 
                                 SELECT m.item_Name,m.item_Price,o.itemOrdered_Quantity,od.order_Id
                                 FROM [dbo].[MENU_ITEM] as m
                                 join [dbo].[ORDERED_ITEM] as o on o.item_Id=m.item_Id
@@ -159,7 +159,6 @@ namespace DAL
                 {
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
                     _itemOrdered_id = (int)dr["order_Id"]
-                    
 
                 };
                 items.Add(itemOrdered);
@@ -171,7 +170,7 @@ namespace DAL
 
         public List<OrderedItem> GetAllOrderedDrinks(int tableNr)
         {
-            string query = $@"
+            string query = @"
                                   SELECT d.item_DrinkType,m.item_Name,m.item_Price,o.itemOrdered_Quantity,od.order_Id
                                   FROM [dbo].DRINK as d
                                   join MENU_ITEM as m on m.item_Id=d.item_Id
@@ -200,7 +199,7 @@ namespace DAL
                 OrderedItem itemOrdered = new OrderedItem(menuItem)
                 {
                     _itemOrdered_Qty = (int)dr["itemOrdered_Quantity"],
-                    _itemOrder_id = (int)dr["order_Id"],
+                    _itemOrdered_id = (int)dr["order_Id"],
 
                 };
                 items.Add(itemOrdered);
